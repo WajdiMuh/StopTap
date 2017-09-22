@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="App42LeaderboardViewController">
+            <connections>
+                <outlet property="activityIndicator" destination="tXc-eS-Dol" id="vrI-lf-mG3"/>
+                <outlet property="highestScoreLabel" destination="8yN-BR-Sgb" id="6sm-2W-kw7"/>
+                <outlet property="leaderboardTableView" destination="fxh-NU-utf" id="I2X-Zc-orD"/>
+                <outlet property="noDataMessage" destination="wlg-S5-Yzn" id="Gc7-G6-6a8"/>
+                <outlet property="segmentedControl" destination="0kn-UP-cjP" id="nH5-L5-JrA"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qpl-v3-qEM">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <color key="barTintColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textShadowColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="StopTap Leaderboard" id="uT7-9c-X5K">
+                            <barButtonItem key="leftBarButtonItem" title="Back" id="BvR-b7-nmM">
+                                <color key="tintColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="backButton:" destination="-1" id="hQh-z8-UBh"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Internet Connection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlg-S5-Yzn">
+                    <rect key="frame" x="0.0" y="289" width="600" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0kn-UP-cjP">
+                    <rect key="frame" x="-5" y="45" width="610" height="29"/>
+                    <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <segments>
+                        <segment title="First"/>
+                        <segment title="Second"/>
+                    </segments>
+                    <color key="tintColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="indexChanged:" destination="-1" eventType="valueChanged" id="IWM-z8-Jkc"/>
+                    </connections>
+                </segmentedControl>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tXc-eS-Dol">
+                    <rect key="frame" x="250" y="250" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="8jI-de-KbR"/>
+                        <constraint firstAttribute="height" constant="100" id="kdN-tl-GV4"/>
+                    </constraints>
+                </activityIndicatorView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highest : 0000000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yN-BR-Sgb">
+                    <rect key="frame" x="10" y="50" width="580" height="21"/>
+                    <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Kbn-4e-LL9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fxh-NU-utf" customClass="App42LeaderboardView">
+                    <rect key="frame" x="0.0" y="74" width="600" height="526"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="AUR-xi-cQs"/>
+                        <outlet property="delegate" destination="-1" id="uZc-Bz-0AS"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="wlg-S5-Yzn" secondAttribute="bottom" constant="290" id="64U-iX-UHU"/>
+                <constraint firstAttribute="trailing" secondItem="fxh-NU-utf" secondAttribute="trailing" id="872-aZ-2D5"/>
+                <constraint firstItem="fxh-NU-utf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8bm-6A-n2m"/>
+                <constraint firstAttribute="centerX" secondItem="tXc-eS-Dol" secondAttribute="centerX" id="9Og-8U-S9f"/>
+                <constraint firstItem="0kn-UP-cjP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="45" id="AI1-V8-oLK"/>
+                <constraint firstItem="8yN-BR-Sgb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="BWX-cD-jAX"/>
+                <constraint firstAttribute="centerX" secondItem="fxh-NU-utf" secondAttribute="centerX" id="BgY-c3-G6q"/>
+                <constraint firstAttribute="centerX" secondItem="Qpl-v3-qEM" secondAttribute="centerX" id="CfT-hM-r65"/>
+                <constraint firstAttribute="centerY" secondItem="wlg-S5-Yzn" secondAttribute="centerY" id="EEx-Y3-SRX"/>
+                <constraint firstItem="Qpl-v3-qEM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GOG-cN-tz6"/>
+                <constraint firstAttribute="bottom" secondItem="fxh-NU-utf" secondAttribute="bottom" id="Jtb-Mx-Y3v"/>
+                <constraint firstItem="wlg-S5-Yzn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="U2p-r5-bSd"/>
+                <constraint firstItem="fxh-NU-utf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XgW-KG-M3B"/>
+                <constraint firstItem="wlg-S5-Yzn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eDa-Bu-nIS"/>
+                <constraint firstAttribute="trailing" secondItem="8yN-BR-Sgb" secondAttribute="trailing" constant="10" id="eDr-hn-a31"/>
+                <constraint firstItem="Qpl-v3-qEM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="g3W-PL-yMA"/>
+                <constraint firstItem="0kn-UP-cjP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-5" id="gyP-Qq-hQx"/>
+                <constraint firstItem="fxh-NU-utf" firstAttribute="top" secondItem="0kn-UP-cjP" secondAttribute="bottom" constant="1" id="mQG-Cd-hST"/>
+                <constraint firstItem="8yN-BR-Sgb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="nK9-cZ-iRH"/>
+                <constraint firstAttribute="trailing" secondItem="0kn-UP-cjP" secondAttribute="trailing" constant="-5" id="tJP-4v-g0z"/>
+                <constraint firstAttribute="centerY" secondItem="tXc-eS-Dol" secondAttribute="centerY" id="vtA-er-6hm"/>
+                <constraint firstItem="wlg-S5-Yzn" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ywz-Hx-UKB"/>
+                <constraint firstAttribute="bottom" secondItem="fxh-NU-utf" secondAttribute="bottom" id="zDn-Q8-B9s"/>
+                <constraint firstAttribute="trailing" secondItem="wlg-S5-Yzn" secondAttribute="trailing" id="zid-ev-PjN"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="8bm-6A-n2m"/>
+                    <exclude reference="BgY-c3-G6q"/>
+                    <exclude reference="Jtb-Mx-Y3v"/>
+                    <exclude reference="64U-iX-UHU"/>
+                    <exclude reference="EEx-Y3-SRX"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

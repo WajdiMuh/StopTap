@@ -1,0 +1,800 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01E70BD62A155131D2A01E6ABADC5621 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		117E94D21B20B0EFC6001F656ABD2270 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		259AB229C50CE60F4E00B4C55EF35B6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		2DEFB2791BED0A0CE9ABA81AC0090AC8 /* Pods-StopTapUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5369DD9C9EF8CD5F6F1C8B1D0358B53D /* Pods-StopTapUITests-dummy.m */; };
+		3AC31765484EE9D3BCDB3CCA65FD2E22 /* Pods-StopTapUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A34A0F875E1282A98B389BCF805FC678 /* Pods-StopTapUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		53732C8D3E57A3E642B964F597E7884C /* Pods-StopTapTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D5D1B02655875E6B33E10DBEC23A15B2 /* Pods-StopTapTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F724A920CFD2498098E118CACC343A8 /* Pods-StopTap-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E5654DD2074E73B2298864068340CC31 /* Pods-StopTap-dummy.m */; };
+		8964CADFF5B7D7DB44A51CA0F19B5CCB /* Pods-StopTap-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C18AFE0C7B9215F869EA9E28BD4C21B /* Pods-StopTap-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C533A1F8C71C8FE697D1D73940D3D125 /* Pods-StopTapTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A1F57B1CD92F525D147A166057B3D7 /* Pods-StopTapTests-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0A1757B879AC1FACE9A2963AC010D35F /* Pods-StopTapTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-StopTapTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		0C18AFE0C7B9215F869EA9E28BD4C21B /* Pods-StopTap-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-StopTap-umbrella.h"; sourceTree = "<group>"; };
+		0FA26FEB73A372A6144AA0A8646592C1 /* Pods-StopTapTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StopTapTests-resources.sh"; sourceTree = "<group>"; };
+		18A113BC5B704B15A4A0562954028143 /* Pods-StopTapUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-StopTapUITests.modulemap"; sourceTree = "<group>"; };
+		1B6411ED85130AC5DA7046C1065E93F7 /* Pods_StopTap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StopTap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		23533FF7B5958526AD8E124E1ED880AC /* Pods-StopTap-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-StopTap-acknowledgements.plist"; sourceTree = "<group>"; };
+		26F1FFA991731BF3F8FC4A75DD9EF2EB /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		3B38412048E86D9297D742E017247801 /* Pods-StopTap-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StopTap-resources.sh"; sourceTree = "<group>"; };
+		4456626CC31A79DAEA1D4304BE747FEB /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
+		4610BB4E5807BB20D3118110C3E046F3 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		5369DD9C9EF8CD5F6F1C8B1D0358B53D /* Pods-StopTapUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-StopTapUITests-dummy.m"; sourceTree = "<group>"; };
+		5582839EE4EC7C8FB1308266B0C1B0B5 /* Pods-StopTap-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StopTap-frameworks.sh"; sourceTree = "<group>"; };
+		574088F285485DE4B5CACD09A82FC752 /* Pods-StopTapUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StopTapUITests-frameworks.sh"; sourceTree = "<group>"; };
+		69F5CD86F4A5A7013902D4539CC3B603 /* Pods-StopTapUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-StopTapUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6DE37D4EA218D32FB90CBF3BADE63661 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		74AFCF0F22C178C807688EF64F24F8B0 /* Pods-StopTapUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-StopTapUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		75549E04C72A11571A5850146B6C5927 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
+		7A9895BF321B19DF812B0ED9074783F3 /* Pods_StopTapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StopTapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B271D29FE48F7EDAD9513A7782F2A05 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		7E1CC2E70B7FB9BE4759B288FB9F4F01 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Headers/Firebase.h; sourceTree = "<group>"; };
+		83D6628B80FC9115643DAE5BE846DECD /* Pods-StopTapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StopTapTests.release.xcconfig"; sourceTree = "<group>"; };
+		852018EAA8ED5B433CA3197636F57E22 /* Pods-StopTapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StopTapTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8AAAFE9100A7BEB13CAB925892AE41FD /* Pods-StopTapTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StopTapTests-frameworks.sh"; sourceTree = "<group>"; };
+		91A1F57B1CD92F525D147A166057B3D7 /* Pods-StopTapTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-StopTapTests-dummy.m"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D7ADE438FB7D9F981895DFE23A5407E /* Pods-StopTapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StopTapUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9DBFB6F0365CA1F9DF20BC0DD9F12090 /* Pods-StopTapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StopTapUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A0DFC3DFFBE1A0D5D2BBA4F67F30BF9D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A34A0F875E1282A98B389BCF805FC678 /* Pods-StopTapUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-StopTapUITests-umbrella.h"; sourceTree = "<group>"; };
+		A840FDF25EB449A6B289023C641BA03A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB28507B0EDC3816140D1175B1988E2D /* Pods-StopTap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StopTap.release.xcconfig"; sourceTree = "<group>"; };
+		C6F2577DE39EC046059D292EC0BEA601 /* Pods_StopTapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StopTapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC5CBF8E05682810291D3105AB6645AD /* Pods-StopTap.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-StopTap.modulemap"; sourceTree = "<group>"; };
+		CDFC4D911F1D1417D539E27EB83283DD /* Pods-StopTapUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StopTapUITests-resources.sh"; sourceTree = "<group>"; };
+		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D316444381DFC0CD60E3A9841AC2CA70 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5D1B02655875E6B33E10DBEC23A15B2 /* Pods-StopTapTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-StopTapTests-umbrella.h"; sourceTree = "<group>"; };
+		DD45778A77603940D051BDA47B33026E /* Pods-StopTapTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-StopTapTests.modulemap"; sourceTree = "<group>"; };
+		E54A63A49EFE6C0B9D8AB57222832604 /* Pods-StopTapTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-StopTapTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E5654DD2074E73B2298864068340CC31 /* Pods-StopTap-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-StopTap-dummy.m"; sourceTree = "<group>"; };
+		EE93CE0937CEAE844DF6914D1687EEC7 /* Pods-StopTap-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-StopTap-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F16E77538F8C5472F80B43F07EE15C22 /* Pods-StopTap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StopTap.debug.xcconfig"; sourceTree = "<group>"; };
+		FEB6E792B54F2F2481A0CA256B951A3F /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06683DFC50576772AF17B50C1BA1D6B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				259AB229C50CE60F4E00B4C55EF35B6C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F1E50D15A30BF202D5E7FCC638866D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01E70BD62A155131D2A01E6ABADC5621 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B14214A0CFEA71AF7CE9ED5F0B9A3B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				117E94D21B20B0EFC6001F656ABD2270 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08465D9718C86711F5D606866B4DBCCD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DE37D4EA218D32FB90CBF3BADE63661 /* GoogleInterchangeUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		29516B429768C4FBF492C81910053F51 /* Pods-StopTap */ = {
+			isa = PBXGroup;
+			children = (
+				A840FDF25EB449A6B289023C641BA03A /* Info.plist */,
+				CC5CBF8E05682810291D3105AB6645AD /* Pods-StopTap.modulemap */,
+				EE93CE0937CEAE844DF6914D1687EEC7 /* Pods-StopTap-acknowledgements.markdown */,
+				23533FF7B5958526AD8E124E1ED880AC /* Pods-StopTap-acknowledgements.plist */,
+				E5654DD2074E73B2298864068340CC31 /* Pods-StopTap-dummy.m */,
+				5582839EE4EC7C8FB1308266B0C1B0B5 /* Pods-StopTap-frameworks.sh */,
+				3B38412048E86D9297D742E017247801 /* Pods-StopTap-resources.sh */,
+				0C18AFE0C7B9215F869EA9E28BD4C21B /* Pods-StopTap-umbrella.h */,
+				F16E77538F8C5472F80B43F07EE15C22 /* Pods-StopTap.debug.xcconfig */,
+				BB28507B0EDC3816140D1175B1988E2D /* Pods-StopTap.release.xcconfig */,
+			);
+			name = "Pods-StopTap";
+			path = "Target Support Files/Pods-StopTap";
+			sourceTree = "<group>";
+		};
+		2D3925E84291C9E73EAD6BCF6312CF4B /* FirebaseAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				41937C97F0CA3301DACD61C0A8F27199 /* Frameworks */,
+			);
+			path = FirebaseAnalytics;
+			sourceTree = "<group>";
+		};
+		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		41937C97F0CA3301DACD61C0A8F27199 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4610BB4E5807BB20D3118110C3E046F3 /* FirebaseAnalytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		47F741E6B3212C583ABD34278F76F3D8 /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				909FC8D6FD6D242DD1ABAB2B0BCD6069 /* Frameworks */,
+			);
+			path = GoogleUtilities;
+			sourceTree = "<group>";
+		};
+		49750D615ED2A7D7CBE056F5B2008BCB /* GoogleInterchangeUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				08465D9718C86711F5D606866B4DBCCD /* Frameworks */,
+			);
+			path = GoogleInterchangeUtilities;
+			sourceTree = "<group>";
+		};
+		56521904B0E07900B43AC2AC5E8AABA9 /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				9D43F6C3A629EC575E69879745BD8D04 /* Frameworks */,
+			);
+			path = GoogleSymbolUtilities;
+			sourceTree = "<group>";
+		};
+		6C2D261DC6C0877E7141204EB68360EE /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				7C4306623D7366DA7A8ACA44FCC55E73 /* Analytics */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		7C4306623D7366DA7A8ACA44FCC55E73 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				7E1CC2E70B7FB9BE4759B288FB9F4F01 /* Firebase.h */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				D2FECC7868C8DB9BD8B5B92A7AEEAC1E /* Pods */,
+				E84E1BD67A50060888A00F8F9B3266DD /* Products */,
+				E2CE29B1813708EB6AF51FD99B17000F /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8F8A62EFFA783ACA77A75027B93823BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75549E04C72A11571A5850146B6C5927 /* GoogleMobileAds.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		909FC8D6FD6D242DD1ABAB2B0BCD6069 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				26F1FFA991731BF3F8FC4A75DD9EF2EB /* GoogleUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9ABF5264BCEDE1ECAA63C2DF80F3CFE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B271D29FE48F7EDAD9513A7782F2A05 /* FirebaseInstanceID.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C5F1E337415EFF5A051939F1A541596 /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				4456626CC31A79DAEA1D4304BE747FEB /* FIRInstanceID.h */,
+				9ABF5264BCEDE1ECAA63C2DF80F3CFE8 /* Frameworks */,
+			);
+			path = FirebaseInstanceID;
+			sourceTree = "<group>";
+		};
+		9D43F6C3A629EC575E69879745BD8D04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FEB6E792B54F2F2481A0CA256B951A3F /* GoogleSymbolUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CDE8E6D0AD4550D8D8BCD454E5E7A62C /* Pods-StopTapUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D316444381DFC0CD60E3A9841AC2CA70 /* Info.plist */,
+				18A113BC5B704B15A4A0562954028143 /* Pods-StopTapUITests.modulemap */,
+				69F5CD86F4A5A7013902D4539CC3B603 /* Pods-StopTapUITests-acknowledgements.markdown */,
+				74AFCF0F22C178C807688EF64F24F8B0 /* Pods-StopTapUITests-acknowledgements.plist */,
+				5369DD9C9EF8CD5F6F1C8B1D0358B53D /* Pods-StopTapUITests-dummy.m */,
+				574088F285485DE4B5CACD09A82FC752 /* Pods-StopTapUITests-frameworks.sh */,
+				CDFC4D911F1D1417D539E27EB83283DD /* Pods-StopTapUITests-resources.sh */,
+				A34A0F875E1282A98B389BCF805FC678 /* Pods-StopTapUITests-umbrella.h */,
+				9DBFB6F0365CA1F9DF20BC0DD9F12090 /* Pods-StopTapUITests.debug.xcconfig */,
+				9D7ADE438FB7D9F981895DFE23A5407E /* Pods-StopTapUITests.release.xcconfig */,
+			);
+			name = "Pods-StopTapUITests";
+			path = "Target Support Files/Pods-StopTapUITests";
+			sourceTree = "<group>";
+		};
+		D2FECC7868C8DB9BD8B5B92A7AEEAC1E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6C2D261DC6C0877E7141204EB68360EE /* Firebase */,
+				2D3925E84291C9E73EAD6BCF6312CF4B /* FirebaseAnalytics */,
+				9C5F1E337415EFF5A051939F1A541596 /* FirebaseInstanceID */,
+				E6AEB67C1070A701D463FDCAE3278C04 /* Google-Mobile-Ads-SDK */,
+				49750D615ED2A7D7CBE056F5B2008BCB /* GoogleInterchangeUtilities */,
+				56521904B0E07900B43AC2AC5E8AABA9 /* GoogleSymbolUtilities */,
+				47F741E6B3212C583ABD34278F76F3D8 /* GoogleUtilities */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E2CE29B1813708EB6AF51FD99B17000F /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				29516B429768C4FBF492C81910053F51 /* Pods-StopTap */,
+				E37CEBFA10DECA340DD08BB2DBACFC97 /* Pods-StopTapTests */,
+				CDE8E6D0AD4550D8D8BCD454E5E7A62C /* Pods-StopTapUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		E37CEBFA10DECA340DD08BB2DBACFC97 /* Pods-StopTapTests */ = {
+			isa = PBXGroup;
+			children = (
+				A0DFC3DFFBE1A0D5D2BBA4F67F30BF9D /* Info.plist */,
+				DD45778A77603940D051BDA47B33026E /* Pods-StopTapTests.modulemap */,
+				E54A63A49EFE6C0B9D8AB57222832604 /* Pods-StopTapTests-acknowledgements.markdown */,
+				0A1757B879AC1FACE9A2963AC010D35F /* Pods-StopTapTests-acknowledgements.plist */,
+				91A1F57B1CD92F525D147A166057B3D7 /* Pods-StopTapTests-dummy.m */,
+				8AAAFE9100A7BEB13CAB925892AE41FD /* Pods-StopTapTests-frameworks.sh */,
+				0FA26FEB73A372A6144AA0A8646592C1 /* Pods-StopTapTests-resources.sh */,
+				D5D1B02655875E6B33E10DBEC23A15B2 /* Pods-StopTapTests-umbrella.h */,
+				852018EAA8ED5B433CA3197636F57E22 /* Pods-StopTapTests.debug.xcconfig */,
+				83D6628B80FC9115643DAE5BE846DECD /* Pods-StopTapTests.release.xcconfig */,
+			);
+			name = "Pods-StopTapTests";
+			path = "Target Support Files/Pods-StopTapTests";
+			sourceTree = "<group>";
+		};
+		E6AEB67C1070A701D463FDCAE3278C04 /* Google-Mobile-Ads-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				8F8A62EFFA783ACA77A75027B93823BF /* Frameworks */,
+			);
+			path = "Google-Mobile-Ads-SDK";
+			sourceTree = "<group>";
+		};
+		E84E1BD67A50060888A00F8F9B3266DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B6411ED85130AC5DA7046C1065E93F7 /* Pods_StopTap.framework */,
+				C6F2577DE39EC046059D292EC0BEA601 /* Pods_StopTapTests.framework */,
+				7A9895BF321B19DF812B0ED9074783F3 /* Pods_StopTapUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		20DA6014A96B29D8CE6C775AC511F48F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53732C8D3E57A3E642B964F597E7884C /* Pods-StopTapTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4E05BD147BE71E4FBF5314B8398CCED /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8964CADFF5B7D7DB44A51CA0F19B5CCB /* Pods-StopTap-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B83C80FF34F8A7D7F318853EFC388748 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AC31765484EE9D3BCDB3CCA65FD2E22 /* Pods-StopTapUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B0CF244998C22EE30A72EAF0D108F2D9 /* Pods-StopTapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4261517437EB2F0A9A7F93FECADBF597 /* Build configuration list for PBXNativeTarget "Pods-StopTapTests" */;
+			buildPhases = (
+				557E94A797B862FC301EB93F6B2292BD /* Sources */,
+				9B14214A0CFEA71AF7CE9ED5F0B9A3B6 /* Frameworks */,
+				20DA6014A96B29D8CE6C775AC511F48F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-StopTapTests";
+			productName = "Pods-StopTapTests";
+			productReference = C6F2577DE39EC046059D292EC0BEA601 /* Pods_StopTapTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BC269B94284E56E5CF6A39F612E4F6A3 /* Pods-StopTapUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5ACFB11A0EA893A4FA1CB8B59BA6E8B /* Build configuration list for PBXNativeTarget "Pods-StopTapUITests" */;
+			buildPhases = (
+				D978754DA1672369FEB7F2F89F097E2F /* Sources */,
+				06683DFC50576772AF17B50C1BA1D6B2 /* Frameworks */,
+				B83C80FF34F8A7D7F318853EFC388748 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-StopTapUITests";
+			productName = "Pods-StopTapUITests";
+			productReference = 7A9895BF321B19DF812B0ED9074783F3 /* Pods_StopTapUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E4375B471CF44970E45C0A537FC8C227 /* Pods-StopTap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D954112CE6A2680470DD7E87DF8CD78F /* Build configuration list for PBXNativeTarget "Pods-StopTap" */;
+			buildPhases = (
+				2557EB6C631ACF39CD45E110AF7E52AC /* Sources */,
+				1F1E50D15A30BF202D5E7FCC638866D7 /* Frameworks */,
+				B4E05BD147BE71E4FBF5314B8398CCED /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-StopTap";
+			productName = "Pods-StopTap";
+			productReference = 1B6411ED85130AC5DA7046C1065E93F7 /* Pods_StopTap.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0900;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = E84E1BD67A50060888A00F8F9B3266DD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E4375B471CF44970E45C0A537FC8C227 /* Pods-StopTap */,
+				B0CF244998C22EE30A72EAF0D108F2D9 /* Pods-StopTapTests */,
+				BC269B94284E56E5CF6A39F612E4F6A3 /* Pods-StopTapUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2557EB6C631ACF39CD45E110AF7E52AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F724A920CFD2498098E118CACC343A8 /* Pods-StopTap-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		557E94A797B862FC301EB93F6B2292BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C533A1F8C71C8FE697D1D73940D3D125 /* Pods-StopTapTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D978754DA1672369FEB7F2F89F097E2F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DEFB2791BED0A0CE9ABA81AC0090AC8 /* Pods-StopTapUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3FA2475660FFC880302AD18E29B2E5FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		50C024653D061BBAF1610ED4520B628D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DBFB6F0365CA1F9DF20BC0DD9F12090 /* Pods-StopTapUITests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-StopTapUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-StopTapUITests/Pods-StopTapUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_StopTapUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		67D8263FA8C811A1D973BC49EFB90421 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 852018EAA8ED5B433CA3197636F57E22 /* Pods-StopTapTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-StopTapTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-StopTapTests/Pods-StopTapTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_StopTapTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		79458C7102C81F59049185A6DEFF293B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F16E77538F8C5472F80B43F07EE15C22 /* Pods-StopTap.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-StopTap/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-StopTap/Pods-StopTap.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_StopTap;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		96B76E6566B5BD8C512BB062C7CB2087 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D7ADE438FB7D9F981895DFE23A5407E /* Pods-StopTapUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-StopTapUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-StopTapUITests/Pods-StopTapUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_StopTapUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E8246C4A336A7ADC761EB3B88F75E8D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83D6628B80FC9115643DAE5BE846DECD /* Pods-StopTapTests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-StopTapTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-StopTapTests/Pods-StopTapTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_StopTapTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F325026B55060D3B22BEC0BAB5FA7344 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FF8C68B28262BCA59163DDFE89264C03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB28507B0EDC3816140D1175B1988E2D /* Pods-StopTap.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-StopTap/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-StopTap/Pods-StopTap.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_StopTap;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FA2475660FFC880302AD18E29B2E5FC /* Debug */,
+				F325026B55060D3B22BEC0BAB5FA7344 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4261517437EB2F0A9A7F93FECADBF597 /* Build configuration list for PBXNativeTarget "Pods-StopTapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67D8263FA8C811A1D973BC49EFB90421 /* Debug */,
+				E8246C4A336A7ADC761EB3B88F75E8D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D954112CE6A2680470DD7E87DF8CD78F /* Build configuration list for PBXNativeTarget "Pods-StopTap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79458C7102C81F59049185A6DEFF293B /* Debug */,
+				FF8C68B28262BCA59163DDFE89264C03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5ACFB11A0EA893A4FA1CB8B59BA6E8B /* Build configuration list for PBXNativeTarget "Pods-StopTapUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C024653D061BBAF1610ED4520B628D /* Debug */,
+				96B76E6566B5BD8C512BB062C7CB2087 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
