@@ -19,7 +19,6 @@
 		0D21438D1C9D533900668A29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D21438C1C9D533900668A29 /* ViewController.swift */; };
 		0D2143951C9D533900668A29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D2143931C9D533900668A29 /* LaunchScreen.storyboard */; };
 		0D2143A01C9D533900668A29 /* StopTapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D21439F1C9D533900668A29 /* StopTapTests.swift */; };
-		0D2143AB1C9D533A00668A29 /* StopTapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2143AA1C9D533A00668A29 /* StopTapUITests.swift */; };
 		0D225C291F60858D008A6EFE /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D225C261F60858D008A6EFE /* play.png */; };
 		0D225C2A1F60858D008A6EFE /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D225C271F60858D008A6EFE /* pause.png */; };
 		0D225C2B1F60858D008A6EFE /* direction.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D225C281F60858D008A6EFE /* direction.png */; };
@@ -51,7 +50,6 @@
 		0DD907D61CE2419D00AAB1B0 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD907D51CE2419D00AAB1B0 /* ShopViewController.swift */; };
 		0DE1B1CA1E3CDC9800AC565A /* Shephertz_App42_iOS_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE1B1C91E3CDC9800AC565A /* Shephertz_App42_iOS_API.framework */; };
 		0DE1B1CB1E3CDC9800AC565A /* Shephertz_App42_iOS_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE1B1C91E3CDC9800AC565A /* Shephertz_App42_iOS_API.framework */; };
-		0DE1B1CC1E3CDC9800AC565A /* Shephertz_App42_iOS_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE1B1C91E3CDC9800AC565A /* Shephertz_App42_iOS_API.framework */; };
 		0DEC23971CAAC3A60097BF33 /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0DEC23961CAAC3A60097BF33 /* correct.mp3 */; };
 		0DEFCA881CAE81A8002296DE /* HtpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFCA871CAE81A8002296DE /* HtpViewController.swift */; };
 		0DF3B1571CDE64F900B5F4F1 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF3B1561CDE64F900B5F4F1 /* CoreFoundation.framework */; };
@@ -67,20 +65,12 @@
 		0DF5E2B71D26A39200332E8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF5E2B51D26A39200332E8F /* Main.storyboard */; };
 		0DF8BFB81D37CB2C0061578E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DF8BFB71D37CB2C0061578E /* GoogleService-Info.plist */; };
 		0DF92E1B1D38314400B81057 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF92E1A1D38314400B81057 /* ColorPicker.swift */; };
-		9CB1EC5FECEF82855C281412 /* Pods_StopTapUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9E9136B3F392DB0DC7D4BA /* Pods_StopTapUITests.framework */; };
 		DB6FBFF25BE4FE8065322C18 /* Pods_StopTap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB35C731C34B08436ABF7C12 /* Pods_StopTap.framework */; };
 		FC0532DA0F278351DD1BEC42 /* Pods_StopTapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DC274FA3770E07C2DD0D0D /* Pods_StopTapTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		0D21439C1C9D533900668A29 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0D21437F1C9D533900668A29 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0D2143861C9D533900668A29;
-			remoteInfo = StopTap;
-		};
-		0D2143A71C9D533900668A29 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0D21437F1C9D533900668A29 /* Project object */;
 			proxyType = 1;
@@ -106,7 +96,6 @@
 		0D21439B1C9D533900668A29 /* StopTapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StopTapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D21439F1C9D533900668A29 /* StopTapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTapTests.swift; sourceTree = "<group>"; };
 		0D2143A11C9D533900668A29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0D2143A61C9D533900668A29 /* StopTapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StopTapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2143AA1C9D533A00668A29 /* StopTapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTapUITests.swift; sourceTree = "<group>"; };
 		0D2143AC1C9D533A00668A29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D225C261F60858D008A6EFE /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
@@ -200,15 +189,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0D2143A31C9D533900668A29 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0DE1B1CC1E3CDC9800AC565A /* Shephertz_App42_iOS_API.framework in Frameworks */,
-				9CB1EC5FECEF82855C281412 /* Pods_StopTapUITests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -248,7 +228,6 @@
 			children = (
 				0D2143871C9D533900668A29 /* StopTap.app */,
 				0D21439B1C9D533900668A29 /* StopTapTests.xctest */,
-				0D2143A61C9D533900668A29 /* StopTapUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -394,26 +373,6 @@
 			productReference = 0D21439B1C9D533900668A29 /* StopTapTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0D2143A51C9D533900668A29 /* StopTapUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0D2143B51C9D533A00668A29 /* Build configuration list for PBXNativeTarget "StopTapUITests" */;
-			buildPhases = (
-				D2AE6302408955816FC2F25C /* [CP] Check Pods Manifest.lock */,
-				0D2143A21C9D533900668A29 /* Sources */,
-				0D2143A31C9D533900668A29 /* Frameworks */,
-				0D2143A41C9D533900668A29 /* Resources */,
-				71C712912C9C6DBACD936A15 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0D2143A81C9D533900668A29 /* PBXTargetDependency */,
-			);
-			name = StopTapUITests;
-			productName = StopTapUITests;
-			productReference = 0D2143A61C9D533900668A29 /* StopTapUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -436,12 +395,6 @@
 						LastSwiftMigration = 0900;
 						TestTargetID = 0D2143861C9D533900668A29;
 					};
-					0D2143A51C9D533900668A29 = {
-						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = D3BJ8Q62P4;
-						LastSwiftMigration = 0900;
-						TestTargetID = 0D2143861C9D533900668A29;
-					};
 				};
 			};
 			buildConfigurationList = 0D2143821C9D533900668A29 /* Build configuration list for PBXProject "StopTap" */;
@@ -459,7 +412,6 @@
 			targets = (
 				0D2143861C9D533900668A29 /* StopTap */,
 				0D21439A1C9D533900668A29 /* StopTapTests */,
-				0D2143A51C9D533900668A29 /* StopTapUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -499,13 +451,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0D2143A41C9D533900668A29 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -522,21 +467,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		71C712912C9C6DBACD936A15 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StopTapUITests/Pods-StopTapUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		988141BB484E7FB5DB066368 /* [CP] Copy Pods Resources */ = {
@@ -597,21 +527,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StopTapTests/Pods-StopTapTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D2AE6302408955816FC2F25C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E09FF3F75B3B0B9DD8D9B5ED /* [CP] Check Pods Manifest.lock */ = {
@@ -677,14 +592,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0D2143A21C9D533900668A29 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0D2143AB1C9D533A00668A29 /* StopTapUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -692,11 +599,6 @@
 			isa = PBXTargetDependency;
 			target = 0D2143861C9D533900668A29 /* StopTap */;
 			targetProxy = 0D21439C1C9D533900668A29 /* PBXContainerItemProxy */;
-		};
-		0D2143A81C9D533900668A29 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0D2143861C9D533900668A29 /* StopTap */;
-			targetProxy = 0D2143A71C9D533900668A29 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -933,46 +835,6 @@
 			};
 			name = Release;
 		};
-		0D2143B61C9D533A00668A29 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2145D059736B27740B38DC72 /* Pods-StopTapUITests.debug.xcconfig */;
-			buildSettings = {
-				DEVELOPMENT_TEAM = D3BJ8Q62P4;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = StopTapUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wajdimuhtadi.StopTapUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = StopTap;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		0D2143B71C9D533A00668A29 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3784F088DF05E1AAB4D9F928 /* Pods-StopTapUITests.release.xcconfig */;
-			buildSettings = {
-				DEVELOPMENT_TEAM = D3BJ8Q62P4;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = StopTapUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wajdimuhtadi.StopTapUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = StopTap;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -999,15 +861,6 @@
 			buildConfigurations = (
 				0D2143B31C9D533A00668A29 /* Debug */,
 				0D2143B41C9D533A00668A29 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0D2143B51C9D533A00668A29 /* Build configuration list for PBXNativeTarget "StopTapUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0D2143B61C9D533A00668A29 /* Debug */,
-				0D2143B71C9D533A00668A29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
