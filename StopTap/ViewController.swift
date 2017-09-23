@@ -7,7 +7,7 @@
 //
 import CoreMotion
 import UIKit
-class ViewController: UIViewController, UICollisionBehaviorDelegate,UINavigationControllerDelegate{
+class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationControllerDelegate{
     let bganim1:UIImageView = UIImageView()
     let bganim2:UIImageView = UIImageView()
     @IBOutlet weak var play: UIButton!
@@ -17,7 +17,6 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate,UINavigation
     @IBOutlet weak var highsc: UILabel!
     @IBOutlet weak var val: UILabel!
     @IBOutlet weak var gname: UILabel!
-    let motionQueue = OperationQueue()
     let motionManager = CMMotionManager()
     var animator:UIDynamicAnimator? = nil;
     let gravity = UIGravityBehavior()
@@ -263,7 +262,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate,UINavigation
             provider.setInt(forKey: "cv", value: 0)
         }
         navigationController?.delegate = self
-        collider.collisionDelegate = self
+         collider.collisionDelegate = self
         //ios 8 animation pop
         //add achievements
         /*var toastnmon = ToastStyle()
@@ -443,6 +442,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate,UINavigation
                 let v = CGVector(dx: p.x, dy: 0 - p.y);
                 self.gravity.gravityDirection = v;
             })
+            
         }
     }
    /* struct vars {
@@ -467,10 +467,11 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate,UINavigation
         
         gravity.gravityDirection = CGVector(dx: 0, dy: 0.8)
         animator?.addBehavior(gravity);
-        
         // We're bouncin' off the walls
         collider.translatesReferenceBoundsIntoBoundary = true
+        collider.addBoundary(withIdentifier: "bottom" as NSCopying, from: CGPoint(x: 0, y: self.view.frame.maxY), to: CGPoint(x: self.view.frame.maxX, y: self.view.frame.maxY))
         animator?.addBehavior(collider)
+             // print("coll" + String.init(describing: collider.boundaryIdentifiers) )
         itemBehavior.resistance = 0.1
         itemBehavior.allowsRotation = false
         itemBehavior.friction = 0
