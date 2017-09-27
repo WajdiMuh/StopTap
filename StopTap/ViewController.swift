@@ -399,7 +399,17 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
         super.viewDidAppear(animated)
         //randdirbganim()
        // motionManager.startDeviceMotionUpdates(to: motionQueue, withHandler: gravityUpdated as! CMDeviceMotionHandler)
+        if(animator?.behaviors.contains(collider) == false){
+        animator?.removeBehavior(collider)
+        }
         motionManager.deviceMotionUpdateInterval = 0.2
+        collider.translatesReferenceBoundsIntoBoundary = true
+        if #available(iOS 11.0, *) {
+            collider.addBoundary(withIdentifier: "bottom" as NSCopying, from: CGPoint(x: 0, y: self.view.safeAreaLayoutGuide.layoutFrame.maxY), to: CGPoint(x: self.view.frame.maxX, y: self.view.safeAreaLayoutGuide.layoutFrame.maxY))
+        } else {
+             collider.addBoundary(withIdentifier: "bottom" as NSCopying, from: CGPoint(x: 0, y: self.view.frame.maxY), to: CGPoint(x: self.view.frame.maxX, y: self.view.frame.maxY))
+        }
+        animator?.addBehavior(collider)
     }
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if(operation == UINavigationControllerOperation.push){
@@ -468,10 +478,7 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
         gravity.gravityDirection = CGVector(dx: 0, dy: 0.8)
         animator?.addBehavior(gravity);
         // We're bouncin' off the walls
-        collider.translatesReferenceBoundsIntoBoundary = true
-        collider.addBoundary(withIdentifier: "bottom" as NSCopying, from: CGPoint(x: 0, y: self.view.frame.maxY), to: CGPoint(x: self.view.frame.maxX, y: self.view.frame.maxY))
-        animator?.addBehavior(collider)
-             // print("coll" + String.init(describing: collider.boundaryIdentifiers) )
+         // print("coll" + String.init(describing: collider.boundaryIdentifiers) )
         itemBehavior.resistance = 0.1
         itemBehavior.allowsRotation = false
         itemBehavior.friction = 0

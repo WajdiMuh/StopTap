@@ -10,7 +10,7 @@ class Timerp : NSObject
     private var _fireInterval    :Double!
     private var _lastElapsedTime  :Double!
 
-    private var _clockTimer :Foundation.Timer!
+    private var _clockTimer :Foundation.Timer?
 
     private var _timerFireCallback:(()->Void)?
     
@@ -30,7 +30,7 @@ class Timerp : NSObject
         _lastElapsedTime           = CACurrentMediaTime()
         _timerTimeElapsed          = 0
         _clockTimer                = Foundation.Timer(timeInterval: 0.0001, target: self, selector: #selector(clockCycleUpdate), userInfo: nil, repeats: true)
-        RunLoop.current.add(_clockTimer, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(_clockTimer!, forMode: RunLoopMode.commonModes)
     }
     
     @objc func clockCycleUpdate(sender:AnyObject)
@@ -89,6 +89,8 @@ class Timerp : NSObject
     */
     func invalidate()
     {
-        _clockTimer.invalidate()
+        if(_clockTimer != nil){
+        _clockTimer!.invalidate()
+        }
     }
 }

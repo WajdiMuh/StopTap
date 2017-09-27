@@ -12,26 +12,23 @@ import AVFoundation
 class PlayViewController: UIViewController {
     @IBOutlet weak var move: UIImageView!
     @IBOutlet weak var base: UIImageView!
-    var min:CGFloat = 32
-    var baseanimc:CGFloat = 63
     var time:Double = 3
-    var timep:Float = 3
     var score:Int = 0
     var pausetf:Bool = false
-    var rightleft:String = "r"
     var wrongnum:Int = 0
     var gameovercheck:Int = 0
-    var extrascorerandom:Int = Int(arc4random_uniform(10) + 2)
+    var extrascorerandom:Int = Int(arc4random_uniform(9) + 2)
     var audioPlayer: AVAudioPlayer!
     let coinmulti:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "shop14", defaultValue: 1)
     var coinv:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "cv", defaultValue: 0)
     var newhighscore:Bool = false
     var doubletimer:Timerp = Timerp()
-    var doubletimerlast:Foundation.Timer = Foundation.Timer()
+    var doubletimerlast:Timerp = Timerp()
     var doubleon:Bool = false
     var pausedtime:CFTimeInterval = CFTimeInterval()
     var pausedmovetime:CFTimeInterval = CFTimeInterval()
     var randromdoubletime:Double = Double(arc4random_uniform(5) + 5)
+    let layerfixbase:CALayer = CALayer()
     @IBOutlet weak var x2top: NSLayoutConstraint!
     @IBOutlet weak var doublescore: UIButton!
     @IBOutlet weak var x2l: NSLayoutConstraint!
@@ -130,8 +127,8 @@ class PlayViewController: UIViewController {
         if  doublescore.layer.presentation()?.hitTest(touchPoint!) != nil {
             doubleon = true
             doublescore.layer.removeAllAnimations()
-            self.doubletimerlast =  Foundation.Timer(timeInterval: 10, target: self, selector: #selector(PlayViewController.doubletimerlasting), userInfo: nil, repeats: false)
-            RunLoop.current.add(self.doubletimerlast, forMode: RunLoopMode.commonModes)
+            self.doubletimerlast =  Timerp(interval: 10, callback: doubletimerlasting, repeats: false)
+            doubletimerlast.play()
         }else{
         let projectileFrame: CGRect = move.layer.presentation()!.frame
         if (projectileFrame.intersects(base.frame))
@@ -144,27 +141,21 @@ class PlayViewController: UIViewController {
             scoreval.text = "Score : " + String(score)
             coinv = coinv + (1 * coinmulti)
             coinvalue.text = String(coinv)
+            self.audioPlayer.pause()
+            self.audioPlayer.currentTime = 0
             self.audioPlayer.play()
             baseanim.layer.removeAllAnimations()
             baseanim.isHidden = false
-            baseanimh.constant = min
-            baseanimw.constant = min
-            baseanim.setNeedsLayout()
+            self.baseanim.transform = CGAffineTransform(scaleX: 1, y: 1)
             UIView.animate(withDuration: 0.5, delay: 0, options:[.beginFromCurrentState], animations: {
-                self.baseanim.layoutIfNeeded()
-            }, completion: {(finished: Bool) -> Void in
-                if (finished == true){
-                    self.baseanim.isHidden = true
-                    self.baseanimh.constant = self.baseanimc
-                    self.baseanimw.constant = self.baseanimc
-                    self.baseanim.layoutIfNeeded()
-                }else{
-                    self.baseanim.isHidden = true
-                    self.baseanimh.constant = self.baseanimc
-                    self.baseanimw.constant = self.baseanimc
-                    self.baseanim.layoutIfNeeded()
-                }
-            })
+                self.baseanim.transform = CGAffineTransform(scaleX: 0.68, y: 0.68)
+            }, completion:
+                {(finished: Bool) -> Void in
+                    if (finished == true){
+                        self.baseanim.isHidden = true
+                    }
+            }
+            )
         }else{
             self.dir.isHidden = true
             self.viewclickb.gestureRecognizers?.removeAll()
@@ -238,14 +229,11 @@ class PlayViewController: UIViewController {
                     pret.isHidden = true
                     pm.isHidden = true
                     pause.isHidden = true
-                    gameoverc.constant = 0
-                    gameover.setNeedsLayout()
-                    gameover.layoutIfNeeded()
                     gameoverc.constant = (self.view.bounds.width/2) - (self.gameover.bounds.width/2)
                     gameover.setNeedsLayout()
                     UIView.animate(withDuration: 0.5, delay: 0, options:[], animations: {
                         self.gameover.alpha = 1
-                        self.gameover.layoutIfNeeded()
+                     self.gameover.superview?.layoutIfNeeded()
                     }, completion: {(finished: Bool) -> Void in
                         let countdown = Foundation.Timer(timeInterval: 0.5, target: self, selector: #selector(PlayViewController.gameoverslideright), userInfo: nil, repeats: false)
                         RunLoop.current.add(countdown, forMode: RunLoopMode.commonModes)
@@ -307,14 +295,11 @@ class PlayViewController: UIViewController {
                 pret.isHidden = true
                 pm.isHidden = true
                 pause.isHidden = true
-                gameoverc.constant = 0
-                gameover.setNeedsLayout()
-                gameover.layoutIfNeeded()
                 gameoverc.constant = (self.view.bounds.width/2) - (self.gameover.bounds.width/2)
                 gameover.setNeedsLayout()
                 UIView.animate(withDuration: 0.5, delay: 0, options:[], animations: {
                     self.gameover.alpha = 1
-                    self.gameover.layoutIfNeeded()
+                    self.gameover.superview?.layoutIfNeeded()
                 }, completion: {(finished: Bool) -> Void in
                     let countdown = Foundation.Timer(timeInterval: 0.5, target: self, selector: #selector(PlayViewController.gameoverslideright), userInfo: nil, repeats: false)
                     RunLoop.current.add(countdown, forMode: RunLoopMode.commonModes)
@@ -349,7 +334,14 @@ class PlayViewController: UIViewController {
         r()
         x2top.constant = ((base.center.y - coin.center.y) / 2) + coin.center.y - (x2h.constant / 2)
         x2l.constant = -1 * x2w.constant
-        
+        gameoverc.constant = (self.view.bounds.width - self.gameover.bounds.width)
+        gameover.setNeedsLayout()
+        gameover.layoutIfNeeded()
+        doublescore.titleLabel!.adjustsFontSizeToFitWidth = true
+        doublescore.titleLabel!.numberOfLines = 1
+        doublescore.titleLabel!.minimumScaleFactor = 0.05
+        doublescore.titleLabel?.baselineAdjustment = .alignCenters
+        doublescore.titleLabel?.textAlignment  = .center
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -431,6 +423,7 @@ class PlayViewController: UIViewController {
             doublescore.layer.borderColor = UIColor.black.cgColor
             doublescore.backgroundColor = UIColor.black
             doublescore.setTitleColor(UIColor.white, for: UIControlState())
+            layerfixbase.borderColor = UIColor.black.cgColor
             dir.tintColor = UIColor.black
             }else{
             self.view.backgroundColor = UIColor.black
@@ -451,6 +444,7 @@ class PlayViewController: UIViewController {
             doublescore.layer.borderColor = UIColor.white.cgColor
             doublescore.backgroundColor = UIColor.white
             doublescore.setTitleColor(UIColor.black, for: UIControlState())
+            layerfixbase.borderColor = UIColor.white.cgColor
             dir.tintColor = UIColor.white
         }
         movel.constant = 0
@@ -502,26 +496,21 @@ class PlayViewController: UIViewController {
         kill3.image = kill3.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         pr.layer.cornerRadius = 10
         pr.layer.borderWidth = 5
-        pr.layer.borderColor = UIColor.black.cgColor
         pret.layer.cornerRadius = 10
         pret.layer.borderWidth = 5
-        pret.layer.borderColor = UIColor.black.cgColor
         pm.layer.cornerRadius = 10
         pm.layer.borderWidth = 5
-        pm.layer.borderColor = UIColor.black.cgColor
-        base.layer.cornerRadius = 10
-        base.layer.borderWidth = 5
-        move.layer.cornerRadius = 10
-        move.layer.borderWidth = 5
-        baseanim.layer.cornerRadius = 10
-        baseanim.layer.borderWidth = 5
-        doublescore.layer.cornerRadius = 10
-        doublescore.layer.borderWidth = 5
+        base.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
+        base.layer.borderWidth = ((2.5 * self.view.bounds.width) / 411)
+        move.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
+        move.layer.borderWidth = ((2.5 * self.view.bounds.width) / 411)
+        baseanim.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
+        baseanim.layer.borderWidth = ((2.5 * self.view.bounds.width) / 411)
+        doublescore.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
        // doubletimer =  Foundation.Timer(timeInterval: randromdoubletime, target: self, selector: #selector(PlayViewController.doublepointsmove), userInfo: nil, repeats: false)
-        doubletimer =  Timerp(interval: randromdoubletime, callback: doublepointsmove, repeats: false)
+        doubletimer = Timerp(interval: randromdoubletime, callback: doublepointsmove, repeats: false)
         doubletimer.play()
-        print(randromdoubletime)
-        print(randromdoubletime)
+        ///////////////////////pause.imageEdgeInsets = UIEdgeInsetsMake(6, 6, 6, 6)
         timerand()
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         if (provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
@@ -529,26 +518,8 @@ class PlayViewController: UIViewController {
         }else{
             wrong4.isHidden = false
         }
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            min = 35
-            baseanimc = 63
-            break
-        case .pad:
-            min = 35
-            //56
-            baseanimc = 63
-            //112
-            break
-        case .unspecified:
-            min = 35
-            baseanimc = 63
-            break
-        default:
-            min = 35
-            baseanimc = 63
-            break
-        }
+        baseanimh.constant = ((63 * self.view.bounds.width) / 411)
+        baseanimw.constant = ((63 * self.view.bounds.width) / 411)
         movew.constant = ((35 * self.view.bounds.width) / 411)
         moveh.constant = ((35 * self.view.bounds.width) / 411)
         basew.constant = ((50 * self.view.bounds.width) / 411)
@@ -557,6 +528,15 @@ class PlayViewController: UIViewController {
         x2w.constant = ((35 * self.view.bounds.width) / 411)
         dirw.constant = ((40 * self.view.bounds.width) / 411)
         dirh.constant = ((40 * self.view.bounds.width) / 411)
+        layerfixbase.frame = CGRect(x: -1, y: -1, width: basew.constant + 2, height: baseh.constant + 2)
+        layerfixbase.cornerRadius = ((5 * self.view.bounds.width) / 411)
+        layerfixbase.borderWidth = ((2.5 * self.view.bounds.width) / 411)
+        layerfixbase.masksToBounds = true
+        layerfixbase.allowsEdgeAntialiasing = true
+        base.layer.addSublayer(layerfixbase)
+        base.layer.allowsEdgeAntialiasing = true
+        move.layer.allowsEdgeAntialiasing = true
+        baseanim.layer.allowsEdgeAntialiasing = true
         self.move.setNeedsLayout()
         self.base.setNeedsLayout()
         self.move.layoutIfNeeded()
@@ -570,7 +550,6 @@ class PlayViewController: UIViewController {
         }
     }
     func r() {
-        rightleft = "r"
         movel.constant = self.view.bounds.width - self.move.bounds.width
         move.setNeedsLayout()
         UIView.animate(withDuration: time, delay: 0, options:[], animations: {
@@ -588,6 +567,7 @@ class PlayViewController: UIViewController {
         if(pausetf == false){
             stopAnimation()
             doubletimer.pause()
+            doubletimerlast.pause()
             pause.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             pausetf = true
             movestop()
@@ -614,6 +594,7 @@ class PlayViewController: UIViewController {
         }else{
             resumeAnimation()
             doubletimer.play()
+            doubletimerlast.play()
             movestart()
              pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             pausetf = false
@@ -634,6 +615,8 @@ class PlayViewController: UIViewController {
             }else{
                 wrong4.isHidden = false
             }
+            viewclickb.isUserInteractionEnabled = true
+            
         }
     }
     @IBAction func menu(_ sender: AnyObject) {
@@ -655,7 +638,8 @@ class PlayViewController: UIViewController {
         kill2.transform = CGAffineTransform(scaleX: 1, y: 1)
         kill3.transform = CGAffineTransform(scaleX: 1, y: 1)
         timerand()
-        pause.setTitle("⎮⎮", for: UIControlState())
+        pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
+        dir.image = dir.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         pausetf = false
         move.isHidden = false
         base.isHidden = false
@@ -663,48 +647,48 @@ class PlayViewController: UIViewController {
         wrong.isHidden = false
         wrong2.isHidden = false
         wrong3.isHidden = false
-        let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
-        if (provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
-            wrong4.isHidden = true
-        }else{
-            wrong4.isHidden = false
-        }
         coin.isHidden = false
         coinvalue.isHidden = false
+        pause.isHidden = false
         pr.isHidden = true
         pret.isHidden = true
         pm.isHidden = true
         gameovercheck = 0
-        r()
-    }
-    @IBAction func res(_ sender: AnyObject) {
-        pause.setTitle("⎮⎮", for: UIControlState())
-        pausetf = false
-      //  if(rightleft == "r"){
-    //        rafterp()
-     //   }else{
-     /////////////       lafterp()
-     //   }
-        move.isHidden = false
-        base.isHidden = false
-        scoreval.isHidden = false
-        wrong.isHidden = false
-        wrong2.isHidden = false
-        wrong3.isHidden = false
+      viewclickb.isUserInteractionEnabled = true
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         if (provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
             wrong4.isHidden = true
         }else{
             wrong4.isHidden = false
         }
+    }
+    @IBAction func res(_ sender: AnyObject) {
+        resumeAnimation()
+        doubletimer.play()
+        doubletimerlast.play()
+        movestart()
+        pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
+        pausetf = false
+        move.isHidden = false
+        base.isHidden = false
+        scoreval.isHidden = false
+        wrong.isHidden = false
+        wrong2.isHidden = false
+        wrong3.isHidden = false
         coin.isHidden = false
         coinvalue.isHidden = false
         pr.isHidden = true
         pret.isHidden = true
         pm.isHidden = true
+          viewclickb.isUserInteractionEnabled = true
+        let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        if (provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
+            wrong4.isHidden = true
+        }else{
+            wrong4.isHidden = false
+        }
     }
     func l() {
-        rightleft = "l"
         movel.constant = 0
         move.setNeedsLayout()
         UIView.animate(withDuration: time, delay: 0, options:[], animations: {
@@ -747,11 +731,12 @@ class PlayViewController: UIViewController {
     }
     @objc func applicationWillResignActiveNotification() {
         if(gameovercheck == 0){
-            pause.setTitle("▶︎", for: UIControlState())
+            stopAnimation()
+            doubletimer.pause()
+            doubletimerlast.pause()
+            pause.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             pausetf = true
-          //  movel.constant = move.layer.presentation()!.frame.origin.x
-       //     timeafterp()
-            move.layer.removeAllAnimations()
+            movestop()
             baseanim.layer.removeAllAnimations()
             kill1.layer.removeAllAnimations()
             kill2.layer.removeAllAnimations()
@@ -776,8 +761,10 @@ class PlayViewController: UIViewController {
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        doubletimer.invalidate()
-        doubletimerlast.invalidate()
+           doubletimer.invalidate()
+           doubletimerlast.invalidate()
+         NotificationCenter.default.removeObserver(self)
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -859,11 +846,12 @@ class PlayViewController: UIViewController {
         //self.doubletimer =  Foundation.Timer(timeInterval: Double(arc4random_uniform(5) + 5), target: self, selector: #selector(PlayViewController.doublepointsmove), userInfo: nil, repeats: false)
        // RunLoop.current.add(self.doubletimer, forMode: RunLoopMode.commonModes)
          self.randromdoubletime = Double(arc4random_uniform(5) + 5)
+        self.doubletimer.invalidate()
         doubletimer =  Timerp(interval: randromdoubletime, callback: doublepointsmove, repeats: false)
         doubletimer.play()
     }
     @objc func gameoverslideright(){
-        gameoverc.constant = (self.view.bounds.width - self.gameover.bounds.width)
+        gameoverc.constant = 0
         gameover.setNeedsLayout()
         UIView.animate(withDuration: 0.5, delay: 0, options:[], animations: {
             self.gameover.alpha = 0

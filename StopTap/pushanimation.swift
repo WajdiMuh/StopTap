@@ -96,5 +96,16 @@ class pushanimation: NSObject, UIViewControllerAnimatedTransitioning {
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             })
         }
+        if(fromViewController?.title! == "Play" && toViewController?.title! == "Score"){
+            transitionContext.containerView.addSubview((toViewController?.view)!)
+            transitionContext.containerView.backgroundColor = UIColor.white
+            toViewController?.view?.center.x = (toViewController?.view?.center.x)! * 3
+            UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut], animations: {() -> Void in
+                toViewController?.view?.center.x = (fromViewController?.view.center.x)!
+                fromViewController?.view?.center.x = (fromViewController?.view.center.x)! / -1
+            }, completion: {(_ finished: Bool) -> Void in
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            })
+        }
     }
 }

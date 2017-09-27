@@ -103,5 +103,17 @@ class SettingsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return [UIInterfaceOrientationMask.portrait]
+        case .pad:
+            return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
+        case .unspecified:
+            return [UIInterfaceOrientationMask.portrait]
+        default:
+            return [UIInterfaceOrientationMask.portrait]
+        }
+    }
+    
 }

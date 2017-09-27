@@ -63,8 +63,8 @@ class popanimation: NSObject, UIViewControllerAnimatedTransitioning {
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             })
         }
-        if(ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion.init(majorVersion: 9, minorVersion: 0, patchVersion: 0))){
-        print("ios new")
+        if(ProcessInfo().operatingSystemVersion.majorVersion > 8 && ProcessInfo().operatingSystemVersion.majorVersion < 11){
+        print("ios 9 - 10")
          if(fromViewController?.title! == "Play" && toViewController?.title! == "Main"){
         transitionContext.containerView.addSubview((toViewController?.view)!)
         transitionContext.containerView.backgroundColor = UIColor.white
@@ -96,7 +96,7 @@ class popanimation: NSObject, UIViewControllerAnimatedTransitioning {
             })
         }
        }else{
-        print("ios 8")
+        print("ios 8 or 11")
         if(fromViewController?.title! == "Play" && toViewController?.title! == "Main"){
             transitionContext.containerView.addSubview((toViewController?.view)!)
             transitionContext.containerView.backgroundColor = UIColor.white

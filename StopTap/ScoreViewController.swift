@@ -39,18 +39,6 @@ class ScoreViewController: UIViewController {
     @IBOutlet weak var gameo: UILabel!
     var scoreval:Int = Int()
     var newhighscoresc:Bool = Bool()
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            return [UIInterfaceOrientationMask.portrait]
-        case .pad:
-            return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
-        case .unspecified:
-            return [UIInterfaceOrientationMask.portrait]
-        default:
-            return [UIInterfaceOrientationMask.portrait]
-        }
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         App42API.enableApp42Trace(true)
@@ -183,7 +171,18 @@ class ScoreViewController: UIViewController {
          //   }
       //  })
     }
-
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return [UIInterfaceOrientationMask.portrait]
+        case .pad:
+            return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
+        case .unspecified:
+            return [UIInterfaceOrientationMask.portrait]
+        default:
+            return [UIInterfaceOrientationMask.portrait]
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
