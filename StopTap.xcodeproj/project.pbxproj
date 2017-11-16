@@ -82,7 +82,7 @@
 /* Begin PBXFileReference section */
 		0D0100DE1D021B6F00597B59 /* presence_online.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = presence_online.png; sourceTree = "<group>"; };
 		0D0100E01D021B7C00597B59 /* presence_invisible.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = presence_invisible.png; sourceTree = "<group>"; };
-		0D07DB881CFB839A00F30F38 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = ../AccountViewController.swift; sourceTree = "<group>"; };
+		0D07DB881CFB839A00F30F38 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		0D07DB8A1CFB87D300F30F38 /* SignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		0D0A4C451F46022D0014802F /* SAConfettiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAConfettiView.swift; sourceTree = "<group>"; };
 		0D0A4C471F4610700014802F /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
