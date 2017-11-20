@@ -41,8 +41,8 @@ class ScoreViewController: UIViewController {
     var newhighscoresc:Bool = Bool()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        App42API.enableApp42Trace(true)
-        App42CacheManager.shared().setPolicy(APP42_NETWORK_FIRST)
+        //App42API.enableApp42Trace(true)
+       // App42CacheManager.shared().setPolicy(APP42_NETWORK_FIRST)
     /*    if(ViewController.vars.signedin == 1){
         if(scoreval > Int(ViewController.vars.hscore)){
             print("hi")
@@ -109,8 +109,8 @@ class ScoreViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        App42API.initialize(withAPIKey: "38ae8af214d06b5aadd7064f31bb329c0f80088b69aa25620407cae9a296612e", andSecretKey: "69d230877fded2ac9dd47e3d71daa8e601f00fe8d34a6f4d7e8279c93a6a93e1")
-        App42API.enableApp42Trace(false)
+   //     App42API.initialize(withAPIKey: "38ae8af214d06b5aadd7064f31bb329c0f80088b69aa25620407cae9a296612e", andSecretKey: "69d230877fded2ac9dd47e3d71daa8e601f00fe8d34a6f4d7e8279c93a6a93e1")
+     //   App42API.enableApp42Trace(false)
         bannerView.adSize = kGADAdSizeSmartBannerPortrait
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
@@ -155,12 +155,12 @@ class ScoreViewController: UIViewController {
         }
     }
     @IBAction func leaderb(_ sender: AnyObject) {
-        let leaderboard = App42Leaderboard.sharedInstance() as App42Leaderboard
-        leaderboard.gameName = "StopTap"
-        leaderboard.userName = ""
-        leaderboard.numberOfRecords = 10000
-        leaderboard.leaderboardType = kApp42_Social
-        leaderboard.launch(self)
+        //let leaderboard = App42Leaderboard.sharedInstance() as App42Leaderboard
+       // leaderboard.gameName = "StopTap"
+      //  leaderboard.userName = ""
+       // leaderboard.numberOfRecords = 10000
+       // leaderboard.leaderboardType = kApp42_Social
+      //  leaderboard.launch(self)
         //leaderboard.fetchLeaderboard({(success: Bool, error: NSError!) -> Void in
        //     if success {
          //       print("sucess")

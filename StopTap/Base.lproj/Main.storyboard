@@ -85,7 +85,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPH-GN-jzM">
-                                <rect key="frame" x="113.66666666666669" y="30" width="188" height="32"/>
+                                <rect key="frame" x="144.66666666666666" y="29.999999999999996" width="124.99999999999997" height="39.666666666666657"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="34"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -122,14 +122,14 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="uIl-lX-LyX" userLabel="sfxslider">
-                                <rect key="frame" x="6" y="402.66666666666669" width="372" height="31"/>
+                                <rect key="frame" x="6" y="408" width="372" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="sfxc:" destination="zRT-og-5sV" eventType="valueChanged" id="S7n-I7-xeg"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9K-sS-qu9">
-                                <rect key="frame" x="386" y="409.33333333333331" width="20" height="16"/>
+                                <rect key="frame" x="386" y="412.66666666666669" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="E7H-ml-msF"/>
                                 </constraints>
@@ -146,13 +146,13 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SFX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIg-YW-mbm">
-                                <rect key="frame" x="180.66666666666666" y="372" width="53.666666666666657" height="22.666666666666686"/>
+                                <rect key="frame" x="186" y="372" width="44" height="28"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s20-vc-Gna" userLabel="musval">
-                                <rect key="frame" x="386" y="340.66666666666669" width="20" height="16"/>
+                                <rect key="frame" x="386" y="338.66666666666669" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="S88-Zv-9cB"/>
                                 </constraints>
@@ -161,7 +161,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBS-SE-0S5">
-                                <rect key="frame" x="165.33333333333334" y="303.33333333333331" width="85" height="22.666666666666686"/>
+                                <rect key="frame" x="175" y="298" width="64.666666666666686" height="28"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -246,7 +246,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StopTap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTp-w4-LMI">
-                                <rect key="frame" x="113.33333333333333" y="20" width="189.33333333333337" height="34"/>
+                                <rect key="frame" x="140.33333333333331" y="20" width="134.33333333333331" height="42"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="36"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -339,13 +339,13 @@
                                 </state>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6O-1u-ABB">
-                                <rect key="frame" x="196.66666666666666" y="699.66666666666663" width="22" height="26.333333333333371"/>
+                                <rect key="frame" x="199.33333333333334" y="693.33333333333337" width="15.666666666666657" height="32.666666666666629"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="28"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HighScore :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXg-1R-Rjg">
-                                <rect key="frame" x="110.33333333333333" y="672.33333333333337" width="194.66666666666669" height="26.333333333333371"/>
+                                <rect key="frame" x="133.66666666666666" y="659.66666666666663" width="146.99999999999997" height="32.666666666666629"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="28"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -418,7 +418,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVV-Af-9ff" userLabel="coinval">
-                                <rect key="frame" x="48" y="38.333333333333336" width="20.333333333333329" height="24.666666666666664"/>
+                                <rect key="frame" x="48" y="35" width="14.666666666666664" height="30.333333333333329"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="26"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -464,7 +464,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngX-zW-gbQ" userLabel="score">
-                                <rect key="frame" x="129.33333333333337" y="699.66666666666663" width="155.66666666666663" height="26.333333333333371"/>
+                                <rect key="frame" x="151" y="693.33333333333337" width="112.33333333333331" height="32.666666666666629"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="28"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -635,7 +635,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKS-l4-kDG" userLabel="score">
-                                <rect key="frame" x="130" y="699.66666666666663" width="155.66666666666663" height="26.333333333333371"/>
+                                <rect key="frame" x="151.66666666666666" y="693.33333333333337" width="112.33333333333334" height="32.666666666666629"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="28"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -706,7 +706,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nTy-2V-0DG" userLabel="coinval">
-                                <rect key="frame" x="48" y="82" width="70" height="20.666666666666671"/>
+                                <rect key="frame" x="48" y="80" width="70" height="25.666666666666671"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="HUG-4f-rOG"/>
                                 </constraints>
@@ -763,7 +763,7 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHZ-Ix-Xkp">
-                                <rect key="frame" x="0.0" y="358.66666666666669" width="148.33333333333334" height="20.666666666666686"/>
+                                <rect key="frame" x="0.0" y="355.66666666666669" width="112.33333333333333" height="25.666666666666686"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1371,7 +1371,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OmU-TR-N2y" userLabel="coinval">
-                                <rect key="frame" x="48" y="40" width="70" height="20.666666666666671"/>
+                                <rect key="frame" x="48" y="38" width="70" height="25.666666666666671"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="DkV-wH-WSg"/>
                                 </constraints>
@@ -1383,7 +1383,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLk-UW-DF2">
-                                <rect key="frame" x="165.33333333333334" y="30" width="85" height="26.333333333333329"/>
+                                <rect key="frame" x="174" y="29.999999999999996" width="66.666666666666686" height="32.666666666666657"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="34"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1449,7 +1449,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hoa-dy-JI2">
-                                <rect key="frame" x="87" y="648" width="240" height="35"/>
+                                <rect key="frame" x="87" y="643" width="240" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="XZN-Yn-zSP"/>
                                 </constraints>
@@ -1462,7 +1462,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red And Blue" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03x-Ea-Cpw">
-                                <rect key="frame" x="50" y="435.33333333333331" width="314" height="20.666666666666686"/>
+                                <rect key="frame" x="50" y="432.33333333333331" width="314" height="25.666666666666686"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1492,7 +1492,7 @@
                                 </constraints>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LZL-EV-obd">
-                                <rect key="frame" x="83" y="418" width="109" height="27"/>
+                                <rect key="frame" x="83" y="418" width="109" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="109" id="Zee-Iy-Wka"/>
                                 </constraints>
@@ -1505,7 +1505,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="A79-Gw-o01">
-                                <rect key="frame" x="223" y="418" width="109" height="27"/>
+                                <rect key="frame" x="223" y="418" width="109" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="109" id="ed4-Mb-PbQ"/>
                                 </constraints>
@@ -1518,7 +1518,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2U6-fz-XpO" customClass="ColorPicker" customModule="StopTap" customModuleProvider="target">
-                                <rect key="frame" x="87" y="455" width="240" height="30"/>
+                                <rect key="frame" x="87" y="458" width="240" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="4dV-Bz-nhU">
@@ -1528,7 +1528,7 @@
                                 </constraints>
                             </view>
                             <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="255" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="VUa-zk-yg4">
-                                <rect key="frame" x="56" y="257.66666666666669" width="352" height="31"/>
+                                <rect key="frame" x="56" y="251" width="352" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="bsc:" destination="enF-Mx-PtC" eventType="touchCancel" id="Cnp-Kl-rrn"/>
@@ -1538,7 +1538,7 @@
                                 </connections>
                             </slider>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-f8-ong" userLabel="bv">
-                                <rect key="frame" x="8" y="265.33333333333331" width="40" height="16"/>
+                                <rect key="frame" x="8" y="256.66666666666669" width="40" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Idg-Gf-TeG"/>
                                 </constraints>
@@ -1547,7 +1547,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="76" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="nZ2-dV-FVf">
-                                <rect key="frame" x="56" y="222.66666666666666" width="352" height="31"/>
+                                <rect key="frame" x="56" y="216" width="352" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="gsao:" destination="enF-Mx-PtC" eventType="touchUpOutside" id="ZoP-Am-okv"/>
@@ -1557,7 +1557,7 @@
                                 </connections>
                             </slider>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="G" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQB-Cx-MdL" userLabel="gv">
-                                <rect key="frame" x="8" y="229.33333333333334" width="40" height="16"/>
+                                <rect key="frame" x="8" y="220.66666666666666" width="40" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="UjN-uX-SJs"/>
                                 </constraints>
@@ -1566,7 +1566,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="n4Q-4K-mWp">
-                                <rect key="frame" x="56" y="187.66666666666666" width="352" height="31"/>
+                                <rect key="frame" x="56" y="181" width="352" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="rsc:" destination="enF-Mx-PtC" eventType="touchCancel" id="d2B-OR-ct3"/>
@@ -1576,7 +1576,7 @@
                                 </connections>
                             </slider>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZvA-zG-WZ2" userLabel="rv">
-                                <rect key="frame" x="8" y="194.33333333333334" width="40" height="16"/>
+                                <rect key="frame" x="8" y="185.66666666666666" width="40" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="s5l-VZ-iuw"/>
                                 </constraints>
@@ -1585,7 +1585,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Boxes Can't Be White or Black And They Can't Have The Same Color" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyn-TP-QKP">
-                                <rect key="frame" x="10" y="297.66666666666669" width="394" height="28.333333333333314"/>
+                                <rect key="frame" x="10" y="291" width="394" height="35"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -1596,16 +1596,24 @@
                                 <rect key="frame" x="187" y="348" width="40" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.10894389414661776" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="IKT-Iz-8rv"/>
-                                    <constraint firstAttribute="width" constant="40" id="SSu-3V-qPJ"/>
+                                    <constraint firstAttribute="height" constant="80" id="IKT-Iz-8rv">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="80" id="SSu-3V-qPJ">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                                    </constraint>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i62-Lh-9Cw" userLabel="leftsmallbox">
                                 <rect key="frame" x="181" y="368" width="26" height="26"/>
                                 <color key="backgroundColor" red="0.22675579000505786" green="0.088670528075120769" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="0LG-ME-qjI"/>
-                                    <constraint firstAttribute="width" constant="26" id="KVE-eS-C9I"/>
+                                    <constraint firstAttribute="height" constant="52" id="0LG-ME-qjI">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="26"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="52" id="KVE-eS-C9I">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="26"/>
+                                    </constraint>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -1624,7 +1632,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                             </constraint>
                             <constraint firstItem="2U6-fz-XpO" firstAttribute="top" secondItem="LZL-EV-obd" secondAttribute="bottom" constant="10" id="6mc-df-NvG"/>
-                            <constraint firstItem="i62-Lh-9Cw" firstAttribute="centerY" secondItem="3Kp-6a-HRK" secondAttribute="centerY" constant="13" id="7Ah-Lv-sNd"/>
+                            <constraint firstItem="i62-Lh-9Cw" firstAttribute="centerY" secondItem="3Kp-6a-HRK" secondAttribute="centerY" constant="26" id="7Ah-Lv-sNd">
+                                <variation key="heightClass=regular-widthClass=compact" constant="13"/>
+                            </constraint>
                             <constraint firstItem="gIS-rX-Tcp" firstAttribute="trailing" secondItem="nZ2-dV-FVf" secondAttribute="trailing" constant="100" id="7G2-OB-Aym">
                                 <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                             </constraint>
@@ -1659,7 +1669,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                             </constraint>
                             <constraint firstItem="Rbv-GM-DCS" firstAttribute="centerX" secondItem="gIS-rX-Tcp" secondAttribute="centerX" id="VdA-Z5-mnP"/>
-                            <constraint firstItem="i62-Lh-9Cw" firstAttribute="centerX" secondItem="gIS-rX-Tcp" secondAttribute="centerX" constant="-13" id="VeY-eZ-TaJ"/>
+                            <constraint firstItem="i62-Lh-9Cw" firstAttribute="centerX" secondItem="gIS-rX-Tcp" secondAttribute="centerX" constant="-26" id="VeY-eZ-TaJ">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-13"/>
+                            </constraint>
                             <constraint firstItem="ehe-f8-ong" firstAttribute="centerY" secondItem="VUa-zk-yg4" secondAttribute="centerY" id="WbH-IH-rsf"/>
                             <constraint firstItem="KoI-gf-ZF8" firstAttribute="centerX" secondItem="gIS-rX-Tcp" secondAttribute="centerX" constant="-70" id="YFi-Zn-qxP"/>
                             <constraint firstItem="0OD-p5-zkk" firstAttribute="top" secondItem="zyn-TP-QKP" secondAttribute="bottom" constant="22" id="YXu-xy-AZI"/>
@@ -1734,19 +1746,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wajdi Al-Muhtadi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tu-gN-xmo">
-                                <rect key="frame" x="62.333333333333343" y="220.33333333333334" width="289.66666666666663" height="24.666666666666657"/>
+                                <rect key="frame" x="107.66666666666669" y="214.66666666666666" width="199" height="30.333333333333343"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="26"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FT-JV-amb">
-                                <rect key="frame" x="96.000000000000014" y="132.66666666666666" width="223.33333333333337" height="24.666666666666657"/>
+                                <rect key="frame" x="125.66666666666669" y="121.33333333333333" width="163" height="30.333333333333329"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="26"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thx For Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWo-Vf-u9X">
-                                <rect key="frame" x="76.333333333333343" y="491" width="261.33333333333326" height="24.666666666666629"/>
+                                <rect key="frame" x="116.66666666666667" y="491" width="180.66666666666663" height="30.333333333333371"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="26"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>

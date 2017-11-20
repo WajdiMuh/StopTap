@@ -63,6 +63,7 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
                 self.val.isHidden = false
             }
         } */
+        //
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.viewrisign), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         self.gname.transform = CGAffineTransform(rotationAngle: (CGFloat.pi / 12))
@@ -365,6 +366,7 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
         }else{
 
         }*/
+        //remember excluded files later
         bganim1.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
         bganim1.layer.borderWidth = ((2.5 * self.view.bounds.width) / 411)
         bganim2.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
