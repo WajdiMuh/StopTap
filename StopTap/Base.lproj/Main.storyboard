@@ -494,7 +494,7 @@
                                 </constraints>
                             </imageView>
                             <button hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="gKr-cZ-pbO" userLabel="x2">
-                                <rect key="frame" x="10" y="30" width="35" height="35"/>
+                                <rect key="frame" x="10" y="10" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Pkh-bh-DjD"/>
                                     <constraint firstAttribute="width" constant="35" id="zIR-da-YlE"/>
@@ -534,7 +534,7 @@
                             </constraint>
                             <constraint firstItem="OKB-4g-FYH" firstAttribute="leading" secondItem="6Ex-9A-vWk" secondAttribute="trailing" id="ied-AU-Z0c"/>
                             <constraint firstItem="CUu-iJ-XGg" firstAttribute="leading" secondItem="Qlz-ls-qRW" secondAttribute="leading" id="lz7-uQ-boi" userLabel="movech"/>
-                            <constraint firstItem="gKr-cZ-pbO" firstAttribute="top" secondItem="Qlz-ls-qRW" secondAttribute="top" constant="10" id="pAa-5o-xiP"/>
+                            <constraint firstItem="gKr-cZ-pbO" firstAttribute="top" secondItem="fjO-1L-xBV" secondAttribute="top" constant="10" id="pAa-5o-xiP"/>
                             <constraint firstItem="Qlz-ls-qRW" firstAttribute="bottom" secondItem="ngX-zW-gbQ" secondAttribute="bottom" constant="10" id="s2G-Mg-6ft"/>
                             <constraint firstItem="vVV-Af-9ff" firstAttribute="centerY" secondItem="5cj-BT-k36" secondAttribute="centerY" id="u4I-ib-h2h"/>
                             <constraint firstItem="gKr-cZ-pbO" firstAttribute="leading" secondItem="Qlz-ls-qRW" secondAttribute="leading" constant="10" id="ulG-cK-KtV"/>

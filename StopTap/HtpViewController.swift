@@ -174,6 +174,7 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
         countdown = Foundation.Timer(timeInterval: 0.5, target: self, selector: #selector(HtpViewController.time), userInfo: nil, repeats: false)
          RunLoop.current.add(countdown, forMode: RunLoopMode.commonModes)
         x2t.constant = ((((base.frame.origin.y - (timecount.frame.origin.y + timecount.frame.size.height)) / 2) + timecount.frame.origin.y + timecount.frame.size.height) - (x2h.constant / 2))
+        print("x2t" + String(describing: x2t.constant))
         x2l.constant = -1 * x2w.constant
         doublescore.titleLabel!.adjustsFontSizeToFitWidth = true
         doublescore.titleLabel!.numberOfLines = 1
