@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B0CF244998C22EE30A72EAF0D108F2D9"
+               BlueprintIdentifier = "823A3CE9D2D8639A6823C720D5A1C443"
                BuildableName = "Pods_StopTapTests.framework"
                BlueprintName = "Pods-StopTapTests"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B0CF244998C22EE30A72EAF0D108F2D9"
+            BlueprintIdentifier = "823A3CE9D2D8639A6823C720D5A1C443"
             BuildableName = "Pods_StopTapTests.framework"
             BlueprintName = "Pods-StopTapTests"
             ReferencedContainer = "container:Pods.xcodeproj">

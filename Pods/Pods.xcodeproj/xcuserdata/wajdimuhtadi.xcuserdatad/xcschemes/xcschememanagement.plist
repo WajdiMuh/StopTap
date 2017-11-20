@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-StopTap.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -14,29 +19,13 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-StopTapUITests.xcscheme</key>
+		<key>nanopb.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>B0CF244998C22EE30A72EAF0D108F2D9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BC269B94284E56E5CF6A39F612E4F6A3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E4375B471CF44970E45C0A537FC8C227</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>
