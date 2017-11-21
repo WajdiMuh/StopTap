@@ -71,7 +71,8 @@ class ScoreViewController: UIViewController {
                 })
             }
         } */
-        if(KeychainWrapper.stringForKey("nm") == "0"){
+        let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
             self.view.backgroundColor = UIColor.white
             playag.layer.borderColor = UIColor.black.cgColor
             menu.layer.borderColor = UIColor.black.cgColor
@@ -115,7 +116,7 @@ class ScoreViewController: UIViewController {
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         let request = GADRequest()
-        request.testDevices = ["b22eef2b60b22ba7c7789438a3b61ae7"]
+        request.testDevices = ["745b490e07520808329b5ec8207806c5"]
         bannerView.load(request)
         playag.layer.cornerRadius = 10
         playag.layer.borderWidth = 5
@@ -129,10 +130,11 @@ class ScoreViewController: UIViewController {
         }else{
    
         } */
-        if (KeychainWrapper.stringForKey("hscore") == nil){
+        let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        if (provider.exists(forKey: "hscore") == false){
             hscore.text = "HighScore : 0"
         }else{
-            hscore.text = "HighScore : " + KeychainWrapper.stringForKey("hscore")!
+            hscore.text = "HighScore : " + String(provider.getInt(forKey: "hscore"))
         }
     }
     @IBAction func playagain(_ sender: AnyObject) {

@@ -32,7 +32,6 @@
 		0D7258FE1FC3605200CA57A6 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D07DB8A1CFB87D300F30F38 /* SignViewController.swift */; };
 		0D8D5E591CAB20EA0034DA32 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D5E581CAB20EA0034DA32 /* SettingsViewController.swift */; };
 		0D8D5E5B1CAB239D0034DA32 /* vibrate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8D5E5A1CAB239D0034DA32 /* vibrate.png */; };
-		0D8D5E5D1CAB24790034DA32 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D5E5C1CAB24790034DA32 /* KeychainWrapper.swift */; };
 		0D91EFD61D27D8010054D592 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EFD51D27D8010054D592 /* Toast.swift */; };
 		0D942E181CA30A68003EF043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D942E171CA30A68003EF043 /* Assets.xcassets */; };
 		0D9954691CE7974D002119D8 /* nm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9954681CE7974D002119D8 /* nm.swift */; };
@@ -110,7 +109,6 @@
 		0D58ED631F4B800D006CFD13 /* KeyStoreDefaultsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStoreDefaultsProvider.swift; sourceTree = "<group>"; };
 		0D8D5E581CAB20EA0034DA32 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0D8D5E5A1CAB239D0034DA32 /* vibrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vibrate.png; sourceTree = "<group>"; };
-		0D8D5E5C1CAB24790034DA32 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		0D91EFD51D27D8010054D592 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		0D942E171CA30A68003EF043 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D94D5F71D03825E00E8A69E /* CreateAccViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccViewController.swift; sourceTree = "<group>"; };
@@ -262,7 +260,6 @@
 				0D07DB881CFB839A00F30F38 /* AccountViewController.swift */,
 				0D94D5F71D03825E00E8A69E /* CreateAccViewController.swift */,
 				0D07DB8A1CFB87D300F30F38 /* SignViewController.swift */,
-				0D8D5E5C1CAB24790034DA32 /* KeychainWrapper.swift */,
 				0DF92E1A1D38314400B81057 /* ColorPicker.swift */,
 				0DCF96B81F4DDDDF00018848 /* Timer.swift */,
 				0D91EFD51D27D8010054D592 /* Toast.swift */,
@@ -582,7 +579,6 @@
 				0D8D5E591CAB20EA0034DA32 /* SettingsViewController.swift in Sources */,
 				0DA619D01F4F849900429EC0 /* popanimation.swift in Sources */,
 				0DEFCA881CAE81A8002296DE /* HtpViewController.swift in Sources */,
-				0D8D5E5D1CAB24790034DA32 /* KeychainWrapper.swift in Sources */,
 				0D1A9B1F1CDE6BC700E1FF77 /* ScoreViewController.swift in Sources */,
 				0DA619CE1F4F768200429EC0 /* pushanimation.swift in Sources */,
 				0DD907D61CE2419D00AAB1B0 /* ShopViewController.swift in Sources */,
@@ -754,6 +750,7 @@
 					App42LeaderboardCell.m,
 					App42LeaderboardView.m,
 					App42LeaderboardViewController.m,
+					nm.swift,
 				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -799,6 +796,7 @@
 					App42LeaderboardCell.m,
 					App42LeaderboardView.m,
 					App42LeaderboardViewController.m,
+					nm.swift,
 				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

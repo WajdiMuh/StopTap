@@ -5,9 +5,10 @@ target 'StopTap' do
   use_frameworks!
 
   # Pods for StopTap
+pod 'Google-Mobile-Ads-SDK', '~> 7.26'
 pod 'Firebase/Analytics'
 pod 'Firebase/AdMob'
-  target 'StopTapTests' do
+target 'StopTapTests' do
     inherit! :search_paths
     # Pods for testing
   end

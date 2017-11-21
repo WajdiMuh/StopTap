@@ -66,6 +66,14 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
         //
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.viewrisign), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        if (provider.exists(forKey: "hscore") == false){
+            self.highsc.isHidden = true
+            self.val.isHidden = true
+        }else{
+            self.val.text = String(provider.getInt(forKey: "hscore"))
+            self.highsc.isHidden = false
+            self.val.isHidden = false
+        }
         self.gname.transform = CGAffineTransform(rotationAngle: (CGFloat.pi / 12))
         gname.setNeedsLayout()
         UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, options: [.repeat,.autoreverse], animations: {
