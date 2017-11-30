@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StopTap/AppDelegate.swift"
-            timestampString = "532975754.295358"
+            timestampString = "532978798.952387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "10"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StopTap/AppDelegate.swift"
-            timestampString = "532975754.295527"
+            timestampString = "532978798.952543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1"
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StopTap/PlayViewController.swift"
-            timestampString = "532970546.188091"
+            timestampString = "533748058.559548"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "PlayViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -414,7 +414,7 @@
             startingLineNumber = "413"
             endingLineNumber = "413"
             landmarkName = "UIView"
-            landmarkType = "4">
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -472,11 +472,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StopTap/PlayViewController.swift"
-            timestampString = "532970546.188523"
+            timestampString = "533748058.560175"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "556"
-            endingLineNumber = "556"
+            startingLineNumber = "563"
+            endingLineNumber = "563"
             landmarkName = "r()"
             landmarkType = "7">
          </BreakpointContent>
@@ -568,7 +568,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StopTap/ScoreViewController.swift"
-            timestampString = "532975754.295938"
+            timestampString = "532978798.953657"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -664,11 +664,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StopTap/PlayViewController.swift"
-            timestampString = "532970546.189208"
+            timestampString = "533748058.560636"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "820"
-            endingLineNumber = "820"
+            startingLineNumber = "883"
+            endingLineNumber = "883"
             landmarkName = "doublepointsmove()"
             landmarkType = "7">
          </BreakpointContent>
@@ -680,11 +680,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StopTap/PlayViewController.swift"
-            timestampString = "532970546.189256"
+            timestampString = "533748058.560951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "819"
-            endingLineNumber = "819"
+            startingLineNumber = "882"
+            endingLineNumber = "882"
             landmarkName = "doublepointsmove()"
             landmarkType = "7">
          </BreakpointContent>
@@ -696,11 +696,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StopTap/PlayViewController.swift"
-            timestampString = "532970546.189304"
+            timestampString = "533748058.561261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
+            startingLineNumber = "517"
+            endingLineNumber = "517"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -712,27 +712,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StopTap/PlayViewController.swift"
-            timestampString = "532970546.189351"
+            timestampString = "533748058.561566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "viewclick(_:forEvent:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StopTap/PlayViewController.swift"
-            timestampString = "532970546.1894"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "893"
-            endingLineNumber = "893">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -758,11 +744,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StopTap/PlayViewController.swift"
-            timestampString = "532970546.189466"
+            timestampString = "533748058.56188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "841"
-            endingLineNumber = "841"
+            startingLineNumber = "904"
+            endingLineNumber = "904"
             landmarkName = "doublepointsmove()"
             landmarkType = "7">
          </BreakpointContent>
@@ -774,11 +760,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StopTap/PlayViewController.swift"
-            timestampString = "532970546.189515"
+            timestampString = "533748058.562188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "851"
-            endingLineNumber = "851"
+            startingLineNumber = "914"
+            endingLineNumber = "914"
             landmarkName = "doubletimerlasting()"
             landmarkType = "7">
          </BreakpointContent>

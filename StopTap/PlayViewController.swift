@@ -14,6 +14,7 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var base: UIImageView!
     var time:Double = 3
     var score:Int = 0
+    var gright:Bool = true
     var pausetf:Bool = false
     var wrongnum:Int = 0
     var gameovercheck:Int = 0
@@ -29,6 +30,7 @@ class PlayViewController: UIViewController {
     var pausedmovetime:CFTimeInterval = CFTimeInterval()
     var randromdoubletime:Double = Double(arc4random_uniform(5) + 5)
     let layerfixbase:CALayer = CALayer()
+    var wasforg:Bool = false
     @IBOutlet weak var x2top: NSLayoutConstraint!
     @IBOutlet weak var doublescore: UIButton!
     @IBOutlet weak var x2l: NSLayoutConstraint!
@@ -213,6 +215,7 @@ class PlayViewController: UIViewController {
                     gameover.isHidden = false
                     move.layer.removeAllAnimations()
                     baseanim.layer.removeAllAnimations()
+                    baseanim.isHidden = true
                     kill1.layer.removeAllAnimations()
                     kill2.layer.removeAllAnimations()
                     kill1.isHidden = true
@@ -276,6 +279,7 @@ class PlayViewController: UIViewController {
                 gameover.isHidden = false
                 move.layer.removeAllAnimations()
                 baseanim.layer.removeAllAnimations()
+                baseanim.isHidden = true
                 kill1.layer.removeAllAnimations()
                 kill2.layer.removeAllAnimations()
                 kill1.isHidden = true
@@ -328,6 +332,7 @@ class PlayViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+         print("view did aprrear")
         newhighscore = false
         doubleon = false
         print(String(describing: self.view.bounds.width / UIScreen.main.scale))
@@ -345,6 +350,7 @@ class PlayViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("view will aprrear")
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         switch provider.getInt(forKey: "shopselect", defaultValue: 1) {
         case 1:
@@ -550,6 +556,7 @@ class PlayViewController: UIViewController {
         }
     }
     func r() {
+        gright = true
         movel.constant = self.view.bounds.width - self.move.bounds.width
         move.setNeedsLayout()
         UIView.animate(withDuration: time, delay: 0, options:[], animations: {
@@ -558,9 +565,48 @@ class PlayViewController: UIViewController {
                 if (finished == true){
                     self.timerand()
                     self.l()
-                }else{
-                    self.view.layoutIfNeeded()
                 }
+        })
+    }
+    func l() {
+        gright = false
+        movel.constant = 0
+        move.setNeedsLayout()
+        UIView.animate(withDuration: time, delay: 0, options:[], animations: {
+            self.move.superview?.layoutIfNeeded()
+        }, completion: {(finished: Bool) -> Void in
+            if (finished == true){
+                self.timerand()
+                self.r()
+            }
+        })
+    }
+    func rafterf() {
+        gright = true
+        let rtimeafterp:Double = ((time * Double(self.view.bounds.width - self.move.bounds.width - movel.constant))/Double(self.view.bounds.width - self.move.bounds.width))
+        movel.constant = self.view.bounds.width - self.move.bounds.width
+        move.setNeedsLayout()
+        UIView.animate(withDuration: rtimeafterp, delay: 0, options:[], animations: {
+            self.move.superview?.layoutIfNeeded()
+        }, completion: {(finished: Bool) -> Void in
+            if (finished == true){
+                self.timerand()
+                self.l()
+            }
+        })
+    }
+    func lafterf() {
+        gright = false
+        let ltimeafterp:Double = ((time * Double(movel.constant))/Double(self.view.bounds.width - self.move.bounds.width))
+        movel.constant = 0
+        move.setNeedsLayout()
+        UIView.animate(withDuration: ltimeafterp, delay: 0, options:[], animations: {
+            self.move.superview?.layoutIfNeeded()
+        }, completion: {(finished: Bool) -> Void in
+            if (finished == true){
+                self.timerand()
+                self.r()
+            }
         })
     }
     @IBAction func pause(_ sender: AnyObject) {
@@ -570,8 +616,10 @@ class PlayViewController: UIViewController {
             doubletimerlast.pause()
             pause.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             pausetf = true
+            self.dir.isHidden = true
             movestop()
             baseanim.layer.removeAllAnimations()
+            baseanim.isHidden = true
             kill1.layer.removeAllAnimations()
             kill2.layer.removeAllAnimations()
             kill3.layer.removeAllAnimations()
@@ -595,9 +643,21 @@ class PlayViewController: UIViewController {
             resumeAnimation()
             doubletimer.play()
             doubletimerlast.play()
-            movestart()
+            if(wasforg == true){
+                wasforg = false
+                if(gright == true){
+                rafterf()
+                }else{
+                lafterf()
+                }
+            }else{
+                movestart()
+            }
              pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             pausetf = false
+            if(viewclickb.gestureRecognizers?.isEmpty == false){
+                dir.isHidden = false
+            }
             move.isHidden = false
             base.isHidden = false
             scoreval.isHidden = false
@@ -666,9 +726,21 @@ class PlayViewController: UIViewController {
         resumeAnimation()
         doubletimer.play()
         doubletimerlast.play()
-        movestart()
+        if(wasforg == true){
+            wasforg = false
+            if(gright == true){
+                rafterf()
+            }else{
+                lafterf()
+            }
+        }else{
+            movestart()
+        }
         pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
         pausetf = false
+        if(viewclickb.gestureRecognizers?.isEmpty == false){
+            dir.isHidden = false
+        }
         move.isHidden = false
         base.isHidden = false
         scoreval.isHidden = false
@@ -687,20 +759,6 @@ class PlayViewController: UIViewController {
         }else{
             wrong4.isHidden = false
         }
-    }
-    func l() {
-        movel.constant = 0
-        move.setNeedsLayout()
-        UIView.animate(withDuration: time, delay: 0, options:[], animations: {
-            self.move.superview?.layoutIfNeeded()
-            }, completion: {(finished: Bool) -> Void in
-                if (finished == true){
-                    self.timerand()
-                    self.r()
-                }else{
-                    self.view.layoutIfNeeded()
-                }
-        })
     }
   /*  func timeafterp() {
         if(rightleft == "r"){
@@ -731,13 +789,19 @@ class PlayViewController: UIViewController {
     }
     @objc func applicationWillResignActiveNotification() {
         if(gameovercheck == 0){
+            wasforg = true
+            movel.constant = (move.layer.presentation()?.frame.origin.x)!
+            move.layer.removeAllAnimations()
+            move.superview?.setNeedsLayout()
+            move.superview?.layoutIfNeeded()
             stopAnimation()
             doubletimer.pause()
             doubletimerlast.pause()
             pause.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             pausetf = true
-            movestop()
+            dir.isHidden = true
             baseanim.layer.removeAllAnimations()
+            baseanim.isHidden = true
             kill1.layer.removeAllAnimations()
             kill2.layer.removeAllAnimations()
             kill3.layer.removeAllAnimations()
@@ -890,3 +954,4 @@ class PlayViewController: UIViewController {
     }
     
 }
+
