@@ -26,8 +26,7 @@ class PlayViewController: UIViewController {
     var doubletimer:Timerp = Timerp()
     var doubletimerlast:Timerp = Timerp()
     var doubleon:Bool = false
-    var pausedtime:CFTimeInterval = CFTimeInterval()
-    var pausedmovetime:CFTimeInterval = CFTimeInterval()
+    var doubleanim:Bool = false
     var randromdoubletime:Double = Double(arc4random_uniform(5) + 5)
     let layerfixbase:CALayer = CALayer()
     @IBOutlet weak var x2top: NSLayoutConstraint!
@@ -120,11 +119,6 @@ class PlayViewController: UIViewController {
         }
     }
     @IBAction func viewclick(_ sender: Any, forEvent event: UIEvent) {
-        if(doublescore.isHidden){
-            print("not visible")
-        }else{
-            print("visible")
-        }
         let myButton:UIButton = sender as! UIButton
         let touches: Set<UITouch>? = event.touches(for: myButton)
         let touch: UITouch? = touches?.first
@@ -414,6 +408,7 @@ class PlayViewController: UIViewController {
             base.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
             break;
         }
+        pause.isExclusiveTouch = true
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
             self.view.backgroundColor = UIColor.white
             pr.layer.borderColor = UIColor.black.cgColor
@@ -615,13 +610,16 @@ class PlayViewController: UIViewController {
     }
     @IBAction func pause(_ sender: AnyObject) {
         if(pausetf == false){
-            stopAnimation()
+            pausetf = true
             doubletimer.pause()
             doubletimerlast.pause()
             pause.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
-            pausetf = true
             self.dir.isHidden = true
+            x2l.constant = (doublescore.layer.presentation()?.frame.origin.x)!
             movel.constant = (move.layer.presentation()?.frame.origin.x)!
+            doublescore.layer.removeAllAnimations()
+            doublescore.superview?.setNeedsLayout()
+            doublescore.superview?.layoutIfNeeded()
             move.layer.removeAllAnimations()
             move.superview?.setNeedsLayout()
             move.superview?.layoutIfNeeded()
@@ -647,7 +645,7 @@ class PlayViewController: UIViewController {
             pm.isHidden = false
             viewclickb.isUserInteractionEnabled = false
         }else{
-            resumeAnimation()
+            pausetf = false
             doubletimer.play()
             doubletimerlast.play()
             if(gright == true){
@@ -655,8 +653,10 @@ class PlayViewController: UIViewController {
                 }else{
                 lafterf()
                 }
+            if(doubleanim == true){
+                doublepointsmove()
+            }
              pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
-            pausetf = false
             if(viewclickb.gestureRecognizers?.isEmpty == false){
                 dir.isHidden = false
             }
@@ -725,13 +725,15 @@ class PlayViewController: UIViewController {
         }
     }
     @IBAction func res(_ sender: AnyObject) {
-        resumeAnimation()
         doubletimer.play()
         doubletimerlast.play()
         if(gright == true){
             rafterf()
         }else{
             lafterf()
+        }
+        if(doubleanim == true){
+            doublepointsmove()
         }
         pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
         pausetf = false
@@ -787,10 +789,13 @@ class PlayViewController: UIViewController {
     @objc func applicationWillResignActiveNotification() {
         if(gameovercheck == 0){
             movel.constant = (move.layer.presentation()?.frame.origin.x)!
+            x2l.constant = (doublescore.layer.presentation()?.frame.origin.x)!
             move.layer.removeAllAnimations()
             move.superview?.setNeedsLayout()
             move.superview?.layoutIfNeeded()
-            stopAnimation()
+            doublescore.layer.removeAllAnimations()
+            doublescore.superview?.setNeedsLayout()
+            doublescore.superview?.layoutIfNeeded()
             doubletimer.pause()
             doubletimerlast.pause()
             pause.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
@@ -875,15 +880,19 @@ class PlayViewController: UIViewController {
             print("finished swipe in")
     }
     func doublepointsmove(){
+        doubleanim = true
         doublescore.isHidden = false
         doublescore.isEnabled = true
         doublescore.isUserInteractionEnabled = true
+        let x2ltime:Double = (Double((10 * (self.view.bounds.width - x2l.constant))/(self.view.bounds.width + x2w.constant)))
+        print(x2ltime)
         self.x2l.constant = self.view.bounds.width
         doublescore.setNeedsLayout()
-        UIView.animate(withDuration: 10, delay: 0, options: [.allowUserInteraction], animations: {
+        UIView.animate(withDuration: x2ltime, delay: 0, options: [.allowUserInteraction], animations: {
             self.doublescore.superview?.layoutIfNeeded()
         }, completion: {(finished: Bool) -> Void in
             if(finished == true){
+                self.doubleanim = false
                 print("fini")
             self.doublescore.isHidden = true
             self.doublescore.isEnabled = false
@@ -923,18 +932,6 @@ class PlayViewController: UIViewController {
                 scorev.newhighscoresc = self.newhighscore
                 self.navigationController?.pushViewController(scorev, animated: true)
         })
-    }
-    func stopAnimation() {
-        pausedtime = self.doublescore.layer.convertTime(CACurrentMediaTime(), from: nil)
-        self.doublescore.layer.speed = 0.0
-        self.doublescore.layer.timeOffset = pausedtime
-    }
-    func resumeAnimation() {
-        self.doublescore.layer.speed = 1.0
-        self.doublescore.layer.timeOffset = 0.0
-        self.doublescore.layer.beginTime = 0.0
-        let timeSincePause = self.doublescore.layer.convertTime(CACurrentMediaTime(), from: nil) - pausedtime
-        self.doublescore.layer.beginTime = timeSincePause
     }
     
 }
