@@ -30,7 +30,6 @@ class PlayViewController: UIViewController {
     var pausedmovetime:CFTimeInterval = CFTimeInterval()
     var randromdoubletime:Double = Double(arc4random_uniform(5) + 5)
     let layerfixbase:CALayer = CALayer()
-    var wasforg:Bool = false
     @IBOutlet weak var x2top: NSLayoutConstraint!
     @IBOutlet weak var doublescore: UIButton!
     @IBOutlet weak var x2l: NSLayoutConstraint!
@@ -121,6 +120,11 @@ class PlayViewController: UIViewController {
         }
     }
     @IBAction func viewclick(_ sender: Any, forEvent event: UIEvent) {
+        if(doublescore.isHidden){
+            print("not visible")
+        }else{
+            print("visible")
+        }
         let myButton:UIButton = sender as! UIButton
         let touches: Set<UITouch>? = event.touches(for: myButton)
         let touch: UITouch? = touches?.first
@@ -336,7 +340,7 @@ class PlayViewController: UIViewController {
         newhighscore = false
         doubleon = false
         print(String(describing: self.view.bounds.width / UIScreen.main.scale))
-        r()
+        rafterf()
         x2top.constant = ((base.center.y - coin.center.y) / 2) + coin.center.y - (x2h.constant / 2)
         x2l.constant = -1 * x2w.constant
         gameoverc.constant = (self.view.bounds.width - self.gameover.bounds.width)
@@ -555,7 +559,7 @@ class PlayViewController: UIViewController {
         } catch {
         }
     }
-    func r() {
+ /*   func r() {
         gright = true
         movel.constant = self.view.bounds.width - self.move.bounds.width
         move.setNeedsLayout()
@@ -580,7 +584,7 @@ class PlayViewController: UIViewController {
                 self.r()
             }
         })
-    }
+    }*/
     func rafterf() {
         gright = true
         let rtimeafterp:Double = ((time * Double(self.view.bounds.width - self.move.bounds.width - movel.constant))/Double(self.view.bounds.width - self.move.bounds.width))
@@ -591,7 +595,7 @@ class PlayViewController: UIViewController {
         }, completion: {(finished: Bool) -> Void in
             if (finished == true){
                 self.timerand()
-                self.l()
+                self.lafterf()
             }
         })
     }
@@ -605,7 +609,7 @@ class PlayViewController: UIViewController {
         }, completion: {(finished: Bool) -> Void in
             if (finished == true){
                 self.timerand()
-                self.r()
+                self.rafterf()
             }
         })
     }
@@ -617,7 +621,10 @@ class PlayViewController: UIViewController {
             pause.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             pausetf = true
             self.dir.isHidden = true
-            movestop()
+            movel.constant = (move.layer.presentation()?.frame.origin.x)!
+            move.layer.removeAllAnimations()
+            move.superview?.setNeedsLayout()
+            move.superview?.layoutIfNeeded()
             baseanim.layer.removeAllAnimations()
             baseanim.isHidden = true
             kill1.layer.removeAllAnimations()
@@ -643,16 +650,11 @@ class PlayViewController: UIViewController {
             resumeAnimation()
             doubletimer.play()
             doubletimerlast.play()
-            if(wasforg == true){
-                wasforg = false
-                if(gright == true){
+            if(gright == true){
                 rafterf()
                 }else{
                 lafterf()
                 }
-            }else{
-                movestart()
-            }
              pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             pausetf = false
             if(viewclickb.gestureRecognizers?.isEmpty == false){
@@ -726,15 +728,10 @@ class PlayViewController: UIViewController {
         resumeAnimation()
         doubletimer.play()
         doubletimerlast.play()
-        if(wasforg == true){
-            wasforg = false
-            if(gright == true){
-                rafterf()
-            }else{
-                lafterf()
-            }
+        if(gright == true){
+            rafterf()
         }else{
-            movestart()
+            lafterf()
         }
         pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
         pausetf = false
@@ -789,7 +786,6 @@ class PlayViewController: UIViewController {
     }
     @objc func applicationWillResignActiveNotification() {
         if(gameovercheck == 0){
-            wasforg = true
             movel.constant = (move.layer.presentation()?.frame.origin.x)!
             move.layer.removeAllAnimations()
             move.superview?.setNeedsLayout()
@@ -927,18 +923,6 @@ class PlayViewController: UIViewController {
                 scorev.newhighscoresc = self.newhighscore
                 self.navigationController?.pushViewController(scorev, animated: true)
         })
-    }
-    func movestop() {
-        pausedmovetime = self.move.layer.convertTime(CACurrentMediaTime(), from: nil)
-        self.move.layer.speed = 0.0
-        self.move.layer.timeOffset = pausedmovetime
-    }
-    func movestart() {
-        self.move.layer.speed = 1.0
-        self.move.layer.timeOffset = 0.0
-        self.move.layer.beginTime = 0.0
-        let timeSincePause = self.move.layer.convertTime(CACurrentMediaTime(), from: nil) - pausedmovetime
-        self.move.layer.beginTime = timeSincePause
     }
     func stopAnimation() {
         pausedtime = self.doublescore.layer.convertTime(CACurrentMediaTime(), from: nil)
