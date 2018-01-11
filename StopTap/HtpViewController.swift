@@ -35,6 +35,9 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
     @IBOutlet weak var x2w: NSLayoutConstraint!
     @IBOutlet weak var doublescore: UIButton!
     @IBOutlet weak var coinval: UILabel!
+    
+    @IBOutlet weak var back: UIButton!
+    
     let layerfixbase:CALayer = CALayer()
     var doubleon:Bool = false
     @IBOutlet weak var dir: UIImageView!
@@ -82,6 +85,7 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.back.transform = CGAffineTransform(rotationAngle: (CGFloat.pi))
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
             self.view.backgroundColor = UIColor.white
@@ -96,6 +100,8 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
             doublescore.setTitleColor(UIColor.white, for: UIControlState())
             coinval.textColor = UIColor.black
             dir.tintColor = UIColor.black
+            back.tintColor = UIColor.black
+            
         }else{
             self.view.backgroundColor = UIColor.black
             timecount.textColor = UIColor.white
@@ -109,6 +115,7 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
             doublescore.setTitleColor(UIColor.black, for: UIControlState())
             coinval.textColor = UIColor.white
             dir.tintColor = UIColor.white
+            back.tintColor = UIColor.black
         }
         switch provider.getInt(forKey: "shopselect", defaultValue: 1) {
         case 1:
@@ -334,6 +341,10 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
         swiperight.direction = UISwipeGestureRecognizerDirection.right
         self.viewclick.addGestureRecognizer(swiperight)
         }
+    }
+    @IBAction func backclick(_ sender: Any) {
+        countdown.invalidate()
+        self.navigationController?.popToRootViewController(animated: true)
     }
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         switch UIDevice.current.userInterfaceIdiom {

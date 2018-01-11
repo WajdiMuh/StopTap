@@ -32,6 +32,7 @@ class PlayViewController: UIViewController {
     var number:CGFloat = 0.0
     var doubleanimator: UIViewPropertyAnimator!
     var doublelnumber:CGFloat = 0.0
+    var checkifusertoucheddouble:Int = 0
     @IBOutlet weak var x2top: NSLayoutConstraint!
     @IBOutlet weak var doublescore: UIButton!
     @IBOutlet weak var x2l: NSLayoutConstraint!
@@ -69,12 +70,21 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var dirw: NSLayoutConstraint!
     @IBOutlet weak var dirh: NSLayoutConstraint!
     @IBAction func viewclickcancel(_ sender: AnyObject) {
-        self.dir.isHidden = true
-        self.viewclickb.gestureRecognizers?.removeAll()
+        if(checkifusertoucheddouble == 0){
+            self.dir.isHidden = true
+            self.viewclickb.gestureRecognizers?.removeAll()
+        }else{
+            checkifusertoucheddouble = checkifusertoucheddouble - 1
+        }
     }
     @IBAction func viewclickout(_ sender: AnyObject) {
-        self.dir.isHidden = true
-        self.viewclickb.gestureRecognizers?.removeAll()
+        if(checkifusertoucheddouble == 0){
+            self.dir.isHidden = true
+            self.viewclickb.gestureRecognizers?.removeAll()
+        }else{
+            checkifusertoucheddouble = checkifusertoucheddouble - 1
+        }
+        
     }
     @IBAction func viewclickin(_ sender: AnyObject) {
         let swiperight = UISwipeGestureRecognizer(target: self, action: #selector(PlayViewController.swiperight))
@@ -85,40 +95,44 @@ class PlayViewController: UIViewController {
         swipeup.direction = UISwipeGestureRecognizerDirection.up
         let swipedown = UISwipeGestureRecognizer(target: self, action: #selector(PlayViewController.swipedown))
         swipedown.direction = UISwipeGestureRecognizerDirection.down
-        self.dir.isHidden = true
-        self.viewclickb.gestureRecognizers?.removeAll()
-        print("finished click in")
-        if(score >= extrascorerandom){
-            extrascorerandom = Int(arc4random_uniform(9) + 2) + score
-            switch (Int(arc4random_uniform(4))) {
-            case 0:
-                print("right")
-                self.viewclickb.addGestureRecognizer(swiperight)
-                self.dir.transform = CGAffineTransform(rotationAngle: (CGFloat.pi))
-                break
-            case 1:
-                print("left")
-                self.viewclickb.addGestureRecognizer(swipeleft)
-                self.dir.transform = CGAffineTransform(rotationAngle: (0))
-                break
-            case 2:
-                print("up")
-                self.viewclickb.addGestureRecognizer(swipeup)
-                self.dir.transform = CGAffineTransform(rotationAngle: (CGFloat.pi / 2))
-                break
-            case 3:
-                print("down")
-                self.viewclickb.addGestureRecognizer(swipedown)
-                 self.dir.transform = CGAffineTransform(rotationAngle: (CGFloat.pi * 1.5))
-                break
-            default:
-                self.viewclickb.addGestureRecognizer(swiperight)
-             self.dir.transform = CGAffineTransform(rotationAngle: (CGFloat.pi))
-                break
+        if(checkifusertoucheddouble == 0){
+            self.dir.isHidden = true
+            self.viewclickb.gestureRecognizers?.removeAll()
+            if(score >= extrascorerandom){
+                extrascorerandom = Int(arc4random_uniform(9) + 2) + score
+                switch (Int(arc4random_uniform(4))) {
+                case 0:
+                    print("right")
+                    self.viewclickb.addGestureRecognizer(swiperight)
+                    self.dir.transform = CGAffineTransform(rotationAngle: (CGFloat.pi))
+                    break
+                case 1:
+                    print("left")
+                    self.viewclickb.addGestureRecognizer(swipeleft)
+                    self.dir.transform = CGAffineTransform(rotationAngle: (0))
+                    break
+                case 2:
+                    print("up")
+                    self.viewclickb.addGestureRecognizer(swipeup)
+                    self.dir.transform = CGAffineTransform(rotationAngle: (CGFloat.pi / 2))
+                    break
+                case 3:
+                    print("down")
+                    self.viewclickb.addGestureRecognizer(swipedown)
+                    self.dir.transform = CGAffineTransform(rotationAngle: (CGFloat.pi * 1.5))
+                    break
+                default:
+                    self.viewclickb.addGestureRecognizer(swiperight)
+                    self.dir.transform = CGAffineTransform(rotationAngle: (CGFloat.pi))
+                    break
+                }
+                self.dir.isHidden = false
+                print(extrascorerandom)
+                print("random work")
             }
-            self.dir.isHidden = false
-            print(extrascorerandom)
-            print("random work")
+            
+        }else{
+            checkifusertoucheddouble = checkifusertoucheddouble - 1
         }
     }
     @IBAction func viewclick(_ sender: Any, forEvent event: UIEvent) {
@@ -128,11 +142,15 @@ class PlayViewController: UIViewController {
         let touchPoint: CGPoint? = touch?.location(in: myButton)
         print("ouch" + String(describing: touchPoint))
         if  doublescore.layer.presentation()?.hitTest(touchPoint!) != nil {
+            checkifusertoucheddouble = 2
             doubleon = true
-            doublescore.layer.removeAllAnimations()
+            doubleanimator.stopAnimation(true)
+            doublescore.isHidden = true
             self.doubletimerlast =  Timerp(interval: 10, callback: doubletimerlasting, repeats: false)
             doubletimerlast.play()
+            print("doubleclickedon")
         }else{
+            checkifusertoucheddouble = 0
         let projectileFrame: CGRect = move.layer.presentation()!.frame
         if (projectileFrame.intersects(base.frame))
         {
@@ -235,10 +253,15 @@ class PlayViewController: UIViewController {
                     pause.isHidden = true
                     gameoverc.constant = (self.view.bounds.width/2) - (self.gameover.bounds.width/2)
                     gameover.setNeedsLayout()
+                    doublescore.isEnabled = false
+                    doublescore.isHidden = true
                     animator.stopAnimation(true)
+                    doubletimer.invalidate()
+                    doubletimerlast.invalidate()
                     if(doubleanim == true){
                     doubleanimator.stopAnimation(true)
                     }
+                    self.x2l.constant = -1 * self.x2w.constant
                     UIView.animate(withDuration: 0.5, delay: 0, options:[], animations: {
                         self.gameover.alpha = 1
                      self.gameover.superview?.layoutIfNeeded()
@@ -308,6 +331,11 @@ class PlayViewController: UIViewController {
                 if(doubleanim == true){
                 doubleanimator.stopAnimation(true)
                 }
+                self.x2l.constant = -1 * self.x2w.constant
+                doublescore.isEnabled = false
+                doublescore.isHidden = true
+                doubletimer.invalidate()
+                doubletimerlast.invalidate()
                 gameoverc.constant = (self.view.bounds.width/2) - (self.gameover.bounds.width/2)
                 gameover.setNeedsLayout()
                 UIView.animate(withDuration: 0.5, delay: 0, options:[], animations: {
@@ -910,8 +938,6 @@ class PlayViewController: UIViewController {
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-           doubletimer.invalidate()
-           doubletimerlast.invalidate()
          NotificationCenter.default.removeObserver(self)
         
     }
@@ -933,35 +959,52 @@ class PlayViewController: UIViewController {
     }
     @objc func swiperight(){
         print("right")
-        self.viewclickb.gestureRecognizers?.removeAll()
-        self.dir.isHidden = true
-        coinv = coinv + 4
-        coinvalue.text = String(coinv)
-        print("finished swipe in")
+        if(checkifusertoucheddouble == 0){
+            self.dir.isHidden = true
+            self.viewclickb.gestureRecognizers?.removeAll()
+            coinv = coinv + 4
+            coinvalue.text = String(coinv)
+            print("finished swipe in")
+        }else{
+            checkifusertoucheddouble = checkifusertoucheddouble - 1
+        }
     }
     @objc func swipeleft(){
         print("left")
-        self.viewclickb.gestureRecognizers?.removeAll()
-        self.dir.isHidden = true
-        coinv = coinv + 4
-        coinvalue.text = String(coinv)
+        if(checkifusertoucheddouble == 0){
+            self.dir.isHidden = true
+            self.viewclickb.gestureRecognizers?.removeAll()
+            coinv = coinv + 4
+            coinvalue.text = String(coinv)
             print("finished swipe in")
+            
+        }else{
+            checkifusertoucheddouble = checkifusertoucheddouble - 1
+        }
     }
     @objc func swipeup(){
         print("up")
-        self.viewclickb.gestureRecognizers?.removeAll()
-        self.dir.isHidden = true
-        coinv = coinv + 4
-        coinvalue.text = String(coinv)
+        if(checkifusertoucheddouble == 0){
+            self.dir.isHidden = true
+            self.viewclickb.gestureRecognizers?.removeAll()
+            coinv = coinv + 4
+            coinvalue.text = String(coinv)
             print("finished swipe in")
+        }else{
+            checkifusertoucheddouble = checkifusertoucheddouble - 1
+        }
     }
     @objc func swipedown(){
         print("down")
-        self.viewclickb.gestureRecognizers?.removeAll()
-        self.dir.isHidden = true
-        coinv = coinv + 4
-        coinvalue.text = String(coinv)
+        if(checkifusertoucheddouble == 0){
+            self.dir.isHidden = true
+            self.viewclickb.gestureRecognizers?.removeAll()
+            coinv = coinv + 4
+            coinvalue.text = String(coinv)
             print("finished swipe in")
+        }else{
+            checkifusertoucheddouble = checkifusertoucheddouble - 1
+        }
     }
     func doublepointsmove(){
         print("double points callback")

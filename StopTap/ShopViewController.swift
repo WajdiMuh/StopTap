@@ -79,7 +79,7 @@ class ShopViewController: UIViewController,colorDelegate {
         small.layer.cornerRadius = 10
         small.layer.borderWidth = 5
         price = NSMutableAttributedString(string: "250 Coin")
-        price?.addAttribute(NSAttributedStringKey.foregroundColor,value: UIColor(red: 1.0, green: 0.85, blue: 0.0, alpha: 1.0),range: NSRange(location:0,length:(price?.mutableString.length)!))
+        price?.addAttribute(NSAttributedStringKey.foregroundColor,value: UIColor.yellow,range: NSRange(location:0,length:(price?.mutableString.length)!))
         coinval.text = String(coinv)
         namec = NSMutableAttributedString(string:"Green And Pink\n")
         cp.delegate = self
@@ -290,6 +290,13 @@ class ShopViewController: UIViewController,colorDelegate {
             rs.tintColor = UIColor.black
             gs.tintColor = UIColor.black
             bs.tintColor = UIColor.black
+            let shadow = NSShadow()
+            shadow.shadowColor = UIColor.black
+            shadow.shadowOffset = CGSize(width: 0, height: 0)
+            shadow.shadowBlurRadius = 4.0
+            price?.addAttribute(NSAttributedStringKey.shadow,value: shadow,range: NSRange(location:0,length:(price?.mutableString.length)!))
+            //price?.addAttribute(NSAttributedStringKey.strokeWidth,value: -5.0,range: NSRange(location:0,length:(price?.mutableString.length)!))
+            price?.addAttribute(NSAttributedStringKey.font,value: name.font.withSize(28),range: NSRange(location:0,length:(price?.mutableString.length)!))
         }else{
             self.view.backgroundColor = UIColor.black
             back.layer.borderColor = UIColor.white.cgColor
@@ -318,6 +325,13 @@ class ShopViewController: UIViewController,colorDelegate {
             rs.tintColor = UIColor.white
             gs.tintColor = UIColor.white
             bs.tintColor = UIColor.white
+            let shadow = NSShadow()
+            shadow.shadowColor = UIColor.white
+            shadow.shadowOffset = CGSize(width: 0, height: 0)
+            shadow.shadowBlurRadius = 4.0
+            price?.addAttribute(NSAttributedStringKey.shadow,value: shadow,range: NSRange(location:0,length:(price?.mutableString.length)!))
+            //price?.addAttribute(NSAttributedStringKey.strokeWidth,value: -5.0,range: NSRange(location:0,length:(price?.mutableString.length)!))
+            price?.addAttribute(NSAttributedStringKey.font,value: name.font.withSize(28),range: NSRange(location:0,length:(price?.mutableString.length)!))
         }
     }
     @IBAction func smallclick(_ sender: AnyObject) {
@@ -1522,6 +1536,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("Selected", for: UIControlState())
                 }
             }else if(select == 13 && shop13 == 1){
+                let shadow = NSShadow()
+                shadow.shadowOffset = CGSize(width: 0, height: 0)
+                shadow.shadowBlurRadius = 4.0
                 if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
                     buy.setTitle("NIGHTMODE\nON", for: UIControlState())
                     provider.setInt(forKey: "nm", value: 1)
@@ -1552,6 +1569,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     rs.tintColor = UIColor.white
                     gs.tintColor = UIColor.white
                     bs.tintColor = UIColor.white
+                    shadow.shadowColor = UIColor.white
+                    price?.removeAttribute(NSAttributedStringKey.shadow, range: NSRange(location:0,length:(price?.mutableString.length)!))
+                    price?.addAttribute(NSAttributedStringKey.shadow,value: shadow,range: NSRange(location:0,length:(price?.mutableString.length)!))
                 }else{
                     buy.setTitle("NIGHTMODE\nOFF", for: UIControlState())
                     provider.setInt(forKey: "nm", value: 0)
@@ -1582,6 +1602,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     rs.tintColor = UIColor.black
                     gs.tintColor = UIColor.black
                     bs.tintColor = UIColor.black
+                    shadow.shadowColor = UIColor.black
+                    price?.removeAttribute(NSAttributedStringKey.shadow, range: NSRange(location:0,length:(price?.mutableString.length)!))
+                    price?.addAttribute(NSAttributedStringKey.shadow,value: shadow,range: NSRange(location:0,length:(price?.mutableString.length)!))
                 }
             }
         }

@@ -147,7 +147,52 @@ class ScoreViewController: UIViewController {
         let confettiView = SAConfettiView(frame: self.view.bounds)
         self.view.insertSubview(confettiView, at: 0)
         confettiView.isUserInteractionEnabled = false
-        confettiView.colors = [UIColor.red, UIColor.blue]
+        let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        switch provider.getInt(forKey: "shopselect", defaultValue: 1) {
+        case 1:
+            confettiView.colors =  [UIColor(red: 0.0, green: 0.29, blue: 1.0, alpha: 1.0),UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)]
+            break;
+        case 2:
+            confettiView.colors =  [UIColor(red: 1.0, green: 0.0, blue: 0.45, alpha: 1.0),UIColor(red: 0.14, green: 1.0, blue: 0.0, alpha: 1.0)]
+            break;
+        case 3:
+            confettiView.colors =  [UIColor(red: 1.0, green: 0.32, blue: 0.0, alpha: 1.0),UIColor(red: 0.015, green: 0.0, blue: 1.0, alpha: 1.0)]
+            break;
+        case 4:
+            confettiView.colors =  [UIColor(red: 0.0, green: 1.0, blue: 0.086, alpha: 1.0),UIColor(red: 0.58, green: 0.0, blue: 1.0, alpha: 1.0)]
+            break;
+        case 5:
+            confettiView.colors =  [UIColor(red: 0.87, green: 0.99, blue: 0.0, alpha: 1.0),UIColor(red: 0.0, green: 0.57, blue: 0.99, alpha: 1.0)]
+            break;
+        case 6:
+            confettiView.colors =  [UIColor(red: 1.0, green: 0.94, blue: 0.0, alpha: 1.0),UIColor(red: 0.34, green: 0.17, blue: 0.17, alpha: 1.0)]
+            break;
+        case 7:
+               confettiView.colors =  [UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0),UIColor(red: 0.23, green: 0.23, blue: 0.23, alpha: 1.0)]
+            break;
+        case 8:
+            confettiView.colors =  [UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 1.0),UIColor(red: 0.07, green: 0.73, blue: 0.76, alpha: 1.0)]
+            break;
+        case 9:
+            confettiView.colors =  [UIColor(red: 0.55, green: 1.0, blue: 0.54, alpha: 1.0),UIColor(red: 0.9, green: 0.7, blue: 0.64, alpha: 1.0)]
+            break;
+        case 10:
+            confettiView.colors =  [UIColor(red: 0.25, green: 0.074, blue: 0.94, alpha: 1.0),UIColor(red: 0.09, green: 0.92, blue: 0.57, alpha: 1.0)]
+            break;
+        case 11:
+            confettiView.colors =  [UIColor(red: 0.84, green: 0.38, blue: 0.17, alpha: 1.0),UIColor(red: 0.23, green: 0.27, blue: 0.047, alpha: 1.0)]
+            break;
+        case 12:
+            confettiView.colors =  [UIColor(red: 1.0, green: 0.0, blue: 0.39, alpha: 1.0),UIColor(red: 1.0, green: 0.54, blue: 1.0, alpha: 1.0)]
+            break;
+        case 15:
+             confettiView.colors =  [UIColor(hexString: provider.getString(forKey: "cpsc", defaultValue: "#004cff")),UIColor(hexString:  provider.getString(forKey: "cpbc", defaultValue: "#ff0000"))]
+            break;
+        default:
+            confettiView.colors =  [UIColor(red: 0.0, green: 0.29, blue: 1.0, alpha: 1.0),UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)]
+            break;
+        }
+        
         if(startstop == true){
             //start confetti
                 confettiView.startConfetti()
