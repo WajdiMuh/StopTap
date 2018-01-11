@@ -12,7 +12,6 @@ import AVFoundation
 class PlayViewController: UIViewController {
     @IBOutlet weak var move: UIImageView!
     @IBOutlet weak var base: UIImageView!
-    var time:Double = 3
     var score:Int = 0
     var gright:Bool = true
     var pausetf:Bool = false
@@ -29,6 +28,10 @@ class PlayViewController: UIViewController {
     var doubleanim:Bool = false
     var randromdoubletime:Double = Double(arc4random_uniform(5) + 5)
     let layerfixbase:CALayer = CALayer()
+    var animator: UIViewPropertyAnimator!
+    var number:CGFloat = 0.0
+    var doubleanimator: UIViewPropertyAnimator!
+    var doublelnumber:CGFloat = 0.0
     @IBOutlet weak var x2top: NSLayoutConstraint!
     @IBOutlet weak var doublescore: UIButton!
     @IBOutlet weak var x2l: NSLayoutConstraint!
@@ -232,6 +235,10 @@ class PlayViewController: UIViewController {
                     pause.isHidden = true
                     gameoverc.constant = (self.view.bounds.width/2) - (self.gameover.bounds.width/2)
                     gameover.setNeedsLayout()
+                    animator.stopAnimation(true)
+                    if(doubleanim == true){
+                    doubleanimator.stopAnimation(true)
+                    }
                     UIView.animate(withDuration: 0.5, delay: 0, options:[], animations: {
                         self.gameover.alpha = 1
                      self.gameover.superview?.layoutIfNeeded()
@@ -297,6 +304,10 @@ class PlayViewController: UIViewController {
                 pret.isHidden = true
                 pm.isHidden = true
                 pause.isHidden = true
+                animator.stopAnimation(true)
+                if(doubleanim == true){
+                doubleanimator.stopAnimation(true)
+                }
                 gameoverc.constant = (self.view.bounds.width/2) - (self.gameover.bounds.width/2)
                 gameover.setNeedsLayout()
                 UIView.animate(withDuration: 0.5, delay: 0, options:[], animations: {
@@ -334,7 +345,9 @@ class PlayViewController: UIViewController {
         newhighscore = false
         doubleon = false
         print(String(describing: self.view.bounds.width / UIScreen.main.scale))
+        if(pausetf == false){
         rafterf()
+        }
         x2top.constant = ((base.center.y - coin.center.y) / 2) + coin.center.y - (x2h.constant / 2)
         x2l.constant = -1 * x2w.constant
         gameoverc.constant = (self.view.bounds.width - self.gameover.bounds.width)
@@ -465,7 +478,7 @@ class PlayViewController: UIViewController {
         kill1.transform = CGAffineTransform(scaleX: 1, y: 1)
         kill2.transform = CGAffineTransform(scaleX: 1, y: 1)
         kill3.transform = CGAffineTransform(scaleX: 1, y: 1)
-        timerand()
+        //timerand()
         //pauseb.setTitle("⎮⎮", for: UIControlState())
         pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
         dir.image = dir.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
@@ -482,6 +495,8 @@ class PlayViewController: UIViewController {
         pr.isHidden = true
         pret.isHidden = true
         pm.isHidden = true
+        viewclickb.isHidden = false
+        viewclickb.isUserInteractionEnabled = true
         gameovercheck = 0
         if (provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
             wrong4.isHidden = true
@@ -516,7 +531,7 @@ class PlayViewController: UIViewController {
         doubletimer = Timerp(interval: randromdoubletime, callback: doublepointsmove, repeats: false)
         doubletimer.play()
         ///////////////////////pause.imageEdgeInsets = UIEdgeInsetsMake(6, 6, 6, 6)
-        timerand()
+        //timerand()
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         if (provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
             wrong4.isHidden = true
@@ -582,49 +597,92 @@ class PlayViewController: UIViewController {
     }*/
     func rafterf() {
         gright = true
-        let rtimeafterp:Double = ((time * Double(self.view.bounds.width - self.move.bounds.width - movel.constant))/Double(self.view.bounds.width - self.move.bounds.width))
         movel.constant = self.view.bounds.width - self.move.bounds.width
         move.setNeedsLayout()
-        UIView.animate(withDuration: rtimeafterp, delay: 0, options:[], animations: {
+        animator = UIViewPropertyAnimator(duration: timerand(), curve: .linear) { [unowned self, move] in
             self.move.superview?.layoutIfNeeded()
-        }, completion: {(finished: Bool) -> Void in
-            if (finished == true){
-                self.timerand()
-                self.lafterf()
+        }
+        animator.addCompletion {
+            position in
+            switch position {
+            case .end:
+                do {
+                    self.animator = nil
+                    self.number = 0.0
+                    self.lafterf()
+                    print("fuck")
+                    
+                }
+            case .current: print("Completion handler called mid-way through animation")
+            case .start: print("Completion handler called  at start of animation")
             }
-        })
+        }
+        animator.fractionComplete = number
+        print("r hit wall animation state" + String(animator.state.rawValue))
+        animator.startAnimation()
+        
     }
     func lafterf() {
         gright = false
-        let ltimeafterp:Double = ((time * Double(movel.constant))/Double(self.view.bounds.width - self.move.bounds.width))
         movel.constant = 0
         move.setNeedsLayout()
-        UIView.animate(withDuration: ltimeafterp, delay: 0, options:[], animations: {
+        animator = UIViewPropertyAnimator(duration: timerand(), curve: .linear) { [unowned self, move] in
             self.move.superview?.layoutIfNeeded()
-        }, completion: {(finished: Bool) -> Void in
-            if (finished == true){
-                self.timerand()
-                self.rafterf()
+        }
+        animator.addCompletion {
+            position in
+            switch position {
+            case .end:
+                do {
+                    self.animator = nil
+                    self.number = 0.0
+                    self.rafterf()
+                    print("fuck")
+                }
+            case .current: print("Completion handler called mid-way through animation")
+            case .start: print("Completion handler called  at start of animation")
             }
-        })
+        }
+        animator.fractionComplete = number
+        animator.startAnimation()
+        
     }
     @IBAction func pause(_ sender: AnyObject) {
         if(pausetf == false){
             pausetf = true
-            doubletimer.pause()
-            doubletimerlast.pause()
             pause.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             self.dir.isHidden = true
-            x2l.constant = (doublescore.layer.presentation()?.frame.origin.x)!
-            movel.constant = (move.layer.presentation()?.frame.origin.x)!
-            doublescore.layer.removeAllAnimations()
-            doublescore.superview?.setNeedsLayout()
-            doublescore.superview?.layoutIfNeeded()
-            move.layer.removeAllAnimations()
-            move.superview?.setNeedsLayout()
-            move.superview?.layoutIfNeeded()
+            //stopAnimation()
+            if(gright == true){
+                number = animator.fractionComplete
+                animator.stopAnimation(true)
+                animator = nil
+                movel.constant = 0
+                move.setNeedsLayout()
+                self.move.superview?.layoutIfNeeded()
+            }else{
+                number = animator.fractionComplete
+                animator.stopAnimation(true)
+                animator = nil
+                movel.constant = self.view.bounds.width - self.move.bounds.width
+                move.setNeedsLayout()
+                self.move.superview?.layoutIfNeeded()
+            }
             baseanim.layer.removeAllAnimations()
             baseanim.isHidden = true
+            if(doubleon == true){
+                doubletimerlast.pause()
+            }
+            if(doubleanim == false){
+                  doubletimer.pause()
+            }else{
+                doublelnumber = doubleanimator.fractionComplete
+                doubleanimator.stopAnimation(true)
+                doubleanimator = nil
+                x2l.constant = -1 * x2w.constant
+                doublescore.setNeedsLayout()
+                self.doublescore.superview?.layoutIfNeeded()
+            }
             kill1.layer.removeAllAnimations()
             kill2.layer.removeAllAnimations()
             kill3.layer.removeAllAnimations()
@@ -646,15 +704,18 @@ class PlayViewController: UIViewController {
             viewclickb.isUserInteractionEnabled = false
         }else{
             pausetf = false
-            doubletimer.play()
-            doubletimerlast.play()
             if(gright == true){
                 rafterf()
                 }else{
                 lafterf()
                 }
+            if(doubleon == true){
+                doubletimerlast.play()
+            }
             if(doubleanim == true){
-                doublepointsmove()
+                    doublepointsmove()
+            }else{
+                doubletimer.play()
             }
              pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             if(viewclickb.gestureRecognizers?.isEmpty == false){
@@ -699,7 +760,7 @@ class PlayViewController: UIViewController {
         kill1.transform = CGAffineTransform(scaleX: 1, y: 1)
         kill2.transform = CGAffineTransform(scaleX: 1, y: 1)
         kill3.transform = CGAffineTransform(scaleX: 1, y: 1)
-        timerand()
+        //timerand()
         pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
         dir.image = dir.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         pausetf = false
@@ -725,15 +786,18 @@ class PlayViewController: UIViewController {
         }
     }
     @IBAction func res(_ sender: AnyObject) {
-        doubletimer.play()
-        doubletimerlast.play()
         if(gright == true){
             rafterf()
         }else{
             lafterf()
         }
+        if(doubleon == true){
+            doubletimerlast.play()
+        }
         if(doubleanim == true){
             doublepointsmove()
+        }else{
+            doubletimer.play()
         }
         pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
         pausetf = false
@@ -766,40 +830,60 @@ class PlayViewController: UIViewController {
         timep = Float((movel.constant) * CGFloat(time))/Float(self.view.bounds.width - self.move.bounds.width)
         }
     }*/
-    func timerand() {
+    func timerand() -> Double{
         switch (2){
             //arc4random_uniform(3)
         case 0:
-            time = Double(0.288)
+            //time = Double(0.288)
             print((self.view.bounds.width))
             print(UIScreen.main.scale)
             print(time)
             break;
         case 1:
-            time = Double((0.576 * ((self.view.bounds.width - self.move.bounds.width)))/(376.2857))
+            return Double(0.576)
             break;
         case 2:
-            time = Double(0.864)
+            return Double(0.864)
             break;
         default:
-            time = Double((0.576 * ((self.view.bounds.width - self.move.bounds.width)))/(376.2857))
+            //time = Double((0.576 * ((self.view.bounds.width - self.move.bounds.width)))/(376.2857))
             break;
         }
     }
     @objc func applicationWillResignActiveNotification() {
         if(gameovercheck == 0){
-            movel.constant = (move.layer.presentation()?.frame.origin.x)!
-            x2l.constant = (doublescore.layer.presentation()?.frame.origin.x)!
-            move.layer.removeAllAnimations()
-            move.superview?.setNeedsLayout()
-            move.superview?.layoutIfNeeded()
-            doublescore.layer.removeAllAnimations()
-            doublescore.superview?.setNeedsLayout()
-            doublescore.superview?.layoutIfNeeded()
-            doubletimer.pause()
-            doubletimerlast.pause()
+            if(animator != nil){
+            if(gright == true){
+                number = animator.fractionComplete
+                animator.stopAnimation(true)
+                animator = nil
+                movel.constant = 0
+                move.setNeedsLayout()
+                self.move.superview?.layoutIfNeeded()
+            }else{
+                number = animator.fractionComplete
+                animator.stopAnimation(true)
+                animator = nil
+                movel.constant = self.view.bounds.width - self.move.bounds.width
+                move.setNeedsLayout()
+                self.move.superview?.layoutIfNeeded()
+            }
+            }
             pause.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             pausetf = true
+            if(doubleon == true){
+                doubletimerlast.pause()
+            }
+            if(doubleanim == false){
+                doubletimer.pause()
+            }else{
+                doublelnumber = doubleanimator.fractionComplete
+                doubleanimator.stopAnimation(true)
+                doubleanimator = nil
+                x2l.constant = -1 * x2w.constant
+                doublescore.setNeedsLayout()
+                self.doublescore.superview?.layoutIfNeeded()
+            }
             dir.isHidden = true
             baseanim.layer.removeAllAnimations()
             baseanim.isHidden = true
@@ -880,34 +964,48 @@ class PlayViewController: UIViewController {
             print("finished swipe in")
     }
     func doublepointsmove(){
+        print("double points callback")
         doubleanim = true
         doublescore.isHidden = false
         doublescore.isEnabled = true
-        doublescore.isUserInteractionEnabled = true
-        let x2ltime:Double = (Double((10 * (self.view.bounds.width - x2l.constant))/(self.view.bounds.width + x2w.constant)))
-        print(x2ltime)
+        doublescore.isUserInteractionEnabled = false
         self.x2l.constant = self.view.bounds.width
         doublescore.setNeedsLayout()
-        UIView.animate(withDuration: x2ltime, delay: 0, options: [.allowUserInteraction], animations: {
+        doubleanimator = UIViewPropertyAnimator(duration: 10, curve: .linear) { [unowned self, move] in
             self.doublescore.superview?.layoutIfNeeded()
-        }, completion: {(finished: Bool) -> Void in
-            if(finished == true){
-                self.doubleanim = false
-                print("fini")
-            self.doublescore.isHidden = true
-            self.doublescore.isEnabled = false
-            self.doublescore.isUserInteractionEnabled = false
-            self.x2l.constant = -1 * self.x2w.constant
-                self.randromdoubletime = Double(arc4random_uniform(5) + 5)
-                self.doubletimer.invalidate()
-              //  self.doubletimer =  Foundation.Timer(timeInterval: self.randromdoubletime, target: self, selector: #selector(PlayViewController.doublepointsmove), userInfo: nil, repeats: false)
-              //  RunLoop.current.add(self.doubletimer, forMode: RunLoopMode.commonModes)
-                self.doubletimer =  Timerp(interval: self.randromdoubletime, callback: self.doublepointsmove, repeats: false)
-                self.doubletimer.play()
-                print(self.randromdoubletime)
-                print(self.randromdoubletime)
+        }
+        doubleanimator.addCompletion {
+            position in
+            switch position {
+            case .end:
+                do {
+                    
+                    self.doubleanim = false
+                    print("fini")
+                    self.doublescore.isHidden = true
+                    self.doublescore.isEnabled = false
+                    self.doublescore.isUserInteractionEnabled = false
+                    self.x2l.constant = -1 * self.x2w.constant
+                    self.randromdoubletime = Double(arc4random_uniform(5) + 5)
+                    self.doubletimer.invalidate()
+                    //  self.doubletimer =  Foundation.Timer(timeInterval: self.randromdoubletime, target: self, selector: #selector(PlayViewController.doublepointsmove), userInfo: nil, repeats: false)
+                    //  RunLoop.current.add(self.doubletimer, forMode: RunLoopMode.commonModes)
+                    self.doubletimer =  Timerp(interval: self.randromdoubletime, callback: self.doublepointsmove, repeats: false)
+                    self.doubletimer.play()
+                    print(self.randromdoubletime)
+                    print(self.randromdoubletime)
+                    self.doubleanimator = nil
+                    self.doublelnumber = 0.0
+                    print("fuck")
+                }
+            case .current: print("Completion handler called mid-way through animation")
+            case .start: print("Completion handler called  at start of animation")
             }
-        })
+        }
+        doubleanimator.isUserInteractionEnabled = true
+        doubleanimator.fractionComplete = doublelnumber
+        doubleanimator.startAnimation()
+        
     }
     @objc func doubletimerlasting(){
         doubleon = false

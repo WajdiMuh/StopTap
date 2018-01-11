@@ -55,6 +55,8 @@ class ShopViewController: UIViewController,colorDelegate {
     var boxchoose:Int = 0
     var buycancel = Foundation.Timer(timeInterval: 1.5, target: self, selector: #selector(ShopViewController.buycanim), userInfo: nil, repeats: false)
     let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+    var price:NSMutableAttributedString? = nil
+    var namec:NSMutableAttributedString? = nil
     @IBOutlet weak var cperror: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +78,10 @@ class ShopViewController: UIViewController,colorDelegate {
         bigt.layer.borderWidth = 5
         small.layer.cornerRadius = 10
         small.layer.borderWidth = 5
+        price = NSMutableAttributedString(string: "250 Coin")
+        price?.addAttribute(NSAttributedStringKey.foregroundColor,value: UIColor(red: 1.0, green: 0.85, blue: 0.0, alpha: 1.0),range: NSRange(location:0,length:(price?.mutableString.length)!))
         coinval.text = String(coinv)
+        namec = NSMutableAttributedString(string:"Green And Pink\n")
         cp.delegate = self
         lboxview.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
         lboxview.layer.borderWidth = ((2.5 * self.view.bounds.width) / 411)
@@ -97,57 +102,57 @@ class ShopViewController: UIViewController,colorDelegate {
         }else if(selected == 2){
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.45, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.14, green: 1.0, blue: 0.0, alpha: 1.0)
-            name.text = "Green And Pink\n250 Coin"
+            name.text = "Green And Pink"
             buy.setTitle("Selected", for: UIControlState())
         }else if(selected == 3){
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.32, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.015, green: 0.0, blue: 1.0, alpha: 1.0)
-            name.text = "Blue And Orange\n250 Coin"
+            name.text = "Blue And Orange"
             buy.setTitle("Selected", for: UIControlState())
         }else if(selected == 4){
             lboxview.backgroundColor = UIColor(red: 0.0, green: 1.0, blue: 0.086, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.58, green: 0.0, blue: 1.0, alpha: 1.0)
-            name.text = "Purple And Green\n250 Coin"
+            name.text = "Purple And Green"
             buy.setTitle("Selected", for: UIControlState())
         }else if(selected == 5){
             lboxview.backgroundColor = UIColor(red: 0.87, green: 0.99, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.0, green: 0.57, blue: 0.99, alpha: 1.0)
-            name.text = "Blue And Yellow\n250 Coin"
+            name.text = "Blue And Yellow"
             buy.setTitle("Selected", for: UIControlState())
         }else if(selected == 6){
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.94, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.34, green: 0.17, blue: 0.17, alpha: 1.0)
-            name.text = "Brown And Yellow\n250 Coin"
+            name.text = "Brown And Yellow"
             buy.setTitle("Selected", for: UIControlState())
         }else if(selected == 7){
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.23, green: 0.23, blue: 0.23, alpha: 1.0)
-            name.text = "Grey And Red\n250 Coin"
+            name.text = "Grey And Red"
             buy.setTitle("Selected", for: UIControlState())
         }else if(selected == 8){
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.07, green: 0.73, blue: 0.76, alpha: 1.0)
-            name.text = "Light Blue And Pink\n250 Coin"
+            name.text = "Light Blue And Pink"
             buy.setTitle("Selected", for: UIControlState())
         }else if(selected == 9){
             lboxview.backgroundColor = UIColor(red: 0.55, green: 1.0, blue: 0.54, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.9, green: 0.7, blue: 0.64, alpha: 1.0)
-            name.text = "Light Brown And Light Green\n250 Coin"
+            name.text = "Light Brown And Light Green"
             buy.setTitle("Selected", for: UIControlState())
         }else if(selected == 10){
             lboxview.backgroundColor = UIColor(red: 0.25, green: 0.074, blue: 0.94, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.09, green: 0.92, blue: 0.57, alpha: 1.0)
-            name.text = "Light Green And Blue\n250 Coin"
+            name.text = "Light Green And Blue"
             buy.setTitle("Selected", for: UIControlState())
         }else if(selected == 11){
             lboxview.backgroundColor = UIColor(red: 0.84, green: 0.38, blue: 0.17, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.23, green: 0.27, blue: 0.047, alpha: 1.0)
-            name.text = "Olive And Orange\n250 Coin"
+            name.text = "Olive And Orange"
             buy.setTitle("Selected", for: UIControlState())
         }else if(selected == 12){
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.39, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 1.0, green: 0.54, blue: 1.0, alpha: 1.0)
-            name.text = "Light Pink And Fuschia\n250 Coin"
+            name.text = "Light Pink And Fuschia"
             buy.setTitle("Selected", for: UIControlState())
         }else if(selected == 15){
             lboxview.isHidden = true
@@ -358,9 +363,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 2
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.45, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.14, green: 1.0, blue: 0.0, alpha: 1.0)
-            name.text = "Green And Pink\n250 Coin"
             buy.isHidden = false
             if (shop2 == 1){
+                name.text = "Green And Pink"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -369,6 +374,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Green And Pink\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -376,9 +385,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 3
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.32, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.015, green: 0.0, blue: 1.0, alpha: 1.0)
-            name.text = "Blue And Orange\n250 Coin"
             buy.isHidden = false
             if (shop3 == 1){
+                name.text = "Blue And Orange"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -387,6 +396,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Blue And Orange\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -394,9 +407,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 4
             lboxview.backgroundColor = UIColor(red: 0.0, green: 1.0, blue: 0.086, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.58, green: 0.0, blue: 1.0, alpha: 1.0)
-            name.text = "Purple And Green\n250 Coin"
             buy.isHidden = false
             if (shop4 == 1){
+                name.text = "Purple And Green"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -405,6 +418,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Purple And Green\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -412,9 +429,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 5
             lboxview.backgroundColor = UIColor(red: 0.87, green: 0.99, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.0, green: 0.57, blue: 0.99, alpha: 1.0)
-            name.text = "Blue And Yellow\n250 Coin"
             buy.isHidden = false
             if (shop5 == 1){
+                name.text = "Blue And Yellow"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -423,6 +440,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Blue And Yellow\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -430,9 +451,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 6
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.94, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.34, green: 0.17, blue: 0.17, alpha: 1.0)
-            name.text = "Brown And Yellow\n250 Coin"
             buy.isHidden = false
             if (shop6 == 1){
+                name.text = "Brown And Yellow"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -441,6 +462,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Brown And Yellow\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -448,9 +473,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 7
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.23, green: 0.23, blue: 0.23, alpha: 1.0)
-            name.text = "Grey And Red\n250 Coin"
             buy.isHidden = false
             if (shop7 == 1){
+                name.text = "Grey And Red"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -459,6 +484,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Grey And Red\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -466,9 +495,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 8
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.07, green: 0.73, blue: 0.76, alpha: 1.0)
-            name.text = "Light Blue And Pink\n250 Coin"
             buy.isHidden = false
             if (shop8 == 1){
+                name.text = "Light Blue And Pink"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -477,6 +506,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Light Blue And Pink\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -484,9 +517,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 9
             lboxview.backgroundColor = UIColor(red: 0.55, green: 1.0, blue: 0.54, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.9, green: 0.7, blue: 0.64, alpha: 1.0)
-            name.text = "Light Brown And Light Green\n250 Coin"
             buy.isHidden = false
             if (shop9 == 1){
+                name.text = "Light Brown And Light Green"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -495,6 +528,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Light Brown And Light Green\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -502,9 +539,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 10
             lboxview.backgroundColor = UIColor(red: 0.25, green: 0.074, blue: 0.94, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.09, green: 0.92, blue: 0.57, alpha: 1.0)
-            name.text = "Light Green And Blue\n250 Coin"
             buy.isHidden = false
             if (shop10 == 1){
+                name.text = "Light Green And Blue"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -513,6 +550,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Light Green And Blue\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -520,9 +561,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 11
             lboxview.backgroundColor = UIColor(red: 0.84, green: 0.38, blue: 0.17, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.23, green: 0.27, blue: 0.047, alpha: 1.0)
-            name.text = "Olive And Orange\n250 Coin"
             buy.isHidden = false
             if (shop11 == 1){
+                name.text = "Olive And Orange"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -531,6 +572,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Olive And Orange\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -538,7 +583,6 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 12
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.39, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 1.0, green: 0.54, blue: 1.0, alpha: 1.0)
-            name.text = "Light Pink And Fuschia\n250 Coin"
             buy.isHidden = false
             right.isEnabled = true
             right.isHidden = false
@@ -562,6 +606,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 center.constant = 77
                 name.layoutIfNeeded()
             if (shop12 == 1){
+                name.text = "Light Pink And Fuschia"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -570,6 +615,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Light Pink And Fuschia\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -596,9 +645,9 @@ class ShopViewController: UIViewController,colorDelegate {
             smallt.isHidden = true
             bigt.isHidden = true
             cp.isHidden = true
-            name.text = "NIGHTMODE\nReplace White With Black\n500 Coin"
             name.font = name.font.withSize(20.25)
             if (shop13 == 1){
+                name.text = "NIGHTMODE\nReplace White With Black"
                 buyb = 3
                 if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
                     buy.setTitle("NIGHTMODE\nOFF", for: UIControlState())
@@ -606,6 +655,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("NIGHTMODE\nON", for: UIControlState())
                 }
             }else{
+                price?.mutableString.setString("500 Coin")
+                namec?.mutableString.setString("NIGHTMODE\nReplace White With Black\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buyb = 1
                 buy.setTitle("Buy", for: UIControlState())
             }
@@ -634,15 +687,21 @@ class ShopViewController: UIViewController,colorDelegate {
             cp.isHidden = true
             name.font = name.font.withSize(20.25)
             if (shop14 == 3){
-                name.text = "X3\nTriple Your Coins\n1000 Coin"
+                name.text = "X3\nTriple Your Coins"
                 buyb = 3
                 buy.isHidden = true
             }else if(shop14 == 2){
-                name.text = "X3\nTriple Your Coins\n1000 Coin"
+                price?.mutableString.setString("1000 Coin")
+                namec?.mutableString.setString("X3\nTriple Your Coins\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buyb = 1
                 buy.setTitle("Buy", for: UIControlState())
             }else if(shop14 == 1){
-                name.text = "X2\nDouble Your Coins\n500 Coin"
+                price?.mutableString.setString("500 Coin")
+                namec?.mutableString.setString("X2\nDouble Your Coins\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buyb = 1
                 buy.setTitle("Buy", for: UIControlState())
             }
@@ -688,9 +747,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("1000 Coin")
+                namec?.mutableString.setString("Color Picker\nChoose Your Own Colors\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buyb = 1
                 buy.setTitle("Buy", for: UIControlState())
-                name.text = "Color Picker\nChoose Your Own Colors\n1000 Coin"
             }
         }
     }
@@ -701,9 +763,9 @@ class ShopViewController: UIViewController,colorDelegate {
             left.isHidden = false
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.45, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.14, green: 1.0, blue: 0.0, alpha: 1.0)
-            name.text = "Green And Pink\n250 Coin"
             buy.isHidden = false
             if (shop2 == 1){
+                name.text = "Green And Pink"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -712,6 +774,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Green And Pink\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -719,9 +785,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 3
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.32, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.015, green: 0.0, blue: 1.0, alpha: 1.0)
-            name.text = "Blue And Orange\n250 Coin"
             buy.isHidden = false
             if (shop3 == 1){
+                name.text = "Blue And Orange"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -730,6 +796,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Blue And Orange\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -737,9 +807,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 4
             lboxview.backgroundColor = UIColor(red: 0.0, green: 1.0, blue: 0.086, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.58, green: 0.0, blue: 1.0, alpha: 1.0)
-            name.text = "Purple And Green\n250 Coin"
             buy.isHidden = false
             if (shop4 == 1){
+                name.text = "Purple And Green"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -748,6 +818,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Purple And Green\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -755,9 +829,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 5
             lboxview.backgroundColor = UIColor(red: 0.87, green: 0.99, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.0, green: 0.57, blue: 0.99, alpha: 1.0)
-            name.text = "Blue And Yellow\n250 Coin"
             buy.isHidden = false
             if (shop5 == 1){
+                    name.text = "Blue And Yellow"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -766,6 +840,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Blue And Yellow\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -773,9 +851,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 6
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.94, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.34, green: 0.17, blue: 0.17, alpha: 1.0)
-            name.text = "Brown And Yellow\n250 Coin"
             buy.isHidden = false
             if (shop6 == 1){
+                name.text = "Brown And Yellow"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -784,6 +862,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Brown And Yellow\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -791,9 +873,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 7
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.23, green: 0.23, blue: 0.23, alpha: 1.0)
-            name.text = "Grey And Red\n250 Coin"
             buy.isHidden = false
             if (shop7 == 1){
+                name.text = "Grey And Red"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -802,6 +884,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Grey And Red\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -809,9 +895,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 8
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.07, green: 0.73, blue: 0.76, alpha: 1.0)
-            name.text = "Light Blue And Pink\n250 Coin"
             buy.isHidden = false
             if (shop8 == 1){
+                name.text = "Light Blue And Pink"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -820,6 +906,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Light Blue And Pink\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -827,9 +917,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 9
             lboxview.backgroundColor = UIColor(red: 0.55, green: 1.0, blue: 0.54, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.9, green: 0.7, blue: 0.64, alpha: 1.0)
-            name.text = "Light Brown And Light Green\n250 Coin"
             buy.isHidden = false
             if (shop9 == 1){
+                name.text = "Light Brown And Light Green"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -838,6 +928,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Light Brown And Light Green\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -845,9 +939,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 10
             lboxview.backgroundColor = UIColor(red: 0.25, green: 0.074, blue: 0.94, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.09, green: 0.92, blue: 0.57, alpha: 1.0)
-            name.text = "Light Green And Blue\n250 Coin"
             buy.isHidden = false
             if (shop10 == 1){
+                name.text = "Light Green And Blue"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -856,6 +950,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Light Green And Blue\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -863,9 +961,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 11
             lboxview.backgroundColor = UIColor(red: 0.84, green: 0.38, blue: 0.17, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.23, green: 0.27, blue: 0.047, alpha: 1.0)
-            name.text = "Olive And Orange\n250 Coin"
             buy.isHidden = false
             if (shop11 == 1){
+                name.text = "Olive And Orange"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -874,6 +972,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Olive And Orange\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -881,9 +983,9 @@ class ShopViewController: UIViewController,colorDelegate {
             select = 12
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.39, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 1.0, green: 0.54, blue: 1.0, alpha: 1.0)
-            name.text = "Light Pink And Fuschia\n250 Coin"
             buy.isHidden = false
             if (shop12 == 1){
+                name.text = "Light Pink And Fuschia"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -892,6 +994,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("250 Coin")
+                namec?.mutableString.setString("Light Pink And Fuschia\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
@@ -918,9 +1024,9 @@ class ShopViewController: UIViewController,colorDelegate {
             smallt.isHidden = true
             bigt.isHidden = true
             cp.isHidden = true
-            name.text = "NIGHTMODE\nReplace White With Black\n500 Coin"
             name.font = name.font.withSize(20.25)
             if (shop13 == 1){
+                name.text = "NIGHTMODE\nReplace White With Black"
                 buyb = 3
                 if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
                     buy.setTitle("NIGHTMODE\nOFF", for: UIControlState())
@@ -928,6 +1034,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("NIGHTMODE\nON", for: UIControlState())
                 }
             }else{
+                price?.mutableString.setString("500 Coin")
+                namec?.mutableString.setString("NIGHTMODE\nReplace White With Black\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buyb = 1
                 buy.setTitle("Buy", for: UIControlState())
             }
@@ -957,15 +1067,21 @@ class ShopViewController: UIViewController,colorDelegate {
             cp.isHidden = true
             name.font = name.font.withSize(20.25)
             if (shop14 == 3){
-                name.text = "X3\nTriple Your Coins\n1000 Coin"
+                name.text = "X3\nTriple Your Coins"
                 buyb = 3
                 buy.isHidden = true
             }else if(shop14 == 2){
-                name.text = "X3\nTriple Your Coins\n1000 Coin"
+                price?.mutableString.setString("1000 Coin")
+                namec?.mutableString.setString("X3\nTriple Your Coins\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buyb = 1
                 buy.setTitle("Buy", for: UIControlState())
             }else if(shop14 == 1){
-                name.text = "X2\nDouble Your Coins\n500 Coin"
+                price?.mutableString.setString("500 Coin")
+                namec?.mutableString.setString("X2\nDouble Your Coins\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buyb = 1
                 buy.setTitle("Buy", for: UIControlState())
             }
@@ -1011,9 +1127,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buyb = 2
                 }
             }else{
+                price?.mutableString.setString("1000 Coin")
+                namec?.mutableString.setString("Color Picker\nChoose Your Own Colors\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buyb = 1
                 buy.setTitle("Buy", for: UIControlState())
-                name.text = "Color Picker\nChoose Your Own Colors\n1000 Coin"
             }
         }else if(select == 15){
             select = 16
@@ -1038,12 +1157,16 @@ class ShopViewController: UIViewController,colorDelegate {
             smallt.isHidden = true
             bigt.isHidden = true
             cp.isHidden = true
-            name.text = "Extra Live\nYou Will Now Have 4 Lives\n1000 Coin"
             name.font = name.font.withSize(20.25)
             if (shop16 == 1){
+                name.text = "Extra Live\nYou Will Now Have 4 Lives"
                 buyb = 3
                 buy.isHidden = true
             }else{
+                price?.mutableString.setString("1000 Coin")
+                namec?.mutableString.setString("Extra Live\nYou Will Now Have 4 Lives\n")
+                namec?.append(price!)
+                name.attributedText = namec
                 buyb = 1
                 buy.setTitle("Buy", for: UIControlState())
             }
@@ -1055,6 +1178,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 if(select == 2){
                     if(coinv >= 250){
                         buy.setTitle("Select", for: UIControlState())
+                        name.text = "Green And Pink"
                         buyb = 2
                         coinv = coinv - 250
                         coinval.text = String(coinv)
@@ -1073,6 +1197,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else if(select == 3){
                     if(coinv >= 250){
                         buy.setTitle("Select", for: UIControlState())
+                        name.text = "Blue And Orange"
                         buyb = 2
                         coinv = coinv - 250
                         coinval.text = String(coinv)
@@ -1091,6 +1216,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else if(select == 4){
                     if(coinv >= 250){
                         buy.setTitle("Select", for: UIControlState())
+                        name.text = "Purple And Green"
                         buyb = 2
                         coinv = coinv - 250
                         coinval.text = String(coinv)
@@ -1109,6 +1235,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else if(select == 5){
                     if(coinv >= 250){
                         buy.setTitle("Select", for: UIControlState())
+                        name.text = "Blue And Yellow"
                         buyb = 2
                         coinv = coinv - 250
                         coinval.text = String(coinv)
@@ -1127,6 +1254,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else if(select == 6){
                     if(coinv >= 250){
                         buy.setTitle("Select", for: UIControlState())
+                        name.text = "Brown And Yellow"
                         buyb = 2
                         coinv = coinv - 250
                         coinval.text = String(coinv)
@@ -1145,6 +1273,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else if(select == 7){
                     if(coinv >= 250){
                         buy.setTitle("Select", for: UIControlState())
+                        name.text = "Grey And Red"
                         buyb = 2
                         coinv = coinv - 250
                         coinval.text = String(coinv)
@@ -1163,6 +1292,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else if(select == 8){
                     if(coinv >= 250){
                         buy.setTitle("Select", for: UIControlState())
+                        name.text = "Light Blue And Pink"
                         buyb = 2
                         coinv = coinv - 250
                         coinval.text = String(coinv)
@@ -1181,6 +1311,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else if(select == 9){
                     if(coinv >= 250){
                         buy.setTitle("Select", for: UIControlState())
+                        name.text = "Light Brown And Light Green"
                         buyb = 2
                         coinv = coinv - 250
                         coinval.text = String(coinv)
@@ -1199,6 +1330,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else if(select == 10){
                     if(coinv >= 250){
                         buy.setTitle("Select", for: UIControlState())
+                          name.text = "Light Green And Blue"
                         buyb = 2
                         coinv = coinv - 250
                         coinval.text = String(coinv)
@@ -1217,6 +1349,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else if(select == 11){
                     if(coinv >= 250){
                         buy.setTitle("Select", for: UIControlState())
+                        name.text = "Olive And Orange"
                         buyb = 2
                         coinv = coinv - 250
                         coinval.text = String(coinv)
@@ -1235,6 +1368,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else if(select == 12){
                     if(coinv >= 250){
                         buy.setTitle("Select", for: UIControlState())
+                        name.text = "Light Pink And Fuschia"
                         buyb = 2
                         coinv = coinv - 250
                         coinval.text = String(coinv)
@@ -1253,6 +1387,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else if(select == 13){
                     if(coinv >= 500){
                         buy.setTitle("NIGHTMODE\nOFF", for: UIControlState())
+                        name.text = "NIGHTMODE\nReplace White With Black"
                         buyb = 3
                         coinv = coinv - 500
                         coinval.text = String(coinv)
@@ -1271,6 +1406,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else if(select == 14){
                     if(shop14 == 2){
                         if(coinv >= 1000){
+                            name.text = "X3\nTriple Your Coins"
                             buy.isHidden = true
                             buyb = 2
                             coinv = coinv - 1000
@@ -1288,10 +1424,13 @@ class ShopViewController: UIViewController,colorDelegate {
                         RunLoop.current.add(buycancel, forMode: RunLoopMode.commonModes)
                         }
                 }else{
-                        if(coinv >= 1000){
-                            name.text = "X3\nTriple Your Coins\n1000 Coin"
+                        if(coinv >= 500){
+                            price?.mutableString.setString("1000 Coin")
+                            namec?.mutableString.setString("X3\nTriple Your Coins\n")
+                            namec?.append(price!)
+                            name.attributedText = namec
                             buyb = 1
-                            coinv = coinv - 1000
+                            coinv = coinv - 500
                             coinval.text = String(coinv)
                             shop14 = 2
                             provider.setInt(forKey: "shop14", value: 2)
@@ -1340,6 +1479,7 @@ class ShopViewController: UIViewController,colorDelegate {
                     
                     }else if(select == 16){
                     if(coinv >= 1000){
+                            name.text = "Extra Live\nYou Will Now Have 4 Lives"
                             buy.isHidden = true
                             buyb = 2
                             coinv = coinv - 1000

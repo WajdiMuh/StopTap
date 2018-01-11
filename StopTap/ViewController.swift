@@ -375,6 +375,7 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
 
         }*/
         //remember excluded files later
+        //fix foreground on play viewvontroller as soon as someone enters
         bganim1.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
         bganim1.layer.borderWidth = ((2.5 * self.view.bounds.width) / 411)
         bganim2.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)

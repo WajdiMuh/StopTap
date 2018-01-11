@@ -27,7 +27,7 @@ class devViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 1, delay: 0, options: [.repeat,.curveEaseInOut,.autoreverse], animations: {
-            self.devimg.transform = self.devimg.transform.translatedBy(x: 0, y: 4).scaledBy(x: 1.02, y: 1.02)
+            self.devimg.transform = self.devimg.transform.scaledBy(x: 1.1, y: 1.1)
         }, completion: {(finished: Bool) -> Void in
         })
     }
