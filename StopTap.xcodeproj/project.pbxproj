@@ -763,7 +763,7 @@
 					"$(PROJECT_DIR)/Pods/FirebaseAnalytics/Frameworks/frameworks",
 				);
 				INFOPLIST_FILE = StopTap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wajdimuhtadi.StopTap;
@@ -809,7 +809,7 @@
 					"$(PROJECT_DIR)/Pods/FirebaseAnalytics/Frameworks/frameworks",
 				);
 				INFOPLIST_FILE = StopTap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wajdimuhtadi.StopTap;

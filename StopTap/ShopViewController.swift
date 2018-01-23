@@ -16,18 +16,14 @@ class ShopViewController: UIViewController,colorDelegate {
     @IBOutlet weak var back: UIButton!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var center: NSLayoutConstraint!
+    @IBOutlet weak var nt: NSLayoutConstraint!
+    @IBOutlet weak var nb: NSLayoutConstraint!
     @IBOutlet weak var shop: UILabel!
     @IBOutlet weak var small: UIImageView!
     @IBOutlet weak var big: UIImageView!
     @IBOutlet weak var cp: ColorPicker!
     @IBOutlet weak var bigt: UIButton!
     @IBOutlet weak var smallt: UIButton!
-    @IBOutlet weak var rs: UISlider!
-    @IBOutlet weak var rv: UILabel!
-    @IBOutlet weak var gv: UILabel!
-    @IBOutlet weak var gs: UISlider!
-    @IBOutlet weak var bv: UILabel!
-    @IBOutlet weak var bs: UISlider!
     @IBOutlet weak var rboxview: UIImageView!
     @IBOutlet weak var lboxview: UIImageView!
     var select:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "shopselect", defaultValue: 1)
@@ -49,7 +45,7 @@ class ShopViewController: UIViewController,colorDelegate {
     var shop16:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "shop16", defaultValue: 0)
     var cpsc:UIColor = UIColor(hexString: KeyStoreDefaultsProvider(cryptoProvider: nil).getString(forKey: "cpsc", defaultValue: "#004cff"))
     var cpbc:UIColor = UIColor(hexString: KeyStoreDefaultsProvider(cryptoProvider: nil).getString(forKey: "cpbc", defaultValue: "#ff0000"))
-    var coinv:Int = 30002223
+    var coinv:Int = 10000
     var buyb:Int = 3
     var buyc:Int = 0
     var boxchoose:Int = 0
@@ -57,12 +53,9 @@ class ShopViewController: UIViewController,colorDelegate {
     let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
     var price:NSMutableAttributedString? = nil
     var namec:NSMutableAttributedString? = nil
-    @IBOutlet weak var cperror: UILabel!
+    var toaststyle = ToastStyle()
     override func viewDidLoad() {
         super.viewDidLoad()
-        rs.isExclusiveTouch = true
-        gs.isExclusiveTouch = true
-        bs.isExclusiveTouch = true
         cp.isExclusiveTouch = true
         left.layer.cornerRadius = 10
         left.layer.borderWidth = 5
@@ -78,6 +71,8 @@ class ShopViewController: UIViewController,colorDelegate {
         bigt.layer.borderWidth = 5
         small.layer.cornerRadius = 10
         small.layer.borderWidth = 5
+        big.layer.cornerRadius = 10
+        big.layer.borderWidth = 5
         price = NSMutableAttributedString(string: "250 Coin")
         price?.addAttribute(NSAttributedStringKey.foregroundColor,value: UIColor.yellow,range: NSRange(location:0,length:(price?.mutableString.length)!))
         coinval.text = String(coinv)
@@ -158,24 +153,14 @@ class ShopViewController: UIViewController,colorDelegate {
             lboxview.isHidden = true
             rboxview.isHidden = true
             name.isHidden = true
-            rv.isHidden = false
-            rs.isHidden = false
-            gv.isHidden = false
-            gs.isHidden = false
-            bv.isHidden = false
-            bs.isHidden = false
             small.isHidden = false
             big.isHidden = false
             smallt.isHidden = false
             bigt.isHidden = false
             cp.isHidden = false
             small.backgroundColor = cpsc
+            big.layer.borderColor = cpbc.cgColor
             big.backgroundColor = cpbc
-            var r:CGFloat = 0,g:CGFloat = 0,b:CGFloat = 0,a:CGFloat = 0
-            cpsc.getRed(&r, green: &g, blue: &b, alpha: &a)
-            rs.value = Float(r * 255)
-            gs.value = Float(g * 255)
-            bs.value = Float(b * 255)
             buy.setTitle("Selected", for: UIControlState())
         }
         // Do any additional setup after loading the view.
@@ -186,80 +171,9 @@ class ShopViewController: UIViewController,colorDelegate {
         }else{
             big.backgroundColor = color
         }
-        var r:CGFloat = 0,g:CGFloat = 0,b:CGFloat = 0,a:CGFloat = 0
-        color.getRed(&r, green: &g, blue: &b, alpha: &a)
-        rs.value = Float(r * 255)
-        gs.value = Float(g * 255)
-        bs.value = Float(b * 255)
-        rv.text = String(Int(r * 255))
-        gv.text = String(Int(g * 255))
-        bv.text = String(Int(b * 255))
         buyb = 2
         buy.setTitle("Select", for: UIControlState())
     }
-    func touchendcp() {
-        rv.text = "R"
-        gv.text = "G"
-        bv.text = "B"
-    }
-    @IBAction func rsd(_ sender: AnyObject) {
-        rv.text = String(Int(rs.value))
-        if(boxchoose == 0){
-        small.backgroundColor = UIColor(red: CGFloat(rs.value/255), green: CGFloat(gs.value/255), blue: CGFloat(bs.value/255), alpha: 1.0)
-        }else{
-        big.backgroundColor = UIColor(red: CGFloat(rs.value/255), green: CGFloat(gs.value/255), blue: CGFloat(bs.value/255), alpha: 1.0)
-        }
-        buyb = 2
-        buy.setTitle("Select", for: UIControlState())
-    }
-    @IBAction func rsc(_ sender: AnyObject) {
-        rv.text = "R"
-    }
-    @IBAction func rsuo(_ sender: AnyObject) {
-        rv.text = "R"
-    }
-    @IBAction func rsui(_ sender: AnyObject) {
-        rv.text = "R"
-    }
-    @IBAction func gsv(_ sender: AnyObject) {
-        gv.text = String(Int(gs.value))
-        if(boxchoose == 0){
-            small.backgroundColor = UIColor(red: CGFloat(rs.value/255), green: CGFloat(gs.value/255), blue: CGFloat(bs.value/255), alpha: 1.0)
-        }else{
-            big.backgroundColor = UIColor(red: CGFloat(rs.value/255), green: CGFloat(gs.value/255), blue: CGFloat(bs.value/255), alpha: 1.0)
-        }
-        buyb = 2
-        buy.setTitle("Select", for: UIControlState())
-    }
-    @IBAction func gsc(_ sender: AnyObject) {
-        gv.text = "G"
-    }
-    @IBAction func gsui(_ sender: AnyObject) {
-        gv.text = "G"
-    }
-    @IBAction func gsao(_ sender: AnyObject) {
-        gv.text = "G"
-    }
-    @IBAction func bsv(_ sender: AnyObject) {
-        bv.text = String(Int(bs.value))
-        if(boxchoose == 0){
-            small.backgroundColor = UIColor(red: CGFloat(rs.value/255), green: CGFloat(gs.value/255), blue: CGFloat(bs.value/255), alpha: 1.0)
-        }else{
-            big.backgroundColor = UIColor(red: CGFloat(rs.value/255), green: CGFloat(gs.value/255), blue: CGFloat(bs.value/255), alpha: 1.0)
-        }
-        buyb = 2
-        buy.setTitle("Select", for: UIControlState())
-    }
-    @IBAction func bsc(_ sender: AnyObject) {
-        bv.text = "B"
-    }
-    @IBAction func bsui(_ sender: AnyObject) {
-        bv.text = "B"
-    }
-    @IBAction func bsuo(_ sender: AnyObject) {
-        bv.text = "B"
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
@@ -271,7 +185,6 @@ class ShopViewController: UIViewController,colorDelegate {
             smallt.layer.borderColor = UIColor.black.cgColor
             bigt.layer.borderColor = UIColor.black.cgColor
             small.layer.borderColor = UIColor.black.cgColor
-            big.layer.borderColor = UIColor.black.cgColor
             lboxview.layer.borderColor = UIColor.black.cgColor
             rboxview.layer.borderColor = UIColor.black.cgColor
             back.setTitleColor(UIColor.black, for: UIControlState())
@@ -283,13 +196,8 @@ class ShopViewController: UIViewController,colorDelegate {
             coinval.textColor = UIColor.black
             name.textColor = UIColor.black
             shop.textColor = UIColor.black
-            cperror.textColor = UIColor.black
-            rv.textColor = UIColor.black
-            gv.textColor = UIColor.black
-            bv.textColor = UIColor.black
-            rs.tintColor = UIColor.black
-            gs.tintColor = UIColor.black
-            bs.tintColor = UIColor.black
+            toaststyle.backgroundColor = UIColor.black
+            toaststyle.messageColor = UIColor.white
             let shadow = NSShadow()
             shadow.shadowColor = UIColor.black
             shadow.shadowOffset = CGSize(width: 0, height: 0)
@@ -306,7 +214,6 @@ class ShopViewController: UIViewController,colorDelegate {
             smallt.layer.borderColor = UIColor.white.cgColor
             bigt.layer.borderColor = UIColor.white.cgColor
             small.layer.borderColor = UIColor.white.cgColor
-            big.layer.borderColor = UIColor.white.cgColor
             lboxview.layer.borderColor = UIColor.white.cgColor
             rboxview.layer.borderColor = UIColor.white.cgColor
             right.setTitleColor(UIColor.white, for: UIControlState())
@@ -318,13 +225,8 @@ class ShopViewController: UIViewController,colorDelegate {
             coinval.textColor = UIColor.white
             name.textColor = UIColor.white
             shop.textColor = UIColor.white
-            cperror.textColor = UIColor.white
-            rv.textColor = UIColor.white
-            gv.textColor = UIColor.white
-            bv.textColor = UIColor.white
-            rs.tintColor = UIColor.white
-            gs.tintColor = UIColor.white
-            bs.tintColor = UIColor.white
+            toaststyle.backgroundColor = UIColor.white
+            toaststyle.messageColor = UIColor.black
             let shadow = NSShadow()
             shadow.shadowColor = UIColor.white
             shadow.shadowOffset = CGSize(width: 0, height: 0)
@@ -336,27 +238,21 @@ class ShopViewController: UIViewController,colorDelegate {
     }
     @IBAction func smallclick(_ sender: AnyObject) {
         boxchoose = 0
-        small.layer.cornerRadius = 10
-        small.layer.borderWidth = 5
-        big.layer.cornerRadius = 0
-        big.layer.borderWidth = 0
-        var r:CGFloat = 0,g:CGFloat = 0,b:CGFloat = 0,a:CGFloat = 0
-        small.backgroundColor!.getRed(&r, green: &g, blue: &b, alpha: &a)
-        rs.value = Float(r * 255)
-        gs.value = Float(g * 255)
-        bs.value = Float(b * 255)
+        if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
+            small.layer.borderColor = UIColor.black.cgColor
+        }else{
+            small.layer.borderColor = UIColor.white.cgColor
+        }
+        big.layer.borderColor = big.backgroundColor?.cgColor
     }
     @IBAction func bigclick(_ sender: AnyObject) {
         boxchoose = 1
-        big.layer.cornerRadius = 10
-        big.layer.borderWidth = 5
-        small.layer.cornerRadius = 0
-        small.layer.borderWidth = 0
-        var r:CGFloat = 0,g:CGFloat = 0,b:CGFloat = 0,a:CGFloat = 0
-        big.backgroundColor!.getRed(&r, green: &g, blue: &b, alpha: &a)
-        rs.value = Float(r * 255)
-        gs.value = Float(g * 255)
-        bs.value = Float(b * 255)
+        if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
+            big.layer.borderColor = UIColor.black.cgColor
+        }else{
+            big.layer.borderColor = UIColor.white.cgColor
+        }
+        small.layer.borderColor = small.backgroundColor?.cgColor
     }
     @IBAction func leftb(_ sender: AnyObject) {
         if(select == 2){
@@ -604,20 +500,15 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.isHidden = false
             buy.isHidden = false
             name.isHidden = false
-            rv.isHidden = true
-            rs.isHidden = true
-            gv.isHidden = true
-            gs.isHidden = true
-            bv.isHidden = true
-            bs.isHidden = true
             small.isHidden = true
             big.isHidden = true
             smallt.isHidden = true
             bigt.isHidden = true
             cp.isHidden = true
-            name.font = name.font.withSize(22.5)
                 name.setNeedsLayout()
-                center.constant = 77
+                center.isActive = false
+                nt.isActive = true
+                nb.isActive = true
                 name.layoutIfNeeded()
             if (shop12 == 1){
                 name.text = "Light Pink And Fuschia"
@@ -639,7 +530,9 @@ class ShopViewController: UIViewController,colorDelegate {
         }else if(select == 14){
             select = 13
             name.setNeedsLayout()
-            center.constant = 0
+            center.isActive = true
+            nt.isActive = false
+            nb.isActive = false
             name.layoutIfNeeded()
             name.isHidden = false
             right.isEnabled = true
@@ -648,25 +541,18 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.isHidden = true
             buy.isHidden = false
             name.isHidden = false
-            rv.isHidden = true
-            rs.isHidden = true
-            gv.isHidden = true
-            gs.isHidden = true
-            bv.isHidden = true
-            bs.isHidden = true
             small.isHidden = true
             big.isHidden = true
             smallt.isHidden = true
             bigt.isHidden = true
             cp.isHidden = true
-            name.font = name.font.withSize(20.25)
             if (shop13 == 1){
                 name.text = "NIGHTMODE\nReplace White With Black"
                 buyb = 3
                 if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
-                    buy.setTitle("NIGHTMODE\nOFF", for: UIControlState())
+                    buy.setTitle("NIGHTMODE OFF", for: UIControlState())
                 }else{
-                    buy.setTitle("NIGHTMODE\nON", for: UIControlState())
+                    buy.setTitle("NIGHTMODE ON", for: UIControlState())
                 }
             }else{
                 price?.mutableString.setString("500 Coin")
@@ -679,7 +565,9 @@ class ShopViewController: UIViewController,colorDelegate {
         }else if(select == 15){
             select = 14
             name.setNeedsLayout()
-            center.constant = 0
+            nt.isActive = false
+            nb.isActive = false
+            center.isActive = true
             name.layoutIfNeeded()
             name.isHidden = false
             right.isEnabled = true
@@ -688,18 +576,11 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.isHidden = true
             buy.isHidden = false
             name.isHidden = false
-            rv.isHidden = true
-            rs.isHidden = true
-            gv.isHidden = true
-            gs.isHidden = true
-            bv.isHidden = true
-            bs.isHidden = true
             small.isHidden = true
             big.isHidden = true
             smallt.isHidden = true
             bigt.isHidden = true
             cp.isHidden = true
-            name.font = name.font.withSize(20.25)
             if (shop14 == 3){
                 name.text = "X3\nTriple Your Coins"
                 buyb = 3
@@ -730,12 +611,6 @@ class ShopViewController: UIViewController,colorDelegate {
             buy.isHidden = false
             if (shop15 == 1){
                 name.isHidden = true
-                rv.isHidden = false
-                rs.isHidden = false
-                gv.isHidden = false
-                gs.isHidden = false
-                bv.isHidden = false
-                bs.isHidden = false
                 small.isHidden = false
                 big.isHidden = false
                 smallt.isHidden = false
@@ -744,15 +619,12 @@ class ShopViewController: UIViewController,colorDelegate {
                 small.backgroundColor = cpsc
                 big.backgroundColor = cpbc
                 boxchoose = 0
-                small.layer.cornerRadius = 10
-                small.layer.borderWidth = 5
-                big.layer.cornerRadius = 0
-                big.layer.borderWidth = 0
-                var r:CGFloat = 0,g:CGFloat = 0,b:CGFloat = 0,a:CGFloat = 0
-                cpsc.getRed(&r, green: &g, blue: &b, alpha: &a)
-                rs.value = Float(r * 255)
-                gs.value = Float(g * 255)
-                bs.value = Float(b * 255)
+                if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
+                    small.layer.borderColor = UIColor.black.cgColor
+                }else{
+                    small.layer.borderColor = UIColor.white.cgColor
+                }
+                big.layer.borderColor = big.backgroundColor?.cgColor
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -1018,7 +890,9 @@ class ShopViewController: UIViewController,colorDelegate {
         }else if(select == 12){
             select = 13
             name.setNeedsLayout()
-            center.constant = 0
+            nt.isActive = false
+            nb.isActive = false
+            center.isActive = true
             name.layoutIfNeeded()
             name.isHidden = false
             right.isEnabled = true
@@ -1027,25 +901,18 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.isHidden = true
             buy.isHidden = false
             name.isHidden = false
-            rv.isHidden = true
-            rs.isHidden = true
-            gv.isHidden = true
-            gs.isHidden = true
-            bv.isHidden = true
-            bs.isHidden = true
             small.isHidden = true
             big.isHidden = true
             smallt.isHidden = true
             bigt.isHidden = true
             cp.isHidden = true
-            name.font = name.font.withSize(20.25)
             if (shop13 == 1){
                 name.text = "NIGHTMODE\nReplace White With Black"
                 buyb = 3
                 if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
-                    buy.setTitle("NIGHTMODE\nOFF", for: UIControlState())
+                    buy.setTitle("NIGHTMODE OFF", for: UIControlState())
                 }else{
-                    buy.setTitle("NIGHTMODE\nON", for: UIControlState())
+                    buy.setTitle("NIGHTMODE ON", for: UIControlState())
                 }
             }else{
                 price?.mutableString.setString("500 Coin")
@@ -1059,7 +926,9 @@ class ShopViewController: UIViewController,colorDelegate {
         else if(select == 13){
             select = 14
             name.setNeedsLayout()
-            center.constant = 0
+            center.isActive = true
+            nt.isActive = false
+            nb.isActive = false
             name.layoutIfNeeded()
             name.isHidden = false
             right.isEnabled = true
@@ -1068,18 +937,11 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.isHidden = true
             buy.isHidden = false
             name.isHidden = false
-            rv.isHidden = true
-            rs.isHidden = true
-            gv.isHidden = true
-            gs.isHidden = true
-            bv.isHidden = true
-            bs.isHidden = true
             small.isHidden = true
             big.isHidden = true
             smallt.isHidden = true
             bigt.isHidden = true
             cp.isHidden = true
-            name.font = name.font.withSize(20.25)
             if (shop14 == 3){
                 name.text = "X3\nTriple Your Coins"
                 buyb = 3
@@ -1105,17 +967,12 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.isHidden = true
             buy.isHidden = false
             name.setNeedsLayout()
-            center.constant = 0
+            center.isActive = true
+            nt.isActive = false
+            nb.isActive = false
             name.layoutIfNeeded()
-            name.font = name.font.withSize(20.25)
             if (shop15 == 1){
                 name.isHidden = true
-                rv.isHidden = false
-                rs.isHidden = false
-                gv.isHidden = false
-                gs.isHidden = false
-                bv.isHidden = false
-                bs.isHidden = false
                 small.isHidden = false
                 big.isHidden = false
                 smallt.isHidden = false
@@ -1124,15 +981,12 @@ class ShopViewController: UIViewController,colorDelegate {
                 small.backgroundColor = cpsc
                 big.backgroundColor = cpbc
                 boxchoose = 0
-                small.layer.cornerRadius = 10
-                small.layer.borderWidth = 5
-                big.layer.cornerRadius = 0
-                big.layer.borderWidth = 0
-                var r:CGFloat = 0,g:CGFloat = 0,b:CGFloat = 0,a:CGFloat = 0
-                cpsc.getRed(&r, green: &g, blue: &b, alpha: &a)
-                rs.value = Float(r * 255)
-                gs.value = Float(g * 255)
-                bs.value = Float(b * 255)
+                if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
+                    small.layer.borderColor = UIColor.black.cgColor
+                }else{
+                    small.layer.borderColor = UIColor.white.cgColor
+                }
+                big.layer.borderColor = big.backgroundColor?.cgColor
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -1151,8 +1005,10 @@ class ShopViewController: UIViewController,colorDelegate {
         }else if(select == 15){
             select = 16
                 name.setNeedsLayout()
-                center.constant = 0
-                name.layoutIfNeeded()
+            nt.isActive = false
+            nb.isActive = false
+            center.isActive = true
+            name.layoutIfNeeded()
             name.isHidden = false
             right.isEnabled = false
             right.isHidden = true
@@ -1160,18 +1016,11 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.isHidden = true
             buy.isHidden = false
             name.isHidden = false
-            rv.isHidden = true
-            rs.isHidden = true
-            gv.isHidden = true
-            gs.isHidden = true
-            bv.isHidden = true
-            bs.isHidden = true
             small.isHidden = true
             big.isHidden = true
             smallt.isHidden = true
             bigt.isHidden = true
             cp.isHidden = true
-            name.font = name.font.withSize(20.25)
             if (shop16 == 1){
                 name.text = "Extra Live\nYou Will Now Have 4 Lives"
                 buyb = 3
@@ -1199,7 +1048,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop2 = 1
                         provider.setInt(forKey: "shop2", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1218,7 +1069,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop3 = 1
                          provider.setInt(forKey: "shop3", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1237,7 +1090,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop4 = 1
                         provider.setInt(forKey: "shop4", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1256,7 +1111,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop5 = 1
                         provider.setInt(forKey: "shop5", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1275,7 +1132,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop6 = 1
                        provider.setInt(forKey: "shop6", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1294,7 +1153,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop7 = 1
                          provider.setInt(forKey: "shop7", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1313,7 +1174,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop8 = 1
                         provider.setInt(forKey: "shop8", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1332,7 +1195,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop9 = 1
                          provider.setInt(forKey: "shop9", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1351,7 +1216,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop10 = 1
                         provider.setInt(forKey: "shop10", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1370,7 +1237,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop11 = 1
                       provider.setInt(forKey: "shop11", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1389,7 +1258,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop12 = 1
                       provider.setInt(forKey: "shop12", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1400,7 +1271,7 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 13){
                     if(coinv >= 500){
-                        buy.setTitle("NIGHTMODE\nOFF", for: UIControlState())
+                        buy.setTitle("NIGHTMODE OFF", for: UIControlState())
                         name.text = "NIGHTMODE\nReplace White With Black"
                         buyb = 3
                         coinv = coinv - 500
@@ -1408,7 +1279,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop13 = 1
                         provider.setInt(forKey: "shop13", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1428,7 +1301,9 @@ class ShopViewController: UIViewController,colorDelegate {
                             shop14 = 3
                             provider.setInt(forKey: "shop14", value: 3)
                         }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            buy.isEnabled = false
+                            buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1449,7 +1324,9 @@ class ShopViewController: UIViewController,colorDelegate {
                             shop14 = 2
                             provider.setInt(forKey: "shop14", value: 2)
                         }else{
-                            buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            buy.isEnabled = false
+                            buy.isHidden = true
                             buyc = 1
                             left.isHidden = true
                             right.isHidden = true
@@ -1463,16 +1340,11 @@ class ShopViewController: UIViewController,colorDelegate {
                 else if(select == 15){
                     if(coinv >= 1000){
                         name.isHidden = true
-                        rv.isHidden = false
-                        rs.isHidden = false
-                        gv.isHidden = false
-                        gs.isHidden = false
-                        bv.isHidden = false
-                        bs.isHidden = false
                         small.isHidden = false
                         big.isHidden = false
                         smallt.isHidden = false
                         bigt.isHidden = false
+                        big.layer.borderColor = big.backgroundColor?.cgColor
                         cp.isHidden = false
                         buy.setTitle("Select", for: UIControlState())
                         buyb = 2
@@ -1481,7 +1353,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop15 = 1
                         provider.setInt(forKey: "shop15", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1501,7 +1375,9 @@ class ShopViewController: UIViewController,colorDelegate {
                             shop16 = 1
                             provider.setInt(forKey: "shop16", value: 1)
                     }else{
-                        buy.setTitle("You Don't Have\nEnough Coins", for: UIControlState())
+                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        buy.isEnabled = false
+                        buy.isHidden = true
                         buyc = 1
                         left.isHidden = true
                         right.isHidden = true
@@ -1512,16 +1388,16 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }
             }else if(buyb == 2){
-                buyb = 3
                 if(select == 15){
                     if(color(small.backgroundColor!, isEqualToColor:UIColor.white, withTolerance: 0.2) || color(small.backgroundColor!, isEqualToColor:UIColor.black, withTolerance: 0.2) ||
                         color(small.backgroundColor!, isEqualToColor:big.backgroundColor!, withTolerance: 0.5) ||
                         color(big.backgroundColor!, isEqualToColor:UIColor.white, withTolerance: 0.2)
                         || color(big.backgroundColor!, isEqualToColor:UIColor.black, withTolerance: 0.2)){
-                        cperror.isHidden = false
+                        self.view.makeToast("The Boxes Can't Be White or Black\nAnd They Can't Have The Same Color", duration: 1.1, position: .center, style: toaststyle)
+                        print("there r equals")
                     }else{
+                        buyb = 3
                         print("error")
-                        cperror.isHidden = true
                         provider.setString(forKey: "cpsc", value: (small.backgroundColor?.toHexString())!)
                         provider.setString(forKey: "cpbc", value: (big.backgroundColor?.toHexString())!)
                         cpsc = small.backgroundColor!
@@ -1540,7 +1416,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 shadow.shadowOffset = CGSize(width: 0, height: 0)
                 shadow.shadowBlurRadius = 4.0
                 if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
-                    buy.setTitle("NIGHTMODE\nON", for: UIControlState())
+                    buy.setTitle("NIGHTMODE ON", for: UIControlState())
                     provider.setInt(forKey: "nm", value: 1)
                     self.view.backgroundColor = UIColor.black
                     back.layer.borderColor = UIColor.white.cgColor
@@ -1562,18 +1438,13 @@ class ShopViewController: UIViewController,colorDelegate {
                     coinval.textColor = UIColor.white
                     name.textColor = UIColor.white
                     shop.textColor = UIColor.white
-                    cperror.textColor = UIColor.white
-                    rv.textColor = UIColor.white
-                    gv.textColor = UIColor.white
-                    bv.textColor = UIColor.white
-                    rs.tintColor = UIColor.white
-                    gs.tintColor = UIColor.white
-                    bs.tintColor = UIColor.white
+                    toaststyle.backgroundColor = UIColor.white
+                    toaststyle.messageColor = UIColor.black
                     shadow.shadowColor = UIColor.white
                     price?.removeAttribute(NSAttributedStringKey.shadow, range: NSRange(location:0,length:(price?.mutableString.length)!))
                     price?.addAttribute(NSAttributedStringKey.shadow,value: shadow,range: NSRange(location:0,length:(price?.mutableString.length)!))
                 }else{
-                    buy.setTitle("NIGHTMODE\nOFF", for: UIControlState())
+                    buy.setTitle("NIGHTMODE OFF", for: UIControlState())
                     provider.setInt(forKey: "nm", value: 0)
                     self.view.backgroundColor = UIColor.white
                     back.layer.borderColor = UIColor.black.cgColor
@@ -1595,13 +1466,8 @@ class ShopViewController: UIViewController,colorDelegate {
                     coinval.textColor = UIColor.black
                     name.textColor = UIColor.black
                     shop.textColor = UIColor.black
-                    cperror.textColor = UIColor.black
-                    rv.textColor = UIColor.black
-                    gv.textColor = UIColor.black
-                    bv.textColor = UIColor.black
-                    rs.tintColor = UIColor.black
-                    gs.tintColor = UIColor.black
-                    bs.tintColor = UIColor.black
+                    toaststyle.backgroundColor = UIColor.black
+                    toaststyle.messageColor = UIColor.white
                     shadow.shadowColor = UIColor.black
                     price?.removeAttribute(NSAttributedStringKey.shadow, range: NSRange(location:0,length:(price?.mutableString.length)!))
                     price?.addAttribute(NSAttributedStringKey.shadow,value: shadow,range: NSRange(location:0,length:(price?.mutableString.length)!))
@@ -1610,25 +1476,18 @@ class ShopViewController: UIViewController,colorDelegate {
         }
     }
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            return [UIInterfaceOrientationMask.portrait]
-        case .pad:
-            return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
-        case .unspecified:
-            return [UIInterfaceOrientationMask.portrait]
-        default:
-            return [UIInterfaceOrientationMask.portrait]
-        }
+     return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
     }
+    
     @IBAction func back(_ sender: AnyObject) {
         buycancel.invalidate()
         self.navigationController?.popToRootViewController(animated: true)
     }
     @objc func buycanim(){
-        buy.setTitle("Buy", for: UIControlState())
+        buy.isEnabled = true
+        buy.isHidden = false
         buyc = 0
-        if (select != 7){
+        if (select != 16){
             right.isHidden = false
             left.isHidden = false
             right.isEnabled = true

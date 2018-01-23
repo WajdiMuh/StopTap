@@ -25,7 +25,8 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
     var checkgravity = 0
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-         gname.center.y = (play.center.y / 2)
+         gname.center.y = ((play.center.y - play.frame.height / 2.0) / 2.0)
+        //gnamet.constant = ((play.frame.origin.y / 2.0) - (gname.frame.height))
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -376,6 +377,7 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
         }*/
         //remember excluded files later
         //fix foreground on play viewvontroller as soon as someone enters
+        //fix pause dtection if it was on
         bganim1.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
         bganim1.layer.borderWidth = ((2.5 * self.view.bounds.width) / 411)
         bganim2.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
@@ -415,11 +417,7 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
         }
         motionManager.deviceMotionUpdateInterval = 0.2
         collider.translatesReferenceBoundsIntoBoundary = true
-        if #available(iOS 11.0, *) {
-            collider.addBoundary(withIdentifier: "bottom" as NSCopying, from: CGPoint(x: 0, y: self.view.safeAreaLayoutGuide.layoutFrame.maxY), to: CGPoint(x: self.view.frame.maxX, y: self.view.safeAreaLayoutGuide.layoutFrame.maxY))
-        } else {
-             collider.addBoundary(withIdentifier: "bottom" as NSCopying, from: CGPoint(x: 0, y: self.view.frame.maxY), to: CGPoint(x: self.view.frame.maxX, y: self.view.frame.maxY))
-        }
+            collider.addBoundary(withIdentifier: "bottom" as NSCopying, from: CGPoint(x: 0, y: self.view.safeAreaLayoutGuide.layoutFrame.maxY+1), to: CGPoint(x: self.view.frame.maxX, y: self.view.safeAreaLayoutGuide.layoutFrame.maxY+1))
         animator?.addBehavior(collider)
     }
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -509,15 +507,6 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
         }, completion: nil)
     }
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            return [UIInterfaceOrientationMask.portrait]
-        case .pad:
-            return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
-        case .unspecified:
-            return [UIInterfaceOrientationMask.portrait]
-        default:
-            return [UIInterfaceOrientationMask.portrait]
-        }
+        return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
     }
 }

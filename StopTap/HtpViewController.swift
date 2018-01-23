@@ -43,11 +43,15 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
     @IBOutlet weak var dir: UIImageView!
     @IBOutlet weak var dirw: NSLayoutConstraint!
     @IBOutlet weak var dirh: NSLayoutConstraint!
+    
+    @IBOutlet weak var timect: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         wrong.image = wrong.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         wrong2.image = wrong2.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         wrong3.image = wrong3.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        back.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
         do {
             self.audioPlayer =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "correct", ofType: "mp3")!))
             self.audioPlayer.prepareToPlay()
@@ -79,13 +83,19 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
         base.layer.allowsEdgeAntialiasing = true
         move.layer.allowsEdgeAntialiasing = true
         baseanim.layer.allowsEdgeAntialiasing = true
-        doublescore.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
+        doublescore.layer.cornerRadius = (x2w.constant / 2) //((50 * self.view.bounds.width) / 411)
+        doublescore.layer.allowsEdgeAntialiasing = true
+        doublescore.layer.shadowColor = UIColor.yellow.cgColor
+        doublescore.layer.shadowRadius = 6.0
+        doublescore.layer.shadowOffset = CGSize(width: 0, height: 0)
+        doublescore.layer.shadowOpacity = 0.75
         dir.image = dir.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         self.dir.transform = CGAffineTransform(rotationAngle: (CGFloat.pi))
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.back.transform = CGAffineTransform(rotationAngle: (CGFloat.pi))
+        timect.constant = timecount.frame.origin.x
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
             self.view.backgroundColor = UIColor.white
@@ -96,8 +106,8 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
             baseanim.layer.borderColor = UIColor.black.cgColor
             baseanim.backgroundColor = UIColor.black
             layerfixbase.borderColor = UIColor.black.cgColor
-            doublescore.backgroundColor = UIColor.black
-            doublescore.setTitleColor(UIColor.white, for: UIControlState())
+            doublescore.setTitleColor(UIColor.black, for: UIControlState())
+            doublescore.layer.shadowColor = UIColor.black.cgColor
             coinval.textColor = UIColor.black
             dir.tintColor = UIColor.black
             back.tintColor = UIColor.black
@@ -111,11 +121,11 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
             move.layer.borderColor = UIColor.white.cgColor
             baseanim.layer.borderColor = UIColor.white.cgColor
             layerfixbase.borderColor = UIColor.white.cgColor
-            doublescore.backgroundColor = UIColor.white
-            doublescore.setTitleColor(UIColor.black, for: UIControlState())
+            doublescore.layer.shadowColor = UIColor.white.cgColor
+            doublescore.setTitleColor(UIColor.white, for: UIControlState())
             coinval.textColor = UIColor.white
             dir.tintColor = UIColor.white
-            back.tintColor = UIColor.black
+            back.tintColor = UIColor.white
         }
         switch provider.getInt(forKey: "shopselect", defaultValue: 1) {
         case 1:
@@ -164,7 +174,7 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
             break;
         case 12:
             move.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.39, alpha: 1.0)
-            base.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 1.0)
+            base.backgroundColor = UIColor(red: 1.0, green: 0.54, blue: 1.0, alpha: 1.0)
             break;
         case 15:
             move.backgroundColor = UIColor(hexString: provider.getString(forKey: "cpsc", defaultValue: "#004cff"))
@@ -175,12 +185,13 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
             base.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
             break;
         }
+        doublescore.backgroundColor = blend(colors: [move.backgroundColor!,base.backgroundColor!])
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         countdown = Foundation.Timer(timeInterval: 0.5, target: self, selector: #selector(HtpViewController.time), userInfo: nil, repeats: false)
          RunLoop.current.add(countdown, forMode: RunLoopMode.commonModes)
-        x2t.constant = ((((base.frame.origin.y - (timecount.frame.origin.y + timecount.frame.size.height)) / 2) + timecount.frame.origin.y + timecount.frame.size.height) - (x2h.constant / 2))
+        x2t.constant = ((self.view.bounds.height * (3/4)) - (x2h.constant / 2))
         print("x2t" + String(describing: x2t.constant))
         x2l.constant = -1 * x2w.constant
         doublescore.titleLabel!.adjustsFontSizeToFitWidth = true
@@ -347,16 +358,17 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
         self.navigationController?.popToRootViewController(animated: true)
     }
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            return [UIInterfaceOrientationMask.portrait]
-        case .pad:
-            return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
-        case .unspecified:
-            return [UIInterfaceOrientationMask.portrait]
-        default:
-            return [UIInterfaceOrientationMask.portrait]
+        return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
+    }
+    func blend(colors: [UIColor]) -> UIColor {
+        let componentsSum = colors.reduce((red: CGFloat(0), green: CGFloat(0), blue: CGFloat(0))) { (temp, color) in
+            guard let components = color.cgColor.components else { return temp }
+            return (temp.0 + components[0], temp.1 + components[1], temp.2 + components[2])
         }
+        let components = (red: componentsSum.red / CGFloat(colors.count) ,
+                          green: componentsSum.green / CGFloat(colors.count),
+                          blue: componentsSum.blue / CGFloat(colors.count))
+        return UIColor(red: components.red, green: components.green, blue: components.blue, alpha: 1)
     }
     /*
     // MARK: - Navigation

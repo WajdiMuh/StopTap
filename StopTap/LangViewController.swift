@@ -69,7 +69,11 @@ class LangViewController: UIViewController, UITableViewDataSource, UITableViewDe
          cell.preservesSuperviewLayoutMargins = false
         cell.textLabel?.textAlignment = NSTextAlignment.center
         cell.textLabel?.numberOfLines = 2
-        cell.textLabel?.font = UIFont(name:"DotsAllForNowJL", size:22)
+        if(UIDevice.current.userInterfaceIdiom == .phone){
+            cell.textLabel?.font = UIFont(name:"DotsAllForNowJL", size:18)
+        }else{
+            cell.textLabel?.font = UIFont(name:"DotsAllForNowJL", size:22)
+        }
         cell.selectionStyle = .none
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
@@ -97,16 +101,7 @@ class LangViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.langs.reloadData()
     }
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            return [UIInterfaceOrientationMask.portrait]
-        case .pad:
-            return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
-        case .unspecified:
-            return [UIInterfaceOrientationMask.portrait]
-        default:
-            return [UIInterfaceOrientationMask.portrait]
-        }
+      return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
     }
     /*
     // MARK: - Navigation

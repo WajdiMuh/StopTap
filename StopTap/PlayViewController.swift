@@ -33,6 +33,7 @@ class PlayViewController: UIViewController {
     var doubleanimator: UIViewPropertyAnimator!
     var doublelnumber:CGFloat = 0.0
     var checkifusertoucheddouble:Int = 0
+    var onetimecorrect:Int = 2
     @IBOutlet weak var x2top: NSLayoutConstraint!
     @IBOutlet weak var doublescore: UIButton!
     @IBOutlet weak var x2l: NSLayoutConstraint!
@@ -69,6 +70,12 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var pause: UIButton!
     @IBOutlet weak var dirw: NSLayoutConstraint!
     @IBOutlet weak var dirh: NSLayoutConstraint!
+    @IBOutlet weak var kill1w: NSLayoutConstraint!
+    @IBOutlet weak var kill1h: NSLayoutConstraint!
+    @IBOutlet weak var kill2h: NSLayoutConstraint!
+    @IBOutlet weak var kill2w: NSLayoutConstraint!
+    @IBOutlet weak var kill3h: NSLayoutConstraint!
+    @IBOutlet weak var kill3w: NSLayoutConstraint!
     @IBAction func viewclickcancel(_ sender: AnyObject) {
         if(checkifusertoucheddouble == 0){
             self.dir.isHidden = true
@@ -96,6 +103,7 @@ class PlayViewController: UIViewController {
         let swipedown = UISwipeGestureRecognizer(target: self, action: #selector(PlayViewController.swipedown))
         swipedown.direction = UISwipeGestureRecognizerDirection.down
         if(checkifusertoucheddouble == 0){
+            if(onetimecorrect == 1){
             self.dir.isHidden = true
             self.viewclickb.gestureRecognizers?.removeAll()
             if(score >= extrascorerandom){
@@ -130,6 +138,7 @@ class PlayViewController: UIViewController {
                 print(extrascorerandom)
                 print("random work")
             }
+            }
             
         }else{
             checkifusertoucheddouble = checkifusertoucheddouble - 1
@@ -143,6 +152,7 @@ class PlayViewController: UIViewController {
         print("ouch" + String(describing: touchPoint))
         if  doublescore.layer.presentation()?.hitTest(touchPoint!) != nil {
             checkifusertoucheddouble = 2
+            doubleanim = false
             doubleon = true
             doubleanimator.stopAnimation(true)
             doublescore.isHidden = true
@@ -150,10 +160,12 @@ class PlayViewController: UIViewController {
             doubletimerlast.play()
             print("doubleclickedon")
         }else{
-            checkifusertoucheddouble = 0
+        checkifusertoucheddouble = 0
         let projectileFrame: CGRect = move.layer.presentation()!.frame
         if (projectileFrame.intersects(base.frame))
         {
+            if(onetimecorrect == 2){
+                onetimecorrect = onetimecorrect - 1
             if(doubleon == true){
             score = score + 2
             }else{
@@ -177,6 +189,9 @@ class PlayViewController: UIViewController {
                     }
             }
             )
+            }else{
+                onetimecorrect = onetimecorrect - 1
+            }
         }else{
             self.dir.isHidden = true
             self.viewclickb.gestureRecognizers?.removeAll()
@@ -376,7 +391,7 @@ class PlayViewController: UIViewController {
         if(pausetf == false){
         rafterf()
         }
-        x2top.constant = ((base.center.y - coin.center.y) / 2) + coin.center.y - (x2h.constant / 2)
+        x2top.constant =  ((self.view.bounds.height * (3/4)) - (x2h.constant / 2))
         x2l.constant = -1 * x2w.constant
         gameoverc.constant = (self.view.bounds.width - self.gameover.bounds.width)
         gameover.setNeedsLayout()
@@ -449,6 +464,7 @@ class PlayViewController: UIViewController {
             base.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
             break;
         }
+        doublescore.backgroundColor = blend(colors: [move.backgroundColor!,base.backgroundColor!])
         pause.isExclusiveTouch = true
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
             self.view.backgroundColor = UIColor.white
@@ -466,9 +482,8 @@ class PlayViewController: UIViewController {
             base.layer.borderColor = UIColor.black.cgColor
             move.layer.borderColor = UIColor.black.cgColor
             baseanim.layer.borderColor = UIColor.black.cgColor
-            doublescore.layer.borderColor = UIColor.black.cgColor
-            doublescore.backgroundColor = UIColor.black
-            doublescore.setTitleColor(UIColor.white, for: UIControlState())
+            doublescore.layer.shadowColor = UIColor.black.cgColor
+            doublescore.setTitleColor(UIColor.black, for: UIControlState())
             layerfixbase.borderColor = UIColor.black.cgColor
             dir.tintColor = UIColor.black
             }else{
@@ -488,8 +503,8 @@ class PlayViewController: UIViewController {
             move.layer.borderColor = UIColor.white.cgColor
             baseanim.layer.borderColor = UIColor.white.cgColor
             doublescore.layer.borderColor = UIColor.white.cgColor
-            doublescore.backgroundColor = UIColor.white
-            doublescore.setTitleColor(UIColor.black, for: UIControlState())
+            doublescore.layer.shadowColor = UIColor.white.cgColor
+            doublescore.setTitleColor(UIColor.white, for: UIControlState())
             layerfixbase.borderColor = UIColor.white.cgColor
             dir.tintColor = UIColor.white
         }
@@ -554,7 +569,6 @@ class PlayViewController: UIViewController {
         move.layer.borderWidth = ((2.5 * self.view.bounds.width) / 411)
         baseanim.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
         baseanim.layer.borderWidth = ((2.5 * self.view.bounds.width) / 411)
-        doublescore.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
        // doubletimer =  Foundation.Timer(timeInterval: randromdoubletime, target: self, selector: #selector(PlayViewController.doublepointsmove), userInfo: nil, repeats: false)
         doubletimer = Timerp(interval: randromdoubletime, callback: doublepointsmove, repeats: false)
         doubletimer.play()
@@ -576,6 +590,12 @@ class PlayViewController: UIViewController {
         x2w.constant = ((35 * self.view.bounds.width) / 411)
         dirw.constant = ((40 * self.view.bounds.width) / 411)
         dirh.constant = ((40 * self.view.bounds.width) / 411)
+        kill1h.constant = ((35 * self.view.bounds.width) / 411)
+        kill1w.constant = ((35 * self.view.bounds.width) / 411)
+        kill2h.constant = ((35 * self.view.bounds.width) / 411)
+        kill2w.constant = ((35 * self.view.bounds.width) / 411)
+        kill3h.constant = ((35 * self.view.bounds.width) / 411)
+        kill3w.constant = ((35 * self.view.bounds.width) / 411)
         layerfixbase.frame = CGRect(x: -1, y: -1, width: basew.constant + 2, height: baseh.constant + 2)
         layerfixbase.cornerRadius = ((5 * self.view.bounds.width) / 411)
         layerfixbase.borderWidth = ((2.5 * self.view.bounds.width) / 411)
@@ -585,6 +605,12 @@ class PlayViewController: UIViewController {
         base.layer.allowsEdgeAntialiasing = true
         move.layer.allowsEdgeAntialiasing = true
         baseanim.layer.allowsEdgeAntialiasing = true
+        doublescore.layer.cornerRadius = (x2w.constant / 2) //((50 * self.view.bounds.width) / 411)
+        doublescore.layer.allowsEdgeAntialiasing = true
+        doublescore.layer.shadowColor = UIColor.yellow.cgColor
+        doublescore.layer.shadowRadius = 6.0
+        doublescore.layer.shadowOffset = CGSize(width: 0, height: 0)
+        doublescore.layer.shadowOpacity = 0.75
         self.move.setNeedsLayout()
         self.base.setNeedsLayout()
         self.move.layoutIfNeeded()
@@ -635,6 +661,7 @@ class PlayViewController: UIViewController {
             switch position {
             case .end:
                 do {
+                    self.onetimecorrect = 2
                     self.animator = nil
                     self.number = 0.0
                     self.lafterf()
@@ -662,6 +689,7 @@ class PlayViewController: UIViewController {
             switch position {
             case .end:
                 do {
+                    self.onetimecorrect = 2
                     self.animator = nil
                     self.number = 0.0
                     self.rafterf()
@@ -700,16 +728,18 @@ class PlayViewController: UIViewController {
             baseanim.isHidden = true
             if(doubleon == true){
                 doubletimerlast.pause()
-            }
-            if(doubleanim == false){
-                  doubletimer.pause()
             }else{
-                doublelnumber = doubleanimator.fractionComplete
-                doubleanimator.stopAnimation(true)
-                doubleanimator = nil
-                x2l.constant = -1 * x2w.constant
-                doublescore.setNeedsLayout()
-                self.doublescore.superview?.layoutIfNeeded()
+                if(doubleanim == false){
+                    doubletimer.pause()
+                }else{
+                    doublescore.isHidden = true
+                    doublelnumber = doubleanimator.fractionComplete
+                    doubleanimator.stopAnimation(true)
+                    doubleanimator = nil
+                    x2l.constant = -1 * x2w.constant
+                    doublescore.setNeedsLayout()
+                    self.doublescore.superview?.layoutIfNeeded()
+                }
             }
             kill1.layer.removeAllAnimations()
             kill2.layer.removeAllAnimations()
@@ -739,11 +769,13 @@ class PlayViewController: UIViewController {
                 }
             if(doubleon == true){
                 doubletimerlast.play()
-            }
+            }else{
             if(doubleanim == true){
-                    doublepointsmove()
+                doublescore.isHidden = false
+                doublepointsmove()
             }else{
                 doubletimer.play()
+            }
             }
              pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             if(viewclickb.gestureRecognizers?.isEmpty == false){
@@ -777,17 +809,32 @@ class PlayViewController: UIViewController {
     @IBAction func retry(_ sender: AnyObject) {
         movel.constant = 0
         move.setNeedsLayout()
-        move.layoutIfNeeded()
+        self.move.superview?.layoutIfNeeded()
         score = 0
+        gright = true
         scoreval.text = "Score : 0"
+        scoreval.setNeedsLayout()
+        scoreval.layoutIfNeeded()
         wrongnum = 0
         wrong.alpha = 0.27
         wrong2.alpha = 0.27
         wrong3.alpha = 0.27
         wrong4.alpha = 0.27
+        extrascorerandom = Int(arc4random_uniform(9) + 2)
         kill1.transform = CGAffineTransform(scaleX: 1, y: 1)
         kill2.transform = CGAffineTransform(scaleX: 1, y: 1)
         kill3.transform = CGAffineTransform(scaleX: 1, y: 1)
+        doubleon = false
+        doubleanim = false
+        number = 0.0
+        doublelnumber = 0.0
+        checkifusertoucheddouble = 0
+        onetimecorrect = 2
+        doubletimer.invalidate()
+        doubletimer = Timerp(interval: randromdoubletime, callback: doublepointsmove, repeats: false)
+        doubletimer.play()
+        doubletimerlast.invalidate()
+        x2l.constant = -1 * x2w.constant
         //timerand()
         pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
         dir.image = dir.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
@@ -805,13 +852,16 @@ class PlayViewController: UIViewController {
         pret.isHidden = true
         pm.isHidden = true
         gameovercheck = 0
-      viewclickb.isUserInteractionEnabled = true
+        viewclickb.isUserInteractionEnabled = true
+        viewclickb.isHidden = false
+        newhighscore = false
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         if (provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
             wrong4.isHidden = true
         }else{
             wrong4.isHidden = false
         }
+        rafterf()
     }
     @IBAction func res(_ sender: AnyObject) {
         if(gright == true){
@@ -821,11 +871,13 @@ class PlayViewController: UIViewController {
         }
         if(doubleon == true){
             doubletimerlast.play()
-        }
-        if(doubleanim == true){
-            doublepointsmove()
         }else{
-            doubletimer.play()
+            if(doubleanim == true){
+                doublescore.isHidden = false
+                doublepointsmove()
+            }else{
+                doubletimer.play()
+            }
         }
         pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
         pausetf = false
@@ -862,7 +914,7 @@ class PlayViewController: UIViewController {
         switch (2){
             //arc4random_uniform(3)
         case 0:
-            //time = Double(0.288)
+            return Double(0.288)
             print((self.view.bounds.width))
             print(UIScreen.main.scale)
             print(time)
@@ -871,10 +923,11 @@ class PlayViewController: UIViewController {
             return Double(0.576)
             break;
         case 2:
-            return Double(0.864)
+            //return Double(0.864)
+            return Double(4)
             break;
         default:
-            //time = Double((0.576 * ((self.view.bounds.width - self.move.bounds.width)))/(376.2857))
+            return Double(0.576)
             break;
         }
     }
@@ -901,16 +954,18 @@ class PlayViewController: UIViewController {
             pausetf = true
             if(doubleon == true){
                 doubletimerlast.pause()
-            }
-            if(doubleanim == false){
-                doubletimer.pause()
             }else{
-                doublelnumber = doubleanimator.fractionComplete
-                doubleanimator.stopAnimation(true)
-                doubleanimator = nil
-                x2l.constant = -1 * x2w.constant
-                doublescore.setNeedsLayout()
-                self.doublescore.superview?.layoutIfNeeded()
+                if(doubleanim == false){
+                    doubletimer.pause()
+                }else{
+                    doublescore.isHidden = true
+                    doublelnumber = doubleanimator.fractionComplete
+                    doubleanimator.stopAnimation(true)
+                    doubleanimator = nil
+                    x2l.constant = -1 * x2w.constant
+                    doublescore.setNeedsLayout()
+                    self.doublescore.superview?.layoutIfNeeded()
+                }
             }
             dir.isHidden = true
             baseanim.layer.removeAllAnimations()
@@ -946,16 +1001,7 @@ class PlayViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            return [UIInterfaceOrientationMask.portrait]
-        case .pad:
-            return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
-        case .unspecified:
-            return [UIInterfaceOrientationMask.portrait]
-        default:
-            return [UIInterfaceOrientationMask.portrait]
-        }
+        return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
     }
     @objc func swiperight(){
         print("right")
@@ -1050,15 +1096,36 @@ class PlayViewController: UIViewController {
         doubleanimator.startAnimation()
         
     }
+    func blend(colors: [UIColor]) -> UIColor {
+        let componentsSum = colors.reduce((red: CGFloat(0), green: CGFloat(0), blue: CGFloat(0))) { (temp, color) in
+            guard let components = color.cgColor.components else { return temp }
+            return (temp.0 + components[0], temp.1 + components[1], temp.2 + components[2])
+        }
+        let components = (red: componentsSum.red / CGFloat(colors.count) ,
+                          green: componentsSum.green / CGFloat(colors.count),
+                          blue: componentsSum.blue / CGFloat(colors.count))
+        return UIColor(red: components.red, green: components.green, blue: components.blue, alpha: 1)
+    }
     @objc func doubletimerlasting(){
+        print("dobuble timer finished")
         doubleon = false
         doubletimerlast.invalidate()
         //self.doubletimer =  Foundation.Timer(timeInterval: Double(arc4random_uniform(5) + 5), target: self, selector: #selector(PlayViewController.doublepointsmove), userInfo: nil, repeats: false)
        // RunLoop.current.add(self.doubletimer, forMode: RunLoopMode.commonModes)
-         self.randromdoubletime = Double(arc4random_uniform(5) + 5)
+        self.doubleanim = false
+        self.doublescore.isHidden = true
+        self.doublescore.isEnabled = false
+        self.doublescore.isUserInteractionEnabled = false
+        self.x2l.constant = -1 * self.x2w.constant
+        //  self.doubletimer =  Foundation.Timer(timeInterval: self.randromdoubletime, target: self, selector: #selector(PlayViewController.doublepointsmove), userInfo: nil, repeats: false)
+        //  RunLoop.current.add(self.doubletimer, forMode: RunLoopMode.commonModes)
+        self.randromdoubletime = Double(arc4random_uniform(5) + 5)
+        print(randromdoubletime)
         self.doubletimer.invalidate()
         doubletimer =  Timerp(interval: randromdoubletime, callback: doublepointsmove, repeats: false)
         doubletimer.play()
+        self.doubleanimator = nil
+        self.doublelnumber = 0.0
     }
     @objc func gameoverslideright(){
         gameoverc.constant = 0

@@ -112,11 +112,11 @@ class ScoreViewController: UIViewController {
         super.viewDidLoad()
    //     App42API.initialize(withAPIKey: "38ae8af214d06b5aadd7064f31bb329c0f80088b69aa25620407cae9a296612e", andSecretKey: "69d230877fded2ac9dd47e3d71daa8e601f00fe8d34a6f4d7e8279c93a6a93e1")
      //   App42API.enableApp42Trace(false)
-        bannerView.adSize = kGADAdSizeSmartBannerPortrait
+        bannerView.adSize = kGADAdSizeBanner
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         let request = GADRequest()
-        request.testDevices = ["745b490e07520808329b5ec8207806c5"]
+        request.testDevices = ["745b490e07520808329b5ec8207806c5",kGADSimulatorID]
         bannerView.load(request)
         playag.layer.cornerRadius = 10
         playag.layer.borderWidth = 5
@@ -219,16 +219,7 @@ class ScoreViewController: UIViewController {
       //  })
     }
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            return [UIInterfaceOrientationMask.portrait]
-        case .pad:
-            return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
-        case .unspecified:
-            return [UIInterfaceOrientationMask.portrait]
-        default:
-            return [UIInterfaceOrientationMask.portrait]
-        }
+        return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

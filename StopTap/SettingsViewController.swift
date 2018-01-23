@@ -72,7 +72,8 @@ class SettingsViewController: UIViewController {
         }
     }
     @IBAction func backb(_ sender: AnyObject) {
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        AudioServicesPlaySystemSound(1519);
           let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         provider.setInt(forKey: "musicval", value: Int(musslide.value))
         provider.setInt(forKey: "sfxval", value: Int(sfxslide.value))
@@ -104,16 +105,7 @@ class SettingsViewController: UIViewController {
     }
     */
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            return [UIInterfaceOrientationMask.portrait]
-        case .pad:
-            return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
-        case .unspecified:
-            return [UIInterfaceOrientationMask.portrait]
-        default:
-            return [UIInterfaceOrientationMask.portrait]
-        }
+        return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
     }
     
 }

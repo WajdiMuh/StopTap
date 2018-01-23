@@ -33,6 +33,7 @@ public enum ToastPosition {
     case bottom
     case bottomipad
     case bottomiphone
+    case shop
 }
 
 /**
@@ -571,6 +572,8 @@ public extension UIView {
             return CGPoint(x: self.bounds.size.width / 2.0, y: (self.bounds.size.height - (toast.frame.size.height / 2.0)) - padding - 150)
         case .bottomiphone:
             return CGPoint(x: self.bounds.size.width / 2.0, y: (self.bounds.size.height - (toast.frame.size.height / 2.0)) - padding - 95)
+        case .shop:
+            return CGPoint(x: self.bounds.size.width / 2.0, y: (self.bounds.size.height / 4.0))
         }
     }
 }
@@ -648,22 +651,22 @@ public struct ToastStyle {
     /**
      The title font. Default is `UIFont.boldSystemFontOfSize(16.0)`.
     */
-    public var titleFont = UIFont.boldSystemFont(ofSize: 16.0)
+    public var titleFont = UIFont(name:"DotsAllForNowJL", size:18)
     
     /**
      The message font. Default is `UIFont.systemFontOfSize(16.0)`.
     */
-    public var messageFont = UIFont.systemFont(ofSize: 16.0)
+    public var messageFont = UIFont(name:"DotsAllForNowJL", size:18)
     
     /**
      The title text alignment. Default is `NSTextAlignment.Left`.
     */
-    public var titleAlignment = NSTextAlignment.left
+    public var titleAlignment = NSTextAlignment.center
     
     /**
      The message text alignment. Default is `NSTextAlignment.Left`.
     */
-    public var messageAlignment = NSTextAlignment.left
+    public var messageAlignment = NSTextAlignment.center
     
     /**
      The maximum number of lines for the title. The default is 0 (no limit).
@@ -745,7 +748,7 @@ open class ToastManager {
     /**
      Enables or disables tap to dismiss on toast views. Default is `true`.
      */
-    open var tapToDismissEnabled = true
+    open var tapToDismissEnabled = false
     
     /**
      Enables or disables queueing behavior for toast views. When `true`,
@@ -754,7 +757,7 @@ open class ToastManager {
      on their positions). This has no effect on the toast activity view,
      which operates independently of normal toast views. Default is `true`.
      */
-    open var queueEnabled = true
+    open var queueEnabled = false
     
     /**
      The default duration. Used for the `makeToast` and

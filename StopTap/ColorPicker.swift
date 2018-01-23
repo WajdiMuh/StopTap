@@ -7,7 +7,6 @@
 import UIKit
 @objc protocol colorDelegate{
     @objc optional func pickedColor(_ color:UIColor)
-    @objc optional func touchendcp()
 }
 
 
@@ -69,9 +68,8 @@ class ColorPicker: UIView {
         }
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //  let touch =  touches.first
-        //  updateColor(touch!)
-        self.delegate.touchendcp!()
+         let touch =  touches.first
+          updateColor(touch!)
     }
     
     func updateColor(_ touch: UITouch){

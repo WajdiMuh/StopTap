@@ -63,61 +63,6 @@ class popanimation: NSObject, UIViewControllerAnimatedTransitioning {
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             })
         }
-        if(ProcessInfo().operatingSystemVersion.majorVersion > 8 && ProcessInfo().operatingSystemVersion.majorVersion < 11){
-        print("ios 9 - 10")
-         if(fromViewController?.title! == "Play" && toViewController?.title! == "Main"){
-        transitionContext.containerView.addSubview((toViewController?.view)!)
-        transitionContext.containerView.backgroundColor = UIColor.white
-        UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut], animations: {() -> Void in
-            toViewController?.view?.center.y = (fromViewController?.view.center.y)!
-            fromViewController?.view?.center.y = (fromViewController?.view.center.y)! / -1
-        }, completion: {(_ finished: Bool) -> Void in
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-        })
-        }
-        if(fromViewController?.title! == "Htp" && toViewController?.title! == "Main"){
-            transitionContext.containerView.addSubview((toViewController?.view)!)
-            transitionContext.containerView.backgroundColor = UIColor.white
-            UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut], animations: {() -> Void in
-                toViewController?.view?.center.x = (fromViewController?.view.center.x)!
-                fromViewController?.view?.center.x = (fromViewController?.view.center.x)! / -1
-            }, completion: {(_ finished: Bool) -> Void in
-                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-            })
-        }
-        if(fromViewController?.title! == "Shop" && toViewController?.title! == "Main"){
-            transitionContext.containerView.addSubview((toViewController?.view)!)
-            transitionContext.containerView.backgroundColor = UIColor.white
-            UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut], animations: {() -> Void in
-             toViewController?.view?.center.x = (fromViewController?.view.center.x)!
-              fromViewController?.view?.center.x = (fromViewController?.view.center.x)! * 3
-            }, completion: {(_ finished: Bool) -> Void in
-                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-            })
-        }
-        if(fromViewController?.title! == "Score" && toViewController?.title! == "Play"){
-                transitionContext.containerView.addSubview((toViewController?.view)!)
-                transitionContext.containerView.backgroundColor = UIColor.white
-                UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut], animations: {() -> Void in
-                    toViewController?.view?.center.x = (fromViewController?.view.center.x)!
-                    fromViewController?.view?.center.x = (fromViewController?.view.center.x)! * 3
-                }, completion: {(_ finished: Bool) -> Void in
-                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-                })
-        }
-            if(fromViewController?.title! == "Score" && toViewController?.title! == "Main"){
-                transitionContext.containerView.addSubview((toViewController?.view)!)
-                transitionContext.containerView.backgroundColor = UIColor.white
-                UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut], animations: {() -> Void in
-                    toViewController?.view?.center.x = (fromViewController?.view.center.x)!
-                    fromViewController?.view?.center.x = (fromViewController?.view.center.x)! * 3
-                }, completion: {(_ finished: Bool) -> Void in
-                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-                })
-            }
-            
-        }else{
-        print("ios 8 or 11")
         if(fromViewController?.title! == "Play" && toViewController?.title! == "Main"){
             transitionContext.containerView.addSubview((toViewController?.view)!)
             transitionContext.containerView.backgroundColor = UIColor.white
@@ -174,7 +119,6 @@ class popanimation: NSObject, UIViewControllerAnimatedTransitioning {
                 })
             }
             
-        }
         }
     }
 
