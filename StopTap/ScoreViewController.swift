@@ -72,6 +72,44 @@ class ScoreViewController: UIViewController {
             }
         } */
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        switch (provider.getInt(forKey: "lang", defaultValue: 1)) {
+        case 0:
+            gameo.text = "انتهت اللعبة"
+            gameo.arabic(size: 28, diffinsize: 4)
+            hscore.arabic(size: 24, diffinsize: 4)
+            score.arabic(size: 24, diffinsize: 4)
+            playag.setTitle("العب مرة أخرى", for: UIControlState())
+            playag.arabic(size: 20, diffinsize: 2)
+            menu.setTitle("القائمة", for: UIControlState())
+            menu.arabic(size: 20, diffinsize: 2)
+            leaderb.setTitle("المتصدرين", for: UIControlState())
+            leaderb.arabic(size: 20, diffinsize: 2)
+            break
+        case 1:
+            gameo.text = "Game Over"
+            gameo.english(size: 28, diffinsize: 4)
+            hscore.english(size: 24, diffinsize: 4)
+            score.english(size: 24, diffinsize: 4)
+            menu.setTitle("Menu", for: UIControlState())
+            menu.english(size: 20, diffinsize: 2,left: 3,top: 2)
+            playag.setTitle("Play Again", for: UIControlState())
+            playag.english(size: 20, diffinsize: 2,left: 3,top: 2)
+            leaderb.setTitle("Leaderboard", for: UIControlState())
+            leaderb.english(size: 20, diffinsize: 2,left: 3,top: 2)
+            break
+        default:
+            gameo.text = "Game Over"
+            gameo.english(size: 28, diffinsize: 4)
+            hscore.english(size: 24, diffinsize: 4)
+            score.english(size: 24, diffinsize: 4)
+            menu.setTitle("Menu", for: UIControlState())
+            menu.english(size: 20, diffinsize: 2,left: 3,top: 2)
+            playag.setTitle("Play Again", for: UIControlState())
+            playag.english(size: 20, diffinsize: 2,left: 3,top: 2)
+            leaderb.setTitle("Leaderboard", for: UIControlState())
+            leaderb.english(size: 20, diffinsize: 2,left: 3,top: 2)
+            break
+        }
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
             self.view.backgroundColor = UIColor.white
             playag.layer.borderColor = UIColor.black.cgColor
@@ -124,17 +162,38 @@ class ScoreViewController: UIViewController {
         menu.layer.borderWidth = 5
         leaderb.layer.cornerRadius = 10
         leaderb.layer.borderWidth = 5
-        score.text = "Score : " + String(scoreval)
        /* if (ViewController.vars.signedin == 1){
             hscore.text = "HighScore : " + ViewController.vars.hscore
         }else{
    
         } */
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        switch (provider.getInt(forKey: "lang", defaultValue: 1)) {
+        case 0:
+            score.text = "النتيجة : " + convertEngNumToPersianNum(num: String(scoreval))
+            break
+        case 1:
+            score.text = "Score : " + String(scoreval)
+            break
+        default:
+            score.text = "Score : " + String(scoreval)
+            break
+        }
         if (provider.exists(forKey: "hscore") == false){
-            hscore.text = "HighScore : 0"
+            self.hscore.isHidden = true
         }else{
-            hscore.text = "HighScore : " + String(provider.getInt(forKey: "hscore"))
+            switch (provider.getInt(forKey: "lang", defaultValue: 1)) {
+            case 0:
+                hscore.text = "أعلى نتيجة : " + convertEngNumToPersianNum(num: String(provider.getInt(forKey: "hscore")))
+                break
+            case 1:
+                 hscore.text = "HighScore : " + String(provider.getInt(forKey: "hscore"))
+                break
+            default:
+                 hscore.text = "HighScore : " + String(provider.getInt(forKey: "hscore"))
+                break
+            }
+            self.hscore.isHidden = false
         }
     }
     @IBAction func playagain(_ sender: AnyObject) {
@@ -152,7 +211,7 @@ class ScoreViewController: UIViewController {
     
     @IBAction func leadertouch(_ sender: Any) {
         if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
-            AudioServicesPlaySystemSound(1519);
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }
     }
     func confettistartstop(startstop : Bool){
@@ -237,7 +296,14 @@ class ScoreViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    func convertEngNumToPersianNum(num: String)->String{
+        //let number = NSNumber(value: Int(num)!)
+        let format = NumberFormatter()
+        format.locale = Locale(identifier: "ar_JO")
+        let number =   format.number(from: num)
+        let faNumber = format.string(from: number!)
+        return faNumber!
+    }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     //override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.

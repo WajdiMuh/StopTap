@@ -34,6 +34,38 @@ class devViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        switch (provider.getInt(forKey: "lang", defaultValue: 1)) {
+        case 0:
+            developedb.text = "طورت بواسطة"
+            developer.text = "وجدي المهتدي"
+            thx.text = "شكراً للّعب"
+            developedb.arabic(size: 20, diffinsize: 6)
+            developer.arabic(size: 20, diffinsize: 6)
+            thx.arabic(size: 20, diffinsize: 6)
+            menu.setTitle("عودة", for: UIControlState())
+            menu.arabic(size: 20, diffinsize: 6)
+            break
+        case 1:
+            developedb.text = "Developed By"
+            developer.text = "Wajdi Al-Muhtadi"
+            thx.text = "Thx For Playing"
+            developedb.english(size: 20, diffinsize: 6)
+            developer.english(size: 20, diffinsize: 6)
+            thx.english(size: 20, diffinsize: 6)
+            menu.setTitle("Back", for: UIControlState())
+            menu.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            break
+        default:
+            developedb.text = "Developed By"
+            developer.text = "Wajdi Al-Muhtadi"
+            thx.text = "Thx For Playing"
+            developedb.english(size: 20, diffinsize: 6)
+            developer.english(size: 20, diffinsize: 6)
+            thx.english(size: 20, diffinsize: 6)
+            menu.setTitle("Back", for: UIControlState())
+            menu.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            break
+        }
         check = provider.getInt(forKey: "nm", defaultValue: 0)
         if(check == 0){
             self.view.backgroundColor = UIColor.white

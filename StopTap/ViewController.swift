@@ -83,7 +83,6 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
             self.val.text = String(provider.getInt(forKey: "hscore"))
                 break
             }
-
             self.highsc.isHidden = false
             self.val.isHidden = false
         }
@@ -102,7 +101,7 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
             highsc.text = "أعلى نتيجة :"
             val.arabic(size: 24, diffinsize: 4)
             highsc.arabic(size: 24, diffinsize: 4)
-            play.setTitle("إلعب", for: UIControlState())
+            play.setTitle("العب", for: UIControlState())
             htp.setTitle("كيفية اللعب", for: UIControlState())
             shop.setTitle("المتجر", for: UIControlState())
             account.setTitle("الحساب", for: UIControlState())
@@ -568,7 +567,7 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
     }
     @IBAction func acnttouch(_ sender: Any) {
         if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
-            AudioServicesPlaySystemSound(1519);
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }
     }
     @objc func viewrisign(){

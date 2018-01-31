@@ -36,17 +36,13 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
     @IBOutlet weak var x2w: NSLayoutConstraint!
     @IBOutlet weak var doublescore: UIButton!
     @IBOutlet weak var coinval: UILabel!
-    
     @IBOutlet weak var back: UIButton!
-    
     let layerfixbase:CALayer = CALayer()
     var doubleon:Bool = false
     @IBOutlet weak var dir: UIImageView!
     @IBOutlet weak var dirw: NSLayoutConstraint!
     @IBOutlet weak var dirh: NSLayoutConstraint!
-    
     @IBOutlet weak var timect: NSLayoutConstraint!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         wrong.image = wrong.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
@@ -98,6 +94,35 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
         self.back.transform = CGAffineTransform(rotationAngle: (CGFloat.pi))
         timect.constant = timecount.frame.origin.x
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        switch provider.getInt(forKey: "lang", defaultValue: 1) {
+        case 0:
+            scoreval.text = "النتيجة : ٠"
+            scoreval.arabic(size: 24, diffinsize: 4)
+            coinval.text = "٠"
+            coinval.arabic(size: 26, diffinsize: 0)
+            timecount.arabic(size: 20, diffinsize: 0)
+            doublescore.setTitle("٢x", for: UIControlState())
+            doublescore.arabic(size: 100, diffinsize: 0)
+            break
+        case 1:
+            scoreval.text = "Score : 0"
+            scoreval.english(size: 24, diffinsize: 4)
+            coinval.text = "0"
+            coinval.english(size: 26, diffinsize: 0)
+            timecount.english(size: 20, diffinsize: 0)
+            doublescore.setTitle("x2", for: UIControlState())
+            doublescore.english(size: 100, diffinsize: 0,left: 4,top: 2)
+            break
+        default:
+            scoreval.text = "Score : 0"
+            scoreval.english(size: 24, diffinsize: 4)
+            coinval.text = "0"
+            coinval.english(size: 26, diffinsize: 0)
+            timecount.english(size: 20, diffinsize: 0)
+            doublescore.setTitle("x2", for: UIControlState())
+            doublescore.english(size: 100, diffinsize: 0,left: 4,top: 2)
+            break
+        }
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
             self.view.backgroundColor = UIColor.white
             timecount.textColor = UIColor.black
@@ -226,13 +251,25 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
                 UIView.animate(withDuration: 1, delay: 0, options:[], animations: {
                     self.move.superview?.layoutIfNeeded()
                     }, completion: {(finished: Bool) -> Void in
-                        self.timecount.text = "Tap On The Screen While The Small Box Is Inside The Big Box To Gain Score. Tap Now ▼"
+                        let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+                        switch provider.getInt(forKey: "lang", defaultValue: 1) {
+                        case 0:
+                            self.timecount.text = "انقر الشاشة أثناء وجود الصندوق الصغير داخل الصندوق الكبير لكي تكسب نتيجة. انقر الآن ▼"
+                            break
+                        case 1:
+                            self.timecount.text = "Tap On The Screen While The Small Box Is Inside The Big Box To Gain Score. Tap Now ▼"
+                            break
+                        default:
+                            self.timecount.text = "Tap On The Screen While The Small Box Is Inside The Big Box To Gain Score. Tap Now ▼"
+                            break
+                        }
                         self.move.tag = 2
                         self.canclick = true
                 })
             }else if(move.tag == 2){
                 self.baseanim.layer.removeAllAnimations()
                 UIView.commitAnimations()
+                let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
                 if(score == 0){
                     audioPlayer.pause()
                     audioPlayer.currentTime = 0
@@ -258,13 +295,35 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
                             self.doublescore.superview?.layoutIfNeeded()
                         }, completion: {(finished: Bool) -> Void in
                             if(finished == true){
-                                self.timecount.text = "If You Tap On The Double Score Sign You Will Gain Double The Score This Lasts For 10 Seconds. Tap Now ▼"
+                                switch provider.getInt(forKey: "lang", defaultValue: 1) {
+                                case 0:
+                                   self.timecount.text = "إذا نقرت إشارة النتيجة المزدوجة سوف تكسب ضعف النتيجة، هذا يستمر لمدة ١٠ ثانية. انقر الآن ▼"
+                                    break
+                                case 1:
+                                    self.timecount.text = "If You Tap On The Double Score Sign You Will Gain Double The Score, This Lasts For 10 Seconds. Tap Now ▼"
+                                    break
+                                default:
+                                    self.timecount.text = "If You Tap On The Double Score Sign You Will Gain Double The Score, This Lasts For 10 Seconds. Tap Now ▼"
+                                    break
+                                }
                             }
                         })
                     score = score + 1
-                    scoreval.text = "Score : " + String(score)
                     coins = coins + 1
-                    coinval.text = String(coins)
+                    switch provider.getInt(forKey: "lang", defaultValue: 1) {
+                    case 0:
+                        scoreval.text = "النتيجة : " + convertEngNumToPersianNum(num: String(score))
+                        coinval.text = convertEngNumToPersianNum(num: String(coins))
+                        break
+                    case 1:
+                        scoreval.text = "Score : " + String(score)
+                        coinval.text = String(coins)
+                        break
+                    default:
+                        scoreval.text = "Score : " + String(score)
+                        coinval.text = String(coins)
+                        break
+                    }
                 }else if (score == 1){
                     if(doubleon == true){
                         audioPlayer.pause()
@@ -282,10 +341,25 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
                         }
                         )
                         score = score + 2
-                        scoreval.text = "Score : " + String(score)
                         coins = coins + 1
-                        coinval.text = String(coins)
-                        timecount.text = "Swipe In The Direction Of The Arrow To Gain 4 Extra Coins. Swipe Now ▼"
+                        switch provider.getInt(forKey: "lang", defaultValue: 1) {
+                        case 0:
+                            timecount.text = "اسحب باتجاه السهم لكسب 4 عملات اضافية. اسحب الآن ▼"
+                            scoreval.text = "النتيجة : " + convertEngNumToPersianNum(num: String(score))
+                            coinval.text = convertEngNumToPersianNum(num: String(coins))
+                            break
+                        case 1:
+                            timecount.text = "Swipe In The Direction Of The Arrow To Gain 4 Extra Coins. Swipe Now ▼"
+                            scoreval.text = "Score : " + String(score)
+                            coinval.text = String(coins)
+                            break
+                        default:
+                            timecount.text = "Swipe In The Direction Of The Arrow To Gain 4 Extra Coins. Swipe Now ▼"
+                            scoreval.text = "Score : " + String(score)
+                            coinval.text = String(coins)
+                            break
+                        }
+                        
                     }
                 }
                 }
@@ -293,7 +367,18 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
     }
     @IBAction func x2touchdown(_ sender: Any) {
         doubleon = true
-        timecount.text = "Tap On The Screen While The Small Box Is Inside The Big Box And The Double Score Is Active To Gain Double The Score. Tap Now ▼"
+        let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        switch provider.getInt(forKey: "lang", defaultValue: 1) {
+        case 0:
+            timecount.text = "انقر الشاشة أثناء وجود الصندوق الصغير داخل الصندوق الكبير و النتيجة المزدوجة فعّالة لكي تكسب ضعف النتيجة. انقر الآن ▼"
+            break
+        case 1:
+            timecount.text = "Tap On The Screen While The Small Box Is Inside The Big Box And The Double Score Is Active To Gain Double The Score. Tap Now ▼"
+            break
+        default:
+            timecount.text = "Tap On The Screen While The Small Box Is Inside The Big Box And The Double Score Is Active To Gain Double The Score. Tap Now ▼"
+            break
+        }
         doublescore.isEnabled = false
         doublescore.isHidden = true
         doublescore.isUserInteractionEnabled = false
@@ -305,7 +390,18 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
         UIView.animate(withDuration: 1, delay: 0, options:[], animations: {
             self.move.superview?.layoutIfNeeded()
         }, completion: {(finished: Bool) -> Void in
-            self.timecount.text = "If You Tap The Screen While The Small Box Is Outside The Big Box You Will Lose A Life. Tap Now ▼"
+            let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+            switch provider.getInt(forKey: "lang", defaultValue: 1) {
+            case 0:
+                self.timecount.text = "إذا نقرت الشاشة أثناء وجود الصندوق الصغير خارج الصندوق الكبير سوف تفقد حياة. انقر الآن ▼"
+                break
+            case 1:
+                self.timecount.text = "If You Tap The Screen While The Small Box Is Outside The Big Box You Will Lose A Life. Tap Now ▼"
+                break
+            default:
+                self.timecount.text = "If You Tap The Screen While The Small Box Is Outside The Big Box You Will Lose A Life. Tap Now ▼"
+                break
+            }
             self.move.tag = 1
             self.canclick = true
         })
@@ -317,8 +413,8 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
     @objc func swiperight(){
         self.viewclick.gestureRecognizers?.removeAll()
         self.dir.isHidden = true
+        let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         coins = coins + 5
-        coinval.text = String(coins)
         audioPlayer.pause()
         audioPlayer.currentTime = 0
         audioPlayer.play()
@@ -334,7 +430,20 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
         }
         )
         score = score + 1
-        scoreval.text = "Score : " + String(score)
+        switch provider.getInt(forKey: "lang", defaultValue: 1) {
+        case 0:
+            scoreval.text = "النتيجة : " + convertEngNumToPersianNum(num: String(score))
+            coinval.text = convertEngNumToPersianNum(num: String(coins))
+            break
+        case 1:
+            scoreval.text = "Score : " + String(score)
+            coinval.text = String(coins)
+            break
+        default:
+            scoreval.text = "Score : " + String(score)
+            coinval.text = String(coins)
+            break
+        }
         timecount.text = ""
         countdown = Foundation.Timer(timeInterval: 0.75, target: self, selector: #selector(HtpViewController.finish), userInfo: nil, repeats: false)
         RunLoop.current.add(countdown, forMode: RunLoopMode.commonModes)
@@ -388,5 +497,13 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
+    func convertEngNumToPersianNum(num: String)->String{
+        //let number = NSNumber(value: Int(num)!)
+        let format = NumberFormatter()
+        format.locale = Locale(identifier: "ar_JO")
+        let number =   format.number(from: num)
+        let faNumber = format.string(from: number!)
+        return faNumber!
+    }
+    
 }
