@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class LangViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     @IBOutlet weak var back: UIButton!
     @IBOutlet weak var lan: UILabel!
     @IBOutlet weak var langs: UITableView!
-    var langsava:Array = ["Arabic", "English"]
+    var langsava:Array = ["Arabic", "English\nSelected"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.langs.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -25,19 +26,31 @@ class LangViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         switch provider.getInt(forKey: "lang", defaultValue: 1) {
         case 0:
-            self.langsava[0] = "Arabic\nSelected"
+            lan.text = "اللغة"
+            lan.arabic(size: 26, diffinsize: 8)
+            back.setTitle("عودة", for: UIControlState())
+            back.arabic(size: 20, diffinsize: 6)
+            self.langsava = ["عربي\nمختار","انجليزي"]
             break
         case 1:
-            self.langsava[1] = "English\nSelected"
+            lan.text = "Language"
+            lan.english(size: 26, diffinsize: 8)
+            back.setTitle("Back", for: UIControlState())
+            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            self.langsava = ["Arabic", "English\nSelected"]
             break
         default:
-            self.langsava[1] = "English\nSelected"
+            lan.text = "Language"
+            lan.english(size: 26, diffinsize: 8)
+            back.setTitle("Back", for: UIControlState())
+            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            break
         }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
-        if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
+    if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
             self.view.backgroundColor = UIColor.white
             back.layer.borderColor = UIColor.black.cgColor
             back.setTitleColor(UIColor.black, for: UIControlState())
@@ -52,6 +65,9 @@ class LangViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     @IBAction func backb(_ sender: AnyObject) {
+        if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
         navigationController?.popViewController(animated: true)
     }
     override func didReceiveMemoryWarning() {
@@ -62,20 +78,25 @@ class LangViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return self.langsava.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell 	{
-        
         let cell: UITableViewCell = self.langs.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         cell.textLabel?.text = self.langsava[(indexPath as NSIndexPath).row]
         cell.layoutMargins = UIEdgeInsets.zero
          cell.preservesSuperviewLayoutMargins = false
         cell.textLabel?.textAlignment = NSTextAlignment.center
         cell.textLabel?.numberOfLines = 2
-        if(UIDevice.current.userInterfaceIdiom == .phone){
-            cell.textLabel?.font = UIFont(name:"DotsAllForNowJL", size:18)
-        }else{
-            cell.textLabel?.font = UIFont(name:"DotsAllForNowJL", size:22)
+        let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        switch provider.getInt(forKey: "lang", defaultValue: 1) {
+        case 0:
+            cell.textLabel?.arabic(size: 18, diffinsize: 4)
+            break
+        case 1:
+            cell.textLabel?.english(size: 18, diffinsize: 4)
+            break
+        default:
+            cell.textLabel?.english(size: 18, diffinsize: 4)
+            break
         }
         cell.selectionStyle = .none
-        let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
             cell.textLabel?.textColor = UIColor.black
             cell.backgroundColor = UIColor.white
@@ -87,25 +108,41 @@ class LangViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        if(provider.getInt(forKey: "lang", defaultValue: 1) != ((indexPath as NSIndexPath).item)){
         provider.setInt(forKey: "lang", value: (indexPath as NSIndexPath).item)
+        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
         switch (indexPath as NSIndexPath).item {
         case 0:
-            self.langsava = ["Arabic\nSelected", "English"]
+            lan.text = "اللغة"
+            lan.arabic(size: 26, diffinsize: 8)
+            back.setTitle("عودة", for: UIControlState())
+            back.arabic(size: 20, diffinsize: 6)
+            self.langsava = ["عربي\nمختار","انجليزي"]
             break
         case 1:
+            lan.text = "Language"
+            lan.english(size: 26, diffinsize: 8)
+            back.setTitle("Back", for: UIControlState())
+            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
             self.langsava = ["Arabic", "English\nSelected"]
             break
         default:
+            lan.text = "Language"
+            lan.english(size: 26, diffinsize: 8)
+            back.setTitle("Back", for: UIControlState())
+            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
             self.langsava = ["Arabic", "English\nSelected"]
         }
         self.langs.reloadData()
+        }
     }
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
       return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
     }
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.

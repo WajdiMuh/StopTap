@@ -11,7 +11,7 @@
 		0D0100E11D021B7C00597B59 /* presence_invisible.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0100E01D021B7C00597B59 /* presence_invisible.png */; };
 		0D0A4C461F46022D0014802F /* SAConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0A4C451F46022D0014802F /* SAConfettiView.swift */; };
 		0D0A4C481F4610700014802F /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0A4C471F4610700014802F /* confetti.png */; };
-		0D0FB0921D675FC80075019F /* StopTap.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D0FB0911D675FC80075019F /* StopTap.ttf */; };
+		0D0FB0921D675FC80075019F /* StopTapen.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D0FB0911D675FC80075019F /* StopTapen.ttf */; };
 		0D1A9B1F1CDE6BC700E1FF77 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1A9B1E1CDE6BC700E1FF77 /* ScoreViewController.swift */; };
 		0D21438B1C9D533900668A29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D21438A1C9D533900668A29 /* AppDelegate.swift */; };
 		0D21438D1C9D533900668A29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D21438C1C9D533900668A29 /* ViewController.swift */; };
@@ -21,6 +21,7 @@
 		0D225C2A1F60858D008A6EFE /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D225C271F60858D008A6EFE /* pause.png */; };
 		0D225C2B1F60858D008A6EFE /* direction.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D225C281F60858D008A6EFE /* direction.png */; };
 		0D2A75861CA3E651004CEFED /* abc_ic_clear_mtrl_alpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2A75851CA3E651004CEFED /* abc_ic_clear_mtrl_alpha.png */; };
+		0D54F1982020B1EC0050F511 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D54F1972020B1EC0050F511 /* Languages.swift */; };
 		0D58ED641F4B800D006CFD13 /* KeychainHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D58ED5E1F4B800D006CFD13 /* KeychainHelpers.swift */; };
 		0D58ED651F4B800D006CFD13 /* KeyChainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D58ED5F1F4B800D006CFD13 /* KeyChainInfo.swift */; };
 		0D58ED661F4B800D006CFD13 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D58ED601F4B800D006CFD13 /* KeyStorage.swift */; };
@@ -84,7 +85,7 @@
 		0D07DB8A1CFB87D300F30F38 /* SignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		0D0A4C451F46022D0014802F /* SAConfettiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAConfettiView.swift; sourceTree = "<group>"; };
 		0D0A4C471F4610700014802F /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
-		0D0FB0911D675FC80075019F /* StopTap.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = StopTap.ttf; sourceTree = "<group>"; };
+		0D0FB0911D675FC80075019F /* StopTapen.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = StopTapen.ttf; sourceTree = "<group>"; };
 		0D1A9B1E1CDE6BC700E1FF77 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		0D2143871C9D533900668A29 /* StopTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D21438A1C9D533900668A29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 		0D225C281F60858D008A6EFE /* direction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = direction.png; sourceTree = "<group>"; };
 		0D2A75851CA3E651004CEFED /* abc_ic_clear_mtrl_alpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abc_ic_clear_mtrl_alpha.png; sourceTree = "<group>"; };
 		0D34105A1E33EE8A00CA1307 /* StopTap-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "StopTap-Bridging-Header.h"; path = "StopTap/StopTap-Bridging-Header.h"; sourceTree = "<group>"; };
+		0D54F1972020B1EC0050F511 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		0D58ED5E1F4B800D006CFD13 /* KeychainHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainHelpers.swift; sourceTree = "<group>"; };
 		0D58ED5F1F4B800D006CFD13 /* KeyChainInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainInfo.swift; sourceTree = "<group>"; };
 		0D58ED601F4B800D006CFD13 /* KeyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
@@ -250,7 +252,7 @@
 				0DA619CD1F4F768200429EC0 /* pushanimation.swift */,
 				0DA619CF1F4F849900429EC0 /* popanimation.swift */,
 				0DB031131C9DC275009046EC /* PlayViewController.swift */,
-				0D0FB0911D675FC80075019F /* StopTap.ttf */,
+				0D0FB0911D675FC80075019F /* StopTapen.ttf */,
 				0D1A9B1E1CDE6BC700E1FF77 /* ScoreViewController.swift */,
 				0D8D5E581CAB20EA0034DA32 /* SettingsViewController.swift */,
 				0DD197611CABE3E1003061D3 /* LangViewController.swift */,
@@ -270,6 +272,7 @@
 				0D58ED611F4B800D006CFD13 /* KeyStorageCrypter.swift */,
 				0D58ED621F4B800D006CFD13 /* KeyStorageKeyChainProvider.swift */,
 				0D58ED631F4B800D006CFD13 /* KeyStoreDefaultsProvider.swift */,
+				0D54F1972020B1EC0050F511 /* Languages.swift */,
 				0D942E171CA30A68003EF043 /* Assets.xcassets */,
 				0DF5E2B51D26A39200332E8F /* Main.storyboard */,
 				0D2143931C9D533900668A29 /* LaunchScreen.storyboard */,
@@ -428,7 +431,7 @@
 				0DB0310E1C9DB49E009046EC /* language.png in Resources */,
 				0DBB1E261CA6E2DC003822B4 /* coin.png in Resources */,
 				0DF8BFB81D37CB2C0061578E /* GoogleService-Info.plist in Resources */,
-				0D0FB0921D675FC80075019F /* StopTap.ttf in Resources */,
+				0D0FB0921D675FC80075019F /* StopTapen.ttf in Resources */,
 				0D942E181CA30A68003EF043 /* Assets.xcassets in Resources */,
 				0D0A4C481F4610700014802F /* confetti.png in Resources */,
 				0D0100E11D021B7C00597B59 /* presence_invisible.png in Resources */,
@@ -582,6 +585,7 @@
 				0D1A9B1F1CDE6BC700E1FF77 /* ScoreViewController.swift in Sources */,
 				0DA619CE1F4F768200429EC0 /* pushanimation.swift in Sources */,
 				0DD907D61CE2419D00AAB1B0 /* ShopViewController.swift in Sources */,
+				0D54F1982020B1EC0050F511 /* Languages.swift in Sources */,
 				0DF92E1B1D38314400B81057 /* ColorPicker.swift in Sources */,
 				0D58ED651F4B800D006CFD13 /* KeyChainInfo.swift in Sources */,
 				0DF3B16F1CDE669300B5F4F1 /* App42LeaderboardCell.m in Sources */,

@@ -6,6 +6,7 @@
 //  Copyright © 2016 wajdi muhtadi. All rights reserved.
 //
 import CoreMotion
+import AudioToolbox
 import UIKit
 class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationControllerDelegate{
     let bganim1:UIImageView = UIImageView()
@@ -71,7 +72,18 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
             self.highsc.isHidden = true
             self.val.isHidden = true
         }else{
+            switch (provider.getInt(forKey: "lang", defaultValue: 1)) {
+            case 0:
+                self.val.text = convertEngNumToPersianNum(num: String(provider.getInt(forKey: "hscore")))
+                break
+            case 1:
             self.val.text = String(provider.getInt(forKey: "hscore"))
+                break
+            default:
+            self.val.text = String(provider.getInt(forKey: "hscore"))
+                break
+            }
+
             self.highsc.isHidden = false
             self.val.isHidden = false
         }
@@ -85,6 +97,47 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
                 self.gname.transform = self.gname.transform.rotated(by:  -1 * (CGFloat.pi / 12)).scaledBy(x: 2/3, y: 2/3)
             })
         }, completion: nil)
+        switch (provider.getInt(forKey: "lang", defaultValue: 1)) {
+        case 0:
+            highsc.text = "أعلى نتيجة :"
+            val.arabic(size: 24, diffinsize: 4)
+            highsc.arabic(size: 24, diffinsize: 4)
+            play.setTitle("إلعب", for: UIControlState())
+            htp.setTitle("كيفية اللعب", for: UIControlState())
+            shop.setTitle("المتجر", for: UIControlState())
+            account.setTitle("الحساب", for: UIControlState())
+            play.arabic(size: 20, diffinsize: 6)
+            htp.arabic(size: 20, diffinsize: 6)
+            shop.arabic(size: 20, diffinsize: 6)
+            account.arabic(size: 20, diffinsize: 6)
+            break
+        case 1:
+            highsc.text = "HighScore :"
+            val.english(size: 24, diffinsize: 4)
+            highsc.english(size: 24, diffinsize: 4)
+            play.setTitle("Play", for: UIControlState())
+            htp.setTitle("How To Play", for: UIControlState())
+            shop.setTitle("Shop", for: UIControlState())
+            account.setTitle("Account", for: UIControlState())
+            play.english(size: 20, diffinsize: 6,left:6,top:3)
+            htp.english(size: 20, diffinsize: 6,left:4,top:3)
+            shop.english(size: 20, diffinsize: 6,left:4,top:3)
+            account.english(size: 20, diffinsize: 6,left:4,top:3)
+            break
+        default:
+            highsc.text = "HighScore :"
+            val.english(size: 24, diffinsize: 4)
+            highsc.english(size: 24, diffinsize: 4)
+            play.setTitle("Play", for: UIControlState())
+            htp.setTitle("How To Play", for: UIControlState())
+            shop.setTitle("Shop", for: UIControlState())
+            account.setTitle("Account", for: UIControlState())
+            play.english(size: 20, diffinsize: 6,left:6,top:3)
+            htp.english(size: 20, diffinsize: 6,left:4,top:3)
+            shop.english(size: 20, diffinsize: 6,left:4,top:3)
+            account.english(size: 20, diffinsize: 6,left:4,top:3)
+            break
+        }
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 1){
             self.view.backgroundColor = UIColor.black
             play.layer.borderColor = UIColor.white.cgColor
@@ -212,7 +265,11 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
             provider.setInt(forKey: "sfxval", value: 10)
         }
         if (provider.exists(forKey: "vib") == false){
-             provider.setInt(forKey: "vib", value: 1)
+            if(UIDevice.current.userInterfaceIdiom == .phone){
+                provider.setInt(forKey: "vib", value: 1)
+            }else{
+                provider.setInt(forKey: "vib", value: 0)
+            }
         }
         if (provider.exists(forKey: "shopselect") == false){
             provider.setInt(forKey: "shopselect", value: 1)
@@ -272,7 +329,7 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
             provider.setInt(forKey: "cv", value: 0)
         }
         navigationController?.delegate = self
-         collider.collisionDelegate = self
+        collider.collisionDelegate = self
         //ios 8 animation pop
         //add achievements
         /*var toastnmon = ToastStyle()
@@ -382,14 +439,6 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
         bganim1.layer.borderWidth = ((2.5 * self.view.bounds.width) / 411)
         bganim2.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
         bganim2.layer.borderWidth = ((2.5 * self.view.bounds.width) / 411)
-        if (provider.exists(forKey: "hscore") == false){
-            highsc.isHidden = true
-            val.isHidden = true
-        }else{
-            val.text = provider.getString(forKey: "hscore", defaultValue: "0")
-            highsc.isHidden = false
-            val.isHidden = false
-        }
         createAnimatorStuff()
         bganim1.frame.size.height = ((40 * self.view.bounds.width) / 411)
         bganim1.frame.size.width = ((40 * self.view.bounds.width) / 411)
@@ -465,7 +514,7 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
         }
     }
    /* struct vars {
-        //static var signedin = 0
+        static var signedin = 0
         static var hscore = "0"
         static var shop2 = "0"
         static var shop3 = "0"
@@ -474,8 +523,7 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
         static var shopselect = "1"
         static var nmselect = "0"
         static var coin = "0"
-    }
-    */
+    } */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -483,16 +531,45 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
     
     func createAnimatorStuff() {
         animator = UIDynamicAnimator(referenceView:self.view);
-        
         gravity.gravityDirection = CGVector(dx: 0, dy: 0.8)
         animator?.addBehavior(gravity);
         // We're bouncin' off the walls
-         // print("coll" + String.init(describing: collider.boundaryIdentifiers) )
+        // print("coll" + String.init(describing: collider.boundaryIdentifiers) )
         itemBehavior.resistance = 0.1
         itemBehavior.allowsRotation = false
         itemBehavior.friction = 0
         itemBehavior.elasticity = 0.75
         animator?.addBehavior(itemBehavior)
+    }
+    @IBAction func setttingstouch(_ sender: Any) {
+        if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
+    }
+    @IBAction func developtouch(_ sender: Any) {
+        if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
+    }
+    @IBAction func playtouch(_ sender: Any) {
+        if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
+    }
+    @IBAction func htptouch(_ sender: Any) {
+        if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
+    }
+    @IBAction func shoptouch(_ sender: Any) {
+        if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
+    }
+    @IBAction func acnttouch(_ sender: Any) {
+        if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
     }
     @objc func viewrisign(){
         self.gname.transform = CGAffineTransform(rotationAngle: (CGFloat.pi / 12))
@@ -508,5 +585,13 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
     }
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         return [UIInterfaceOrientationMask.landscapeRight ,UIInterfaceOrientationMask.landscapeLeft]
+    }
+    func convertEngNumToPersianNum(num: String)->String{
+        //let number = NSNumber(value: Int(num)!)
+        let format = NumberFormatter()
+        format.locale = Locale(identifier: "ar_JO")
+        let number =   format.number(from: num)
+        let faNumber = format.string(from: number!)
+        return faNumber!
     }
 }

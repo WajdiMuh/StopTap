@@ -5,7 +5,7 @@
 //  Created by wajdi muhtadi on 5/7/16.
 //  Copyright © 2016 wajdi muhtadi. All rights reserved.
 //
-
+import AudioToolbox
 import GoogleMobileAds
 import UIKit
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
@@ -138,10 +138,22 @@ class ScoreViewController: UIViewController {
         }
     }
     @IBAction func playagain(_ sender: AnyObject) {
+        if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func menubutton(_ sender: AnyObject) {
+        if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction func leadertouch(_ sender: Any) {
+        if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
     }
     func confettistartstop(startstop : Bool){
         let confettiView = SAConfettiView(frame: self.view.bounds)

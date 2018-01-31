@@ -5,7 +5,7 @@
 //  Created by wajdi muhtadi on 5/10/16.
 //  Copyright © 2016 wajdi muhtadi. All rights reserved.
 //
-
+import AudioToolbox
 import UIKit
 
 class ShopViewController: UIViewController,colorDelegate {
@@ -1048,6 +1048,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop2 = 1
                         provider.setInt(forKey: "shop2", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1069,6 +1072,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop3 = 1
                          provider.setInt(forKey: "shop3", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1090,6 +1096,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop4 = 1
                         provider.setInt(forKey: "shop4", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1111,6 +1120,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop5 = 1
                         provider.setInt(forKey: "shop5", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1132,6 +1144,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop6 = 1
                        provider.setInt(forKey: "shop6", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1153,6 +1168,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop7 = 1
                          provider.setInt(forKey: "shop7", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1174,6 +1192,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop8 = 1
                         provider.setInt(forKey: "shop8", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1195,6 +1216,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop9 = 1
                          provider.setInt(forKey: "shop9", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1216,6 +1240,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop10 = 1
                         provider.setInt(forKey: "shop10", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1237,6 +1264,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop11 = 1
                       provider.setInt(forKey: "shop11", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1258,6 +1288,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop12 = 1
                       provider.setInt(forKey: "shop12", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1279,6 +1312,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop13 = 1
                         provider.setInt(forKey: "shop13", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1301,6 +1337,9 @@ class ShopViewController: UIViewController,colorDelegate {
                             shop14 = 3
                             provider.setInt(forKey: "shop14", value: 3)
                         }else{
+                            if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                            }
                             self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                             buy.isEnabled = false
                             buy.isHidden = true
@@ -1324,6 +1363,9 @@ class ShopViewController: UIViewController,colorDelegate {
                             shop14 = 2
                             provider.setInt(forKey: "shop14", value: 2)
                         }else{
+                            if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                            }
                             self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                             buy.isEnabled = false
                             buy.isHidden = true
@@ -1353,6 +1395,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         shop15 = 1
                         provider.setInt(forKey: "shop15", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1375,6 +1420,9 @@ class ShopViewController: UIViewController,colorDelegate {
                             shop16 = 1
                             provider.setInt(forKey: "shop16", value: 1)
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        }
                         self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
                         buy.isEnabled = false
                         buy.isHidden = true
@@ -1396,6 +1444,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         self.view.makeToast("The Boxes Can't Be White or Black\nAnd They Can't Have The Same Color", duration: 1.1, position: .center, style: toaststyle)
                         print("there r equals")
                     }else{
+                        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                            AudioServicesPlaySystemSound(1519);
+                        }
                         buyb = 3
                         print("error")
                         provider.setString(forKey: "cpsc", value: (small.backgroundColor?.toHexString())!)
@@ -1407,6 +1458,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         buy.setTitle("Selected", for: UIControlState())
                     }
                 }else{
+                    if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                        AudioServicesPlaySystemSound(1519);
+                    }
                     provider.setInt(forKey: "shopselect", value: select)
                     selected = select
                     buy.setTitle("Selected", for: UIControlState())
@@ -1480,6 +1534,9 @@ class ShopViewController: UIViewController,colorDelegate {
     }
     
     @IBAction func back(_ sender: AnyObject) {
+        if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
         buycancel.invalidate()
         self.navigationController?.popToRootViewController(animated: true)
     }

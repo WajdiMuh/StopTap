@@ -5,7 +5,7 @@
 //  Created by wajdi muhtadi on 4/2/16.
 //  Copyright © 2016 wajdi muhtadi. All rights reserved.
 //
-
+import AudioToolbox
 import UIKit
 
 class devViewController: UIViewController {
@@ -57,6 +57,9 @@ class devViewController: UIViewController {
     }
     
     @IBAction func menub(_ sender: AnyObject) {
+        if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
         color.invalidate()
         navigationController?.popToRootViewController(animated: true)
     }

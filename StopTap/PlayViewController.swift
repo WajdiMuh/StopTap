@@ -193,12 +193,15 @@ class PlayViewController: UIViewController {
                 onetimecorrect = onetimecorrect - 1
             }
         }else{
+            let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
             self.dir.isHidden = true
             self.viewclickb.gestureRecognizers?.removeAll()
             switch (wrongnum){
             case 0:
                 wrong.alpha = 1.0
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                }
                 kill1c.constant = move.layer.presentation()!.frame.origin.x
                 kill1.setNeedsLayout()
                 kill1.layoutIfNeeded()
@@ -213,9 +216,10 @@ class PlayViewController: UIViewController {
                 break;
             case 1:
                 wrong2.alpha = 1.0
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                }
                 wrongnum = 2
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 kill2c.constant = move.layer.presentation()!.frame.origin.x
                 kill2.setNeedsLayout()
                 kill2.layoutIfNeeded()
@@ -228,9 +232,10 @@ class PlayViewController: UIViewController {
                 })
                 break;
             case 2:
-                 let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
                  if(provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
-                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                    if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                    }
                     viewclickb.isHidden = true
                     viewclickb.isUserInteractionEnabled = false
                     gameovercheck = 1
@@ -286,9 +291,10 @@ class PlayViewController: UIViewController {
                     })
                 }else{
                     wrong3.alpha = 1.0
-                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                    if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                    }
                     wrongnum = 3
-                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                     kill3c.constant = move.layer.presentation()!.frame.origin.x
                     kill3.setNeedsLayout()
                     kill3.layoutIfNeeded()
@@ -302,8 +308,9 @@ class PlayViewController: UIViewController {
                 }
                 break;
             case 3:
-                let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                }
                 viewclickb.isHidden = true
                 viewclickb.isUserInteractionEnabled = false
                 gameovercheck = 1
@@ -363,7 +370,9 @@ class PlayViewController: UIViewController {
                 break;
             default:
                 wrong.alpha = 1.0
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                }
                 kill1c.constant = move.layer.presentation()!.frame.origin.x
                 kill1.setNeedsLayout()
                 kill1.layoutIfNeeded()
@@ -396,6 +405,7 @@ class PlayViewController: UIViewController {
         gameoverc.constant = (self.view.bounds.width - self.gameover.bounds.width)
         gameover.setNeedsLayout()
         gameover.layoutIfNeeded()
+        doublescore.titleLabel!.widthAnchor.constraint(equalToConstant: (x2w.constant * (3/4))).isActive = true
         doublescore.titleLabel!.adjustsFontSizeToFitWidth = true
         doublescore.titleLabel!.numberOfLines = 1
         doublescore.titleLabel!.minimumScaleFactor = 0.05
@@ -704,6 +714,10 @@ class PlayViewController: UIViewController {
         
     }
     @IBAction func pause(_ sender: AnyObject) {
+        let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
         if(pausetf == false){
             pausetf = true
             pause.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
@@ -792,7 +806,6 @@ class PlayViewController: UIViewController {
             pr.isHidden = true
             pret.isHidden = true
             pm.isHidden = true
-            let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
             if (provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
                 wrong4.isHidden = true
             }else{
@@ -803,6 +816,10 @@ class PlayViewController: UIViewController {
         }
     }
     @IBAction func menu(_ sender: AnyObject) {
+        let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
         NotificationCenter.default.removeObserver(self)
         navigationController?.popToRootViewController(animated: true)
     }
@@ -856,6 +873,9 @@ class PlayViewController: UIViewController {
         viewclickb.isHidden = false
         newhighscore = false
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
         if (provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
             wrong4.isHidden = true
         }else{
@@ -897,6 +917,9 @@ class PlayViewController: UIViewController {
         pm.isHidden = true
           viewclickb.isUserInteractionEnabled = true
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
         if (provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
             wrong4.isHidden = true
         }else{

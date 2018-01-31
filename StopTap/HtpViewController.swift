@@ -7,6 +7,7 @@
 //
 import UIKit
 import AVFoundation
+import AudioToolbox
 class HtpViewController: UIViewController,AVAudioPlayerDelegate {
     @IBOutlet weak var wrong: UIImageView!
     @IBOutlet weak var wrong2: UIImageView!
@@ -194,8 +195,10 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
         x2t.constant = ((self.view.bounds.height * (3/4)) - (x2h.constant / 2))
         print("x2t" + String(describing: x2t.constant))
         x2l.constant = -1 * x2w.constant
+        doublescore.titleLabel!.widthAnchor.constraint(equalToConstant: (x2w.constant * (3/4))).isActive = true
         doublescore.titleLabel!.adjustsFontSizeToFitWidth = true
         doublescore.titleLabel!.numberOfLines = 1
+        //doublescore.titleLabel!.minimumScaleFactor = 0.05
         doublescore.titleLabel!.minimumScaleFactor = 0.05
         //doublescore.clipsToBounds = true
         doublescore.titleLabel?.baselineAdjustment = .alignCenters
@@ -210,6 +213,9 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
     @IBAction func viewcl(_ sender: AnyObject) {
         if(canclick == true){
             if(move.tag == 1){
+                if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                }
                 timecount.text = ""
                 wrong.alpha = 1.0
              //   AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -354,6 +360,9 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
         }
     }
     @IBAction func backclick(_ sender: Any) {
+        if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
         countdown.invalidate()
         self.navigationController?.popToRootViewController(animated: true)
     }

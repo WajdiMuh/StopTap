@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="StopTap.ttf">
+        <array key="StopTapen.ttf">
             <string>DotsAllForNowJL</string>
         </array>
     </customFonts>
@@ -23,17 +23,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpO-06-zPz">
-                                <rect key="frame" x="290" y="9.9999999999999982" width="157" height="25.333333333333329"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpO-06-zPz">
+                                <rect key="frame" x="266" y="10" width="205.33333333333337" height="32"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="34"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="26"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="26"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOV-Dp-cPv">
                                 <rect key="frame" x="329.66666666666669" y="367" width="77" height="32"/>
@@ -50,20 +44,14 @@
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="26"/>
                                 <inset key="contentEdgeInsets" minX="4" minY="3" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
                                 <connections>
                                     <action selector="backb:" destination="Ipx-FU-NaA" eventType="touchUpInside" id="guL-xt-hf7"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jgi-0G-WpC">
-                                <rect key="frame" x="10" y="45.333333333333343" width="716" height="311.66666666666663"/>
+                                <rect key="frame" x="10" y="52" width="716" height="305"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.45098039215686275" green="0.45098039215686275" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -91,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMs-GD-6Oj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="979.71014492753636" y="-1731.521739130435"/>
+            <point key="canvasLocation" x="979.07608695652186" y="-1731.8840579710147"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Lfw-Sd-njx">
@@ -102,16 +90,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPH-GN-jzM">
-                                <rect key="frame" x="297" y="9.9999999999999982" width="143.66666666666663" height="25.333333333333329"/>
+                                <rect key="frame" x="274" y="10" width="188" height="32"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="34"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="26"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="26"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7VY-rr-7tn" userLabel="lang">
                                 <rect key="frame" x="8" y="10" width="40" height="40"/>
@@ -127,6 +109,7 @@
                                 </constraints>
                                 <state key="normal" image="language.png"/>
                                 <connections>
+                                    <action selector="langtouch:" destination="zRT-og-5sV" eventType="touchUpInside" id="wWU-cV-oPJ"/>
                                     <segue destination="Ipx-FU-NaA" kind="show" id="nSr-Ps-fX6"/>
                                 </connections>
                             </button>
@@ -149,15 +132,16 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="uIl-lX-LyX" userLabel="sfxslider">
-                                <rect key="frame" x="6" y="236" width="694" height="31"/>
+                                <rect key="frame" x="6" y="241.66666666666663" width="694" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="sfxc:" destination="zRT-og-5sV" eventType="valueChanged" id="S7n-I7-xeg"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9K-sS-qu9">
-                                <rect key="frame" x="708" y="242.66666666666666" width="20" height="15.999999999999972"/>
+                                <rect key="frame" x="708" y="248.33333333333337" width="20" height="16"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="4Is-vr-Bav"/>
                                     <constraint firstAttribute="width" constant="20" id="E7H-ml-msF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="17"/>
@@ -169,41 +153,35 @@
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="musc:" destination="zRT-og-5sV" eventType="valueChanged" id="nMs-c3-QkL"/>
-                                    <action selector="sfxc:" destination="zRT-og-5sV" eventType="valueChanged" id="ZBM-5Z-OgN"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SFX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIg-YW-mbm">
-                                <rect key="frame" x="348.66666666666669" y="211" width="40.333333333333314" height="17"/>
+                                <rect key="frame" x="342" y="211" width="53.666666666666686" height="22.666666666666657"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="3aJ-66-ZKp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="18"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="18"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s20-vc-Gna" userLabel="musval">
                                 <rect key="frame" x="708" y="179.66666666666666" width="20" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="S88-Zv-9cB"/>
+                                    <constraint firstAttribute="height" constant="16" id="oOG-dG-YKr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBS-SE-0S5">
-                                <rect key="frame" x="336.66666666666669" y="148" width="64" height="17"/>
+                                <rect key="frame" x="326.33333333333331" y="142.33333333333334" width="85" height="22.666666666666657"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="IcV-Rx-y5f"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="18"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="18"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r87-Oj-ahz">
                                 <rect key="frame" x="330" y="367" width="77" height="32"/>
@@ -222,12 +200,6 @@
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
                                 <connections>
                                     <action selector="backb:" destination="zRT-og-5sV" eventType="touchUpInside" id="QYX-aw-N9g"/>
                                 </connections>
@@ -328,6 +300,7 @@
                                 </constraints>
                                 <state key="normal" image="settings.png"/>
                                 <connections>
+                                    <action selector="setttingstouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iEF-Ei-FrD"/>
                                     <segue destination="zRT-og-5sV" kind="show" id="f78-ED-9QV"/>
                                 </connections>
                             </button>
@@ -345,6 +318,7 @@
                                 </constraints>
                                 <state key="normal" image="wajdi.png"/>
                                 <connections>
+                                    <action selector="developtouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wp4-nI-iMY"/>
                                     <segue destination="RxV-lJ-ZxX" kind="show" id="p9O-8A-bVa"/>
                                 </connections>
                             </button>
@@ -365,13 +339,8 @@
                                 <state key="normal" title="How To Play">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
                                 <connections>
+                                    <action selector="htptouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oAi-Yi-axg"/>
                                     <segue destination="X0V-Fl-PYR" kind="show" id="e6f-mL-TzC"/>
                                 </connections>
                             </button>
@@ -392,13 +361,8 @@
                                 <state key="normal" title="Play">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
                                 <connections>
+                                    <action selector="playtouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5nB-Qq-8zu"/>
                                     <segue destination="v9i-jp-vez" kind="show" id="nbS-VP-azh"/>
                                 </connections>
                             </button>
@@ -419,13 +383,8 @@
                                 <state key="normal" title="Shop">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
                                 <connections>
+                                    <action selector="shoptouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Fo-ec-rKf"/>
                                     <segue destination="enF-Mx-PtC" kind="show" id="JXe-D0-Bub"/>
                                 </connections>
                             </button>
@@ -446,36 +405,21 @@
                                 <state key="normal" title="Account">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
+                                <connections>
+                                    <action selector="acnttouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lu7-42-ed3"/>
+                                </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6O-1u-ABB">
-                                <rect key="frame" x="359.33333333333331" y="382.33333333333331" width="18" height="21.666666666666686"/>
+                                <rect key="frame" x="357.33333333333331" y="377.66666666666669" width="22" height="26.333333333333314"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="28"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="24"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="23"/>
-                                </variation>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HighScore :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXg-1R-Rjg">
-                                <rect key="frame" x="285.33333333333331" y="358.66666666666669" width="167" height="22.666666666666686"/>
+                                <rect key="frame" x="270.66666666666669" y="350.33333333333331" width="194.66666666666669" height="26.333333333333314"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="28"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="24"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="24"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -635,7 +579,7 @@
                                     <constraint firstAttribute="width" constant="35" id="zIR-da-YlE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="100"/>
-                                <inset key="contentEdgeInsets" minX="3" minY="2" maxX="0.0" maxY="0.0"/>
+                                <inset key="contentEdgeInsets" minX="4" minY="2" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="x2"/>
                                 <connections>
                                     <action selector="x2touchdown:" destination="X0V-Fl-PYR" eventType="touchDown" id="Tzm-cp-d9K"/>
@@ -972,7 +916,7 @@
                                     <constraint firstAttribute="width" constant="35" id="wVC-Hh-vMJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="100"/>
-                                <inset key="contentEdgeInsets" minX="2" minY="2" maxX="0.0" maxY="0.0"/>
+                                <inset key="contentEdgeInsets" minX="4" minY="2" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="x2"/>
                             </button>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="direction.png" translatesAutoresizingMaskIntoConstraints="NO" id="2A5-lj-jD6">
@@ -1252,6 +1196,9 @@
                                 <variation key="heightClass=compact-widthClass=regular">
                                     <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
                                 </variation>
+                                <connections>
+                                    <action selector="leadertouch:" destination="LEQ-Ep-hnf" eventType="touchUpInside" id="fIq-cC-E3x"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Io-8q-n1X">
                                 <rect key="frame" x="293.66666666666669" y="181" width="149" height="32"/>
