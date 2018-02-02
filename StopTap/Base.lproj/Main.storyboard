@@ -1546,21 +1546,12 @@
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="26"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="22"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLk-UW-DF2">
-                                <rect key="frame" x="329" y="10.000000000000002" width="79" height="24.666666666666671"/>
+                                <rect key="frame" x="317" y="10" width="103.33333333333331" height="32"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="34"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="26"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="26"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHN-vU-fq8">
                                 <rect key="frame" x="15" y="157" width="40" height="100"/>
@@ -1621,7 +1612,7 @@
                                         <variation key="heightClass=compact-widthClass=compact" constant="77"/>
                                         <variation key="heightClass=compact-widthClass=regular" constant="77"/>
                                     </constraint>
-                                    <constraint firstAttribute="height" constant="31" id="QMT-bJ-cGn">
+                                    <constraint firstAttribute="height" constant="32" id="QMT-bJ-cGn">
                                         <variation key="heightClass=compact-widthClass=compact" constant="32"/>
                                         <variation key="heightClass=compact-widthClass=regular" constant="32"/>
                                     </constraint>
@@ -1631,20 +1622,14 @@
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
                                 <connections>
                                     <action selector="back:" destination="enF-Mx-PtC" eventType="touchUpInside" id="7Cw-YA-TBF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hoa-dy-JI2">
-                                <rect key="frame" x="248" y="328" width="240" height="32"/>
+                                <rect key="frame" x="248" y="326" width="240" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="Ph2-Ef-kFv"/>
+                                    <constraint firstAttribute="height" constant="34" id="Ph2-Ef-kFv"/>
                                     <constraint firstAttribute="width" constant="240" id="XZN-Yn-zSP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="24"/>
@@ -1652,27 +1637,15 @@
                                 <state key="normal" title="Buy">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="20"/>
-                                </variation>
                                 <connections>
                                     <action selector="buyb:" destination="enF-Mx-PtC" eventType="touchUpInside" id="188-6t-hjt"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red And Blue" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03x-Ea-Cpw">
-                                <rect key="frame" x="50" y="223" width="636" height="95"/>
+                                <rect key="frame" x="50" y="223" width="636" height="93"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="22"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="22"/>
-                                </variation>
                             </label>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KoI-gf-ZF8">
                                 <rect key="frame" x="278" y="143.66666666666666" width="40" height="40"/>

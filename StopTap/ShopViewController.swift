@@ -26,6 +26,7 @@ class ShopViewController: UIViewController,colorDelegate {
     @IBOutlet weak var smallt: UIButton!
     @IBOutlet weak var rboxview: UIImageView!
     @IBOutlet weak var lboxview: UIImageView!
+    var lang:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "lang", defaultValue: 1)
     var select:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "shopselect", defaultValue: 1)
     var selected:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "shopselect", defaultValue: 1)
     var shop2:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "shop2", defaultValue: 0)
@@ -75,7 +76,6 @@ class ShopViewController: UIViewController,colorDelegate {
         big.layer.borderWidth = 5
         price = NSMutableAttributedString(string: "250 Coin")
         price?.addAttribute(NSAttributedStringKey.foregroundColor,value: UIColor.yellow,range: NSRange(location:0,length:(price?.mutableString.length)!))
-        coinval.text = String(coinv)
         namec = NSMutableAttributedString(string:"Green And Pink\n")
         cp.delegate = self
         lboxview.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
@@ -85,70 +85,256 @@ class ShopViewController: UIViewController,colorDelegate {
         buy.titleLabel?.textAlignment = NSTextAlignment.center
         smallt.titleLabel?.textAlignment = NSTextAlignment.center
         bigt.titleLabel?.textAlignment = NSTextAlignment.center
-        smallt.setTitle("Small Box\nColor", for: UIControlState())
-        bigt.setTitle("Big Box\nColor", for: UIControlState())
+        switch (lang) {
+        case 0:
+            back.setTitle("عودة", for: UIControlState())
+            back.arabic(size: 20, diffinsize: 6)
+            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+            coinval.arabic(size: 22, diffinsize: 4)
+            buy.arabic(size: 20, diffinsize: 4)
+            name.arabic(size: 22, diffinsize: 0)
+            shop.text = "المتجر"
+            shop.arabic(size: 26, diffinsize: 8)
+            smallt.setTitle("لون الصندوق\nالصغير", for: UIControlState())
+            bigt.setTitle("لون الصندوق\nالكبير", for: UIControlState())
+            smallt.arabic(size: 15, diffinsize: 0)
+            bigt.arabic(size: 15, diffinsize: 0)
+            break
+        case 1:
+            back.setTitle("Back", for: UIControlState())
+            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            coinval.text = String(coinv)
+            coinval.english(size: 22, diffinsize: 4)
+            buy.english(size: 20, diffinsize: 4,left: 4,top: 2)
+            name.english(size: 22, diffinsize: 0)
+            shop.text = "Shop"
+            shop.english(size: 26, diffinsize: 8)
+            smallt.setTitle("Small Box\nColor", for: UIControlState())
+            bigt.setTitle("Big Box\nColor", for: UIControlState())
+            smallt.english(size: 15, diffinsize: 0,left: 0,top: 0)
+            bigt.english(size: 15, diffinsize: 0,left:0,top: 0)
+            break
+        default:
+            back.setTitle("Back", for: UIControlState())
+            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            coinval.text = String(coinv)
+            coinval.english(size: 22, diffinsize: 4)
+            buy.english(size: 20, diffinsize: 4,left: 4,top: 2)
+            name.english(size: 22, diffinsize: 0)
+            shop.text = "Shop"
+            shop.english(size: 26, diffinsize: 8)
+            smallt.setTitle("Small Box\nColor", for: UIControlState())
+            bigt.setTitle("Big Box\nColor", for: UIControlState())
+            smallt.english(size: 15, diffinsize: 0,left: 0,top: 0)
+            bigt.english(size: 15, diffinsize: 0,left:0,top: 0)
+            break
+        }
         if (selected == 1){
             lboxview.backgroundColor = UIColor(red: 0.0, green: 0.29, blue: 1.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
             left.isEnabled = false
             left.isHidden = true
-            name.text = "Red And Blue"
-            buy.setTitle("Selected", for: UIControlState())
+            switch (lang) {
+            case 0:
+                name.text = "أحمر و أزرق"
+                buy.setTitle("المختار", for: UIControlState())
+                break
+            case 1:
+                name.text = "Red And Blue"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            default:
+                name.text = "Red And Blue"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            }
         }else if(selected == 2){
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.45, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.14, green: 1.0, blue: 0.0, alpha: 1.0)
-            name.text = "Green And Pink"
-            buy.setTitle("Selected", for: UIControlState())
+            switch (lang) {
+            case 0:
+                name.text = "أخضر و وردي"
+                buy.setTitle("المختار", for: UIControlState())
+                break
+            case 1:
+                name.text = "Green And Pink"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            default:
+                name.text = "Green And Pink"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            }
         }else if(selected == 3){
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.32, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.015, green: 0.0, blue: 1.0, alpha: 1.0)
-            name.text = "Blue And Orange"
-            buy.setTitle("Selected", for: UIControlState())
+            switch (lang) {
+            case 0:
+                name.text = "أزرق و برتقالي"
+                buy.setTitle("المختار", for: UIControlState())
+                break
+            case 1:
+                name.text = "Blue And Orange"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            default:
+                name.text = "Blue And Orange"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            }
         }else if(selected == 4){
             lboxview.backgroundColor = UIColor(red: 0.0, green: 1.0, blue: 0.086, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.58, green: 0.0, blue: 1.0, alpha: 1.0)
-            name.text = "Purple And Green"
-            buy.setTitle("Selected", for: UIControlState())
+            switch (lang) {
+            case 0:
+                name.text = "أرجواني و أخضر"
+                buy.setTitle("المختار", for: UIControlState())
+                break
+            case 1:
+                  name.text = "Purple And Green"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            default:
+                 name.text = "Purple And Green"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            }
         }else if(selected == 5){
             lboxview.backgroundColor = UIColor(red: 0.87, green: 0.99, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.0, green: 0.57, blue: 0.99, alpha: 1.0)
-            name.text = "Blue And Yellow"
-            buy.setTitle("Selected", for: UIControlState())
+            switch (lang) {
+            case 0:
+                name.text = "أزرق و أصفر"
+                buy.setTitle("المختار", for: UIControlState())
+                break
+            case 1:
+                 name.text = "Blue And Yellow"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            default:
+               name.text = "Blue And Yellow"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            }
         }else if(selected == 6){
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.94, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.34, green: 0.17, blue: 0.17, alpha: 1.0)
-            name.text = "Brown And Yellow"
-            buy.setTitle("Selected", for: UIControlState())
+            switch (lang) {
+            case 0:
+                name.text = "بني و أصفر"
+                buy.setTitle("المختار", for: UIControlState())
+                break
+            case 1:
+                  name.text = "Brown And Yellow"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            default:
+                    name.text = "Brown And Yellow"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            }
         }else if(selected == 7){
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.23, green: 0.23, blue: 0.23, alpha: 1.0)
-            name.text = "Grey And Red"
-            buy.setTitle("Selected", for: UIControlState())
+            switch (lang) {
+            case 0:
+                name.text = "رمادي وأحمر"
+                buy.setTitle("المختار", for: UIControlState())
+                break
+            case 1:
+                name.text = "Grey And Red"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            default:
+                  name.text = "Grey And Red"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            }
         }else if(selected == 8){
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.07, green: 0.73, blue: 0.76, alpha: 1.0)
-            name.text = "Light Blue And Pink"
-            buy.setTitle("Selected", for: UIControlState())
+            switch (lang) {
+            case 0:
+                name.text = "أزرق فاتح و وردي"
+                buy.setTitle("المختار", for: UIControlState())
+                break
+            case 1:
+                name.text = "Light Blue And Pink"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            default:
+                 name.text = "Light Blue And Pink"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            }
         }else if(selected == 9){
             lboxview.backgroundColor = UIColor(red: 0.55, green: 1.0, blue: 0.54, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.9, green: 0.7, blue: 0.64, alpha: 1.0)
-            name.text = "Light Brown And Light Green"
-            buy.setTitle("Selected", for: UIControlState())
+            switch (lang) {
+            case 0:
+                name.text = "بني فاتح و أخضر فاتح"
+                buy.setTitle("المختار", for: UIControlState())
+                break
+            case 1:
+               name.text = "Light Brown And Light Green"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            default:
+             name.text = "Light Brown And Light Green"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            }
         }else if(selected == 10){
             lboxview.backgroundColor = UIColor(red: 0.25, green: 0.074, blue: 0.94, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.09, green: 0.92, blue: 0.57, alpha: 1.0)
-            name.text = "Light Green And Blue"
-            buy.setTitle("Selected", for: UIControlState())
+            switch (lang) {
+            case 0:
+                name.text = "أخضر فاتح و أزرق"
+                buy.setTitle("المختار", for: UIControlState())
+                break
+            case 1:
+                name.text = "Light Green And Blue"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            default:
+              name.text = "Light Green And Blue"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            }
         }else if(selected == 11){
             lboxview.backgroundColor = UIColor(red: 0.84, green: 0.38, blue: 0.17, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 0.23, green: 0.27, blue: 0.047, alpha: 1.0)
-            name.text = "Olive And Orange"
-            buy.setTitle("Selected", for: UIControlState())
+            switch (lang) {
+            case 0:
+                name.text = "زيتي و برتقالي"
+                buy.setTitle("المختار", for: UIControlState())
+                break
+            case 1:
+                   name.text = "Olive And Orange"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            default:
+                   name.text = "Olive And Orange"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            }
         }else if(selected == 12){
             lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.39, alpha: 1.0)
             rboxview.backgroundColor = UIColor(red: 1.0, green: 0.54, blue: 1.0, alpha: 1.0)
-            name.text = "Light Pink And Fuschia"
-            buy.setTitle("Selected", for: UIControlState())
+            switch (lang) {
+            case 0:
+                name.text = "وردي فاتح و فوشي"
+                buy.setTitle("المختار", for: UIControlState())
+                break
+            case 1:
+                   name.text = "Light Pink And Fuschia"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            default:
+                    name.text = "Light Pink And Fuschia"
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            }
         }else if(selected == 15){
             lboxview.isHidden = true
             rboxview.isHidden = true
@@ -161,7 +347,17 @@ class ShopViewController: UIViewController,colorDelegate {
             small.backgroundColor = cpsc
             big.layer.borderColor = cpbc.cgColor
             big.backgroundColor = cpbc
-            buy.setTitle("Selected", for: UIControlState())
+            switch (lang) {
+            case 0:
+                buy.setTitle("المختار", for: UIControlState())
+                break
+            case 1:
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            default:
+                buy.setTitle("Selected", for: UIControlState())
+                break
+            }
         }
         // Do any additional setup after loading the view.
     }
@@ -172,7 +368,17 @@ class ShopViewController: UIViewController,colorDelegate {
             big.backgroundColor = color
         }
         buyb = 2
-        buy.setTitle("Select", for: UIControlState())
+        switch (lang) {
+        case 0:
+            buy.setTitle("اختار", for: UIControlState())
+            break
+        case 1:
+            buy.setTitle("Select", for: UIControlState())
+            break
+        default:
+            buy.setTitle("Select", for: UIControlState())
+            break
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -261,21 +467,19 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
             left.isEnabled = false
             left.isHidden = true
-            name.text = "Red And Blue"
-            if (select == selected){
-                buy.setTitle("Selected", for: UIControlState())
-                buyb = 3
-            }else{
-                buy.setTitle("Select", for: UIControlState())
-                buyb = 2
-            }
-        }else if(select == 3){
-            select = 2
-            lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.45, alpha: 1.0)
-            rboxview.backgroundColor = UIColor(red: 0.14, green: 1.0, blue: 0.0, alpha: 1.0)
-            buy.isHidden = false
-            if (shop2 == 1){
-                name.text = "Green And Pink"
+            switch (lang) {
+            case 0:
+                name.text = "أحمر و أزرق"
+                if (select == selected){
+                    buy.setTitle("المختار", for: UIControlState())
+                    buyb = 3
+                }else{
+                    buy.setTitle("اختار", for: UIControlState())
+                    buyb = 2
+                }
+                break
+            case 1:
+                name.text = "Red And Blue"
                 if (select == selected){
                     buy.setTitle("Selected", for: UIControlState())
                     buyb = 3
@@ -283,12 +487,76 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("Select", for: UIControlState())
                     buyb = 2
                 }
+                break
+            default:
+                name.text = "Red And Blue"
+                if (select == selected){
+                    buy.setTitle("Selected", for: UIControlState())
+                    buyb = 3
+                }else{
+                    buy.setTitle("Select", for: UIControlState())
+                    buyb = 2
+                }
+                break
+            }
+        }else if(select == 3){
+            select = 2
+            lboxview.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.45, alpha: 1.0)
+            rboxview.backgroundColor = UIColor(red: 0.14, green: 1.0, blue: 0.0, alpha: 1.0)
+            buy.isHidden = false
+            if (shop2 == 1){
+                switch (lang) {
+                case 0:
+                   name.text = "أخضر و وردي"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                             name.text = "Green And Pink"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                             name.text = "Green And Pink"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Green And Pink\n")
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("أخضر و وردي\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Green And Pink\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Green And Pink\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
         }else if(select == 4){
@@ -297,21 +565,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.015, green: 0.0, blue: 1.0, alpha: 1.0)
             buy.isHidden = false
             if (shop3 == 1){
-                name.text = "Blue And Orange"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                      name.text = "أزرق و برتقالي"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                        name.text = "Blue And Orange"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                        name.text = "Blue And Orange"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Blue And Orange\n")
+                
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("أزرق و برتقالي\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                              namec?.mutableString.setString("Blue And Orange\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                              namec?.mutableString.setString("Blue And Orange\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 5){
             select = 4
@@ -319,21 +627,63 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.58, green: 0.0, blue: 1.0, alpha: 1.0)
             buy.isHidden = false
             if (shop4 == 1){
-                name.text = "Purple And Green"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                  name.text = "أرجواني و أخضر"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                     name.text = "Purple And Green"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                  name.text = "Purple And Green"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
+
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Purple And Green\n")
+                
+              
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("أرجواني و أخضر\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Purple And Green\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                   namec?.mutableString.setString("Purple And Green\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 6){
             select = 5
@@ -341,21 +691,62 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.0, green: 0.57, blue: 0.99, alpha: 1.0)
             buy.isHidden = false
             if (shop5 == 1){
-                name.text = "Blue And Yellow"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                      name.text = "أزرق و أصفر"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Blue And Yellow"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                   name.text = "Blue And Yellow"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Blue And Yellow\n")
+          
+              
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("أزرق و أصفر\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                          namec?.mutableString.setString("Blue And Yellow\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                          namec?.mutableString.setString("Blue And Yellow\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 7){
             select = 6
@@ -363,21 +754,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.34, green: 0.17, blue: 0.17, alpha: 1.0)
             buy.isHidden = false
             if (shop6 == 1){
-                name.text = "Brown And Yellow"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    name.text = "بني و أصفر"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                      name.text = "Brown And Yellow"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                      name.text = "Brown And Yellow"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Brown And Yellow\n")
+               
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("بني و أصفر\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                          namec?.mutableString.setString("Brown And Yellow\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                          namec?.mutableString.setString("Brown And Yellow\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 8){
             select = 7
@@ -385,21 +816,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.23, green: 0.23, blue: 0.23, alpha: 1.0)
             buy.isHidden = false
             if (shop7 == 1){
-                name.text = "Grey And Red"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                     name.text = "رمادي وأحمر"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Grey And Red"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    name.text = "Grey And Red"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Grey And Red\n")
+               
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("رمادي وأحمر\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                                 namec?.mutableString.setString("Grey And Red\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                                 namec?.mutableString.setString("Grey And Red\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 9){
             select = 8
@@ -407,21 +878,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.07, green: 0.73, blue: 0.76, alpha: 1.0)
             buy.isHidden = false
             if (shop8 == 1){
-                name.text = "Light Blue And Pink"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    name.text = "أزرق فاتح و وردي"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Light Blue And Pink"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                   name.text = "Light Blue And Pink"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Light Blue And Pink\n")
+               
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("أزرق فاتح و وردي\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                           namec?.mutableString.setString("Light Blue And Pink\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                           namec?.mutableString.setString("Light Blue And Pink\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 10){
             select = 9
@@ -429,21 +940,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.9, green: 0.7, blue: 0.64, alpha: 1.0)
             buy.isHidden = false
             if (shop9 == 1){
-                name.text = "Light Brown And Light Green"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                   name.text = "بني فاتح و أخضر فاتح"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                      name.text = "Light Brown And Light Green"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                      name.text = "Light Brown And Light Green"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Light Brown And Light Green\n")
+              
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("بني فاتح و أخضر فاتح\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                     namec?.mutableString.setString("Light Brown And Light Green\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                     namec?.mutableString.setString("Light Brown And Light Green\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 11){
             select = 10
@@ -451,21 +1002,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.09, green: 0.92, blue: 0.57, alpha: 1.0)
             buy.isHidden = false
             if (shop10 == 1){
-                name.text = "Light Green And Blue"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    name.text = "أخضر فاتح و أزرق"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Light Green And Blue"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    name.text = "Light Green And Blue"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Light Green And Blue\n")
+              
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("أخضر فاتح و أزرق\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                     namec?.mutableString.setString("Light Green And Blue\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                     namec?.mutableString.setString("Light Green And Blue\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 12){
             select = 11
@@ -473,21 +1064,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.23, green: 0.27, blue: 0.047, alpha: 1.0)
             buy.isHidden = false
             if (shop11 == 1){
-                name.text = "Olive And Orange"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                     name.text = "زيتي و برتقالي"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                      name.text = "Olive And Orange"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                     name.text = "Olive And Orange"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Olive And Orange\n")
+        
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("زيتي و برتقالي\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Olive And Orange\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Olive And Orange\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 13){
             select = 12
@@ -511,21 +1142,61 @@ class ShopViewController: UIViewController,colorDelegate {
                 nb.isActive = true
                 name.layoutIfNeeded()
             if (shop12 == 1){
-                name.text = "Light Pink And Fuschia"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                     name.text = "وردي فاتح و فوشي"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                              name.text = "Light Pink And Fuschia"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                              name.text = "Light Pink And Fuschia"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Light Pink And Fuschia\n")
+           
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("وردي فاتح و فوشي\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                       namec?.mutableString.setString("Light Pink And Fuschia\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                       namec?.mutableString.setString("Light Pink And Fuschia\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 14){
             select = 13
@@ -547,20 +1218,55 @@ class ShopViewController: UIViewController,colorDelegate {
             bigt.isHidden = true
             cp.isHidden = true
             if (shop13 == 1){
-                name.text = "NIGHTMODE\nReplace White With Black"
-                buyb = 3
-                if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
-                    buy.setTitle("NIGHTMODE OFF", for: UIControlState())
-                }else{
-                    buy.setTitle("NIGHTMODE ON", for: UIControlState())
+                switch (lang) {
+                case 0:
+                    name.text = "وضع الظلام\nاستبدل الأبيض بالأسود"
+                    if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
+                        buy.setTitle("وضع الظلام غير مفعّل", for: UIControlState())
+                    }else{
+                        buy.setTitle("وضع الظلام مفعّل", for: UIControlState())
+                    }
+                    break
+                case 1:
+                      name.text = "NIGHTMODE\nReplace White With Black"
+                      if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
+                        buy.setTitle("NIGHTMODE OFF", for: UIControlState())
+                      }else{
+                        buy.setTitle("NIGHTMODE ON", for: UIControlState())
+                      }
+                    break
+                default:
+                    name.text = "NIGHTMODE\nReplace White With Black"
+                    if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
+                        buy.setTitle("NIGHTMODE OFF", for: UIControlState())
+                    }else{
+                        buy.setTitle("NIGHTMODE ON", for: UIControlState())
+                    }
+                    break
                 }
+                buyb = 3
             }else{
-                price?.mutableString.setString("500 Coin")
-                namec?.mutableString.setString("NIGHTMODE\nReplace White With Black\n")
+            
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٥٠٠ عملة")
+                    namec?.mutableString.setString("وضع الظلام\nاستبدل الأبيض بالأسود\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                   price?.mutableString.setString("500 Coin")
+                    namec?.mutableString.setString("NIGHTMODE\nReplace White With Black\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("500 Coin")
+                    namec?.mutableString.setString("NIGHTMODE\nReplace White With Black\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
                 buyb = 1
-                buy.setTitle("Buy", for: UIControlState())
             }
         }else if(select == 15){
             select = 14
@@ -582,25 +1288,64 @@ class ShopViewController: UIViewController,colorDelegate {
             bigt.isHidden = true
             cp.isHidden = true
             if (shop14 == 3){
-                name.text = "X3\nTriple Your Coins"
                 buyb = 3
                 buy.isHidden = true
+                switch (lang) {
+                case 0:
+                    name.text = "٣x\nضاعف عملاتك بمقدار ثلاثة مرات"
+                    break
+                case 1:
+                    name.text = "X3\nTriple Your Coins"
+                    break
+                default:
+                    name.text = "X3\nTriple Your Coins"
+                    break
+                }
             }else if(shop14 == 2){
-                price?.mutableString.setString("1000 Coin")
-                namec?.mutableString.setString("X3\nTriple Your Coins\n")
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("١٠٠٠ عملة")
+                    namec?.mutableString.setString("٣x\nضاعف عملاتك بمقدار ثلاثة مرات\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("1000 Coin")
+                    namec?.mutableString.setString("X3\nTriple Your Coins\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("1000 Coin")
+                    namec?.mutableString.setString("X3\nTriple Your Coins\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
                 buyb = 1
-                buy.setTitle("Buy", for: UIControlState())
+                
             }else if(shop14 == 1){
-                price?.mutableString.setString("500 Coin")
-                namec?.mutableString.setString("X2\nDouble Your Coins\n")
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٥٠٠ عملة")
+                    namec?.mutableString.setString("٢x\nضاعف عملاتك\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("500 Coin")
+                    namec?.mutableString.setString("X2\nDouble Your Coins\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("500 Coin")
+                    namec?.mutableString.setString("X2\nDouble Your Coins\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
                 buyb = 1
-                buy.setTitle("Buy", for: UIControlState())
+                
             }
-            
             
             }else if(select == 16){
             select = 15
@@ -625,20 +1370,58 @@ class ShopViewController: UIViewController,colorDelegate {
                     small.layer.borderColor = UIColor.white.cgColor
                 }
                 big.layer.borderColor = big.backgroundColor?.cgColor
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("1000 Coin")
-                namec?.mutableString.setString("Color Picker\nChoose Your Own Colors\n")
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("١٠٠٠ عملة")
+                    namec?.mutableString.setString("اختيار الألوان\nاختار الألوان الخاصة بك\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("1000 Coin")
+                    namec?.mutableString.setString("Color Picker\nChoose Your Own Colors\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("1000 Coin")
+                    namec?.mutableString.setString("Color Picker\nChoose Your Own Colors\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
+                
                 namec?.append(price!)
                 name.attributedText = namec
                 buyb = 1
-                buy.setTitle("Buy", for: UIControlState())
+                
             }
         }
     }
@@ -651,20 +1434,58 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.14, green: 1.0, blue: 0.0, alpha: 1.0)
             buy.isHidden = false
             if (shop2 == 1){
-                name.text = "Green And Pink"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    name.text = "أخضر و وردي"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Green And Pink"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    name.text = "Green And Pink"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Green And Pink\n")
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("أخضر و وردي\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Green And Pink\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Green And Pink\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
             }
         }else if(select == 2){
@@ -673,21 +1494,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.015, green: 0.0, blue: 1.0, alpha: 1.0)
             buy.isHidden = false
             if (shop3 == 1){
-                name.text = "Blue And Orange"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    name.text = "أزرق و برتقالي"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Blue And Orange"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    name.text = "Blue And Orange"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Blue And Orange\n")
+                
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("أزرق و برتقالي\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Blue And Orange\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Blue And Orange\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 3){
             select = 4
@@ -695,21 +1556,63 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.58, green: 0.0, blue: 1.0, alpha: 1.0)
             buy.isHidden = false
             if (shop4 == 1){
-                name.text = "Purple And Green"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    name.text = "أرجواني و أخضر"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Purple And Green"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    name.text = "Purple And Green"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
+                
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Purple And Green\n")
+                
+                
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("أرجواني و أخضر\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Purple And Green\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Purple And Green\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 4){
             select = 5
@@ -717,21 +1620,62 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.0, green: 0.57, blue: 0.99, alpha: 1.0)
             buy.isHidden = false
             if (shop5 == 1){
+                switch (lang) {
+                case 0:
+                    name.text = "أزرق و أصفر"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
                     name.text = "Blue And Yellow"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    name.text = "Blue And Yellow"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Blue And Yellow\n")
+                
+                
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("أزرق و أصفر\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Blue And Yellow\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Blue And Yellow\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 5){
             select = 6
@@ -739,21 +1683,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.34, green: 0.17, blue: 0.17, alpha: 1.0)
             buy.isHidden = false
             if (shop6 == 1){
-                name.text = "Brown And Yellow"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    name.text = "بني و أصفر"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Brown And Yellow"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    name.text = "Brown And Yellow"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Brown And Yellow\n")
+                
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("بني و أصفر\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Brown And Yellow\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Brown And Yellow\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 6){
             select = 7
@@ -761,21 +1745,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.23, green: 0.23, blue: 0.23, alpha: 1.0)
             buy.isHidden = false
             if (shop7 == 1){
-                name.text = "Grey And Red"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    name.text = "رمادي وأحمر"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Grey And Red"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    name.text = "Grey And Red"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Grey And Red\n")
+                
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("رمادي وأحمر\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Grey And Red\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Grey And Red\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 7){
             select = 8
@@ -783,21 +1807,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.07, green: 0.73, blue: 0.76, alpha: 1.0)
             buy.isHidden = false
             if (shop8 == 1){
-                name.text = "Light Blue And Pink"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    name.text = "أزرق فاتح و وردي"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Light Blue And Pink"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    name.text = "Light Blue And Pink"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Light Blue And Pink\n")
+                
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("أزرق فاتح و وردي\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Light Blue And Pink\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Light Blue And Pink\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 8){
             select = 9
@@ -805,21 +1869,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.9, green: 0.7, blue: 0.64, alpha: 1.0)
             buy.isHidden = false
             if (shop9 == 1){
-                name.text = "Light Brown And Light Green"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    name.text = "بني فاتح و أخضر فاتح"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Light Brown And Light Green"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    name.text = "Light Brown And Light Green"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Light Brown And Light Green\n")
+                
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("بني فاتح و أخضر فاتح\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Light Brown And Light Green\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Light Brown And Light Green\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 9){
             select = 10
@@ -827,21 +1931,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.09, green: 0.92, blue: 0.57, alpha: 1.0)
             buy.isHidden = false
             if (shop10 == 1){
-                name.text = "Light Green And Blue"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    name.text = "أخضر فاتح و أزرق"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Light Green And Blue"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    name.text = "Light Green And Blue"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Light Green And Blue\n")
+                
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("أخضر فاتح و أزرق\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Light Green And Blue\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Light Green And Blue\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 10){
             select = 11
@@ -849,21 +1993,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 0.23, green: 0.27, blue: 0.047, alpha: 1.0)
             buy.isHidden = false
             if (shop11 == 1){
-                name.text = "Olive And Orange"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    name.text = "زيتي و برتقالي"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Olive And Orange"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    name.text = "Olive And Orange"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Olive And Orange\n")
+                
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("زيتي و برتقالي\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Olive And Orange\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Olive And Orange\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 11){
             select = 12
@@ -871,21 +2055,61 @@ class ShopViewController: UIViewController,colorDelegate {
             rboxview.backgroundColor = UIColor(red: 1.0, green: 0.54, blue: 1.0, alpha: 1.0)
             buy.isHidden = false
             if (shop12 == 1){
-                name.text = "Light Pink And Fuschia"
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    name.text = "وردي فاتح و فوشي"
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    name.text = "Light Pink And Fuschia"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    name.text = "Light Pink And Fuschia"
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("250 Coin")
-                namec?.mutableString.setString("Light Pink And Fuschia\n")
+                
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٢٥٠ عملة")
+                    namec?.mutableString.setString("وردي فاتح و فوشي\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Light Pink And Fuschia\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("250 Coin")
+                    namec?.mutableString.setString("Light Pink And Fuschia\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
-                buy.setTitle("Buy", for: UIControlState())
                 buyb = 1
+                
             }
         }else if(select == 12){
             select = 13
@@ -907,20 +2131,55 @@ class ShopViewController: UIViewController,colorDelegate {
             bigt.isHidden = true
             cp.isHidden = true
             if (shop13 == 1){
-                name.text = "NIGHTMODE\nReplace White With Black"
-                buyb = 3
-                if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
-                    buy.setTitle("NIGHTMODE OFF", for: UIControlState())
-                }else{
-                    buy.setTitle("NIGHTMODE ON", for: UIControlState())
+                switch (lang) {
+                case 0:
+                    name.text = "وضع الظلام\nاستبدل الأبيض بالأسود"
+                    if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
+                        buy.setTitle("وضع الظلام غير مفعّل", for: UIControlState())
+                    }else{
+                        buy.setTitle("وضع الظلام مفعّل", for: UIControlState())
+                    }
+                    break
+                case 1:
+                    name.text = "NIGHTMODE\nReplace White With Black"
+                    if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
+                        buy.setTitle("NIGHTMODE OFF", for: UIControlState())
+                    }else{
+                        buy.setTitle("NIGHTMODE ON", for: UIControlState())
+                    }
+                    break
+                default:
+                    name.text = "NIGHTMODE\nReplace White With Black"
+                    if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
+                        buy.setTitle("NIGHTMODE OFF", for: UIControlState())
+                    }else{
+                        buy.setTitle("NIGHTMODE ON", for: UIControlState())
+                    }
+                    break
                 }
+                buyb = 3
             }else{
-                price?.mutableString.setString("500 Coin")
-                namec?.mutableString.setString("NIGHTMODE\nReplace White With Black\n")
+                
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٥٠٠ عملة")
+                    namec?.mutableString.setString("وضع الظلام\nاستبدل الأبيض بالأسود\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("500 Coin")
+                    namec?.mutableString.setString("NIGHTMODE\nReplace White With Black\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("500 Coin")
+                    namec?.mutableString.setString("NIGHTMODE\nReplace White With Black\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
                 buyb = 1
-                buy.setTitle("Buy", for: UIControlState())
             }
         }
         else if(select == 13){
@@ -943,23 +2202,63 @@ class ShopViewController: UIViewController,colorDelegate {
             bigt.isHidden = true
             cp.isHidden = true
             if (shop14 == 3){
-                name.text = "X3\nTriple Your Coins"
                 buyb = 3
                 buy.isHidden = true
+                switch (lang) {
+                case 0:
+                    name.text = "٣x\nضاعف عملاتك بمقدار ثلاثة مرات"
+                    break
+                case 1:
+                    name.text = "X3\nTriple Your Coins"
+                    break
+                default:
+                    name.text = "X3\nTriple Your Coins"
+                    break
+                }
             }else if(shop14 == 2){
-                price?.mutableString.setString("1000 Coin")
-                namec?.mutableString.setString("X3\nTriple Your Coins\n")
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("١٠٠٠ عملة")
+                    namec?.mutableString.setString("٣x\nضاعف عملاتك بمقدار ثلاثة مرات\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("1000 Coin")
+                    namec?.mutableString.setString("X3\nTriple Your Coins\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("1000 Coin")
+                    namec?.mutableString.setString("X3\nTriple Your Coins\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
                 buyb = 1
-                buy.setTitle("Buy", for: UIControlState())
+                
             }else if(shop14 == 1){
-                price?.mutableString.setString("500 Coin")
-                namec?.mutableString.setString("X2\nDouble Your Coins\n")
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("٥٠٠ عملة")
+                    namec?.mutableString.setString("٢x\nضاعف عملاتك\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("500 Coin")
+                    namec?.mutableString.setString("X2\nDouble Your Coins\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("500 Coin")
+                    namec?.mutableString.setString("X2\nDouble Your Coins\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
                 buyb = 1
-                buy.setTitle("Buy", for: UIControlState())
+                
             }
         }else if(select == 14){
             select = 15
@@ -987,20 +2286,58 @@ class ShopViewController: UIViewController,colorDelegate {
                     small.layer.borderColor = UIColor.white.cgColor
                 }
                 big.layer.borderColor = big.backgroundColor?.cgColor
-                if (select == selected){
-                    buy.setTitle("Selected", for: UIControlState())
-                    buyb = 3
-                }else{
-                    buy.setTitle("Select", for: UIControlState())
-                    buyb = 2
+                switch (lang) {
+                case 0:
+                    if (select == selected){
+                        buy.setTitle("المختار", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("اختار", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                case 1:
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
+                default:
+                    if (select == selected){
+                        buy.setTitle("Selected", for: UIControlState())
+                        buyb = 3
+                    }else{
+                        buy.setTitle("Select", for: UIControlState())
+                        buyb = 2
+                    }
+                    break
                 }
             }else{
-                price?.mutableString.setString("1000 Coin")
-                namec?.mutableString.setString("Color Picker\nChoose Your Own Colors\n")
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("١٠٠٠ عملة")
+                    namec?.mutableString.setString("اختيار الألوان\nاختار الألوان الخاصة بك\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("1000 Coin")
+                    namec?.mutableString.setString("Color Picker\nChoose Your Own Colors\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("1000 Coin")
+                    namec?.mutableString.setString("Color Picker\nChoose Your Own Colors\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
+                
                 namec?.append(price!)
                 name.attributedText = namec
                 buyb = 1
-                buy.setTitle("Buy", for: UIControlState())
+                
             }
         }else if(select == 15){
             select = 16
@@ -1022,16 +2359,40 @@ class ShopViewController: UIViewController,colorDelegate {
             bigt.isHidden = true
             cp.isHidden = true
             if (shop16 == 1){
-                name.text = "Extra Live\nYou Will Now Have 4 Lives"
+                    switch (lang) {
+                    case 0:
+                        name.text = "روح اضافية\nسيكون لديك ٤ أرواح"
+                        break
+                    case 1:
+                        name.text = "Extra Life\nYou Will Now Have 4 Lives"
+                        break
+                    default:
+                        name.text = "Extra Life\nYou Will Now Have 4 Lives"
+                        break
+                    }
                 buyb = 3
                 buy.isHidden = true
             }else{
-                price?.mutableString.setString("1000 Coin")
-                namec?.mutableString.setString("Extra Live\nYou Will Now Have 4 Lives\n")
+                switch (lang) {
+                case 0:
+                    price?.mutableString.setString("١٠٠٠ عملة")
+                    namec?.mutableString.setString("روح اضافية\nسيكون لديك ٤ أرواح\n")
+                    buy.setTitle("اشتري", for: UIControlState())
+                    break
+                case 1:
+                    price?.mutableString.setString("1000 Coin")
+                    namec?.mutableString.setString("Extra Life\nYou Will Now Have 4 Lives\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                default:
+                    price?.mutableString.setString("1000 Coin")
+                    namec?.mutableString.setString("Extra Life\nYou Will Now Have 4 Lives\n")
+                    buy.setTitle("Buy", for: UIControlState())
+                    break
+                }
                 namec?.append(price!)
                 name.attributedText = namec
                 buyb = 1
-                buy.setTitle("Buy", for: UIControlState())
             }
         }
     }
@@ -1040,18 +2401,42 @@ class ShopViewController: UIViewController,colorDelegate {
             if(buyb == 1){
                 if(select == 2){
                     if(coinv >= 250){
-                        buy.setTitle("Select", for: UIControlState())
-                        name.text = "Green And Pink"
                         buyb = 2
                         coinv = coinv - 250
-                        coinval.text = String(coinv)
                         shop2 = 1
                         provider.setInt(forKey: "shop2", value: 1)
+                        switch (lang) {
+                        case 0:
+                            name.text = "أخضر و وردي"
+                            buy.setTitle("اختار", for: UIControlState())
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                            name.text = "Green And Pink"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            name.text = "Green And Pink"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1064,18 +2449,42 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 3){
                     if(coinv >= 250){
-                        buy.setTitle("Select", for: UIControlState())
-                        name.text = "Blue And Orange"
                         buyb = 2
                         coinv = coinv - 250
-                        coinval.text = String(coinv)
                         shop3 = 1
                          provider.setInt(forKey: "shop3", value: 1)
+                        switch (lang) {
+                        case 0:
+                            name.text = "أزرق و برتقالي"
+                            buy.setTitle("اختار", for: UIControlState())
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                            name.text = "Blue And Orange"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            name.text = "Blue And Orange"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1088,18 +2497,42 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 4){
                     if(coinv >= 250){
-                        buy.setTitle("Select", for: UIControlState())
-                        name.text = "Purple And Green"
                         buyb = 2
                         coinv = coinv - 250
-                        coinval.text = String(coinv)
                         shop4 = 1
                         provider.setInt(forKey: "shop4", value: 1)
+                        switch (lang) {
+                        case 0:
+                            name.text = "أرجواني و أخضر"
+                            buy.setTitle("اختار", for: UIControlState())
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                            name.text = "Purple And Green"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            name.text = "Purple And Green"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1112,18 +2545,42 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 5){
                     if(coinv >= 250){
-                        buy.setTitle("Select", for: UIControlState())
-                        name.text = "Blue And Yellow"
                         buyb = 2
                         coinv = coinv - 250
-                        coinval.text = String(coinv)
                         shop5 = 1
                         provider.setInt(forKey: "shop5", value: 1)
+                        switch (lang) {
+                        case 0:
+                            name.text = "أزرق و أصفر"
+                            buy.setTitle("اختار", for: UIControlState())
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                            name.text = "Blue And Yellow"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            name.text = "Blue And Yellow"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1136,18 +2593,42 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 6){
                     if(coinv >= 250){
-                        buy.setTitle("Select", for: UIControlState())
-                        name.text = "Brown And Yellow"
                         buyb = 2
                         coinv = coinv - 250
-                        coinval.text = String(coinv)
                         shop6 = 1
                        provider.setInt(forKey: "shop6", value: 1)
+                        switch (lang) {
+                        case 0:
+                            name.text = "بني و أصفر"
+                            buy.setTitle("اختار", for: UIControlState())
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                            name.text = "Brown And Yellow"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            name.text = "Brown And Yellow"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1160,18 +2641,42 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 7){
                     if(coinv >= 250){
-                        buy.setTitle("Select", for: UIControlState())
-                        name.text = "Grey And Red"
                         buyb = 2
                         coinv = coinv - 250
-                        coinval.text = String(coinv)
                         shop7 = 1
                          provider.setInt(forKey: "shop7", value: 1)
+                        switch (lang) {
+                        case 0:
+                            name.text = "رمادي وأحمر"
+                            buy.setTitle("اختار", for: UIControlState())
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                             name.text = "Grey And Red"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            name.text = "Grey And Red"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1184,18 +2689,42 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 8){
                     if(coinv >= 250){
-                        buy.setTitle("Select", for: UIControlState())
-                        name.text = "Light Blue And Pink"
                         buyb = 2
                         coinv = coinv - 250
-                        coinval.text = String(coinv)
                         shop8 = 1
                         provider.setInt(forKey: "shop8", value: 1)
+                        switch (lang) {
+                        case 0:
+                            name.text = "أزرق فاتح و وردي"
+                            buy.setTitle("اختار", for: UIControlState())
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                            name.text = "Light Blue And Pink"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            name.text = "Light Blue And Pink"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1208,18 +2737,42 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 9){
                     if(coinv >= 250){
-                        buy.setTitle("Select", for: UIControlState())
-                        name.text = "Light Brown And Light Green"
                         buyb = 2
                         coinv = coinv - 250
-                        coinval.text = String(coinv)
                         shop9 = 1
                          provider.setInt(forKey: "shop9", value: 1)
+                        switch (lang) {
+                        case 0:
+                            name.text = "بني فاتح و أخضر فاتح"
+                            buy.setTitle("اختار", for: UIControlState())
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                             name.text = "Light Brown And Light Green"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            name.text = "Light Brown And Light Green"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1232,18 +2785,42 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 10){
                     if(coinv >= 250){
-                        buy.setTitle("Select", for: UIControlState())
-                          name.text = "Light Green And Blue"
                         buyb = 2
                         coinv = coinv - 250
-                        coinval.text = String(coinv)
                         shop10 = 1
                         provider.setInt(forKey: "shop10", value: 1)
+                        switch (lang) {
+                        case 0:
+                            name.text = "أخضر فاتح و أزرق"
+                            buy.setTitle("اختار", for: UIControlState())
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                            name.text = "Light Green And Blue"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            name.text = "Light Green And Blue"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1256,18 +2833,42 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 11){
                     if(coinv >= 250){
-                        buy.setTitle("Select", for: UIControlState())
-                        name.text = "Olive And Orange"
                         buyb = 2
                         coinv = coinv - 250
-                        coinval.text = String(coinv)
                         shop11 = 1
                       provider.setInt(forKey: "shop11", value: 1)
+                        switch (lang) {
+                        case 0:
+                             name.text = "زيتي و برتقالي"
+                            buy.setTitle("اختار", for: UIControlState())
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                           name.text = "Olive And Orange"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            name.text = "Olive And Orange"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1280,18 +2881,42 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 12){
                     if(coinv >= 250){
-                        buy.setTitle("Select", for: UIControlState())
-                        name.text = "Light Pink And Fuschia"
                         buyb = 2
                         coinv = coinv - 250
-                        coinval.text = String(coinv)
                         shop12 = 1
-                      provider.setInt(forKey: "shop12", value: 1)
+                        provider.setInt(forKey: "shop12", value: 1)
+                        switch (lang) {
+                        case 0:
+                            name.text = "وردي فاتح و فوشي"
+                            buy.setTitle("اختار", for: UIControlState())
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                            name.text = "Light Pink And Fuschia"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            name.text = "Light Pink And Fuschia"
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1304,18 +2929,42 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 13){
                     if(coinv >= 500){
-                        buy.setTitle("NIGHTMODE OFF", for: UIControlState())
-                        name.text = "NIGHTMODE\nReplace White With Black"
                         buyb = 3
                         coinv = coinv - 500
-                        coinval.text = String(coinv)
                         shop13 = 1
                         provider.setInt(forKey: "shop13", value: 1)
+                        switch (lang) {
+                        case 0:
+                            name.text = "وضع الظلام\nاستبدل الأبيض بالأسود"
+                            buy.setTitle("وضع الظلام غير مفعّل", for: UIControlState())
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                            buy.setTitle("NIGHTMODE OFF", for: UIControlState())
+                            name.text = "NIGHTMODE\nReplace White With Black"
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            buy.setTitle("NIGHTMODE OFF", for: UIControlState())
+                            name.text = "NIGHTMODE\nReplace White With Black"
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1329,18 +2978,40 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else if(select == 14){
                     if(shop14 == 2){
                         if(coinv >= 1000){
-                            name.text = "X3\nTriple Your Coins"
                             buy.isHidden = true
                             buyb = 2
                             coinv = coinv - 1000
-                            coinval.text = String(coinv)
                             shop14 = 3
                             provider.setInt(forKey: "shop14", value: 3)
+                            switch (lang) {
+                            case 0:
+                                name.text = "٣x\nضاعف عملاتك بمقدار ثلاثة مرات"
+                                coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                                break
+                            case 1:
+                                name.text = "X3\nTriple Your Coins"
+                                coinval.text = String(coinv)
+                                break
+                            default:
+                                name.text = "X3\nTriple Your Coins"
+                                coinval.text = String(coinv)
+                                break
+                            }
                         }else{
                             if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                             }
-                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            switch (lang) {
+                            case 0:
+                                self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                                break
+                            case 1:
+                                self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                                break
+                            default:
+                                self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                                break
+                            }
                             buy.isEnabled = false
                             buy.isHidden = true
                         buyc = 1
@@ -1353,20 +3024,47 @@ class ShopViewController: UIViewController,colorDelegate {
                         }
                 }else{
                         if(coinv >= 500){
-                            price?.mutableString.setString("1000 Coin")
-                            namec?.mutableString.setString("X3\nTriple Your Coins\n")
+                            coinv = coinv - 500
+                            switch (lang) {
+                            case 0:
+                                price?.mutableString.setString("١٠٠٠ عملة")
+                                namec?.mutableString.setString("٣x\nضاعف عملاتك بمقدار ثلاثة مرات\n")
+                                buy.setTitle("اشتري", for: UIControlState())
+                                coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                                break
+                            case 1:
+                                price?.mutableString.setString("1000 Coin")
+                                namec?.mutableString.setString("X3\nTriple Your Coins\n")
+                                buy.setTitle("Buy", for: UIControlState())
+                                coinval.text = String(coinv)
+                                break
+                            default:
+                                price?.mutableString.setString("1000 Coin")
+                                namec?.mutableString.setString("X3\nTriple Your Coins\n")
+                                buy.setTitle("Buy", for: UIControlState())
+                                coinval.text = String(coinv)
+                                break
+                            }
                             namec?.append(price!)
                             name.attributedText = namec
                             buyb = 1
-                            coinv = coinv - 500
-                            coinval.text = String(coinv)
                             shop14 = 2
                             provider.setInt(forKey: "shop14", value: 2)
                         }else{
                             if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                             }
-                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            switch (lang) {
+                            case 0:
+                                self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                                break
+                            case 1:
+                                self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                                break
+                            default:
+                                self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                                break
+                            }
                             buy.isEnabled = false
                             buy.isHidden = true
                             buyc = 1
@@ -1388,17 +3086,39 @@ class ShopViewController: UIViewController,colorDelegate {
                         bigt.isHidden = false
                         big.layer.borderColor = big.backgroundColor?.cgColor
                         cp.isHidden = false
-                        buy.setTitle("Select", for: UIControlState())
                         buyb = 2
                         coinv = coinv - 1000
-                        coinval.text = String(coinv)
                         shop15 = 1
                         provider.setInt(forKey: "shop15", value: 1)
+                        switch (lang) {
+                        case 0:
+                            buy.setTitle("اختار", for: UIControlState())
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            buy.setTitle("Select", for: UIControlState())
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1412,18 +3132,40 @@ class ShopViewController: UIViewController,colorDelegate {
                     
                     }else if(select == 16){
                     if(coinv >= 1000){
-                            name.text = "Extra Live\nYou Will Now Have 4 Lives"
                             buy.isHidden = true
                             buyb = 2
                             coinv = coinv - 1000
-                            coinval.text = String(coinv)
                             shop16 = 1
                             provider.setInt(forKey: "shop16", value: 1)
+                        switch (lang) {
+                        case 0:
+                            name.text = "روح اضافية\nسيكون لديك ٤ أرواح"
+                            coinval.text = convertEngNumToPersianNum(num: String(coinv))
+                            break
+                        case 1:
+                            name.text = "Extra Live\nYou Will Now Have 4 Lives"
+                            coinval.text = String(coinv)
+                            break
+                        default:
+                            name.text = "Extra Live\nYou Will Now Have 4 Lives"
+                            coinval.text = String(coinv)
+                            break
+                        }
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         }
-                        self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("ليس لديك\nعملات كافية", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        case 1:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        default:
+                            self.view.makeToast("You Don't Have\nEnough Coins", duration: 1.1, position: .shop, style: toaststyle)
+                            break
+                        }
                         buy.isEnabled = false
                         buy.isHidden = true
                         buyc = 1
@@ -1441,7 +3183,17 @@ class ShopViewController: UIViewController,colorDelegate {
                         color(small.backgroundColor!, isEqualToColor:big.backgroundColor!, withTolerance: 0.5) ||
                         color(big.backgroundColor!, isEqualToColor:UIColor.white, withTolerance: 0.2)
                         || color(big.backgroundColor!, isEqualToColor:UIColor.black, withTolerance: 0.2)){
-                        self.view.makeToast("The Boxes Can't Be White or Black\nAnd They Can't Have The Same Color", duration: 1.1, position: .center, style: toaststyle)
+                        switch (lang) {
+                        case 0:
+                            self.view.makeToast("الصناديق لا يمكن أن يكونوا أبيض أو أسود\nو لا يمكن أن يكونوا نفس اللون", duration: 1.1, position: .center, style: toaststyle)
+                            break
+                        case 1:
+                             self.view.makeToast("The Boxes Can't Be White or Black\nAnd They Can't Have The Same Color", duration: 1.1, position: .center, style: toaststyle)
+                            break
+                        default:
+                             self.view.makeToast("The Boxes Can't Be White or Black\nAnd They Can't Have The Same Color", duration: 1.1, position: .center, style: toaststyle)
+                            break
+                        }
                         print("there r equals")
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
@@ -1455,7 +3207,17 @@ class ShopViewController: UIViewController,colorDelegate {
                         cpbc = big.backgroundColor!
                         provider.setInt(forKey: "shopselect", value: select)
                         selected = select
-                        buy.setTitle("Selected", for: UIControlState())
+                        switch (lang) {
+                        case 0:
+                            buy.setTitle("المختار", for: UIControlState())
+                            break
+                        case 1:
+                            buy.setTitle("Selected", for: UIControlState())
+                            break
+                        default:
+                            buy.setTitle("Selected", for: UIControlState())
+                            break
+                        }
                     }
                 }else{
                     if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
@@ -1463,14 +3225,34 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                     provider.setInt(forKey: "shopselect", value: select)
                     selected = select
-                    buy.setTitle("Selected", for: UIControlState())
+                    switch (lang) {
+                    case 0:
+                        buy.setTitle("المختار", for: UIControlState())
+                        break
+                    case 1:
+                        buy.setTitle("Selected", for: UIControlState())
+                        break
+                    default:
+                        buy.setTitle("Selected", for: UIControlState())
+                        break
+                    }
                 }
             }else if(select == 13 && shop13 == 1){
                 let shadow = NSShadow()
                 shadow.shadowOffset = CGSize(width: 0, height: 0)
                 shadow.shadowBlurRadius = 4.0
                 if (provider.getInt(forKey: "nm", defaultValue: 0) == 0){
-                    buy.setTitle("NIGHTMODE ON", for: UIControlState())
+                    switch (lang) {
+                    case 0:
+                            buy.setTitle("وضع الظلام مفعّل", for: UIControlState())
+                        break
+                    case 1:
+                            buy.setTitle("NIGHTMODE ON", for: UIControlState())
+                        break
+                    default:
+                            buy.setTitle("NIGHTMODE ON", for: UIControlState())
+                        break
+                    }
                     provider.setInt(forKey: "nm", value: 1)
                     self.view.backgroundColor = UIColor.black
                     back.layer.borderColor = UIColor.white.cgColor
@@ -1498,7 +3280,17 @@ class ShopViewController: UIViewController,colorDelegate {
                     price?.removeAttribute(NSAttributedStringKey.shadow, range: NSRange(location:0,length:(price?.mutableString.length)!))
                     price?.addAttribute(NSAttributedStringKey.shadow,value: shadow,range: NSRange(location:0,length:(price?.mutableString.length)!))
                 }else{
-                    buy.setTitle("NIGHTMODE OFF", for: UIControlState())
+                    switch (lang) {
+                    case 0:
+                            buy.setTitle("وضع الظلام غير مفعّل", for: UIControlState())
+                        break
+                    case 1:
+                            buy.setTitle("NIGHTMODE OFF", for: UIControlState())
+                        break
+                    default:
+                            buy.setTitle("NIGHTMODE OFF", for: UIControlState())
+                        break
+                    }
                     provider.setInt(forKey: "nm", value: 0)
                     self.view.backgroundColor = UIColor.white
                     back.layer.borderColor = UIColor.black.cgColor
@@ -1570,6 +3362,14 @@ class ShopViewController: UIViewController,colorDelegate {
         color1.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
         color2.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
         return fabs(r1 - r2) <= tolerance && fabs(g1 - g2) <= tolerance && fabs(b1 - b2) <= tolerance && fabs(a1 - a2) <= tolerance
+    }
+    func convertEngNumToPersianNum(num: String)->String{
+        //let number = NSNumber(value: Int(num)!)
+        let format = NumberFormatter()
+        format.locale = Locale(identifier: "ar_JO")
+        let number =   format.number(from: num)
+        let faNumber = format.string(from: number!)
+        return faNumber!
     }
     /*
     // MARK: - Navigation

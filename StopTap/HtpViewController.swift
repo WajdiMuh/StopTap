@@ -344,7 +344,7 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
                         coins = coins + 1
                         switch provider.getInt(forKey: "lang", defaultValue: 1) {
                         case 0:
-                            timecount.text = "اسحب باتجاه السهم لكسب 4 عملات اضافية. اسحب الآن ▼"
+                            timecount.text = "اسحب باتجاه السهم لكسب ٤ عملات اضافية. اسحب الآن ▼"
                             scoreval.text = "النتيجة : " + convertEngNumToPersianNum(num: String(score))
                             coinval.text = convertEngNumToPersianNum(num: String(coins))
                             break
