@@ -46,7 +46,7 @@ class ShopViewController: UIViewController,colorDelegate {
     var shop16:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "shop16", defaultValue: 0)
     var cpsc:UIColor = UIColor(hexString: KeyStoreDefaultsProvider(cryptoProvider: nil).getString(forKey: "cpsc", defaultValue: "#004cff"))
     var cpbc:UIColor = UIColor(hexString: KeyStoreDefaultsProvider(cryptoProvider: nil).getString(forKey: "cpbc", defaultValue: "#ff0000"))
-    var coinv:Int = 10000
+    var coinv:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "cv", defaultValue: 0)
     var buyb:Int = 3
     var buyc:Int = 0
     var boxchoose:Int = 0
@@ -74,7 +74,7 @@ class ShopViewController: UIViewController,colorDelegate {
         small.layer.borderWidth = 5
         big.layer.cornerRadius = 10
         big.layer.borderWidth = 5
-        price = NSMutableAttributedString(string: "250 Coin")
+        price = NSMutableAttributedString(string: "250 Coins")
         price?.addAttribute(NSAttributedStringKey.foregroundColor,value: UIColor.yellow,range: NSRange(location:0,length:(price?.mutableString.length)!))
         namec = NSMutableAttributedString(string:"Green And Pink\n")
         cp.delegate = self
@@ -88,45 +88,66 @@ class ShopViewController: UIViewController,colorDelegate {
         switch (lang) {
         case 0:
             back.setTitle("عودة", for: UIControlState())
-            back.arabic(size: 20, diffinsize: 6)
+            back.arabic(size: 20, diffinsize: 10)
             coinval.text = convertEngNumToPersianNum(num: String(coinv))
-            coinval.arabic(size: 22, diffinsize: 4)
-            buy.arabic(size: 20, diffinsize: 4)
-            name.arabic(size: 22, diffinsize: 0)
+            coinval.arabic(size: 22, diffinsize: 8)
+            buy.arabic(size: 20, diffinsize: 10)
+            name.arabic(size: 22, diffinsize: 18)
             shop.text = "المتجر"
-            shop.arabic(size: 26, diffinsize: 8)
+            shop.arabic(size: 26, diffinsize: 14)
             smallt.setTitle("لون الصندوق\nالصغير", for: UIControlState())
             bigt.setTitle("لون الصندوق\nالكبير", for: UIControlState())
-            smallt.arabic(size: 15, diffinsize: 0)
-            bigt.arabic(size: 15, diffinsize: 0)
+            smallt.arabic(size: 15, diffinsize: 5)
+            bigt.arabic(size: 15, diffinsize: 5)
+            if(UIDevice.current.userInterfaceIdiom == .phone){
+                toaststyle.titleFont = UIFont.systemFont(ofSize: 18.0)
+                 toaststyle.messageFont = UIFont.systemFont(ofSize: 18.0)
+            }else{
+                toaststyle.titleFont = UIFont.systemFont(ofSize: 25.0)
+                 toaststyle.messageFont = UIFont.systemFont(ofSize: 25.0)
+            }
             break
         case 1:
             back.setTitle("Back", for: UIControlState())
-            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            back.english(size: 20, diffinsize: 10,left: 4,top: 3)
             coinval.text = String(coinv)
-            coinval.english(size: 22, diffinsize: 4)
-            buy.english(size: 20, diffinsize: 4,left: 4,top: 2)
-            name.english(size: 22, diffinsize: 0)
+            coinval.english(size: 22, diffinsize: 8)
+            buy.english(size: 20, diffinsize: 10,left: 4,top: 2)
+            name.english(size: 22, diffinsize: 18)
             shop.text = "Shop"
-            shop.english(size: 26, diffinsize: 8)
+            shop.english(size: 26, diffinsize: 14)
             smallt.setTitle("Small Box\nColor", for: UIControlState())
             bigt.setTitle("Big Box\nColor", for: UIControlState())
-            smallt.english(size: 15, diffinsize: 0,left: 0,top: 0)
-            bigt.english(size: 15, diffinsize: 0,left:0,top: 0)
+            smallt.english(size: 15, diffinsize: 5,left: 0,top: 0)
+            bigt.english(size: 15, diffinsize: 5,left:0,top: 0)
+            if(UIDevice.current.userInterfaceIdiom == .phone){
+                toaststyle.titleFont = UIFont(name:"DotsAllForNowJL", size: 18.0)
+                 toaststyle.messageFont = UIFont(name:"DotsAllForNowJL", size: 18.0)
+            }else{
+                toaststyle.titleFont = UIFont(name:"DotsAllForNowJL", size: 25.0)
+                  toaststyle.messageFont = UIFont(name:"DotsAllForNowJL", size: 25.0)
+            }
             break
         default:
             back.setTitle("Back", for: UIControlState())
-            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            back.english(size: 20, diffinsize: 10,left: 4,top: 3)
             coinval.text = String(coinv)
-            coinval.english(size: 22, diffinsize: 4)
-            buy.english(size: 20, diffinsize: 4,left: 4,top: 2)
-            name.english(size: 22, diffinsize: 0)
+            coinval.english(size: 22, diffinsize: 8)
+            buy.english(size: 20, diffinsize: 10,left: 4,top: 2)
+            name.english(size: 22, diffinsize: 18)
             shop.text = "Shop"
-            shop.english(size: 26, diffinsize: 8)
+            shop.english(size: 26, diffinsize: 14)
             smallt.setTitle("Small Box\nColor", for: UIControlState())
             bigt.setTitle("Big Box\nColor", for: UIControlState())
-            smallt.english(size: 15, diffinsize: 0,left: 0,top: 0)
-            bigt.english(size: 15, diffinsize: 0,left:0,top: 0)
+            smallt.english(size: 15, diffinsize: 5,left: 0,top: 0)
+            bigt.english(size: 15, diffinsize: 5,left:0,top: 0)
+            if(UIDevice.current.userInterfaceIdiom == .phone){
+                toaststyle.titleFont = UIFont(name:"DotsAllForNowJL", size: 18.0)
+                toaststyle.messageFont = UIFont(name:"DotsAllForNowJL", size: 18.0)
+            }else{
+                toaststyle.titleFont = UIFont(name:"DotsAllForNowJL", size: 25.0)
+                toaststyle.messageFont = UIFont(name:"DotsAllForNowJL", size: 25.0)
+            }
             break
         }
         if (selected == 1){
@@ -410,7 +431,7 @@ class ShopViewController: UIViewController,colorDelegate {
             shadow.shadowBlurRadius = 4.0
             price?.addAttribute(NSAttributedStringKey.shadow,value: shadow,range: NSRange(location:0,length:(price?.mutableString.length)!))
             //price?.addAttribute(NSAttributedStringKey.strokeWidth,value: -5.0,range: NSRange(location:0,length:(price?.mutableString.length)!))
-            price?.addAttribute(NSAttributedStringKey.font,value: name.font.withSize(28),range: NSRange(location:0,length:(price?.mutableString.length)!))
+            //price?.addAttribute(NSAttributedStringKey.font,value: name.font.withSize(28),range: NSRange(location:0,length:(price?.mutableString.length)!))
         }else{
             self.view.backgroundColor = UIColor.black
             back.layer.borderColor = UIColor.white.cgColor
@@ -439,7 +460,7 @@ class ShopViewController: UIViewController,colorDelegate {
             shadow.shadowBlurRadius = 4.0
             price?.addAttribute(NSAttributedStringKey.shadow,value: shadow,range: NSRange(location:0,length:(price?.mutableString.length)!))
             //price?.addAttribute(NSAttributedStringKey.strokeWidth,value: -5.0,range: NSRange(location:0,length:(price?.mutableString.length)!))
-            price?.addAttribute(NSAttributedStringKey.font,value: name.font.withSize(28),range: NSRange(location:0,length:(price?.mutableString.length)!))
+            //price?.addAttribute(NSAttributedStringKey.font,value: name.font.withSize(28),range: NSRange(location:0,length:(price?.mutableString.length)!))
         }
     }
     @IBAction func smallclick(_ sender: AnyObject) {
@@ -545,12 +566,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Green And Pink\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Green And Pink\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -606,12 +627,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                               namec?.mutableString.setString("Blue And Orange\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                               namec?.mutableString.setString("Blue And Orange\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -670,12 +691,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Purple And Green\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                    namec?.mutableString.setString("Purple And Green\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -733,12 +754,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                           namec?.mutableString.setString("Blue And Yellow\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                           namec?.mutableString.setString("Blue And Yellow\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -795,12 +816,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                           namec?.mutableString.setString("Brown And Yellow\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                           namec?.mutableString.setString("Brown And Yellow\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -857,12 +878,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                                  namec?.mutableString.setString("Grey And Red\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                                  namec?.mutableString.setString("Grey And Red\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -919,12 +940,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                            namec?.mutableString.setString("Light Blue And Pink\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                            namec?.mutableString.setString("Light Blue And Pink\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -981,12 +1002,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                      namec?.mutableString.setString("Light Brown And Light Green\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                      namec?.mutableString.setString("Light Brown And Light Green\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1043,12 +1064,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                      namec?.mutableString.setString("Light Green And Blue\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                      namec?.mutableString.setString("Light Green And Blue\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1105,12 +1126,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Olive And Orange\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Olive And Orange\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1183,12 +1204,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                        namec?.mutableString.setString("Light Pink And Fuschia\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                        namec?.mutableString.setString("Light Pink And Fuschia\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1254,12 +1275,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                   price?.mutableString.setString("500 Coin")
+                   price?.mutableString.setString("500 Coins")
                     namec?.mutableString.setString("NIGHTMODE\nReplace White With Black\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("500 Coin")
+                    price?.mutableString.setString("500 Coins")
                     namec?.mutableString.setString("NIGHTMODE\nReplace White With Black\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1309,12 +1330,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("1000 Coin")
+                    price?.mutableString.setString("1000 Coins")
                     namec?.mutableString.setString("X3\nTriple Your Coins\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("1000 Coin")
+                    price?.mutableString.setString("1000 Coins")
                     namec?.mutableString.setString("X3\nTriple Your Coins\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1331,12 +1352,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("500 Coin")
+                    price?.mutableString.setString("500 Coins")
                     namec?.mutableString.setString("X2\nDouble Your Coins\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("500 Coin")
+                    price?.mutableString.setString("500 Coins")
                     namec?.mutableString.setString("X2\nDouble Your Coins\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1407,12 +1428,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("1000 Coin")
+                    price?.mutableString.setString("1000 Coins")
                     namec?.mutableString.setString("Color Picker\nChoose Your Own Colors\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("1000 Coin")
+                    price?.mutableString.setString("1000 Coins")
                     namec?.mutableString.setString("Color Picker\nChoose Your Own Colors\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1474,12 +1495,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Green And Pink\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Green And Pink\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1535,12 +1556,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Blue And Orange\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Blue And Orange\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1599,12 +1620,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Purple And Green\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Purple And Green\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1662,12 +1683,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Blue And Yellow\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Blue And Yellow\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1724,12 +1745,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Brown And Yellow\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Brown And Yellow\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1786,12 +1807,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Grey And Red\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Grey And Red\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1848,12 +1869,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Light Blue And Pink\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Light Blue And Pink\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1910,12 +1931,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Light Brown And Light Green\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Light Brown And Light Green\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -1972,12 +1993,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Light Green And Blue\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Light Green And Blue\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -2034,12 +2055,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Olive And Orange\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Olive And Orange\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -2096,12 +2117,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Light Pink And Fuschia\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("250 Coin")
+                    price?.mutableString.setString("250 Coins")
                     namec?.mutableString.setString("Light Pink And Fuschia\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -2167,12 +2188,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("500 Coin")
+                    price?.mutableString.setString("500 Coins")
                     namec?.mutableString.setString("NIGHTMODE\nReplace White With Black\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("500 Coin")
+                    price?.mutableString.setString("500 Coins")
                     namec?.mutableString.setString("NIGHTMODE\nReplace White With Black\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -2223,12 +2244,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("1000 Coin")
+                    price?.mutableString.setString("1000 Coins")
                     namec?.mutableString.setString("X3\nTriple Your Coins\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("1000 Coin")
+                    price?.mutableString.setString("1000 Coins")
                     namec?.mutableString.setString("X3\nTriple Your Coins\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -2245,12 +2266,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("500 Coin")
+                    price?.mutableString.setString("500 Coins")
                     namec?.mutableString.setString("X2\nDouble Your Coins\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("500 Coin")
+                    price?.mutableString.setString("500 Coins")
                     namec?.mutableString.setString("X2\nDouble Your Coins\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -2323,12 +2344,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("1000 Coin")
+                    price?.mutableString.setString("1000 Coins")
                     namec?.mutableString.setString("Color Picker\nChoose Your Own Colors\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("1000 Coin")
+                    price?.mutableString.setString("1000 Coins")
                     namec?.mutableString.setString("Color Picker\nChoose Your Own Colors\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -2380,12 +2401,12 @@ class ShopViewController: UIViewController,colorDelegate {
                     buy.setTitle("اشتري", for: UIControlState())
                     break
                 case 1:
-                    price?.mutableString.setString("1000 Coin")
+                    price?.mutableString.setString("1000 Coins")
                     namec?.mutableString.setString("Extra Life\nYou Will Now Have 4 Lives\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
                 default:
-                    price?.mutableString.setString("1000 Coin")
+                    price?.mutableString.setString("1000 Coins")
                     namec?.mutableString.setString("Extra Life\nYou Will Now Have 4 Lives\n")
                     buy.setTitle("Buy", for: UIControlState())
                     break
@@ -2405,6 +2426,7 @@ class ShopViewController: UIViewController,colorDelegate {
                         coinv = coinv - 250
                         shop2 = 1
                         provider.setInt(forKey: "shop2", value: 1)
+                        provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                             name.text = "أخضر و وردي"
@@ -2453,6 +2475,7 @@ class ShopViewController: UIViewController,colorDelegate {
                         coinv = coinv - 250
                         shop3 = 1
                          provider.setInt(forKey: "shop3", value: 1)
+                           provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                             name.text = "أزرق و برتقالي"
@@ -2501,6 +2524,7 @@ class ShopViewController: UIViewController,colorDelegate {
                         coinv = coinv - 250
                         shop4 = 1
                         provider.setInt(forKey: "shop4", value: 1)
+                           provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                             name.text = "أرجواني و أخضر"
@@ -2549,6 +2573,7 @@ class ShopViewController: UIViewController,colorDelegate {
                         coinv = coinv - 250
                         shop5 = 1
                         provider.setInt(forKey: "shop5", value: 1)
+                           provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                             name.text = "أزرق و أصفر"
@@ -2597,6 +2622,7 @@ class ShopViewController: UIViewController,colorDelegate {
                         coinv = coinv - 250
                         shop6 = 1
                        provider.setInt(forKey: "shop6", value: 1)
+                           provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                             name.text = "بني و أصفر"
@@ -2645,6 +2671,7 @@ class ShopViewController: UIViewController,colorDelegate {
                         coinv = coinv - 250
                         shop7 = 1
                          provider.setInt(forKey: "shop7", value: 1)
+                           provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                             name.text = "رمادي وأحمر"
@@ -2693,6 +2720,7 @@ class ShopViewController: UIViewController,colorDelegate {
                         coinv = coinv - 250
                         shop8 = 1
                         provider.setInt(forKey: "shop8", value: 1)
+                           provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                             name.text = "أزرق فاتح و وردي"
@@ -2741,6 +2769,7 @@ class ShopViewController: UIViewController,colorDelegate {
                         coinv = coinv - 250
                         shop9 = 1
                          provider.setInt(forKey: "shop9", value: 1)
+                           provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                             name.text = "بني فاتح و أخضر فاتح"
@@ -2789,6 +2818,7 @@ class ShopViewController: UIViewController,colorDelegate {
                         coinv = coinv - 250
                         shop10 = 1
                         provider.setInt(forKey: "shop10", value: 1)
+                           provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                             name.text = "أخضر فاتح و أزرق"
@@ -2837,6 +2867,7 @@ class ShopViewController: UIViewController,colorDelegate {
                         coinv = coinv - 250
                         shop11 = 1
                       provider.setInt(forKey: "shop11", value: 1)
+                           provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                              name.text = "زيتي و برتقالي"
@@ -2885,6 +2916,7 @@ class ShopViewController: UIViewController,colorDelegate {
                         coinv = coinv - 250
                         shop12 = 1
                         provider.setInt(forKey: "shop12", value: 1)
+                           provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                             name.text = "وردي فاتح و فوشي"
@@ -2933,6 +2965,7 @@ class ShopViewController: UIViewController,colorDelegate {
                         coinv = coinv - 500
                         shop13 = 1
                         provider.setInt(forKey: "shop13", value: 1)
+                           provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                             name.text = "وضع الظلام\nاستبدل الأبيض بالأسود"
@@ -2983,6 +3016,7 @@ class ShopViewController: UIViewController,colorDelegate {
                             coinv = coinv - 1000
                             shop14 = 3
                             provider.setInt(forKey: "shop14", value: 3)
+                               provider.setInt(forKey: "cv", value: coinv)
                             switch (lang) {
                             case 0:
                                 name.text = "٣x\nضاعف عملاتك بمقدار ثلاثة مرات"
@@ -3025,6 +3059,7 @@ class ShopViewController: UIViewController,colorDelegate {
                 }else{
                         if(coinv >= 500){
                             coinv = coinv - 500
+                               provider.setInt(forKey: "cv", value: coinv)
                             switch (lang) {
                             case 0:
                                 price?.mutableString.setString("١٠٠٠ عملة")
@@ -3033,13 +3068,13 @@ class ShopViewController: UIViewController,colorDelegate {
                                 coinval.text = convertEngNumToPersianNum(num: String(coinv))
                                 break
                             case 1:
-                                price?.mutableString.setString("1000 Coin")
+                                price?.mutableString.setString("1000 Coins")
                                 namec?.mutableString.setString("X3\nTriple Your Coins\n")
                                 buy.setTitle("Buy", for: UIControlState())
                                 coinval.text = String(coinv)
                                 break
                             default:
-                                price?.mutableString.setString("1000 Coin")
+                                price?.mutableString.setString("1000 Coins")
                                 namec?.mutableString.setString("X3\nTriple Your Coins\n")
                                 buy.setTitle("Buy", for: UIControlState())
                                 coinval.text = String(coinv)
@@ -3090,6 +3125,7 @@ class ShopViewController: UIViewController,colorDelegate {
                         coinv = coinv - 1000
                         shop15 = 1
                         provider.setInt(forKey: "shop15", value: 1)
+                           provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                             buy.setTitle("اختار", for: UIControlState())
@@ -3137,6 +3173,7 @@ class ShopViewController: UIViewController,colorDelegate {
                             coinv = coinv - 1000
                             shop16 = 1
                             provider.setInt(forKey: "shop16", value: 1)
+                           provider.setInt(forKey: "cv", value: coinv)
                         switch (lang) {
                         case 0:
                             name.text = "روح اضافية\nسيكون لديك ٤ أرواح"

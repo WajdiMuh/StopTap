@@ -39,31 +39,31 @@ class devViewController: UIViewController {
             developedb.text = "طورت بواسطة"
             developer.text = "وجدي المهتدي"
             thx.text = "شكراً للّعب"
-            developedb.arabic(size: 20, diffinsize: 6)
-            developer.arabic(size: 20, diffinsize: 6)
-            thx.arabic(size: 20, diffinsize: 6)
+            developedb.arabic(size: 20, diffinsize: 10)
+            developer.arabic(size: 20, diffinsize: 10)
+            thx.arabic(size: 20, diffinsize: 10)
             menu.setTitle("عودة", for: UIControlState())
-            menu.arabic(size: 20, diffinsize: 6)
+            menu.arabic(size: 20, diffinsize: 10)
             break
         case 1:
             developedb.text = "Developed By"
             developer.text = "Wajdi Al-Muhtadi"
             thx.text = "Thx For Playing"
-            developedb.english(size: 20, diffinsize: 6)
-            developer.english(size: 20, diffinsize: 6)
-            thx.english(size: 20, diffinsize: 6)
+            developedb.english(size: 20, diffinsize: 10)
+            developer.english(size: 20, diffinsize: 10)
+            thx.english(size: 20, diffinsize: 10)
             menu.setTitle("Back", for: UIControlState())
-            menu.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            menu.english(size: 20, diffinsize: 10,left: 4,top: 3)
             break
         default:
             developedb.text = "Developed By"
             developer.text = "Wajdi Al-Muhtadi"
             thx.text = "Thx For Playing"
-            developedb.english(size: 20, diffinsize: 6)
-            developer.english(size: 20, diffinsize: 6)
-            thx.english(size: 20, diffinsize: 6)
+            developedb.english(size: 20, diffinsize: 10)
+            developer.english(size: 20, diffinsize: 10)
+            thx.english(size: 20, diffinsize: 10)
             menu.setTitle("Back", for: UIControlState())
-            menu.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            menu.english(size: 20, diffinsize: 10,left: 4,top: 3)
             break
         }
         check = provider.getInt(forKey: "nm", defaultValue: 0)

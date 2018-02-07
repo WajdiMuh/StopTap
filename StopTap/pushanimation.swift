@@ -9,10 +9,9 @@
 import UIKit
 
 class pushanimation: NSObject, UIViewControllerAnimatedTransitioning {
-    
+    let fade:Double = 0.25
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?)-> TimeInterval {
-        return 0.65
-        
+        return 0.5;
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -59,7 +58,7 @@ class pushanimation: NSObject, UIViewControllerAnimatedTransitioning {
                 transitionContext.containerView.backgroundColor = UIColor.black
             }
             toViewController?.view?.alpha = 0
-            UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut], animations: {() -> Void in
+            UIView.animate(withDuration: fade, delay: 0, options: [.curveEaseOut], animations: {() -> Void in
                 toViewController?.view?.alpha = 1
                 fromViewController?.view?.alpha = 0
             }, completion: {(_ finished: Bool) -> Void in
@@ -74,7 +73,7 @@ class pushanimation: NSObject, UIViewControllerAnimatedTransitioning {
                 transitionContext.containerView.backgroundColor = UIColor.black
             }
             toViewController?.view?.alpha = 0
-            UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut], animations: {() -> Void in
+            UIView.animate(withDuration: fade, delay: 0, options: [.curveEaseOut], animations: {() -> Void in
                 toViewController?.view?.alpha = 1
                 fromViewController?.view?.alpha = 0
             }, completion: {(_ finished: Bool) -> Void in
@@ -89,7 +88,7 @@ class pushanimation: NSObject, UIViewControllerAnimatedTransitioning {
                 transitionContext.containerView.backgroundColor = UIColor.black
             }
             toViewController?.view?.alpha = 0
-            UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut], animations: {() -> Void in
+            UIView.animate(withDuration: fade, delay: 0, options: [.curveEaseOut], animations: {() -> Void in
                 toViewController?.view?.alpha = 1
                 fromViewController?.view?.alpha = 0
             }, completion: {(_ finished: Bool) -> Void in

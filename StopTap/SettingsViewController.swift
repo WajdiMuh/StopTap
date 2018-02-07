@@ -53,11 +53,11 @@ class SettingsViewController: UIViewController {
             sfxt.text = "الأصوات"
             musval.arabic(size: 17, diffinsize: 0)
             sfxval.arabic(size: 17, diffinsize: 0)
-            musict.arabic(size: 18, diffinsize: 6)
-            sfxt.arabic(size: 18, diffinsize: 6)
-            settting.arabic(size: 26, diffinsize: 8)
+            musict.arabic(size: 18, diffinsize: 8)
+            sfxt.arabic(size: 18, diffinsize: 8)
+            settting.arabic(size: 26, diffinsize: 14)
             back.setTitle("عودة", for: UIControlState())
-            back.arabic(size: 20, diffinsize: 6)
+            back.arabic(size: 20, diffinsize: 10)
             musval.text = convertEngNumToPersianNum(num: musval.text!)
             sfxval.text = convertEngNumToPersianNum(num: sfxval.text!)
             break
@@ -65,13 +65,13 @@ class SettingsViewController: UIViewController {
             settting.text = "Settings"
             musict.text = "Music"
             sfxt.text = "SFX"
-            musval.english(size: 17, diffinsize: 0)
-            sfxval.english(size: 17, diffinsize: 0)
-            musict.english(size: 18, diffinsize: 6)
-            sfxt.english(size: 18, diffinsize: 6)
-            settting.english(size: 26, diffinsize: 8)
+            musval.english(size: 17, diffinsize: 7)
+            sfxval.english(size: 17, diffinsize: 7)
+            musict.english(size: 18, diffinsize: 8)
+            sfxt.english(size: 18, diffinsize: 8)
+            settting.english(size: 26, diffinsize: 14)
             back.setTitle("Back", for: UIControlState())
-            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            back.english(size: 20, diffinsize: 10,left: 4,top: 3)
             break
         default:
             settting.text = "Settings"
@@ -79,11 +79,11 @@ class SettingsViewController: UIViewController {
             sfxt.text = "SFX"
             musval.english(size: 17, diffinsize: 0)
             sfxval.english(size: 17, diffinsize: 0)
-            musict.english(size: 18, diffinsize: 6)
-            sfxt.english(size: 18, diffinsize: 6)
-            settting.english(size: 26, diffinsize: 8)
+            musict.english(size: 18, diffinsize: 8)
+            sfxt.english(size: 18, diffinsize: 8)
+            settting.english(size: 26, diffinsize: 14)
             back.setTitle("Back", for: UIControlState())
-            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            back.english(size: 20, diffinsize: 10,left: 4,top: 3)
             break
         }
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){

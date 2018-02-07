@@ -9,6 +9,7 @@
 import UIKit
 import AudioToolbox
 import AVFoundation
+import QuartzCore
 class PlayViewController: UIViewController {
     @IBOutlet weak var move: UIImageView!
     @IBOutlet weak var base: UIImageView!
@@ -26,7 +27,7 @@ class PlayViewController: UIViewController {
     var doubletimerlast:Timerp = Timerp()
     var doubleon:Bool = false
     var doubleanim:Bool = false
-    var randromdoubletime:Double = Double(arc4random_uniform(5) + 5)
+    var randromdoubletime:Double = Double(arc4random_uniform(11) + 20)
     let layerfixbase:CALayer = CALayer()
     var animator: UIViewPropertyAnimator!
     var number:CGFloat = 0.0
@@ -34,6 +35,9 @@ class PlayViewController: UIViewController {
     var doublelnumber:CGFloat = 0.0
     var checkifusertoucheddouble:Int = 0
     var onetimecorrect:Int = 2
+    @IBOutlet weak var xw2signwidth: NSLayoutConstraint!
+    @IBOutlet weak var x2sign: UIButton!
+    let lang:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "lang", defaultValue: 1)
     @IBOutlet weak var x2top: NSLayoutConstraint!
     @IBOutlet weak var doublescore: UIButton!
     @IBOutlet weak var x2l: NSLayoutConstraint!
@@ -158,6 +162,11 @@ class PlayViewController: UIViewController {
             doublescore.isHidden = true
             self.doubletimerlast =  Timerp(interval: 10, callback: doubletimerlasting, repeats: false)
             doubletimerlast.play()
+            x2sign.setNeedsLayout()
+            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: [], animations: {
+                self.x2sign.alpha = 1.0
+                self.x2sign.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            }, completion: nil)
             print("doubleclickedon")
         }else{
         checkifusertoucheddouble = 0
@@ -171,9 +180,21 @@ class PlayViewController: UIViewController {
             }else{
             score = score + 1
             }
-            scoreval.text = "Score : " + String(score)
             coinv = coinv + (1 * coinmulti)
-            coinvalue.text = String(coinv)
+                switch (lang) {
+                case 0:
+                    coinvalue.text = convertEngNumToPersianNum(num: String(coinv))
+                    scoreval.text = "النتيجة : " + convertEngNumToPersianNum(num: String(score))
+                    break;
+                case 1:
+                    coinvalue.text = String(coinv)
+                    scoreval.text = "Score : " + String(score)
+                    break;
+                default:
+                    coinvalue.text = String(coinv)
+                    scoreval.text = "Score : " + String(score)
+                    break;
+                }
             self.audioPlayer.pause()
             self.audioPlayer.currentTime = 0
             self.audioPlayer.play()
@@ -202,7 +223,7 @@ class PlayViewController: UIViewController {
                 if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 }
-                kill1c.constant = move.layer.presentation()!.frame.origin.x
+                kill1c.constant = (move.layer.presentation()!.frame.origin.x + (movew.constant / 2) - (kill1.frame.width / 2))
                 kill1.setNeedsLayout()
                 kill1.layoutIfNeeded()
                 wrongnum = 1
@@ -220,7 +241,7 @@ class PlayViewController: UIViewController {
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 }
                 wrongnum = 2
-                kill2c.constant = move.layer.presentation()!.frame.origin.x
+                kill2c.constant = (move.layer.presentation()!.frame.origin.x + (movew.constant / 2) - (kill2.frame.width / 2))
                 kill2.setNeedsLayout()
                 kill2.layoutIfNeeded()
                 kill2.isHidden = false
@@ -250,6 +271,7 @@ class PlayViewController: UIViewController {
                             newhighscore = true
                         }
                     }
+                    x2sign.isHidden = true
                     wrong3.alpha = 1.0
                     gameover.isHidden = false
                     move.layer.removeAllAnimations()
@@ -295,7 +317,7 @@ class PlayViewController: UIViewController {
                         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                     }
                     wrongnum = 3
-                    kill3c.constant = move.layer.presentation()!.frame.origin.x
+                    kill3c.constant = (move.layer.presentation()!.frame.origin.x + (movew.constant / 2) - (kill3.frame.width / 2))
                     kill3.setNeedsLayout()
                     kill3.layoutIfNeeded()
                     kill3.isHidden = false
@@ -325,6 +347,7 @@ class PlayViewController: UIViewController {
                         newhighscore = true
                     }
                 }
+                x2sign.isHidden = true
                 wrong4.alpha = 1.0
                 gameover.isHidden = false
                 move.layer.removeAllAnimations()
@@ -373,7 +396,7 @@ class PlayViewController: UIViewController {
                 if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 }
-                kill1c.constant = move.layer.presentation()!.frame.origin.x
+                kill1c.constant = (move.layer.presentation()!.frame.origin.x + (movew.constant / 2) - (kill1.frame.width / 2))
                 kill1.setNeedsLayout()
                 kill1.layoutIfNeeded()
                 wrongnum = 1
@@ -411,6 +434,7 @@ class PlayViewController: UIViewController {
         doublescore.titleLabel!.minimumScaleFactor = 0.05
         doublescore.titleLabel?.baselineAdjustment = .alignCenters
         doublescore.titleLabel?.textAlignment  = .center
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -475,6 +499,7 @@ class PlayViewController: UIViewController {
             break;
         }
         doublescore.backgroundColor = blend(colors: [move.backgroundColor!,base.backgroundColor!])
+        x2sign.backgroundColor = blend(colors: [move.backgroundColor!,base.backgroundColor!])
         pause.isExclusiveTouch = true
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
             self.view.backgroundColor = UIColor.white
@@ -494,6 +519,8 @@ class PlayViewController: UIViewController {
             baseanim.layer.borderColor = UIColor.black.cgColor
             doublescore.layer.shadowColor = UIColor.black.cgColor
             doublescore.setTitleColor(UIColor.black, for: UIControlState())
+            x2sign.layer.shadowColor = UIColor.black.cgColor
+            x2sign.setTitleColor(UIColor.black, for: UIControlState())
             layerfixbase.borderColor = UIColor.black.cgColor
             dir.tintColor = UIColor.black
             }else{
@@ -512,27 +539,56 @@ class PlayViewController: UIViewController {
             base.layer.borderColor = UIColor.white.cgColor
             move.layer.borderColor = UIColor.white.cgColor
             baseanim.layer.borderColor = UIColor.white.cgColor
-            doublescore.layer.borderColor = UIColor.white.cgColor
             doublescore.layer.shadowColor = UIColor.white.cgColor
             doublescore.setTitleColor(UIColor.white, for: UIControlState())
+            x2sign.layer.shadowColor = UIColor.white.cgColor
+            x2sign.setTitleColor(UIColor.white, for: UIControlState())
             layerfixbase.borderColor = UIColor.white.cgColor
             dir.tintColor = UIColor.white
         }
         movel.constant = 0
         move.setNeedsLayout()
-        move.layoutIfNeeded()
+        self.move.superview?.layoutIfNeeded()
         score = 0
-        scoreval.text = "Score : 0"
+        gright = true
+        x2sign.layer.removeAllAnimations()
+        x2sign.isHidden = false
+        x2sign.alpha = 0.27
+        x2sign.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        switch (lang) {
+        case 0:
+            scoreval.text = "النتيجة : ٠"
+            break;
+        case 1:
+            scoreval.text = "Score : 0"
+            break;
+        default:
+            scoreval.text = "Score : 0"
+            break;
+        }
+        scoreval.setNeedsLayout()
+        scoreval.layoutIfNeeded()
         wrongnum = 0
         wrong.alpha = 0.27
         wrong2.alpha = 0.27
         wrong3.alpha = 0.27
         wrong4.alpha = 0.27
+        extrascorerandom = Int(arc4random_uniform(9) + 2)
         kill1.transform = CGAffineTransform(scaleX: 1, y: 1)
         kill2.transform = CGAffineTransform(scaleX: 1, y: 1)
         kill3.transform = CGAffineTransform(scaleX: 1, y: 1)
+        doubleon = false
+        doubleanim = false
+        number = 0.0
+        doublelnumber = 0.0
+        checkifusertoucheddouble = 0
+        onetimecorrect = 2
+        doubletimer.invalidate()
+        doubletimer = Timerp(interval: randromdoubletime, callback: doublepointsmove, repeats: false)
+        doubletimer.play()
+        doubletimerlast.invalidate()
+        x2l.constant = -1 * x2w.constant
         //timerand()
-        //pauseb.setTitle("⎮⎮", for: UIControlState())
         pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
         dir.image = dir.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         pausetf = false
@@ -548,9 +604,13 @@ class PlayViewController: UIViewController {
         pr.isHidden = true
         pret.isHidden = true
         pm.isHidden = true
-        viewclickb.isHidden = false
-        viewclickb.isUserInteractionEnabled = true
         gameovercheck = 0
+        viewclickb.isUserInteractionEnabled = true
+        viewclickb.isHidden = false
+        newhighscore = false
+        if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
+            AudioServicesPlaySystemSound(1519);
+        }
         if (provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
             wrong4.isHidden = true
         }else{
@@ -579,12 +639,84 @@ class PlayViewController: UIViewController {
         move.layer.borderWidth = ((2.5 * self.view.bounds.width) / 411)
         baseanim.layer.cornerRadius = ((5 * self.view.bounds.width) / 411)
         baseanim.layer.borderWidth = ((2.5 * self.view.bounds.width) / 411)
+        if(UIDevice.current.userInterfaceIdiom == .phone){
+            xw2signwidth.constant = 25.0
+        }else{
+            xw2signwidth.constant = 40.0
+        }
+        print("x2sign width")
+        print(xw2signwidth.constant)
+        x2sign.layer.cornerRadius = (xw2signwidth.constant / 2) //((50 * self.view.bounds.width) / 411)
+        x2sign.layer.allowsEdgeAntialiasing = true
+        x2sign.titleLabel!.widthAnchor.constraint(equalToConstant: (xw2signwidth.constant * (3/4))).isActive = true
+        x2sign.titleLabel!.adjustsFontSizeToFitWidth = true
+        x2sign.titleLabel!.numberOfLines = 1
+        x2sign.titleLabel!.minimumScaleFactor = 0.05
+        x2sign.titleLabel?.baselineAdjustment = .alignCenters
+        x2sign.titleLabel?.textAlignment  = .center
+        x2sign.layer.shadowOffset = CGSize(width: 0, height: 0)
        // doubletimer =  Foundation.Timer(timeInterval: randromdoubletime, target: self, selector: #selector(PlayViewController.doublepointsmove), userInfo: nil, repeats: false)
         doubletimer = Timerp(interval: randromdoubletime, callback: doublepointsmove, repeats: false)
         doubletimer.play()
         ///////////////////////pause.imageEdgeInsets = UIEdgeInsetsMake(6, 6, 6, 6)
         //timerand()
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
+        switch (lang) {
+        case 0:
+            coinvalue.text = convertEngNumToPersianNum(num: String(coinv))
+            coinvalue.arabic(size: 22, diffinsize: 4)
+            scoreval.text = "النتيجة : ٠"
+            scoreval.arabic(size: 24, diffinsize: 14)
+            gameover.text = "انتهت اللعبة"
+            gameover.arabic(size: 22, diffinsize: 10)
+            pr.setTitle("استمر", for: UIControlState())
+            pr.arabic(size: 20, diffinsize: 10)
+            pret.setTitle("إعادة البدء", for: UIControlState())
+            pret.arabic(size: 20, diffinsize: 10)
+            pm.setTitle("القائمة", for: UIControlState())
+            pm.arabic(size: 20, diffinsize: 10)
+            doublescore.setTitle("٢x", for: UIControlState())
+            doublescore.arabic(size: 100, diffinsize: 0)
+            x2sign.setTitle("٢x", for: UIControlState())
+            x2sign.arabic(size: 100, diffinsize: 0)
+            break;
+        case 1:
+            coinvalue.text = String(coinv)
+            coinvalue.english(size: 22, diffinsize: 4)
+            scoreval.text = "Score : 0"
+            scoreval.english(size: 24, diffinsize: 14)
+            gameover.text = "Game Over"
+            gameover.english(size: 22, diffinsize: 10)
+            pr.setTitle("Resume", for: UIControlState())
+            pr.english(size: 20, diffinsize: 10,left: 2, top: 2)
+            pret.setTitle("Retry", for: UIControlState())
+            pret.english(size: 20, diffinsize: 10,left: 2, top: 2)
+            pm.setTitle("Menu", for: UIControlState())
+            pm.english(size: 20, diffinsize: 10,left: 2, top: 2)
+            doublescore.setTitle("x2", for: UIControlState())
+            doublescore.english(size: 100, diffinsize: 0,left: 4,top: 2)
+            x2sign.setTitle("x2", for: UIControlState())
+            x2sign.english(size: 100, diffinsize: 0,left: 1,top: 1)
+            break;
+        default:
+            coinvalue.text = String(coinv)
+            coinvalue.english(size: 22, diffinsize: 4)
+            scoreval.text = "Score : 0"
+            scoreval.english(size: 24, diffinsize: 14)
+            gameover.text = "Game Over"
+            gameover.english(size: 22, diffinsize: 10)
+            pr.setTitle("Resume", for: UIControlState())
+            pr.english(size: 20, diffinsize: 10,left: 2, top: 2)
+            pret.setTitle("Retry", for: UIControlState())
+            pret.english(size: 20, diffinsize: 10,left: 2, top: 2)
+            pm.setTitle("Menu", for: UIControlState())
+            pm.english(size: 20, diffinsize: 10,left: 2, top: 2)
+            doublescore.setTitle("x2", for: UIControlState())
+            doublescore.english(size: 100, diffinsize: 0,left: 4,top: 2)
+            x2sign.setTitle("x2", for: UIControlState())
+            x2sign.english(size: 100, diffinsize: 0,left: 4,top: 2)
+            break;
+        }
         if (provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
             wrong4.isHidden = true
         }else{
@@ -614,10 +746,10 @@ class PlayViewController: UIViewController {
         base.layer.addSublayer(layerfixbase)
         base.layer.allowsEdgeAntialiasing = true
         move.layer.allowsEdgeAntialiasing = true
+        print(xw2signwidth.constant)
         baseanim.layer.allowsEdgeAntialiasing = true
         doublescore.layer.cornerRadius = (x2w.constant / 2) //((50 * self.view.bounds.width) / 411)
         doublescore.layer.allowsEdgeAntialiasing = true
-        doublescore.layer.shadowColor = UIColor.yellow.cgColor
         doublescore.layer.shadowRadius = 6.0
         doublescore.layer.shadowOffset = CGSize(width: 0, height: 0)
         doublescore.layer.shadowOpacity = 0.75
@@ -719,9 +851,11 @@ class PlayViewController: UIViewController {
             AudioServicesPlaySystemSound(1519);
         }
         if(pausetf == false){
+            KeyStoreDefaultsProvider(cryptoProvider: nil).setInt(forKey: "cv", value: self.coinv)
             pausetf = true
             pause.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             self.dir.isHidden = true
+            x2sign.isHidden = true
             //stopAnimation()
             if(gright == true){
                 number = animator.fractionComplete
@@ -791,6 +925,7 @@ class PlayViewController: UIViewController {
                 doubletimer.play()
             }
             }
+            x2sign.isHidden = false
              pause.setImage(UIImage.init(named: "pause")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
             if(viewclickb.gestureRecognizers?.isEmpty == false){
                 dir.isHidden = false
@@ -820,6 +955,7 @@ class PlayViewController: UIViewController {
         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
             AudioServicesPlaySystemSound(1519);
         }
+        KeyStoreDefaultsProvider(cryptoProvider: nil).setInt(forKey: "cv", value: self.coinv)
         NotificationCenter.default.removeObserver(self)
         navigationController?.popToRootViewController(animated: true)
     }
@@ -829,7 +965,21 @@ class PlayViewController: UIViewController {
         self.move.superview?.layoutIfNeeded()
         score = 0
         gright = true
-        scoreval.text = "Score : 0"
+        x2sign.layer.removeAllAnimations()
+        x2sign.isHidden = false
+        x2sign.alpha = 0.27
+        x2sign.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        switch (lang) {
+        case 0:
+            scoreval.text = "النتيجة : ٠"
+            break;
+        case 1:
+            scoreval.text = "Score : 0"
+            break;
+        default:
+            scoreval.text = "Score : 0"
+            break;
+        }
         scoreval.setNeedsLayout()
         scoreval.layoutIfNeeded()
         wrongnum = 0
@@ -884,6 +1034,7 @@ class PlayViewController: UIViewController {
         rafterf()
     }
     @IBAction func res(_ sender: AnyObject) {
+        x2sign.isHidden = false
         if(gright == true){
             rafterf()
         }else{
@@ -934,20 +1085,16 @@ class PlayViewController: UIViewController {
         }
     }*/
     func timerand() -> Double{
-        switch (2){
+        switch (arc4random_uniform(3)){
             //arc4random_uniform(3)
         case 0:
             return Double(0.288)
-            print((self.view.bounds.width))
-            print(UIScreen.main.scale)
-            print(time)
             break;
         case 1:
             return Double(0.576)
             break;
         case 2:
-            //return Double(0.864)
-            return Double(4)
+            return Double(0.864)
             break;
         default:
             return Double(0.576)
@@ -956,6 +1103,8 @@ class PlayViewController: UIViewController {
     }
     @objc func applicationWillResignActiveNotification() {
         if(gameovercheck == 0){
+            KeyStoreDefaultsProvider(cryptoProvider: nil).setInt(forKey: "cv", value: self.coinv)
+            x2sign.isHidden = true
             if(animator != nil){
             if(gright == true){
                 number = animator.fractionComplete
@@ -1032,7 +1181,17 @@ class PlayViewController: UIViewController {
             self.dir.isHidden = true
             self.viewclickb.gestureRecognizers?.removeAll()
             coinv = coinv + 4
-            coinvalue.text = String(coinv)
+            switch (lang) {
+            case 0:
+                coinvalue.text = convertEngNumToPersianNum(num: String(coinv))
+                break;
+            case 1:
+                coinvalue.text = String(coinv)
+                break;
+            default:
+                coinvalue.text = String(coinv)
+                break;
+            }
             print("finished swipe in")
         }else{
             checkifusertoucheddouble = checkifusertoucheddouble - 1
@@ -1044,7 +1203,17 @@ class PlayViewController: UIViewController {
             self.dir.isHidden = true
             self.viewclickb.gestureRecognizers?.removeAll()
             coinv = coinv + 4
-            coinvalue.text = String(coinv)
+            switch (lang) {
+            case 0:
+                coinvalue.text = convertEngNumToPersianNum(num: String(coinv))
+                break;
+            case 1:
+                coinvalue.text = String(coinv)
+                break;
+            default:
+                coinvalue.text = String(coinv)
+                break;
+            }
             print("finished swipe in")
             
         }else{
@@ -1057,7 +1226,17 @@ class PlayViewController: UIViewController {
             self.dir.isHidden = true
             self.viewclickb.gestureRecognizers?.removeAll()
             coinv = coinv + 4
-            coinvalue.text = String(coinv)
+            switch (lang) {
+            case 0:
+                coinvalue.text = convertEngNumToPersianNum(num: String(coinv))
+                break;
+            case 1:
+                coinvalue.text = String(coinv)
+                break;
+            default:
+                coinvalue.text = String(coinv)
+                break;
+            }
             print("finished swipe in")
         }else{
             checkifusertoucheddouble = checkifusertoucheddouble - 1
@@ -1069,7 +1248,17 @@ class PlayViewController: UIViewController {
             self.dir.isHidden = true
             self.viewclickb.gestureRecognizers?.removeAll()
             coinv = coinv + 4
-            coinvalue.text = String(coinv)
+            switch (lang) {
+            case 0:
+                coinvalue.text = convertEngNumToPersianNum(num: String(coinv))
+                break;
+            case 1:
+                coinvalue.text = String(coinv)
+                break;
+            default:
+                coinvalue.text = String(coinv)
+                break;
+            }
             print("finished swipe in")
         }else{
             checkifusertoucheddouble = checkifusertoucheddouble - 1
@@ -1083,7 +1272,7 @@ class PlayViewController: UIViewController {
         doublescore.isUserInteractionEnabled = false
         self.x2l.constant = self.view.bounds.width
         doublescore.setNeedsLayout()
-        doubleanimator = UIViewPropertyAnimator(duration: 10, curve: .linear) { [unowned self, move] in
+        doubleanimator = UIViewPropertyAnimator(duration: Double(1.0), curve: .linear) { [unowned self, move] in
             self.doublescore.superview?.layoutIfNeeded()
         }
         doubleanimator.addCompletion {
@@ -1098,7 +1287,7 @@ class PlayViewController: UIViewController {
                     self.doublescore.isEnabled = false
                     self.doublescore.isUserInteractionEnabled = false
                     self.x2l.constant = -1 * self.x2w.constant
-                    self.randromdoubletime = Double(arc4random_uniform(5) + 5)
+                    self.randromdoubletime = Double(arc4random_uniform(11) + 20)
                     self.doubletimer.invalidate()
                     //  self.doubletimer =  Foundation.Timer(timeInterval: self.randromdoubletime, target: self, selector: #selector(PlayViewController.doublepointsmove), userInfo: nil, repeats: false)
                     //  RunLoop.current.add(self.doubletimer, forMode: RunLoopMode.commonModes)
@@ -1130,6 +1319,10 @@ class PlayViewController: UIViewController {
         return UIColor(red: components.red, green: components.green, blue: components.blue, alpha: 1)
     }
     @objc func doubletimerlasting(){
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: [], animations: {
+            self.x2sign.alpha = 0.27
+            self.x2sign.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        }, completion: nil)
         print("dobuble timer finished")
         doubleon = false
         doubletimerlast.invalidate()
@@ -1142,13 +1335,21 @@ class PlayViewController: UIViewController {
         self.x2l.constant = -1 * self.x2w.constant
         //  self.doubletimer =  Foundation.Timer(timeInterval: self.randromdoubletime, target: self, selector: #selector(PlayViewController.doublepointsmove), userInfo: nil, repeats: false)
         //  RunLoop.current.add(self.doubletimer, forMode: RunLoopMode.commonModes)
-        self.randromdoubletime = Double(arc4random_uniform(5) + 5)
+        self.randromdoubletime = Double(arc4random_uniform(11) + 20)
         print(randromdoubletime)
         self.doubletimer.invalidate()
         doubletimer =  Timerp(interval: randromdoubletime, callback: doublepointsmove, repeats: false)
         doubletimer.play()
         self.doubleanimator = nil
         self.doublelnumber = 0.0
+    }
+    func convertEngNumToPersianNum(num: String)->String{
+        //let number = NSNumber(value: Int(num)!)
+        let format = NumberFormatter()
+        format.locale = Locale(identifier: "ar_JO")
+        let number =   format.number(from: num)
+        let faNumber = format.string(from: number!)
+        return faNumber!
     }
     @objc func gameoverslideright(){
         gameoverc.constant = 0
@@ -1157,6 +1358,7 @@ class PlayViewController: UIViewController {
             self.gameover.alpha = 0
             self.gameover.superview?.layoutIfNeeded()
             }, completion: {(finished: Bool) -> Void in
+                KeyStoreDefaultsProvider(cryptoProvider: nil).setInt(forKey: "cv", value: self.coinv)
                 NotificationCenter.default.removeObserver(self)
                 let scorev = self.storyboard!.instantiateViewController(withIdentifier: "score") as! ScoreViewController
                 scorev.scoreval = self.score

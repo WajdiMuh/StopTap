@@ -21,29 +21,35 @@ class LangViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.langs.delegate = self
         self.langs.separatorInset.left = 0
         self.langs.tableFooterView = UIView(frame: CGRect.zero)
+        if(UIDevice.current.userInterfaceIdiom == .phone){
+            self.langs.rowHeight = 56.0
+        }else{
+            self.langs.rowHeight = 68.0
+        }
         back.layer.cornerRadius = 10
         back.layer.borderWidth = 5
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         switch provider.getInt(forKey: "lang", defaultValue: 1) {
         case 0:
             lan.text = "اللغة"
-            lan.arabic(size: 26, diffinsize: 8)
+            lan.arabic(size: 26, diffinsize: 14)
             back.setTitle("عودة", for: UIControlState())
-            back.arabic(size: 20, diffinsize: 6)
+            back.arabic(size: 20, diffinsize: 10)
             self.langsava = ["عربي\nمختار","انجليزي"]
             break
         case 1:
             lan.text = "Language"
-            lan.english(size: 26, diffinsize: 8)
+            lan.english(size: 26, diffinsize: 14)
             back.setTitle("Back", for: UIControlState())
-            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            back.english(size: 20, diffinsize: 10,left: 4,top: 3)
             self.langsava = ["Arabic", "English\nSelected"]
             break
         default:
             lan.text = "Language"
-            lan.english(size: 26, diffinsize: 8)
+            lan.english(size: 26, diffinsize: 14)
             back.setTitle("Back", for: UIControlState())
-            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            back.english(size: 20, diffinsize: 10,left: 4,top: 3)
+            self.langsava = ["Arabic", "English\nSelected"]
             break
         }
     }
@@ -87,13 +93,13 @@ class LangViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         switch provider.getInt(forKey: "lang", defaultValue: 1) {
         case 0:
-            cell.textLabel?.arabic(size: 18, diffinsize: 4)
+            cell.textLabel?.arabic(size: 18, diffinsize: 10)
             break
         case 1:
-            cell.textLabel?.english(size: 18, diffinsize: 4)
+            cell.textLabel?.english(size: 18, diffinsize: 10)
             break
         default:
-            cell.textLabel?.english(size: 18, diffinsize: 4)
+            cell.textLabel?.english(size: 18, diffinsize: 10)
             break
         }
         cell.selectionStyle = .none
@@ -116,23 +122,23 @@ class LangViewController: UIViewController, UITableViewDataSource, UITableViewDe
         switch (indexPath as NSIndexPath).item {
         case 0:
             lan.text = "اللغة"
-            lan.arabic(size: 26, diffinsize: 8)
+            lan.arabic(size: 26, diffinsize: 14)
             back.setTitle("عودة", for: UIControlState())
-            back.arabic(size: 20, diffinsize: 6)
+            back.arabic(size: 20, diffinsize: 10)
             self.langsava = ["عربي\nمختار","انجليزي"]
             break
         case 1:
             lan.text = "Language"
-            lan.english(size: 26, diffinsize: 8)
+            lan.english(size: 26, diffinsize: 14)
             back.setTitle("Back", for: UIControlState())
-            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            back.english(size: 20, diffinsize: 10,left: 4,top: 3)
             self.langsava = ["Arabic", "English\nSelected"]
             break
         default:
             lan.text = "Language"
-            lan.english(size: 26, diffinsize: 8)
+            lan.english(size: 26, diffinsize: 14)
             back.setTitle("Back", for: UIControlState())
-            back.english(size: 20, diffinsize: 6,left: 4,top: 3)
+            back.english(size: 20, diffinsize: 10,left: 4,top: 3)
             self.langsava = ["Arabic", "English\nSelected"]
         }
         self.langs.reloadData()

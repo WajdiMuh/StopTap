@@ -99,42 +99,42 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
         switch (provider.getInt(forKey: "lang", defaultValue: 1)) {
         case 0:
             highsc.text = "أعلى نتيجة :"
-            val.arabic(size: 24, diffinsize: 4)
-            highsc.arabic(size: 24, diffinsize: 4)
+            val.arabic(size: 24, diffinsize: 14)
+            highsc.arabic(size: 24, diffinsize: 14)
             play.setTitle("العب", for: UIControlState())
             htp.setTitle("كيفية اللعب", for: UIControlState())
             shop.setTitle("المتجر", for: UIControlState())
             account.setTitle("الحساب", for: UIControlState())
-            play.arabic(size: 20, diffinsize: 6)
-            htp.arabic(size: 20, diffinsize: 6)
-            shop.arabic(size: 20, diffinsize: 6)
-            account.arabic(size: 20, diffinsize: 6)
+            play.arabic(size: 20, diffinsize: 10)
+            htp.arabic(size: 20, diffinsize: 10)
+            shop.arabic(size: 20, diffinsize: 10)
+            account.arabic(size: 20, diffinsize: 10)
             break
         case 1:
             highsc.text = "HighScore :"
-            val.english(size: 24, diffinsize: 4)
-            highsc.english(size: 24, diffinsize: 4)
+            val.english(size: 24, diffinsize: 14)
+            highsc.english(size: 24, diffinsize: 14)
             play.setTitle("Play", for: UIControlState())
             htp.setTitle("How To Play", for: UIControlState())
             shop.setTitle("Shop", for: UIControlState())
             account.setTitle("Account", for: UIControlState())
-            play.english(size: 20, diffinsize: 6,left:6,top:3)
-            htp.english(size: 20, diffinsize: 6,left:4,top:3)
-            shop.english(size: 20, diffinsize: 6,left:4,top:3)
-            account.english(size: 20, diffinsize: 6,left:4,top:3)
+            play.english(size: 20, diffinsize: 10,left:6,top:3)
+            htp.english(size: 20, diffinsize: 10,left:4,top:3)
+            shop.english(size: 20, diffinsize: 10,left:4,top:3)
+            account.english(size: 20, diffinsize: 10,left:4,top:3)
             break
         default:
             highsc.text = "HighScore :"
-            val.english(size: 24, diffinsize: 4)
-            highsc.english(size: 24, diffinsize: 4)
+            val.english(size: 24, diffinsize: 14)
+            highsc.english(size: 24, diffinsize: 14)
             play.setTitle("Play", for: UIControlState())
             htp.setTitle("How To Play", for: UIControlState())
             shop.setTitle("Shop", for: UIControlState())
             account.setTitle("Account", for: UIControlState())
-            play.english(size: 20, diffinsize: 6,left:6,top:3)
-            htp.english(size: 20, diffinsize: 6,left:4,top:3)
-            shop.english(size: 20, diffinsize: 6,left:4,top:3)
-            account.english(size: 20, diffinsize: 6,left:4,top:3)
+            play.english(size: 20, diffinsize: 10,left:6,top:3)
+            htp.english(size: 20, diffinsize: 10,left:4,top:3)
+            shop.english(size: 20, diffinsize: 10,left:4,top:3)
+            account.english(size: 20, diffinsize: 10,left:4,top:3)
             break
         }
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 1){

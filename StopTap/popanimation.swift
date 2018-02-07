@@ -9,10 +9,9 @@
 import UIKit
 
 class popanimation: NSObject, UIViewControllerAnimatedTransitioning {
-    
+    let fade:Double = 0.25
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?)-> TimeInterval {
-        return 0.65
-        
+        return 0.5;
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -26,7 +25,7 @@ class popanimation: NSObject, UIViewControllerAnimatedTransitioning {
                  transitionContext.containerView.backgroundColor = UIColor.black
             }
             toViewController?.view?.alpha = 0
-            UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut], animations: {() -> Void in
+            UIView.animate(withDuration: fade, delay: 0, options: [.curveEaseOut], animations: {() -> Void in
                 toViewController?.view?.alpha = 1
                 fromViewController?.view?.alpha = 0
             }, completion: {(_ finished: Bool) -> Void in
@@ -41,7 +40,7 @@ class popanimation: NSObject, UIViewControllerAnimatedTransitioning {
                 transitionContext.containerView.backgroundColor = UIColor.black
             }
             toViewController?.view?.alpha = 0
-            UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut], animations: {() -> Void in
+            UIView.animate(withDuration: fade, delay: 0, options: [.curveEaseOut], animations: {() -> Void in
                 toViewController?.view?.alpha = 1
                 fromViewController?.view?.alpha = 0
             }, completion: {(_ finished: Bool) -> Void in
@@ -56,7 +55,7 @@ class popanimation: NSObject, UIViewControllerAnimatedTransitioning {
                 transitionContext.containerView.backgroundColor = UIColor.black
             }
             toViewController?.view?.alpha = 0
-            UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut], animations: {() -> Void in
+            UIView.animate(withDuration: fade, delay: 0, options: [.curveEaseOut], animations: {() -> Void in
                 toViewController?.view?.alpha = 1
                 fromViewController?.view?.alpha = 0
             }, completion: {(_ finished: Bool) -> Void in
@@ -110,10 +109,10 @@ class popanimation: NSObject, UIViewControllerAnimatedTransitioning {
             if(fromViewController?.title! == "Score" && toViewController?.title! == "Main"){
                 transitionContext.containerView.addSubview((toViewController?.view)!)
                 transitionContext.containerView.backgroundColor = UIColor.white
-                toViewController?.view?.center.x = (toViewController?.view.center.x)! / -1
+                toViewController?.view?.center.y = (toViewController?.view?.center.y)! * 3
                 UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut], animations: {() -> Void in
-                    toViewController?.view?.center.x = (fromViewController?.view.center.x)!
-                    fromViewController?.view?.center.x = (fromViewController?.view.center.x)! * 3
+                    toViewController?.view?.center.y = (fromViewController?.view.center.y)!
+                    fromViewController?.view?.center.y = (fromViewController?.view.center.y)! / -1
                 }, completion: {(_ finished: Bool) -> Void in
                     transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 })

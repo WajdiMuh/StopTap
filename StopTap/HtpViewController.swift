@@ -92,24 +92,23 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.back.transform = CGAffineTransform(rotationAngle: (CGFloat.pi))
-        timect.constant = timecount.frame.origin.x
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         switch provider.getInt(forKey: "lang", defaultValue: 1) {
         case 0:
             scoreval.text = "النتيجة : ٠"
-            scoreval.arabic(size: 24, diffinsize: 4)
+            scoreval.arabic(size: 24, diffinsize: 14)
             coinval.text = "٠"
-            coinval.arabic(size: 26, diffinsize: 0)
-            timecount.arabic(size: 20, diffinsize: 0)
+            coinval.arabic(size: 22, diffinsize: 8)
+            timecount.arabic(size: 20, diffinsize: 20)
             doublescore.setTitle("٢x", for: UIControlState())
             doublescore.arabic(size: 100, diffinsize: 0)
             break
         case 1:
             scoreval.text = "Score : 0"
-            scoreval.english(size: 24, diffinsize: 4)
+            scoreval.english(size: 24, diffinsize: 14)
             coinval.text = "0"
-            coinval.english(size: 26, diffinsize: 0)
-            timecount.english(size: 20, diffinsize: 0)
+            coinval.english(size: 22, diffinsize: 8)
+            timecount.english(size: 20, diffinsize: 20)
             doublescore.setTitle("x2", for: UIControlState())
             doublescore.english(size: 100, diffinsize: 0,left: 4,top: 2)
             break
@@ -234,6 +233,9 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
         //timecount.clipsToBounds = true
      //   doublescore.titleLabel?.baselineAdjustment = .alignCenters
        // doublescore.titleLabel?.textAlignment  = .center
+        timecount.setNeedsLayout()
+         timect.constant = timecount.frame.origin.x
+        timecount.layoutIfNeeded()
     }
     @IBAction func viewcl(_ sender: AnyObject) {
         if(canclick == true){

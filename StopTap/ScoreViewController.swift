@@ -29,7 +29,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-class ScoreViewController: UIViewController {
+class ScoreViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var playag: UIButton!
     @IBOutlet weak var menu: UIButton!
@@ -75,39 +75,39 @@ class ScoreViewController: UIViewController {
         switch (provider.getInt(forKey: "lang", defaultValue: 1)) {
         case 0:
             gameo.text = "انتهت اللعبة"
-            gameo.arabic(size: 28, diffinsize: 4)
-            hscore.arabic(size: 24, diffinsize: 4)
-            score.arabic(size: 24, diffinsize: 4)
+            gameo.arabic(size: 28, diffinsize: 14)
+            hscore.arabic(size: 24, diffinsize: 14)
+            score.arabic(size: 24, diffinsize: 14)
             playag.setTitle("العب مرة أخرى", for: UIControlState())
-            playag.arabic(size: 20, diffinsize: 2)
+            playag.arabic(size: 20, diffinsize: 10)
             menu.setTitle("القائمة", for: UIControlState())
-            menu.arabic(size: 20, diffinsize: 2)
+            menu.arabic(size: 20, diffinsize: 10)
             leaderb.setTitle("المتصدرين", for: UIControlState())
-            leaderb.arabic(size: 20, diffinsize: 2)
+            leaderb.arabic(size: 20, diffinsize: 10)
             break
         case 1:
             gameo.text = "Game Over"
-            gameo.english(size: 28, diffinsize: 4)
-            hscore.english(size: 24, diffinsize: 4)
-            score.english(size: 24, diffinsize: 4)
+            gameo.english(size: 28, diffinsize: 14)
+            hscore.english(size: 24, diffinsize: 14)
+            score.english(size: 24, diffinsize: 14)
             menu.setTitle("Menu", for: UIControlState())
-            menu.english(size: 20, diffinsize: 2,left: 3,top: 2)
+            menu.english(size: 20, diffinsize: 10,left: 3,top: 2)
             playag.setTitle("Play Again", for: UIControlState())
-            playag.english(size: 20, diffinsize: 2,left: 3,top: 2)
+            playag.english(size: 20, diffinsize: 10,left: 3,top: 2)
             leaderb.setTitle("Leaderboard", for: UIControlState())
-            leaderb.english(size: 20, diffinsize: 2,left: 3,top: 2)
+            leaderb.english(size: 20, diffinsize: 10,left: 3,top: 2)
             break
         default:
             gameo.text = "Game Over"
-            gameo.english(size: 28, diffinsize: 4)
-            hscore.english(size: 24, diffinsize: 4)
-            score.english(size: 24, diffinsize: 4)
+            gameo.english(size: 28, diffinsize: 14)
+            hscore.english(size: 24, diffinsize: 14)
+            score.english(size: 24, diffinsize: 14)
             menu.setTitle("Menu", for: UIControlState())
-            menu.english(size: 20, diffinsize: 2,left: 3,top: 2)
+            menu.english(size: 20, diffinsize: 10,left: 3,top: 2)
             playag.setTitle("Play Again", for: UIControlState())
-            playag.english(size: 20, diffinsize: 2,left: 3,top: 2)
+            playag.english(size: 20, diffinsize: 10,left: 3,top: 2)
             leaderb.setTitle("Leaderboard", for: UIControlState())
-            leaderb.english(size: 20, diffinsize: 2,left: 3,top: 2)
+            leaderb.english(size: 20, diffinsize: 10,left: 3,top: 2)
             break
         }
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
@@ -134,6 +134,50 @@ class ScoreViewController: UIViewController {
             gameo.textColor = UIColor.white
         }
     }
+    
+    
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("adViewDidReceiveAd")
+    }
+    
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView,
+                didFailToReceiveAdWithError error: GADRequestError) {
+        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that a full-screen view will be presented in response
+    /// to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+        print("adViewWillPresentScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewWillDismissScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+        print("adViewWillLeaveApplication")
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if (newhighscoresc == true){
@@ -150,18 +194,18 @@ class ScoreViewController: UIViewController {
         super.viewDidLoad()
    //     App42API.initialize(withAPIKey: "38ae8af214d06b5aadd7064f31bb329c0f80088b69aa25620407cae9a296612e", andSecretKey: "69d230877fded2ac9dd47e3d71daa8e601f00fe8d34a6f4d7e8279c93a6a93e1")
      //   App42API.enableApp42Trace(false)
-        bannerView.adSize = kGADAdSizeBanner
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.rootViewController = self
-        let request = GADRequest()
-        request.testDevices = ["745b490e07520808329b5ec8207806c5",kGADSimulatorID]
-        bannerView.load(request)
         playag.layer.cornerRadius = 10
         playag.layer.borderWidth = 5
         menu.layer.cornerRadius = 10
         menu.layer.borderWidth = 5
         leaderb.layer.cornerRadius = 10
         leaderb.layer.borderWidth = 5
+        bannerView.adSize = kGADAdSizeBanner
+        bannerView.adUnitID = "ca-app-pub-2696736592488105/3092838566"
+        bannerView.rootViewController = self
+        bannerView.delegate = self
+        let request = GADRequest()
+        bannerView.load(request)
        /* if (ViewController.vars.signedin == 1){
             hscore.text = "HighScore : " + ViewController.vars.hscore
         }else{
