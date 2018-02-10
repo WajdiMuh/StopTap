@@ -6,7 +6,7 @@
 //  Copyright © 2016 wajdi muhtadi. All rights reserved.
 //
 import AudioToolbox
-import GoogleMobileAds
+import AdFalconSDK
 import UIKit
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
@@ -29,14 +29,16 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-class ScoreViewController: UIViewController, GADBannerViewDelegate {
-    @IBOutlet weak var bannerView: GADBannerView!
+class ScoreViewController: UIViewController,ADFAdViewDelegate {
+    @IBOutlet weak var bannerview: ADFAdView!
     @IBOutlet weak var playag: UIButton!
     @IBOutlet weak var menu: UIButton!
     @IBOutlet weak var leaderb: UIButton!
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var hscore: UILabel!
     @IBOutlet weak var gameo: UILabel!
+    @IBOutlet weak var scorecon: NSLayoutConstraint!
+    @IBOutlet weak var menucon: NSLayoutConstraint!
     var scoreval:Int = Int()
     var newhighscoresc:Bool = Bool()
     override func viewWillAppear(_ animated: Bool) {
@@ -134,50 +136,6 @@ class ScoreViewController: UIViewController, GADBannerViewDelegate {
             gameo.textColor = UIColor.white
         }
     }
-    
-    
-    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-        print("adViewDidReceiveAd")
-    }
-    
-    /// Tells the delegate an ad request failed.
-    func adView(_ bannerView: GADBannerView,
-                didFailToReceiveAdWithError error: GADRequestError) {
-        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
-    }
-    
-    /// Tells the delegate that a full-screen view will be presented in response
-    /// to the user clicking on an ad.
-    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
-        print("adViewWillPresentScreen")
-    }
-    
-    /// Tells the delegate that the full-screen view will be dismissed.
-    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
-        print("adViewWillDismissScreen")
-    }
-    
-    /// Tells the delegate that the full-screen view has been dismissed.
-    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
-        print("adViewDidDismissScreen")
-    }
-    
-    /// Tells the delegate that a user click will open another app (such as
-    /// the App Store), backgrounding the current app.
-    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
-        print("adViewWillLeaveApplication")
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if (newhighscoresc == true){
@@ -190,6 +148,60 @@ class ScoreViewController: UIViewController, GADBannerViewDelegate {
             confettistartstop(startstop: false)
         }
     }
+    func adViewWillLoadAd(_ adView: ADFAdView) {
+    }
+    
+    func adViewDidLoadAd(_ adView: ADFAdView) {
+        adView.isHidden = false
+        scorecon.constant = 10
+        if(UIDevice.current.userInterfaceIdiom == .phone){
+            menucon.constant = 32
+            menu.setNeedsLayout()
+        }
+        self.score.setNeedsLayout()
+        UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseOut], animations: {() -> Void in
+            self.score.superview?.layoutIfNeeded()
+            self.score.superview?.layoutIfNeeded()
+        }, completion: {(_ finished: Bool) -> Void in
+        })
+    }
+    
+    
+    func adView(_ adView: ADFAdView, didFailWithCode code: Int, message: String) {
+        switch Float(code) {
+        case Float((kADFAdViewErrorNoAdAvailabe).rawValue):
+            // No Ad Availabe
+            print(message)
+            break
+        case Float((kADFAdViewErrorInvalidParam).rawValue):
+            // Invalid Param send to server
+            print(message)
+            break
+        case Float((kADFAdViewErrorMissingParam).rawValue):
+            // Missing Param send to server
+            print(message)
+            break
+        case Float((kADFAdViewErrorCommunication).rawValue):
+            //Communication with server failed or no internet
+            print(message)
+            break
+        default:
+            break
+        }
+    }
+    
+    func adViewWillPresentScreen(_ adView: ADFAdView) {
+    }
+    
+    func adViewDidPresentScreen(_ adView: ADFAdView) {
+    }
+    
+    func adViewWillDismissScreen(_ adView: ADFAdView) {
+    }
+    
+    func adViewDidDismissScreen(_ adView: ADFAdView) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
    //     App42API.initialize(withAPIKey: "38ae8af214d06b5aadd7064f31bb329c0f80088b69aa25620407cae9a296612e", andSecretKey: "69d230877fded2ac9dd47e3d71daa8e601f00fe8d34a6f4d7e8279c93a6a93e1")
@@ -200,17 +212,21 @@ class ScoreViewController: UIViewController, GADBannerViewDelegate {
         menu.layer.borderWidth = 5
         leaderb.layer.cornerRadius = 10
         leaderb.layer.borderWidth = 5
-        bannerView.adSize = kGADAdSizeBanner
-        bannerView.adUnitID = "ca-app-pub-2696736592488105/3092838566"
-        bannerView.rootViewController = self
-        bannerView.delegate = self
-        let request = GADRequest()
-        bannerView.load(request)
+        //bannerView.adSize = kGADAdSizeBanner
+        //bannerView.adUnitID = "ca-app-pub-2696736592488105/3092838566"
+        //bannerView.rootViewController = self
+        //let request = GADRequest()
+       // bannerView.load(request)
        /* if (ViewController.vars.signedin == 1){
             hscore.text = "HighScore : " + ViewController.vars.hscore
         }else{
    
         } */
+        
+        //adfalcon
+        bannerview.initialize(withAdUnit: kADFAdViewAdUnitSize320x50, siteId: "82ddaf25545e4654b261b9fd59c87af1", params: nil, rootViewController: self, enableAutorefresh: true, delegate: self)
+        bannerview.delegate = self
+        
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         switch (provider.getInt(forKey: "lang", defaultValue: 1)) {
         case 0:

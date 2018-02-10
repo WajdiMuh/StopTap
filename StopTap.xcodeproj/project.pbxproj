@@ -11,6 +11,11 @@
 		0D0100E11D021B7C00597B59 /* presence_invisible.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0100E01D021B7C00597B59 /* presence_invisible.png */; };
 		0D0A4C461F46022D0014802F /* SAConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0A4C451F46022D0014802F /* SAConfettiView.swift */; };
 		0D0A4C481F4610700014802F /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0A4C471F4610700014802F /* confetti.png */; };
+		0D0BC218202F8E7500135C7C /* chaching.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0D0BC213202F8E7300135C7C /* chaching.mp3 */; };
+		0D0BC219202F8E7500135C7C /* wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0D0BC214202F8E7400135C7C /* wrong.mp3 */; };
+		0D0BC21A202F8E7500135C7C /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0D0BC215202F8E7400135C7C /* background.mp3 */; };
+		0D0BC21B202F8E7500135C7C /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0D0BC216202F8E7400135C7C /* correct.mp3 */; };
+		0D0BC21C202F8E7500135C7C /* sbackground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0D0BC217202F8E7500135C7C /* sbackground.mp3 */; };
 		0D0FB0921D675FC80075019F /* StopTapen.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D0FB0911D675FC80075019F /* StopTapen.ttf */; };
 		0D1A9B1F1CDE6BC700E1FF77 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1A9B1E1CDE6BC700E1FF77 /* ScoreViewController.swift */; };
 		0D21438B1C9D533900668A29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D21438A1C9D533900668A29 /* AppDelegate.swift */; };
@@ -49,7 +54,6 @@
 		0DD197621CABE3E1003061D3 /* LangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD197611CABE3E1003061D3 /* LangViewController.swift */; };
 		0DD907D61CE2419D00AAB1B0 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD907D51CE2419D00AAB1B0 /* ShopViewController.swift */; };
 		0DE1B1CB1E3CDC9800AC565A /* Shephertz_App42_iOS_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE1B1C91E3CDC9800AC565A /* Shephertz_App42_iOS_API.framework */; };
-		0DEC23971CAAC3A60097BF33 /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0DEC23961CAAC3A60097BF33 /* correct.mp3 */; };
 		0DEFCA881CAE81A8002296DE /* HtpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFCA871CAE81A8002296DE /* HtpViewController.swift */; };
 		0DF3B1571CDE64F900B5F4F1 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF3B1561CDE64F900B5F4F1 /* CoreFoundation.framework */; };
 		0DF3B1591CDE650000B5F4F1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF3B1581CDE650000B5F4F1 /* CoreTelephony.framework */; };
@@ -85,6 +89,11 @@
 		0D07DB8A1CFB87D300F30F38 /* SignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		0D0A4C451F46022D0014802F /* SAConfettiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAConfettiView.swift; sourceTree = "<group>"; };
 		0D0A4C471F4610700014802F /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
+		0D0BC213202F8E7300135C7C /* chaching.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chaching.mp3; sourceTree = "<group>"; };
+		0D0BC214202F8E7400135C7C /* wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrong.mp3; sourceTree = "<group>"; };
+		0D0BC215202F8E7400135C7C /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		0D0BC216202F8E7400135C7C /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
+		0D0BC217202F8E7500135C7C /* sbackground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sbackground.mp3; sourceTree = "<group>"; };
 		0D0FB0911D675FC80075019F /* StopTapen.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = StopTapen.ttf; sourceTree = "<group>"; };
 		0D1A9B1E1CDE6BC700E1FF77 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		0D2143871C9D533900668A29 /* StopTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +137,6 @@
 		0DD197611CABE3E1003061D3 /* LangViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LangViewController.swift; sourceTree = "<group>"; };
 		0DD907D51CE2419D00AAB1B0 /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		0DE1B1C91E3CDC9800AC565A /* Shephertz_App42_iOS_API.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Shephertz_App42_iOS_API.framework; sourceTree = "<group>"; };
-		0DEC23961CAAC3A60097BF33 /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
 		0DEFCA871CAE81A8002296DE /* HtpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HtpViewController.swift; sourceTree = "<group>"; };
 		0DF3B1561CDE64F900B5F4F1 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		0DF3B1581CDE650000B5F4F1 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -233,8 +241,12 @@
 		0D2143891C9D533900668A29 /* StopTap */ = {
 			isa = PBXGroup;
 			children = (
-				0DEC23961CAAC3A60097BF33 /* correct.mp3 */,
 				0D2A75851CA3E651004CEFED /* abc_ic_clear_mtrl_alpha.png */,
+				0D0BC215202F8E7400135C7C /* background.mp3 */,
+				0D0BC213202F8E7300135C7C /* chaching.mp3 */,
+				0D0BC216202F8E7400135C7C /* correct.mp3 */,
+				0D0BC217202F8E7500135C7C /* sbackground.mp3 */,
+				0D0BC214202F8E7400135C7C /* wrong.mp3 */,
 				0DBB1E251CA6E2DC003822B4 /* coin.png */,
 				0D0100E01D021B7C00597B59 /* presence_invisible.png */,
 				0D0100DE1D021B6F00597B59 /* presence_online.png */,
@@ -419,23 +431,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0BC21C202F8E7500135C7C /* sbackground.mp3 in Resources */,
 				0D0100DF1D021B6F00597B59 /* presence_online.png in Resources */,
 				0D225C2A1F60858D008A6EFE /* pause.png in Resources */,
 				0D2143951C9D533900668A29 /* LaunchScreen.storyboard in Resources */,
 				0DF3B1701CDE669300B5F4F1 /* App42LeaderboardCell.xib in Resources */,
 				0D8D5E5B1CAB239D0034DA32 /* vibrate.png in Resources */,
+				0D0BC21B202F8E7500135C7C /* correct.mp3 in Resources */,
 				0DB031101C9DB624009046EC /* settings.png in Resources */,
-				0DEC23971CAAC3A60097BF33 /* correct.mp3 in Resources */,
 				0DF3B1731CDE669300B5F4F1 /* App42LeaderboardViewController.xib in Resources */,
 				0D225C2B1F60858D008A6EFE /* direction.png in Resources */,
 				0DB0310E1C9DB49E009046EC /* language.png in Resources */,
 				0DBB1E261CA6E2DC003822B4 /* coin.png in Resources */,
 				0DF8BFB81D37CB2C0061578E /* GoogleService-Info.plist in Resources */,
+				0D0BC218202F8E7500135C7C /* chaching.mp3 in Resources */,
 				0D0FB0921D675FC80075019F /* StopTapen.ttf in Resources */,
 				0D942E181CA30A68003EF043 /* Assets.xcassets in Resources */,
 				0D0A4C481F4610700014802F /* confetti.png in Resources */,
 				0D0100E11D021B7C00597B59 /* presence_invisible.png in Resources */,
+				0D0BC219202F8E7500135C7C /* wrong.mp3 in Resources */,
 				0D2A75861CA3E651004CEFED /* abc_ic_clear_mtrl_alpha.png in Resources */,
+				0D0BC21A202F8E7500135C7C /* background.mp3 in Resources */,
 				0D225C291F60858D008A6EFE /* play.png in Resources */,
 				0DF5E2B71D26A39200332E8F /* Main.storyboard in Resources */,
 				0DB031121C9DB640009046EC /* wajdi.png in Resources */,

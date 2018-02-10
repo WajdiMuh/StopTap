@@ -19,7 +19,9 @@ class PlayViewController: UIViewController {
     var wrongnum:Int = 0
     var gameovercheck:Int = 0
     var extrascorerandom:Int = Int(arc4random_uniform(9) + 2)
-    var audioPlayer: AVAudioPlayer!
+    var correctsfx: AVAudioPlayer!
+    var mbgm: AVAudioPlayer!
+    var wrongsfx:AVAudioPlayer!
     let coinmulti:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "shop14", defaultValue: 1)
     var coinv:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "cv", defaultValue: 0)
     var newhighscore:Bool = false
@@ -195,9 +197,9 @@ class PlayViewController: UIViewController {
                     scoreval.text = "Score : " + String(score)
                     break;
                 }
-            self.audioPlayer.pause()
-            self.audioPlayer.currentTime = 0
-            self.audioPlayer.play()
+            self.correctsfx.pause()
+            self.correctsfx.currentTime = 0
+            self.correctsfx.play()
             baseanim.layer.removeAllAnimations()
             baseanim.isHidden = false
             self.baseanim.transform = CGAffineTransform(scaleX: 1, y: 1)
@@ -219,6 +221,9 @@ class PlayViewController: UIViewController {
             self.viewclickb.gestureRecognizers?.removeAll()
             switch (wrongnum){
             case 0:
+                self.wrongsfx.pause()
+                self.wrongsfx.currentTime = 0
+                self.wrongsfx.play()
                 wrong.alpha = 1.0
                 if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -236,6 +241,9 @@ class PlayViewController: UIViewController {
                 })
                 break;
             case 1:
+                self.wrongsfx.pause()
+                self.wrongsfx.currentTime = 0
+                self.wrongsfx.play()
                 wrong2.alpha = 1.0
                 if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -253,7 +261,11 @@ class PlayViewController: UIViewController {
                 })
                 break;
             case 2:
+                
                  if(provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
+                    self.wrongsfx.pause()
+                    self.wrongsfx.currentTime = 0
+                    self.wrongsfx.play()
                     if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                     }
@@ -312,6 +324,9 @@ class PlayViewController: UIViewController {
                         RunLoop.current.add(countdown, forMode: RunLoopMode.commonModes)
                     })
                 }else{
+                    self.wrongsfx.pause()
+                    self.wrongsfx.currentTime = 0
+                    self.wrongsfx.play()
                     wrong3.alpha = 1.0
                     if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -330,6 +345,9 @@ class PlayViewController: UIViewController {
                 }
                 break;
             case 3:
+                self.wrongsfx.pause()
+                self.wrongsfx.currentTime = 0
+                self.wrongsfx.play()
                 if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 }
@@ -438,6 +456,21 @@ class PlayViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        do {
+            self.correctsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "correct", ofType: "mp3")!))
+            self.correctsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
+            self.correctsfx.prepareToPlay()
+            self.wrongsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "wrong", ofType: "mp3")!))
+            self.wrongsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
+            self.wrongsfx.prepareToPlay()
+            self.mbgm =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "background", ofType: "mp3")!))
+            self.mbgm.prepareToPlay()
+            self.mbgm.numberOfLoops = -1
+            self.mbgm.volume = 0.0
+            self.mbgm.play()
+        } catch {
+        }
+        self.mbgm.setVolume((Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "musicval", defaultValue: 10)) / 10.0), fadeDuration: 0.5)
         print("view will aprrear")
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         switch provider.getInt(forKey: "shopselect", defaultValue: 1) {
@@ -759,11 +792,6 @@ class PlayViewController: UIViewController {
         self.base.layoutIfNeeded()
         self.doublescore.setNeedsLayout()
         self.doublescore.layoutIfNeeded()
-        do {
-            self.audioPlayer =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "correct", ofType: "mp3")!))
-            self.audioPlayer.prepareToPlay()
-        } catch {
-        }
     }
  /*   func r() {
         gright = true
@@ -851,6 +879,13 @@ class PlayViewController: UIViewController {
             AudioServicesPlaySystemSound(1519);
         }
         if(pausetf == false){
+            mbgm.pause()
+            if(correctsfx.isPlaying){
+                correctsfx.pause()
+            }
+            if(wrongsfx.isPlaying){
+                wrongsfx.pause()
+            }
             KeyStoreDefaultsProvider(cryptoProvider: nil).setInt(forKey: "cv", value: self.coinv)
             pausetf = true
             pause.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
@@ -909,6 +944,7 @@ class PlayViewController: UIViewController {
             pm.isHidden = false
             viewclickb.isUserInteractionEnabled = false
         }else{
+            mbgm.play()
             pausetf = false
             if(gright == true){
                 rafterf()
@@ -955,11 +991,28 @@ class PlayViewController: UIViewController {
         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
             AudioServicesPlaySystemSound(1519);
         }
+        
+        correctsfx.stop()
+        correctsfx = nil
+        wrongsfx.stop()
+        wrongsfx = nil
+        mbgm.stop()
+        mbgm = nil
+        
         KeyStoreDefaultsProvider(cryptoProvider: nil).setInt(forKey: "cv", value: self.coinv)
         NotificationCenter.default.removeObserver(self)
         navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func retry(_ sender: AnyObject) {
+        mbgm.pause()
+        mbgm.currentTime = 0
+        mbgm.play()
+        if(correctsfx.isPlaying){
+            correctsfx.pause()
+        }
+        if(wrongsfx.isPlaying){
+            wrongsfx.pause()
+        }
         movel.constant = 0
         move.setNeedsLayout()
         self.move.superview?.layoutIfNeeded()
@@ -1034,6 +1087,7 @@ class PlayViewController: UIViewController {
         rafterf()
     }
     @IBAction func res(_ sender: AnyObject) {
+        mbgm.play()
         x2sign.isHidden = false
         if(gright == true){
             rafterf()
@@ -1103,6 +1157,13 @@ class PlayViewController: UIViewController {
     }
     @objc func applicationWillResignActiveNotification() {
         if(gameovercheck == 0){
+            mbgm.pause()
+            if(correctsfx.isPlaying){
+                correctsfx.pause()
+            }
+            if(wrongsfx.isPlaying){
+                wrongsfx.pause()
+            }
             KeyStoreDefaultsProvider(cryptoProvider: nil).setInt(forKey: "cv", value: self.coinv)
             x2sign.isHidden = true
             if(animator != nil){
@@ -1166,7 +1227,18 @@ class PlayViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
          NotificationCenter.default.removeObserver(self)
-        
+        if(correctsfx != nil){
+            correctsfx.stop()
+            correctsfx = nil
+        }
+        if(wrongsfx != nil){
+            wrongsfx.stop()
+            wrongsfx = nil
+        }
+        if(mbgm != nil){
+            mbgm.stop()
+            mbgm = nil
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -1352,6 +1424,7 @@ class PlayViewController: UIViewController {
         return faNumber!
     }
     @objc func gameoverslideright(){
+        mbgm.setVolume(0.0, fadeDuration: 0.5)
         gameoverc.constant = 0
         gameover.setNeedsLayout()
         UIView.animate(withDuration: 0.5, delay: 0, options:[], animations: {

@@ -1,6 +1,11 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## AdFalconSDK
+
+Copyright (C) AdFalcon. All Right Reserved.
+
+
 ## Firebase
 
 Copyright 2018 Google
@@ -14,10 +19,6 @@ Copyright 2018 Google
 Copyright 2018 Google
 
 ## FirebaseInstanceID
-
-Copyright 2017 Google
-
-## Google-Mobile-Ads-SDK
 
 Copyright 2017 Google
 

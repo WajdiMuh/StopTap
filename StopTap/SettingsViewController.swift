@@ -72,6 +72,8 @@ class SettingsViewController: UIViewController {
             settting.english(size: 26, diffinsize: 14)
             back.setTitle("Back", for: UIControlState())
             back.english(size: 20, diffinsize: 10,left: 4,top: 3)
+            musval.text = convertartoeng(num: musval.text!)
+            sfxval.text = convertartoeng(num: sfxval.text!)
             break
         default:
             settting.text = "Settings"
@@ -84,6 +86,8 @@ class SettingsViewController: UIViewController {
             settting.english(size: 26, diffinsize: 14)
             back.setTitle("Back", for: UIControlState())
             back.english(size: 20, diffinsize: 10,left: 4,top: 3)
+            musval.text = convertartoeng(num: musval.text!)
+            sfxval.text = convertartoeng(num: sfxval.text!)
             break
         }
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
@@ -191,6 +195,14 @@ class SettingsViewController: UIViewController {
         //let number = NSNumber(value: Int(num)!)
         let format = NumberFormatter()
         format.locale = Locale(identifier: "ar_JO")
+        let number =   format.number(from: num)
+        let faNumber = format.string(from: number!)
+        return faNumber!
+    }
+    func convertartoeng(num: String)->String{
+        //let number = NSNumber(value: Int(num)!)
+        let format = NumberFormatter()
+        format.locale = Locale(identifier: "en")
         let number =   format.number(from: num)
         let faNumber = format.string(from: number!)
         return faNumber!

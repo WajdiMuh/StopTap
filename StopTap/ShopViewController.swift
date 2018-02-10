@@ -7,6 +7,7 @@
 //
 import AudioToolbox
 import UIKit
+import AVFoundation
 
 class ShopViewController: UIViewController,colorDelegate {
     @IBOutlet weak var coinval: UILabel!
@@ -26,6 +27,8 @@ class ShopViewController: UIViewController,colorDelegate {
     @IBOutlet weak var smallt: UIButton!
     @IBOutlet weak var rboxview: UIImageView!
     @IBOutlet weak var lboxview: UIImageView!
+    var shopbgm: AVAudioPlayer!
+    var buysound: AVAudioPlayer!
     var lang:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "lang", defaultValue: 1)
     var select:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "shopselect", defaultValue: 1)
     var selected:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "shopselect", defaultValue: 1)
@@ -55,6 +58,28 @@ class ShopViewController: UIViewController,colorDelegate {
     var price:NSMutableAttributedString? = nil
     var namec:NSMutableAttributedString? = nil
     var toaststyle = ToastStyle()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(ShopViewController.pausemusic), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ShopViewController.resumemusic), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NotificationCenter.default.removeObserver(self)
+        shopbgm.stop()
+        shopbgm = nil
+        buysound.stop()
+        buysound = nil
+    }
+    @objc func pausemusic(){
+        shopbgm.pause()
+    }
+    @objc func resumemusic(){
+         shopbgm.play()
+        if(buysound.isPlaying == true){
+            buysound.stop()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         cp.isExclusiveTouch = true
@@ -74,6 +99,16 @@ class ShopViewController: UIViewController,colorDelegate {
         small.layer.borderWidth = 5
         big.layer.cornerRadius = 10
         big.layer.borderWidth = 5
+        do {
+            self.shopbgm =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "sbackground", ofType: "mp3")!))
+            self.shopbgm.prepareToPlay()
+            self.shopbgm.volume = 0.0
+            self.shopbgm.numberOfLoops = -1
+            self.buysound =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "chaching", ofType: "mp3")!))
+            self.buysound.prepareToPlay()
+            self.buysound.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
+        } catch {
+        }
         price = NSMutableAttributedString(string: "250 Coins")
         price?.addAttribute(NSAttributedStringKey.foregroundColor,value: UIColor.yellow,range: NSRange(location:0,length:(price?.mutableString.length)!))
         namec = NSMutableAttributedString(string:"Green And Pink\n")
@@ -403,6 +438,9 @@ class ShopViewController: UIViewController,colorDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("viewwill appear")
+        shopbgm.play()
+        shopbgm.setVolume((Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "musicval", defaultValue: 10)) / 10.0), fadeDuration: 0.5)
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
             self.view.backgroundColor = UIColor.white
             back.layer.borderColor = UIColor.black.cgColor
@@ -2422,6 +2460,9 @@ class ShopViewController: UIViewController,colorDelegate {
             if(buyb == 1){
                 if(select == 2){
                     if(coinv >= 250){
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
                         buyb = 2
                         coinv = coinv - 250
                         shop2 = 1
@@ -2471,6 +2512,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 3){
                     if(coinv >= 250){
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
                         buyb = 2
                         coinv = coinv - 250
                         shop3 = 1
@@ -2520,6 +2564,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 4){
                     if(coinv >= 250){
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
                         buyb = 2
                         coinv = coinv - 250
                         shop4 = 1
@@ -2569,6 +2616,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 5){
                     if(coinv >= 250){
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
                         buyb = 2
                         coinv = coinv - 250
                         shop5 = 1
@@ -2618,6 +2668,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 6){
                     if(coinv >= 250){
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
                         buyb = 2
                         coinv = coinv - 250
                         shop6 = 1
@@ -2667,6 +2720,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 7){
                     if(coinv >= 250){
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
                         buyb = 2
                         coinv = coinv - 250
                         shop7 = 1
@@ -2716,6 +2772,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 8){
                     if(coinv >= 250){
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
                         buyb = 2
                         coinv = coinv - 250
                         shop8 = 1
@@ -2765,6 +2824,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 9){
                     if(coinv >= 250){
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
                         buyb = 2
                         coinv = coinv - 250
                         shop9 = 1
@@ -2814,6 +2876,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 10){
                     if(coinv >= 250){
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
                         buyb = 2
                         coinv = coinv - 250
                         shop10 = 1
@@ -2863,6 +2928,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 11){
                     if(coinv >= 250){
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
                         buyb = 2
                         coinv = coinv - 250
                         shop11 = 1
@@ -2912,6 +2980,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 12){
                     if(coinv >= 250){
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
                         buyb = 2
                         coinv = coinv - 250
                         shop12 = 1
@@ -2961,6 +3032,9 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 13){
                     if(coinv >= 500){
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
                         buyb = 3
                         coinv = coinv - 500
                         shop13 = 1
@@ -3010,8 +3084,11 @@ class ShopViewController: UIViewController,colorDelegate {
                     }
                 }else if(select == 14){
                     if(shop14 == 2){
-                        if(coinv >= 1000){
-                            buy.isHidden = true
+                            if(coinv >= 1000){
+                                self.buysound.pause()
+                                self.buysound.currentTime = 0
+                                self.buysound.play()
+                                buy.isHidden = true
                             buyb = 2
                             coinv = coinv - 1000
                             shop14 = 3
@@ -3058,6 +3135,9 @@ class ShopViewController: UIViewController,colorDelegate {
                         }
                 }else{
                         if(coinv >= 500){
+                            self.buysound.pause()
+                            self.buysound.currentTime = 0
+                            self.buysound.play()
                             coinv = coinv - 500
                                provider.setInt(forKey: "cv", value: coinv)
                             switch (lang) {
@@ -3114,6 +3194,9 @@ class ShopViewController: UIViewController,colorDelegate {
             }
                 else if(select == 15){
                     if(coinv >= 1000){
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
                         name.isHidden = true
                         small.isHidden = false
                         big.isHidden = false
@@ -3168,7 +3251,10 @@ class ShopViewController: UIViewController,colorDelegate {
                     
                     }else if(select == 16){
                     if(coinv >= 1000){
-                            buy.isHidden = true
+                        self.buysound.pause()
+                        self.buysound.currentTime = 0
+                        self.buysound.play()
+                        buy.isHidden = true
                             buyb = 2
                             coinv = coinv - 1000
                             shop16 = 1
@@ -3366,6 +3452,7 @@ class ShopViewController: UIViewController,colorDelegate {
         if(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "vib", defaultValue: 1) == 1){
             AudioServicesPlaySystemSound(1519);
         }
+        shopbgm.setVolume(0.0, fadeDuration: 0.5)
         buycancel.invalidate()
         self.navigationController?.popToRootViewController(animated: true)
     }
@@ -3442,7 +3529,7 @@ extension UIColor {
         
         self.init(red:red, green:green, blue:blue, alpha:1)
     }
-    
+
     func toHexString() -> String {
         var r:CGFloat = 0
         var g:CGFloat = 0

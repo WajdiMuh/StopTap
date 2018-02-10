@@ -1223,7 +1223,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0X-PX-2TL">
-                                <rect key="frame" x="327" y="223" width="82" height="32"/>
+                                <rect key="frame" x="327" y="191" width="82" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="116" id="UJP-Ba-G1T">
                                         <variation key="heightClass=compact-widthClass=compact" constant="82"/>
@@ -1244,7 +1244,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7b7-d2-DXO">
-                                <rect key="frame" x="277" y="265" width="182" height="32"/>
+                                <rect key="frame" x="277" y="233" width="182" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="270" id="Dgg-lV-CMJ">
                                         <variation key="heightClass=compact-widthClass=compact" constant="182"/>
@@ -1265,7 +1265,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Io-8q-n1X">
-                                <rect key="frame" x="293.66666666666669" y="181" width="149" height="32"/>
+                                <rect key="frame" x="293.66666666666669" y="149" width="149" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="Zqj-gG-vI2">
                                         <variation key="heightClass=compact-widthClass=compact" constant="149"/>
@@ -1286,7 +1286,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlE-9l-XmU">
-                                <rect key="frame" x="260" y="96.333333333333329" width="216" height="30.666666666666671"/>
+                                <rect key="frame" x="260" y="46.333333333333336" width="216" height="30.666666666666664"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="32"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1303,20 +1303,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfA-mf-wRL" customClass="GADBannerView">
-                                <rect key="frame" x="219" y="0.0" width="320" height="50"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfA-mf-wRL" customClass="ADFAdView">
+                                <rect key="frame" x="208" y="0.0" width="320" height="50"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="XeH-FH-ugb"/>
                                     <constraint firstAttribute="width" constant="320" id="pRM-R7-gnc"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="adUnitID" value="ca-app-pub-2696736592488105/3092838566"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoloadEnabled" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hi-AB-gCN">
-                                <rect key="frame" x="290.33333333333331" y="60.000000000000007" width="155.66666666666669" height="26.333333333333336"/>
+                                <rect key="frame" x="290.33333333333331" y="9.9999999999999982" width="155.66666666666669" height="26.333333333333329"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="28"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1328,7 +1324,7 @@
                             <constraint firstItem="csx-dC-PCx" firstAttribute="bottom" secondItem="cYH-Jz-F7l" secondAttribute="bottom" constant="10" id="2af-nj-vRD"/>
                             <constraint firstItem="h0X-PX-2TL" firstAttribute="centerX" secondItem="csx-dC-PCx" secondAttribute="centerX" id="4PV-wR-CdF"/>
                             <constraint firstItem="7Io-8q-n1X" firstAttribute="centerX" secondItem="csx-dC-PCx" secondAttribute="centerX" id="5id-zg-b1U"/>
-                            <constraint firstItem="RfA-mf-wRL" firstAttribute="centerX" secondItem="1sG-gz-DSh" secondAttribute="centerX" constant="11" id="FdH-9J-1Wd"/>
+                            <constraint firstItem="RfA-mf-wRL" firstAttribute="centerX" secondItem="1sG-gz-DSh" secondAttribute="centerX" id="FdH-9J-1Wd"/>
                             <constraint firstItem="LlE-9l-XmU" firstAttribute="top" secondItem="8Hi-AB-gCN" secondAttribute="bottom" constant="10" id="JCi-wz-nv8"/>
                             <constraint firstItem="7b7-d2-DXO" firstAttribute="top" secondItem="h0X-PX-2TL" secondAttribute="bottom" constant="42" id="KON-is-i06">
                                 <variation key="heightClass=compact-widthClass=compact" constant="10"/>
@@ -1340,12 +1336,9 @@
                                 <variation key="heightClass=compact-widthClass=regular" constant="10"/>
                             </constraint>
                             <constraint firstItem="cYH-Jz-F7l" firstAttribute="top" secondItem="cQv-lz-d4L" secondAttribute="bottom" constant="10" id="X4J-aW-Qgj"/>
-                            <constraint firstItem="h0X-PX-2TL" firstAttribute="centerY" secondItem="1sG-gz-DSh" secondAttribute="centerY" id="Y3r-Wb-WQu">
-                                <variation key="heightClass=compact-widthClass=compact" constant="32"/>
-                                <variation key="heightClass=compact-widthClass=regular" constant="32"/>
-                            </constraint>
+                            <constraint firstItem="h0X-PX-2TL" firstAttribute="centerY" secondItem="1sG-gz-DSh" secondAttribute="centerY" id="Y3r-Wb-WQu"/>
                             <constraint firstItem="RfA-mf-wRL" firstAttribute="top" secondItem="csx-dC-PCx" secondAttribute="top" id="apK-tc-6zH"/>
-                            <constraint firstItem="8Hi-AB-gCN" firstAttribute="top" secondItem="RfA-mf-wRL" secondAttribute="bottom" constant="10" id="div-NS-v8M"/>
+                            <constraint firstItem="8Hi-AB-gCN" firstAttribute="top" secondItem="RfA-mf-wRL" secondAttribute="bottom" constant="-40" id="div-NS-v8M"/>
                             <constraint firstItem="cQv-lz-d4L" firstAttribute="centerX" secondItem="csx-dC-PCx" secondAttribute="centerX" id="hf9-HM-qTc"/>
                             <constraint firstItem="LlE-9l-XmU" firstAttribute="centerX" secondItem="csx-dC-PCx" secondAttribute="centerX" id="orc-tM-xiG"/>
                             <constraint firstItem="8Hi-AB-gCN" firstAttribute="centerX" secondItem="csx-dC-PCx" secondAttribute="centerX" id="vvd-8O-e99"/>
@@ -1353,13 +1346,15 @@
                         <viewLayoutGuide key="safeArea" id="csx-dC-PCx"/>
                     </view>
                     <connections>
-                        <outlet property="bannerView" destination="RfA-mf-wRL" id="nNw-iG-IvF"/>
+                        <outlet property="bannerview" destination="RfA-mf-wRL" id="tgo-UA-IkH"/>
                         <outlet property="gameo" destination="LlE-9l-XmU" id="PJs-x9-YrF"/>
                         <outlet property="hscore" destination="cYH-Jz-F7l" id="qD1-Zi-1I3"/>
                         <outlet property="leaderb" destination="7b7-d2-DXO" id="Xol-79-GXC"/>
                         <outlet property="menu" destination="h0X-PX-2TL" id="np3-4j-2t2"/>
+                        <outlet property="menucon" destination="Y3r-Wb-WQu" id="gWh-sO-r9G"/>
                         <outlet property="playag" destination="7Io-8q-n1X" id="VXB-jl-3KG"/>
                         <outlet property="score" destination="8Hi-AB-gCN" id="ruF-kf-prP"/>
+                        <outlet property="scorecon" destination="div-NS-v8M" id="wUE-Il-CwJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L3X-p8-q8q" userLabel="First Responder" sceneMemberID="firstResponder"/>
