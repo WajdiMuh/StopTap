@@ -29,7 +29,7 @@ class PlayViewController: UIViewController {
     var doubletimerlast:Timerp = Timerp()
     var doubleon:Bool = false
     var doubleanim:Bool = false
-    var randromdoubletime:Double = Double(arc4random_uniform(11) + 20)
+    var randromdoubletime:Double = Double(arc4random_uniform(6) + 20)
     let layerfixbase:CALayer = CALayer()
     var animator: UIViewPropertyAnimator!
     var number:CGFloat = 0.0
@@ -197,7 +197,6 @@ class PlayViewController: UIViewController {
                     scoreval.text = "Score : " + String(score)
                     break;
                 }
-            self.correctsfx.pause()
             self.correctsfx.currentTime = 0
             self.correctsfx.play()
             baseanim.layer.removeAllAnimations()
@@ -221,7 +220,6 @@ class PlayViewController: UIViewController {
             self.viewclickb.gestureRecognizers?.removeAll()
             switch (wrongnum){
             case 0:
-                self.wrongsfx.pause()
                 self.wrongsfx.currentTime = 0
                 self.wrongsfx.play()
                 wrong.alpha = 1.0
@@ -241,7 +239,6 @@ class PlayViewController: UIViewController {
                 })
                 break;
             case 1:
-                self.wrongsfx.pause()
                 self.wrongsfx.currentTime = 0
                 self.wrongsfx.play()
                 wrong2.alpha = 1.0
@@ -263,7 +260,6 @@ class PlayViewController: UIViewController {
             case 2:
                 
                  if(provider.getInt(forKey: "shop16", defaultValue: 0) == 0){
-                    self.wrongsfx.pause()
                     self.wrongsfx.currentTime = 0
                     self.wrongsfx.play()
                     if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
@@ -324,7 +320,6 @@ class PlayViewController: UIViewController {
                         RunLoop.current.add(countdown, forMode: RunLoopMode.commonModes)
                     })
                 }else{
-                    self.wrongsfx.pause()
                     self.wrongsfx.currentTime = 0
                     self.wrongsfx.play()
                     wrong3.alpha = 1.0
@@ -345,7 +340,6 @@ class PlayViewController: UIViewController {
                 }
                 break;
             case 3:
-                self.wrongsfx.pause()
                 self.wrongsfx.currentTime = 0
                 self.wrongsfx.play()
                 if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
@@ -410,6 +404,8 @@ class PlayViewController: UIViewController {
                 })
                 break;
             default:
+                self.wrongsfx.currentTime = 0
+                self.wrongsfx.play()
                 wrong.alpha = 1.0
                 if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -1359,7 +1355,7 @@ class PlayViewController: UIViewController {
                     self.doublescore.isEnabled = false
                     self.doublescore.isUserInteractionEnabled = false
                     self.x2l.constant = -1 * self.x2w.constant
-                    self.randromdoubletime = Double(arc4random_uniform(11) + 20)
+                    self.randromdoubletime = Double(arc4random_uniform(6) + 20)
                     self.doubletimer.invalidate()
                     //  self.doubletimer =  Foundation.Timer(timeInterval: self.randromdoubletime, target: self, selector: #selector(PlayViewController.doublepointsmove), userInfo: nil, repeats: false)
                     //  RunLoop.current.add(self.doubletimer, forMode: RunLoopMode.commonModes)
@@ -1407,7 +1403,7 @@ class PlayViewController: UIViewController {
         self.x2l.constant = -1 * self.x2w.constant
         //  self.doubletimer =  Foundation.Timer(timeInterval: self.randromdoubletime, target: self, selector: #selector(PlayViewController.doublepointsmove), userInfo: nil, repeats: false)
         //  RunLoop.current.add(self.doubletimer, forMode: RunLoopMode.commonModes)
-        self.randromdoubletime = Double(arc4random_uniform(11) + 20)
+        self.randromdoubletime = Double(arc4random_uniform(6) + 20)
         print(randromdoubletime)
         self.doubletimer.invalidate()
         doubletimer =  Timerp(interval: randromdoubletime, callback: doublepointsmove, repeats: false)
