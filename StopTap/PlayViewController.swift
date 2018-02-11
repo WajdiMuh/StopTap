@@ -453,10 +453,10 @@ class PlayViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         do {
-            self.correctsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "correct", ofType: "mp3")!))
+            self.correctsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "correct", ofType: "wav")!))
             self.correctsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
             self.correctsfx.prepareToPlay()
-            self.wrongsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "wrong", ofType: "mp3")!))
+            self.wrongsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "wrong", ofType: "wav")!))
             self.wrongsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
             self.wrongsfx.prepareToPlay()
             self.mbgm =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "background", ofType: "mp3")!))

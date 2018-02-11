@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="StopTapen.ttf">
+        <array key="6.ttf">
             <string>DotsAllForNowJL</string>
         </array>
     </customFonts>
@@ -790,6 +790,20 @@
                                     </constraint>
                                 </constraints>
                             </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.27000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="abc_ic_clear_mtrl_alpha.png" translatesAutoresizingMaskIntoConstraints="NO" id="MYS-kM-KRA" userLabel="wrong4">
+                                <rect key="frame" x="568" y="10" width="40" height="40"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="0Yh-n3-pSI">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="40"/>
+                                        <variation key="heightClass=compact-widthClass=regular" constant="40"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="60" id="58T-7s-JZW">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="40"/>
+                                        <variation key="heightClass=compact-widthClass=regular" constant="40"/>
+                                    </constraint>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKS-l4-kDG" userLabel="score">
                                 <rect key="frame" x="290" y="377.66666666666669" width="156" height="26.333333333333314"/>
                                 <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="28"/>
@@ -943,20 +957,6 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.27000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="abc_ic_clear_mtrl_alpha.png" translatesAutoresizingMaskIntoConstraints="NO" id="MYS-kM-KRA" userLabel="wrong4">
-                                <rect key="frame" x="568" y="10" width="40" height="40"/>
-                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="0Yh-n3-pSI">
-                                        <variation key="heightClass=compact-widthClass=compact" constant="40"/>
-                                        <variation key="heightClass=compact-widthClass=regular" constant="40"/>
-                                    </constraint>
-                                    <constraint firstAttribute="width" constant="60" id="58T-7s-JZW">
-                                        <variation key="heightClass=compact-widthClass=compact" constant="40"/>
-                                        <variation key="heightClass=compact-widthClass=regular" constant="40"/>
-                                    </constraint>
-                                </constraints>
-                            </imageView>
                             <button hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="za0-iA-HEv" userLabel="x2">
                                 <rect key="frame" x="10" y="100" width="35" height="35"/>
                                 <constraints>

@@ -104,7 +104,7 @@ class ShopViewController: UIViewController,colorDelegate {
             self.shopbgm.prepareToPlay()
             self.shopbgm.volume = 0.0
             self.shopbgm.numberOfLoops = -1
-            self.buysound =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "chaching", ofType: "mp3")!))
+            self.buysound =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "chaching", ofType: "wav")!))
             self.buysound.prepareToPlay()
             self.buysound.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
         } catch {
