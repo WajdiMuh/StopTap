@@ -54,7 +54,7 @@
 		07B42D5790ED15D039A51175CBFC5A15 /* Pods-StopTapTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-StopTapTests-dummy.m"; sourceTree = "<group>"; };
 		0BE54F06BD33ADDA4ED0C21E40B4CE3D /* Pods-StopTapTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StopTapTests-resources.sh"; sourceTree = "<group>"; };
 		0E49EE05AA12920CF31000E22AA2479F /* nanopb-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "nanopb-umbrella.h"; sourceTree = "<group>"; };
-		12155BD805F71834FBDBF7944BFCEA33 /* Pods_StopTapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_StopTapTests.framework; path = "Pods-StopTapTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12155BD805F71834FBDBF7944BFCEA33 /* Pods_StopTapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StopTapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1413702C3898F04483AFB9ABBFA2ECF8 /* nanopb-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "nanopb-dummy.m"; sourceTree = "<group>"; };
 		17C7358A5965D62C63E4EC37C1A15D22 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		19537261CC74A7AAE08EC361F17304B1 /* Pods-StopTapTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StopTapTests-frameworks.sh"; sourceTree = "<group>"; };
@@ -63,37 +63,37 @@
 		2138A7C18774181CFC9091F3245AD1ED /* Pods-StopTapTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-StopTapTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2472243C443514A4CCF000CE709A5F28 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Frameworks/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
 		24A2EFBF2449D053B1A8BA5681F36641 /* AdFalconSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdFalconSDK.framework; path = Frameworks/AdFalconSDK.framework; sourceTree = "<group>"; };
-		25B743B3EFB0D863F4F2F495DEAFC3D4 /* pb_decode.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_decode.c; sourceTree = "<group>"; };
+		25B743B3EFB0D863F4F2F495DEAFC3D4 /* pb_decode.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_decode.c; sourceTree = "<group>"; };
 		2F4C0FFF0F3DDD8CA1BAEC801A031B87 /* GTMNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSData+zlib.h"; path = "Foundation/GTMNSData+zlib.h"; sourceTree = "<group>"; };
 		3E7A5CC7B424AFCCCCE80168073E1DD3 /* Pods-StopTap-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StopTap-resources.sh"; sourceTree = "<group>"; };
-		40A5D1309CAB770AA98BC9C93B7D8A8F /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = nanopb.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40A5D1309CAB770AA98BC9C93B7D8A8F /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		470A72E33B9A32DEC7BC5AB78A348281 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
 		4890FD1C9B28E464E2F22CE85ACF94AE /* Pods-StopTap-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StopTap-frameworks.sh"; sourceTree = "<group>"; };
 		4A6E96C4BA7162FA503E29C38BE46906 /* pb_decode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb_decode.h; sourceTree = "<group>"; };
-		4E63E17EACA2492E6FB43E959D119062 /* pb_encode.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_encode.c; sourceTree = "<group>"; };
-		532B29D5F16D45913583E2A43D13FBEF /* Pods-StopTapTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-StopTapTests.modulemap"; sourceTree = "<group>"; };
-		5D1D2A1267D91BCC2BFF5ADE51E0AE08 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
+		4E63E17EACA2492E6FB43E959D119062 /* pb_encode.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_encode.c; sourceTree = "<group>"; };
+		532B29D5F16D45913583E2A43D13FBEF /* Pods-StopTapTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-StopTapTests.modulemap"; sourceTree = "<group>"; };
+		5D1D2A1267D91BCC2BFF5ADE51E0AE08 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
 		5EABC070000261E845C513B405B1014E /* nanopb-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "nanopb-prefix.pch"; sourceTree = "<group>"; };
-		5EE25E0055805E3A2FCFAE217EB76E1C /* Pods_StopTap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_StopTap.framework; path = "Pods-StopTap.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EE25E0055805E3A2FCFAE217EB76E1C /* Pods_StopTap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StopTap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D185D04FE93F8569F1201FA72D1253 /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6B4A931AE2277B67E40F25D17177F4B4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B9B3E02CAFC18EC4FB9D20D0B35EC61 /* GTMDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		6BF6C55515D79A0D16F116201DA886B4 /* Pods-StopTap-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-StopTap-umbrella.h"; sourceTree = "<group>"; };
 		7E2BA6E2011D14ED2A86E76005E85C5D /* Pods-StopTap-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-StopTap-acknowledgements.markdown"; sourceTree = "<group>"; };
-		809C502E11027ED1F0F8BC56B57C0385 /* nanopb.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = nanopb.modulemap; sourceTree = "<group>"; };
+		809C502E11027ED1F0F8BC56B57C0385 /* nanopb.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = nanopb.modulemap; sourceTree = "<group>"; };
 		838C43244924F0F41366075CFDBFFF9C /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Core/Sources/Firebase.h; sourceTree = "<group>"; };
 		90EAC958799461C53B180292A8264F41 /* Pods-StopTapTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-StopTapTests-umbrella.h"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93C98A7798326AC7C87BCBCD68A113E8 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		9DBB658A5D65258E7EA0E5F19EB8B5A3 /* pb_encode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb_encode.h; sourceTree = "<group>"; };
-		A3A156C07550A40B6BEF3900CA1D6666 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleToolboxForMac.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3A156C07550A40B6BEF3900CA1D6666 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5BC76B19F2796298E8DE96CEF4C5A49 /* Pods-StopTap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StopTap.release.xcconfig"; sourceTree = "<group>"; };
 		AD6C5E3EC2B0955863B8D5AF384EEC8C /* GoogleToolboxForMac-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-prefix.pch"; sourceTree = "<group>"; };
 		B05E9A69586AD7FAB22614C7315E991F /* GoogleToolboxForMac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-umbrella.h"; sourceTree = "<group>"; };
 		B0BE31C843E210CD832C77B4D72A1543 /* pb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb.h; sourceTree = "<group>"; };
 		B30C10023587B14E678583E7E68731CB /* GoogleToolboxForMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleToolboxForMac.xcconfig; sourceTree = "<group>"; };
-		C3CAFCAEF0E095EA7331C75415139DB3 /* Pods-StopTap.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-StopTap.modulemap"; sourceTree = "<group>"; };
+		C3CAFCAEF0E095EA7331C75415139DB3 /* Pods-StopTap.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-StopTap.modulemap"; sourceTree = "<group>"; };
 		D2B44F37B81E66A81FF0C61EE2A8FA8F /* Pods-StopTapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StopTapTests.release.xcconfig"; sourceTree = "<group>"; };
 		D3AF5D9381940DFA3AF092B90560B436 /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseNanoPB.framework; path = Frameworks/FirebaseNanoPB.framework; sourceTree = "<group>"; };
 		DABC1199D7242361DA451FD14CF0BE30 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 		E8435AF4E4390776D960D6FFCBA75F57 /* AFNMoatMobileAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNMoatMobileAppKit.framework; path = Frameworks/AFNMoatMobileAppKit.framework; sourceTree = "<group>"; };
 		EA35F7639C091DB43FEA0BA5AE9CF962 /* Pods-StopTap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StopTap.debug.xcconfig"; sourceTree = "<group>"; };
 		EECCB7AEB1821932985C6CB9DEA3327F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2ABA1A6C27C8CBABDFAC41F1A97F4F4 /* pb_common.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_common.c; sourceTree = "<group>"; };
+		F2ABA1A6C27C8CBABDFAC41F1A97F4F4 /* pb_common.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_common.c; sourceTree = "<group>"; };
 		F307142EA6485708787C04601E9978A9 /* GTMNSData+zlib.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GTMNSData+zlib.m"; path = "Foundation/GTMNSData+zlib.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,7 +182,6 @@
 				1A5A840D4DC2FA385B78FD8E9EE38661 /* encode */,
 				FD146AD46997F3E8EE997AE431CD9790 /* Support Files */,
 			);
-			name = nanopb;
 			path = nanopb;
 			sourceTree = "<group>";
 		};
@@ -201,7 +200,6 @@
 				6C55F853A01C372449FAD61BEAA9B0A1 /* NSData+zlib */,
 				FFBAA0537FAD4A7E7B132457CB5537EF /* Support Files */,
 			);
-			name = GoogleToolboxForMac;
 			path = GoogleToolboxForMac;
 			sourceTree = "<group>";
 		};
@@ -210,7 +208,6 @@
 			children = (
 				27DF82B198C5026C59106C3962EFB313 /* Frameworks */,
 			);
-			name = FirebaseCore;
 			path = FirebaseCore;
 			sourceTree = "<group>";
 		};
@@ -273,7 +270,6 @@
 			children = (
 				D645B83659506A78960B0FDF16D758CE /* Frameworks */,
 			);
-			name = FirebaseInstanceID;
 			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
@@ -292,7 +288,6 @@
 			children = (
 				850F572E5D3FD6C1A10F7C6E80611601 /* Frameworks */,
 			);
-			name = FirebaseAnalytics;
 			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
@@ -325,7 +320,6 @@
 			children = (
 				A5CCD79F83A49682DAAE9A8B836C95FC /* Frameworks */,
 			);
-			name = AdFalconSDK;
 			path = AdFalconSDK;
 			sourceTree = "<group>";
 		};
@@ -376,7 +370,6 @@
 			children = (
 				E231104E46920664FC90942FD1B5B173 /* Core */,
 			);
-			name = Firebase;
 			path = Firebase;
 			sourceTree = "<group>";
 		};
@@ -699,6 +692,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
+				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};
@@ -885,6 +879,7 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SYMROOT = "${SRCROOT}/../build";
+				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};

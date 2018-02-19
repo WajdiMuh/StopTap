@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 import AudioToolbox
-class HtpViewController: UIViewController,AVAudioPlayerDelegate {
+class HtpViewController: UIViewController {
     @IBOutlet weak var wrong: UIImageView!
     @IBOutlet weak var wrong2: UIImageView!
     @IBOutlet weak var wrong3: UIImageView!
@@ -20,6 +20,9 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
     var score:Int = 0
     var coins:Int = 0
     var audioPlayer: AVAudioPlayer!
+    var wrongsfx: AVAudioPlayer!
+    @IBOutlet weak var xw2signwidth: NSLayoutConstraint!
+    @IBOutlet weak var x2sign: UIButton!
     @IBOutlet weak var timecount: UILabel!
     @IBOutlet weak var scoreval: UILabel!
     @IBOutlet weak var viewclick: UIButton!
@@ -45,15 +48,25 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
     @IBOutlet weak var timect: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+        back.isExclusiveTouch = true
         wrong.image = wrong.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         wrong2.image = wrong2.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         wrong3.image = wrong3.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         back.setImage(UIImage.init(named: "play")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState())
         do {
-            self.audioPlayer =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "correct", ofType: "mp3")!))
+            self.audioPlayer =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "correct", ofType: "wav")!))
             self.audioPlayer.prepareToPlay()
-            self.audioPlayer.delegate = self
+            self.audioPlayer.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
+            self.wrongsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "wrong", ofType: "wav")!))
+            self.wrongsfx.prepareToPlay()
+            self.wrongsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
+            
         } catch {
+        }
+        if(UIDevice.current.userInterfaceIdiom == .phone){
+            xw2signwidth.constant = 25.0
+        }else{
+            xw2signwidth.constant = 40.0
         }
         movew.constant = ((35 * self.view.bounds.width) / 411)
         moveh.constant = ((35 * self.view.bounds.width) / 411)
@@ -65,6 +78,17 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
         x2w.constant = ((35 * self.view.bounds.width) / 411)
         dirw.constant = ((40 * self.view.bounds.width) / 411)
         dirh.constant = ((40 * self.view.bounds.width) / 411)
+        
+        x2sign.layer.cornerRadius = (xw2signwidth.constant / 2) //((50 * self.view.bounds.width) / 411)
+        x2sign.layer.allowsEdgeAntialiasing = true
+        x2sign.titleLabel!.widthAnchor.constraint(equalToConstant: (xw2signwidth.constant * (3/4))).isActive = true
+        x2sign.titleLabel!.adjustsFontSizeToFitWidth = true
+        x2sign.titleLabel!.numberOfLines = 1
+        x2sign.titleLabel!.minimumScaleFactor = 0.05
+        x2sign.titleLabel?.baselineAdjustment = .alignCenters
+        x2sign.titleLabel?.textAlignment  = .center
+        x2sign.layer.shadowOffset = CGSize(width: 0, height: 0)
+        
         layerfixbase.frame = CGRect(x: -1, y: -1, width: basew.constant + 2, height: baseh.constant + 2)
         layerfixbase.cornerRadius = ((5 * self.view.bounds.width) / 411)
         layerfixbase.borderWidth = ((2.5 * self.view.bounds.width) / 411)
@@ -102,6 +126,8 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
             timecount.arabic(size: 20, diffinsize: 20)
             doublescore.setTitle("٢x", for: UIControlState())
             doublescore.arabic(size: 100, diffinsize: 0)
+            x2sign.setTitle("٢x", for: UIControlState())
+            x2sign.arabic(size: 100, diffinsize: 0)
             break
         case 1:
             scoreval.text = "Score : 0"
@@ -111,6 +137,8 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
             timecount.english(size: 20, diffinsize: 20)
             doublescore.setTitle("x2", for: UIControlState())
             doublescore.english(size: 100, diffinsize: 0,left: 4,top: 2)
+            x2sign.setTitle("x2", for: UIControlState())
+            x2sign.english(size: 100, diffinsize: 0,left: 1,top: 1)
             break
         default:
             scoreval.text = "Score : 0"
@@ -120,6 +148,8 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
             timecount.english(size: 20, diffinsize: 0)
             doublescore.setTitle("x2", for: UIControlState())
             doublescore.english(size: 100, diffinsize: 0,left: 4,top: 2)
+            x2sign.setTitle("x2", for: UIControlState())
+            x2sign.english(size: 100, diffinsize: 0,left: 1,top: 1)
             break
         }
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
@@ -136,6 +166,8 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
             coinval.textColor = UIColor.black
             dir.tintColor = UIColor.black
             back.tintColor = UIColor.black
+            x2sign.layer.shadowColor = UIColor.black.cgColor
+            x2sign.setTitleColor(UIColor.black, for: UIControlState())
             
         }else{
             self.view.backgroundColor = UIColor.black
@@ -151,6 +183,8 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
             coinval.textColor = UIColor.white
             dir.tintColor = UIColor.white
             back.tintColor = UIColor.white
+            x2sign.layer.shadowColor = UIColor.white.cgColor
+            x2sign.setTitleColor(UIColor.white, for: UIControlState())
         }
         switch provider.getInt(forKey: "shopselect", defaultValue: 1) {
         case 1:
@@ -211,13 +245,14 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
             break;
         }
         doublescore.backgroundColor = blend(colors: [move.backgroundColor!,base.backgroundColor!])
+        x2sign.backgroundColor = blend(colors: [move.backgroundColor!,base.backgroundColor!])
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         countdown = Foundation.Timer(timeInterval: 0.5, target: self, selector: #selector(HtpViewController.time), userInfo: nil, repeats: false)
          RunLoop.current.add(countdown, forMode: RunLoopMode.commonModes)
         x2t.constant = ((self.view.bounds.height * (3/4)) - (x2h.constant / 2))
-        print("x2t" + String(describing: x2t.constant))
+       // print("x2t" + String(describing: x2t.constant))
         x2l.constant = -1 * x2w.constant
         doublescore.titleLabel!.widthAnchor.constraint(equalToConstant: (x2w.constant * (3/4))).isActive = true
         doublescore.titleLabel!.adjustsFontSizeToFitWidth = true
@@ -244,6 +279,7 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 }
                 timecount.text = ""
+                wrongsfx.play()
                 wrong.alpha = 1.0
              //   AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 move.tag = 2
@@ -361,7 +397,10 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
                             coinval.text = String(coins)
                             break
                         }
-                        
+                        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: [], animations: {
+                            self.x2sign.alpha = 0.27
+                            self.x2sign.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                        }, completion: nil)
                     }
                 }
                 }
@@ -369,6 +408,11 @@ class HtpViewController: UIViewController,AVAudioPlayerDelegate {
     }
     @IBAction func x2touchdown(_ sender: Any) {
         doubleon = true
+        x2sign.setNeedsLayout()
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: [], animations: {
+            self.x2sign.alpha = 1.0
+            self.x2sign.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        }, completion: nil)
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         switch provider.getInt(forKey: "lang", defaultValue: 1) {
         case 0:

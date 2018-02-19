@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>771914840697-8vn2ovj768j514lroct9trfvt43ei9rj.apps.googleusercontent.com</string>
+	<string>771914840697-fn79rpuaoh3rgrna02r511barecjb67p.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.771914840697-8vn2ovj768j514lroct9trfvt43ei9rj</string>
+	<string>com.googleusercontent.apps.771914840697-fn79rpuaoh3rgrna02r511barecjb67p</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCXsDyqSl7tlifg8A7NXzA0cdzNk8mAokU</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,23 +17,23 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.wajdimuhtadi.StopTap</string>
+	<string>com.wajdialmuhtadi.StopTap</string>
 	<key>PROJECT_ID</key>
 	<string>stoptap-1208</string>
 	<key>STORAGE_BUCKET</key>
 	<string>stoptap-1208.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<true/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:771914840697:ios:c7685a9e8a72181b</string>
+	<string>1:771914840697:ios:b5430f285b17fd27</string>
 	<key>DATABASE_URL</key>
 	<string>https://stoptap-1208.firebaseio.com</string>
 </dict>

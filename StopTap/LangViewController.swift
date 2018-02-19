@@ -16,6 +16,8 @@ class LangViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var langsava:Array = ["Arabic", "English\nSelected"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        langs.isExclusiveTouch = true
+        back.isExclusiveTouch = true
         self.langs.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.langs.dataSource = self
         self.langs.delegate = self

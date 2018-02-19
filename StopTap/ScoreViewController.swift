@@ -171,19 +171,19 @@ class ScoreViewController: UIViewController,ADFAdViewDelegate {
         switch Float(code) {
         case Float((kADFAdViewErrorNoAdAvailabe).rawValue):
             // No Ad Availabe
-            print(message)
+           // print(message)
             break
         case Float((kADFAdViewErrorInvalidParam).rawValue):
             // Invalid Param send to server
-            print(message)
+            //print(message)
             break
         case Float((kADFAdViewErrorMissingParam).rawValue):
             // Missing Param send to server
-            print(message)
+            //print(message)
             break
         case Float((kADFAdViewErrorCommunication).rawValue):
             //Communication with server failed or no internet
-            print(message)
+            //print(message)
             break
         default:
             break
@@ -212,6 +212,9 @@ class ScoreViewController: UIViewController,ADFAdViewDelegate {
         menu.layer.borderWidth = 5
         leaderb.layer.cornerRadius = 10
         leaderb.layer.borderWidth = 5
+        playag.isExclusiveTouch = true
+        leaderb.isExclusiveTouch = true
+        menu.isExclusiveTouch = true
         //bannerView.adSize = kGADAdSizeBanner
         //bannerView.adUnitID = "ca-app-pub-2696736592488105/3092838566"
         //bannerView.rootViewController = self

@@ -18,6 +18,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var settting: UILabel!
     @IBOutlet weak var musict: UILabel!
     @IBOutlet weak var sfxt: UILabel!
+    @IBOutlet weak var langb: UIButton!
     var lang:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "lang", defaultValue: 1)
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,9 @@ class SettingsViewController: UIViewController {
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         back.layer.cornerRadius = 10
         back.layer.borderWidth = 5
+        vib.isExclusiveTouch = true
+        back.isExclusiveTouch = true
+        langb.isExclusiveTouch = true
         if(UIDevice.current.userInterfaceIdiom == .phone){
             vib.isHidden = false
             vib.isEnabled = true

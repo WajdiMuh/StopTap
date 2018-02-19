@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="6.ttf">
+        <array key="StopTapen.ttf">
             <string>DotsAllForNowJL</string>
         </array>
     </customFonts>
@@ -264,6 +264,7 @@
                     </view>
                     <connections>
                         <outlet property="back" destination="r87-Oj-ahz" id="1VX-IW-yDH"/>
+                        <outlet property="langb" destination="7VY-rr-7tn" id="Bpl-d4-S5k"/>
                         <outlet property="musict" destination="MBS-SE-0S5" id="f15-Se-zC6"/>
                         <outlet property="musslide" destination="wNi-yF-4pN" id="853-ve-B9S"/>
                         <outlet property="musval" destination="s20-vc-Gna" id="H1E-yS-aTN"/>
@@ -466,10 +467,12 @@
                     <navigationItem key="navigationItem" id="InA-0A-ArH"/>
                     <connections>
                         <outlet property="account" destination="fQ0-wS-eZG" id="3Jg-YO-bmJ"/>
+                        <outlet property="dev" destination="z0b-0d-mwH" id="F8f-ea-gHg"/>
                         <outlet property="gname" destination="bTp-w4-LMI" id="znN-gN-ij2"/>
                         <outlet property="highsc" destination="dXg-1R-Rjg" id="JpE-6P-oTr"/>
                         <outlet property="htp" destination="I0K-MB-A2O" id="1Vj-fX-8nR"/>
                         <outlet property="play" destination="h0v-In-OEY" id="ijJ-lk-UKZ"/>
+                        <outlet property="set" destination="1X5-j0-d1u" id="4pt-Gc-dHF"/>
                         <outlet property="shop" destination="vgM-Vp-W5A" id="wjW-1A-Ufr"/>
                         <outlet property="val" destination="L6O-1u-ABB" id="c14-QA-Tp3"/>
                     </connections>
@@ -635,6 +638,21 @@
                                     <action selector="backclick:" destination="X0V-Fl-PYR" eventType="touchUpInside" id="MYc-Qi-0NJ"/>
                                 </connections>
                             </button>
+                            <button userInteractionEnabled="NO" alpha="0.27000000000000002" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="2ZG-xp-VLO" userLabel="x2sign">
+                                <rect key="frame" x="695.66666666666663" y="59.666666666666657" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="IMg-X0-r4e">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="25"/>
+                                        <variation key="heightClass=compact-widthClass=regular" constant="25"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="40" id="w3j-O0-d4u">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="25"/>
+                                        <variation key="heightClass=compact-widthClass=regular" constant="25"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DotsAllForNowJL" family="Dots All For Now JL" pointSize="100"/>
+                                <state key="normal" title="x2"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -649,6 +667,7 @@
                             <constraint firstItem="f7b-ld-ceg" firstAttribute="centerY" secondItem="fjO-1L-xBV" secondAttribute="centerY" id="Pqg-ru-x2S"/>
                             <constraint firstItem="6Ex-9A-vWk" firstAttribute="top" secondItem="Qlz-ls-qRW" secondAttribute="top" constant="10" id="Qog-MF-YyG"/>
                             <constraint firstItem="ngX-zW-gbQ" firstAttribute="centerX" secondItem="Qlz-ls-qRW" secondAttribute="centerX" id="SgL-YR-gfM"/>
+                            <constraint firstItem="2ZG-xp-VLO" firstAttribute="centerY" secondItem="5cj-BT-k36" secondAttribute="centerY" id="TaX-Pv-on4"/>
                             <constraint firstItem="Qlz-ls-qRW" firstAttribute="trailing" secondItem="vcH-b7-sYF" secondAttribute="trailing" constant="10" id="Tcg-e6-IiW"/>
                             <constraint firstItem="vVV-Af-9ff" firstAttribute="leading" secondItem="5cj-BT-k36" secondAttribute="trailing" id="Z1N-t3-Ve2"/>
                             <constraint firstItem="nFV-bC-0EK" firstAttribute="centerY" secondItem="fjO-1L-xBV" secondAttribute="centerY" id="cgf-wP-zYR"/>
@@ -678,6 +697,7 @@
                             <constraint firstItem="Hlo-JX-C3Z" firstAttribute="top" secondItem="fjO-1L-xBV" secondAttribute="top" id="vTM-Ib-Snz"/>
                             <constraint firstItem="nFV-bC-0EK" firstAttribute="centerX" secondItem="Qlz-ls-qRW" secondAttribute="centerX" id="vuR-vh-C0B"/>
                             <constraint firstItem="IrY-Qs-hTx" firstAttribute="top" secondItem="Qlz-ls-qRW" secondAttribute="top" constant="10" id="wgw-dZ-7da"/>
+                            <constraint firstItem="2ZG-xp-VLO" firstAttribute="centerX" secondItem="IrY-Qs-hTx" secondAttribute="centerX" id="wtQ-YF-z9a"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qlz-ls-qRW"/>
                     </view>
@@ -707,8 +727,10 @@
                         <outlet property="wrong3" destination="6Ex-9A-vWk" id="3hs-RP-M0q"/>
                         <outlet property="x2h" destination="Pkh-bh-DjD" id="A6x-Wx-H5i"/>
                         <outlet property="x2l" destination="ulG-cK-KtV" id="Gxi-2W-qVq"/>
+                        <outlet property="x2sign" destination="2ZG-xp-VLO" id="qy7-ex-aFz"/>
                         <outlet property="x2t" destination="pAa-5o-xiP" id="WBf-cI-qhg"/>
                         <outlet property="x2w" destination="zIR-da-YlE" id="ubc-yK-RMi"/>
+                        <outlet property="xw2signwidth" destination="w3j-O0-d4u" id="pmq-pc-ui0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lhq-Y5-grR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1042,7 +1064,7 @@
                                 <variation key="heightClass=compact-widthClass=compact" constant="8"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="8"/>
                             </constraint>
-                            <constraint firstItem="za0-iA-HEv" firstAttribute="leading" secondItem="6ae-n2-ojB" secondAttribute="leading" constant="10" id="t4d-Jt-vzO"/>
+                            <constraint firstItem="za0-iA-HEv" firstAttribute="leading" secondItem="3Wt-NS-gkI" secondAttribute="leading" constant="10" id="t4d-Jt-vzO"/>
                             <constraint firstItem="bHZ-Ix-Xkp" firstAttribute="leading" secondItem="6ae-n2-ojB" secondAttribute="leading" id="tcT-ax-X7J"/>
                             <constraint firstItem="q6H-b1-F8v" firstAttribute="leading" secondItem="7fG-9F-dKP" secondAttribute="trailing" id="vBh-Ap-sUD"/>
                             <constraint firstItem="q6H-b1-F8v" firstAttribute="top" secondItem="6ae-n2-ojB" secondAttribute="top" constant="10" id="vMu-8r-dhW"/>

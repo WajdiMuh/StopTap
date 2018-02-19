@@ -83,6 +83,7 @@ class ShopViewController: UIViewController,colorDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         cp.isExclusiveTouch = true
+        back.isExclusiveTouch = true
         left.layer.cornerRadius = 10
         left.layer.borderWidth = 5
         right.layer.cornerRadius = 10
@@ -438,7 +439,7 @@ class ShopViewController: UIViewController,colorDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewwill appear")
+        //print("viewwill appear")
         shopbgm.play()
         shopbgm.setVolume((Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "musicval", defaultValue: 10)) / 10.0), fadeDuration: 0.5)
         if(provider.getInt(forKey: "nm", defaultValue: 0) == 0){
@@ -3317,13 +3318,13 @@ class ShopViewController: UIViewController,colorDelegate {
                              self.view.makeToast("The Boxes Can't Be White or Black\nAnd They Can't Have The Same Color", duration: 1.1, position: .center, style: toaststyle)
                             break
                         }
-                        print("there r equals")
+                        //print("there r equals")
                     }else{
                         if(provider.getInt(forKey: "vib", defaultValue: 1) == 1){
                             AudioServicesPlaySystemSound(1519);
                         }
                         buyb = 3
-                        print("error")
+                        //print("error")
                         provider.setString(forKey: "cpsc", value: (small.backgroundColor?.toHexString())!)
                         provider.setString(forKey: "cpbc", value: (big.backgroundColor?.toHexString())!)
                         cpsc = small.backgroundColor!

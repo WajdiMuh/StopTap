@@ -18,6 +18,8 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
     @IBOutlet weak var highsc: UILabel!
     @IBOutlet weak var val: UILabel!
     @IBOutlet weak var gname: UILabel!
+    @IBOutlet weak var dev: UIButton!
+    @IBOutlet weak var set: UIButton!
     let motionManager = CMMotionManager()
     var animator:UIDynamicAnimator? = nil;
     let gravity = UIGravityBehavior()
@@ -27,25 +29,20 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
          gname.center.y = ((play.center.y - play.frame.height / 2.0) / 2.0)
+        bganim1.frame.origin.x = self.view.safeAreaLayoutGuide.layoutFrame.maxX - (self.bganim1.frame.width - 1)
+        bganim1.frame.origin.y = 1
+        bganim2.frame.origin.x = self.view.safeAreaLayoutGuide.layoutFrame.minX
+        bganim2.frame.origin.y = 1
         //gnamet.constant = ((play.frame.origin.y / 2.0) - (gname.frame.height))
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        bganim1.frame.origin.x = self.view.frame.width - (self.bganim1.frame.width + 1)
-        bganim1.frame.origin.y = 1
-        bganim2.frame.origin.x = 1
-        bganim2.frame.origin.y = 1
-        gravity.gravityDirection = CGVector(dx: 0, dy: 0.8)
-        gravity.addItem(bganim1)
-        collider.addItem(bganim1)
-        itemBehavior.addItem(bganim1)
-        gravity.addItem(bganim2)
-        collider.addItem(bganim2)
-        itemBehavior.addItem(bganim2)
         play.isExclusiveTouch = true
         account.isExclusiveTouch = true
         shop.isExclusiveTouch = true
         htp.isExclusiveTouch = true
+        dev.isExclusiveTouch = true
+        set.isExclusiveTouch = true
         /*if(vars.signedin == 1){
             if(vars.hscore == "0"){
                 self.highsc.isHidden = true
@@ -237,6 +234,10 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        bganim1.frame.origin.x = self.view.safeAreaLayoutGuide.layoutFrame.maxX - (self.bganim1.frame.width - 1)
+        bganim1.frame.origin.y = 1
+        bganim2.frame.origin.x = self.view.safeAreaLayoutGuide.layoutFrame.minX
+        bganim2.frame.origin.y = 1
         checkgravity = 0
         motionManager.stopDeviceMotionUpdates()
         gravity.removeItem(bganim1)
@@ -460,6 +461,13 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
         super.viewDidAppear(animated)
         //randdirbganim()
        // motionManager.startDeviceMotionUpdates(to: motionQueue, withHandler: gravityUpdated as! CMDeviceMotionHandler)
+        gravity.gravityDirection = CGVector(dx: 0, dy: 0.8)
+        gravity.addItem(bganim1)
+        collider.addItem(bganim1)
+        itemBehavior.addItem(bganim1)
+        gravity.addItem(bganim2)
+        collider.addItem(bganim2)
+        itemBehavior.addItem(bganim2)
         if(animator?.behaviors.contains(collider) == false){
         animator?.removeBehavior(collider)
         }
@@ -487,7 +495,7 @@ class ViewController: UIViewController,UICollisionBehaviorDelegate,UINavigationC
                 let y = CGFloat(grav.y);
                 var p = CGPoint(x: x, y: y)
                 if (error != nil) {
-                    print(error ?? "")
+                    //print(error ?? "")
                 }
                 
                 // Have to correct for orientation.

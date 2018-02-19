@@ -30,6 +30,7 @@
 		0D58ED671F4B800D006CFD13 /* KeyStorageCrypter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D58ED611F4B800D006CFD13 /* KeyStorageCrypter.swift */; };
 		0D58ED681F4B800D006CFD13 /* KeyStorageKeyChainProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D58ED621F4B800D006CFD13 /* KeyStorageKeyChainProvider.swift */; };
 		0D58ED691F4B800D006CFD13 /* KeyStoreDefaultsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D58ED631F4B800D006CFD13 /* KeyStoreDefaultsProvider.swift */; };
+		0D5E730B203B3E7C006D7032 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D5E730A203B3E7C006D7032 /* GoogleService-Info.plist */; };
 		0D7258FC1FC3602200CA57A6 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D07DB881CFB839A00F30F38 /* AccountViewController.swift */; };
 		0D7258FD1FC3604E00CA57A6 /* CreateAccViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D94D5F71D03825E00E8A69E /* CreateAccViewController.swift */; };
 		0D7258FE1FC3605200CA57A6 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D07DB8A1CFB87D300F30F38 /* SignViewController.swift */; };
@@ -66,7 +67,6 @@
 		0DF3B1721CDE669300B5F4F1 /* App42LeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF3B16C1CDE669300B5F4F1 /* App42LeaderboardViewController.m */; };
 		0DF3B1731CDE669300B5F4F1 /* App42LeaderboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF3B16D1CDE669300B5F4F1 /* App42LeaderboardViewController.xib */; };
 		0DF5E2B71D26A39200332E8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF5E2B51D26A39200332E8F /* Main.storyboard */; };
-		0DF8BFB81D37CB2C0061578E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DF8BFB71D37CB2C0061578E /* GoogleService-Info.plist */; };
 		0DF92E1B1D38314400B81057 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF92E1A1D38314400B81057 /* ColorPicker.swift */; };
 		DB6FBFF25BE4FE8065322C18 /* Pods_StopTap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB35C731C34B08436ABF7C12 /* Pods_StopTap.framework */; };
 		FC0532DA0F278351DD1BEC42 /* Pods_StopTapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DC274FA3770E07C2DD0D0D /* Pods_StopTapTests.framework */; };
@@ -115,6 +115,7 @@
 		0D58ED611F4B800D006CFD13 /* KeyStorageCrypter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStorageCrypter.swift; sourceTree = "<group>"; };
 		0D58ED621F4B800D006CFD13 /* KeyStorageKeyChainProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStorageKeyChainProvider.swift; sourceTree = "<group>"; };
 		0D58ED631F4B800D006CFD13 /* KeyStoreDefaultsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStoreDefaultsProvider.swift; sourceTree = "<group>"; };
+		0D5E730A203B3E7C006D7032 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0D8D5E581CAB20EA0034DA32 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0D8D5E5A1CAB239D0034DA32 /* vibrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vibrate.png; sourceTree = "<group>"; };
 		0D91EFD51D27D8010054D592 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -154,7 +155,6 @@
 		0DF3B16C1CDE669300B5F4F1 /* App42LeaderboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App42LeaderboardViewController.m; sourceTree = "<group>"; };
 		0DF3B16D1CDE669300B5F4F1 /* App42LeaderboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = App42LeaderboardViewController.xib; sourceTree = "<group>"; };
 		0DF5E2B61D26A39200332E8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0DF8BFB71D37CB2C0061578E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0DF92E0D1D381F6300B81057 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Pods/GoogleUtilities/Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
 		0DF92E0F1D381F6600B81057 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Pods/GoogleSymbolUtilities/Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		0DF92E111D381F6800B81057 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Pods/GoogleInterchangeUtilities/Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 				0D225C261F60858D008A6EFE /* play.png */,
 				0D225C271F60858D008A6EFE /* pause.png */,
 				0D225C281F60858D008A6EFE /* direction.png */,
-				0DF8BFB71D37CB2C0061578E /* GoogleService-Info.plist */,
+				0D5E730A203B3E7C006D7032 /* GoogleService-Info.plist */,
 				0D21438A1C9D533900668A29 /* AppDelegate.swift */,
 				0D21438C1C9D533900668A29 /* ViewController.swift */,
 				0DA619CD1F4F768200429EC0 /* pushanimation.swift */,
@@ -395,7 +395,7 @@
 				TargetAttributes = {
 					0D2143861C9D533900668A29 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = D3BJ8Q62P4;
+						DevelopmentTeam = 7WKMQE2EKL;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -444,11 +444,11 @@
 				0DCB338220308CA90048B80D /* wrong.wav in Resources */,
 				0DB0310E1C9DB49E009046EC /* language.png in Resources */,
 				0DBB1E261CA6E2DC003822B4 /* coin.png in Resources */,
-				0DF8BFB81D37CB2C0061578E /* GoogleService-Info.plist in Resources */,
 				0D0FB0921D675FC80075019F /* StopTapen.ttf in Resources */,
 				0D942E181CA30A68003EF043 /* Assets.xcassets in Resources */,
 				0D0A4C481F4610700014802F /* confetti.png in Resources */,
 				0D0100E11D021B7C00597B59 /* presence_invisible.png in Resources */,
+				0D5E730B203B3E7C006D7032 /* GoogleService-Info.plist in Resources */,
 				0DCB338120308CA90048B80D /* correct.wav in Resources */,
 				0D2A75861CA3E651004CEFED /* abc_ic_clear_mtrl_alpha.png in Resources */,
 				0D0BC21A202F8E7500135C7C /* background.mp3 in Resources */,
@@ -760,7 +760,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = D3BJ8Q62P4;
+				DEVELOPMENT_TEAM = 7WKMQE2EKL;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = (
 					AccountViewController.swift,
@@ -786,7 +786,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wajdimuhtadi.StopTap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wajdialmuhtadi.StopTap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "StopTap/StopTap-Bridging-Header.h";
@@ -806,7 +806,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = D3BJ8Q62P4;
+				DEVELOPMENT_TEAM = 7WKMQE2EKL;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = (
 					AccountViewController.swift,
@@ -832,7 +832,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wajdimuhtadi.StopTap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wajdialmuhtadi.StopTap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "StopTap/StopTap-Bridging-Header.h";
