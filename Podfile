@@ -6,7 +6,6 @@ target 'StopTap' do
 
   # Pods for StopTap
 pod 'Firebase/Analytics'
-pod 'AdFalconSDK'
 target 'StopTapTests' do
     inherit! :search_paths
     # Pods for testing

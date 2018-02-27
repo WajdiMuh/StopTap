@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
        // GADMobileAds.configure(withApplicationID: "ca-app-pub-2696736592488105~3114510550")
+        let sdk: STAStartAppSDK = STAStartAppSDK.sharedInstance()
+        sdk.appID = "201889638"
+        sdk.accountID = "171966545"
         application.isIdleTimerDisabled = true
         // Override point for customization after application launch.
         return true

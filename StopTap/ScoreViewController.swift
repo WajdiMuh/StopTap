@@ -6,7 +6,6 @@
 //  Copyright © 2016 wajdi muhtadi. All rights reserved.
 //
 import AudioToolbox
-import AdFalconSDK
 import UIKit
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
@@ -29,15 +28,15 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-class ScoreViewController: UIViewController,ADFAdViewDelegate {
-    @IBOutlet weak var bannerview: ADFAdView!
+class ScoreViewController: UIViewController,STABannerDelegateProtocol {
     @IBOutlet weak var playag: UIButton!
     @IBOutlet weak var menu: UIButton!
     @IBOutlet weak var leaderb: UIButton!
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var hscore: UILabel!
     @IBOutlet weak var gameo: UILabel!
-    @IBOutlet weak var scorecon: NSLayoutConstraint!
+    var adview: STABannerView?
+    @IBOutlet weak var scoreon: NSLayoutConstraint!
     @IBOutlet weak var menucon: NSLayoutConstraint!
     var scoreval:Int = Int()
     var newhighscoresc:Bool = Bool()
@@ -117,6 +116,9 @@ class ScoreViewController: UIViewController,ADFAdViewDelegate {
             playag.layer.borderColor = UIColor.black.cgColor
             menu.layer.borderColor = UIColor.black.cgColor
             leaderb.layer.borderColor = UIColor.black.cgColor
+            playag.backgroundColor = UIColor.white
+            menu.backgroundColor = UIColor.white
+            leaderb.backgroundColor = UIColor.white
             playag.setTitleColor(UIColor.black, for: UIControlState())
             menu.setTitleColor(UIColor.black, for: UIControlState())
             leaderb.setTitleColor(UIColor.black, for: UIControlState())
@@ -125,6 +127,9 @@ class ScoreViewController: UIViewController,ADFAdViewDelegate {
             gameo.textColor = UIColor.black
         }else{
             self.view.backgroundColor = UIColor.black
+            playag.backgroundColor = UIColor.black
+            menu.backgroundColor = UIColor.black
+            leaderb.backgroundColor = UIColor.black
             playag.layer.borderColor = UIColor.white.cgColor
             menu.layer.borderColor = UIColor.white.cgColor
             leaderb.layer.borderColor = UIColor.white.cgColor
@@ -141,19 +146,18 @@ class ScoreViewController: UIViewController,ADFAdViewDelegate {
         if (newhighscoresc == true){
             confettistartstop(startstop: true)
         }
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if (newhighscoresc == true){
-            confettistartstop(startstop: false)
+        if (adview == nil) {
+            adview = STABannerView(size: STA_PortraitAdSize_320x50, autoOrigin: STAAdOrigin_Top, with: self.view, withDelegate: self);
+            adview?.isHidden = true
+            self.view.addSubview(adview!)
         }
     }
-    func adViewWillLoadAd(_ adView: ADFAdView) {
-    }
     
-    func adViewDidLoadAd(_ adView: ADFAdView) {
-        adView.isHidden = false
-        scorecon.constant = 10
+    func failedLoadBannerAd(_ banner: STABannerView!, withError error: Error!) {
+    }
+    func didDisplayBannerAd(_ banner: STABannerView!) {
+        banner.isHidden = false
+        scoreon.constant = 60
         if(UIDevice.current.userInterfaceIdiom == .phone){
             menucon.constant = 32
             menu.setNeedsLayout()
@@ -165,42 +169,16 @@ class ScoreViewController: UIViewController,ADFAdViewDelegate {
         }, completion: {(_ finished: Bool) -> Void in
         })
     }
+    func didClickBannerAd(_ banner: STABannerView!) {
+    }
     
-    
-    func adView(_ adView: ADFAdView, didFailWithCode code: Int, message: String) {
-        switch Float(code) {
-        case Float((kADFAdViewErrorNoAdAvailabe).rawValue):
-            // No Ad Availabe
-           // print(message)
-            break
-        case Float((kADFAdViewErrorInvalidParam).rawValue):
-            // Invalid Param send to server
-            //print(message)
-            break
-        case Float((kADFAdViewErrorMissingParam).rawValue):
-            // Missing Param send to server
-            //print(message)
-            break
-        case Float((kADFAdViewErrorCommunication).rawValue):
-            //Communication with server failed or no internet
-            //print(message)
-            break
-        default:
-            break
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if (newhighscoresc == true){
+            confettistartstop(startstop: false)
         }
     }
-    
-    func adViewWillPresentScreen(_ adView: ADFAdView) {
-    }
-    
-    func adViewDidPresentScreen(_ adView: ADFAdView) {
-    }
-    
-    func adViewWillDismissScreen(_ adView: ADFAdView) {
-    }
-    
-    func adViewDidDismissScreen(_ adView: ADFAdView) {
-    }
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -227,8 +205,6 @@ class ScoreViewController: UIViewController,ADFAdViewDelegate {
         } */
         
         //adfalcon
-        bannerview.initialize(withAdUnit: kADFAdViewAdUnitSize320x50, siteId: "82ddaf25545e4654b261b9fd59c87af1", params: nil, rootViewController: self, enableAutorefresh: true, delegate: self)
-        bannerview.delegate = self
         
         let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
         switch (provider.getInt(forKey: "lang", defaultValue: 1)) {

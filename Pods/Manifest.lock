@@ -1,18 +1,17 @@
 PODS:
-  - AdFalconSDK (4.2.0)
-  - Firebase/Analytics (4.8.2):
+  - Firebase/Analytics (4.9.0):
     - Firebase/Core
-  - Firebase/Core (4.8.2):
+  - Firebase/Core (4.9.0):
     - FirebaseAnalytics (= 4.0.9)
-    - FirebaseCore (= 4.0.14)
+    - FirebaseCore (= 4.0.15)
   - FirebaseAnalytics (4.0.9):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseCore (4.0.14):
+  - FirebaseCore (4.0.15):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseInstanceID (2.0.8):
+  - FirebaseInstanceID (2.0.9):
     - FirebaseCore (~> 4.0)
   - GoogleToolboxForMac/Defines (2.1.3)
   - GoogleToolboxForMac/NSData+zlib (2.1.3):
@@ -24,18 +23,16 @@ PODS:
   - nanopb/encode (0.3.8)
 
 DEPENDENCIES:
-  - AdFalconSDK
   - Firebase/Analytics
 
 SPEC CHECKSUMS:
-  AdFalconSDK: 3074457eab6bfd3d5f72757bd3a5a955cc1dfa92
-  Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
+  Firebase: 632216af3ed7f31e3be34776947fdc7546cfb572
   FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
-  FirebaseCore: 2e0b98fb2d64ca8140136beff15772bdd14d2dd7
-  FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
+  FirebaseCore: 3bd047463058fa6b5d312c97502c52e45401cdfb
+  FirebaseInstanceID: d2058a35e9bebda1b6dd42486b84917bde552a9d
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: 4c04cb8f1d409de0d3bcbb4aae329cf30e79808b
+PODFILE CHECKSUM: fdd7581aa0d21ac1d1b77b150c30a0788788686e
 
 COCOAPODS: 1.3.1

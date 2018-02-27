@@ -42,6 +42,15 @@
 		0D9C393A1CB06300008F2A6B /* devViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C39391CB06300008F2A6B /* devViewController.swift */; };
 		0DA619CE1F4F768200429EC0 /* pushanimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA619CD1F4F768200429EC0 /* pushanimation.swift */; };
 		0DA619D01F4F849900429EC0 /* popanimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA619CF1F4F849900429EC0 /* popanimation.swift */; };
+		0DAC50052045A325006CDC19 /* StartApp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0DAC50032045A31D006CDC19 /* StartApp.bundle */; };
+		0DAC50062045A325006CDC19 /* StartApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC50042045A325006CDC19 /* StartApp.framework */; };
+		0DAC50082045A504006CDC19 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC50072045A504006CDC19 /* CoreGraphics.framework */; };
+		0DAC500A2045A50D006CDC19 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC50092045A50D006CDC19 /* StoreKit.framework */; };
+		0DAC500C2045A513006CDC19 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC500B2045A513006CDC19 /* AdSupport.framework */; };
+		0DAC500E2045A523006CDC19 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC500D2045A523006CDC19 /* CoreMedia.framework */; };
+		0DAC50102045A52E006CDC19 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC500F2045A52E006CDC19 /* AVFoundation.framework */; };
+		0DAC50122045A536006CDC19 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC50112045A535006CDC19 /* WebKit.framework */; };
+		0DAC50142045A53F006CDC19 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC50132045A53F006CDC19 /* libz.tbd */; };
 		0DB0310E1C9DB49E009046EC /* language.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB0310D1C9DB49E009046EC /* language.png */; };
 		0DB031101C9DB624009046EC /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB0310F1C9DB624009046EC /* settings.png */; };
 		0DB031121C9DB640009046EC /* wajdi.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB031111C9DB640009046EC /* wajdi.png */; };
@@ -125,6 +134,15 @@
 		0D9C39391CB06300008F2A6B /* devViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = devViewController.swift; sourceTree = "<group>"; };
 		0DA619CD1F4F768200429EC0 /* pushanimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pushanimation.swift; sourceTree = "<group>"; };
 		0DA619CF1F4F849900429EC0 /* popanimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = popanimation.swift; sourceTree = "<group>"; };
+		0DAC50032045A31D006CDC19 /* StartApp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StartApp.bundle; sourceTree = "<group>"; };
+		0DAC50042045A325006CDC19 /* StartApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StartApp.framework; sourceTree = "<group>"; };
+		0DAC50072045A504006CDC19 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0DAC50092045A50D006CDC19 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0DAC500B2045A513006CDC19 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		0DAC500D2045A523006CDC19 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		0DAC500F2045A52E006CDC19 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0DAC50112045A535006CDC19 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		0DAC50132045A53F006CDC19 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		0DB0310D1C9DB49E009046EC /* language.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = language.png; sourceTree = "<group>"; };
 		0DB0310F1C9DB624009046EC /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		0DB031111C9DB640009046EC /* wajdi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wajdi.png; sourceTree = "<group>"; };
@@ -177,12 +195,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DAC50142045A53F006CDC19 /* libz.tbd in Frameworks */,
+				0DAC50122045A536006CDC19 /* WebKit.framework in Frameworks */,
+				0DAC50102045A52E006CDC19 /* AVFoundation.framework in Frameworks */,
+				0DAC500E2045A523006CDC19 /* CoreMedia.framework in Frameworks */,
+				0DAC500C2045A513006CDC19 /* AdSupport.framework in Frameworks */,
+				0DAC500A2045A50D006CDC19 /* StoreKit.framework in Frameworks */,
+				0DAC50082045A504006CDC19 /* CoreGraphics.framework in Frameworks */,
 				0DBFF5581D27D3EE0035B6DB /* QuartzCore.framework in Frameworks */,
 				0DF3B15D1CDE651A00B5F4F1 /* SystemConfiguration.framework in Frameworks */,
 				0DF3B15B1CDE650C00B5F4F1 /* Security.framework in Frameworks */,
 				0DF3B1591CDE650000B5F4F1 /* CoreTelephony.framework in Frameworks */,
 				0DF3B1571CDE64F900B5F4F1 /* CoreFoundation.framework in Frameworks */,
 				DB6FBFF25BE4FE8065322C18 /* Pods_StopTap.framework in Frameworks */,
+				0DAC50062045A325006CDC19 /* StartApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +227,8 @@
 		0D21437E1C9D533900668A29 = {
 			isa = PBXGroup;
 			children = (
+				0DAC50032045A31D006CDC19 /* StartApp.bundle */,
+				0DAC50042045A325006CDC19 /* StartApp.framework */,
 				0DE1B1C91E3CDC9800AC565A /* Shephertz_App42_iOS_API.framework */,
 				0DBFF5571D27D3EE0035B6DB /* QuartzCore.framework */,
 				0DF3B15C1CDE651A00B5F4F1 /* SystemConfiguration.framework */,
@@ -327,6 +355,13 @@
 		44E4A1DDB5036D1998EBE718 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0DAC50132045A53F006CDC19 /* libz.tbd */,
+				0DAC50112045A535006CDC19 /* WebKit.framework */,
+				0DAC500F2045A52E006CDC19 /* AVFoundation.framework */,
+				0DAC500D2045A523006CDC19 /* CoreMedia.framework */,
+				0DAC500B2045A513006CDC19 /* AdSupport.framework */,
+				0DAC50092045A50D006CDC19 /* StoreKit.framework */,
+				0DAC50072045A504006CDC19 /* CoreGraphics.framework */,
 				0DF92E151D381F7300B81057 /* FirebaseAnalytics.framework */,
 				0DF92E131D381F7000B81057 /* FirebaseInstanceID.framework */,
 				0DF92E111D381F6800B81057 /* GoogleInterchangeUtilities.framework */,
@@ -449,6 +484,7 @@
 				0D0A4C481F4610700014802F /* confetti.png in Resources */,
 				0D0100E11D021B7C00597B59 /* presence_invisible.png in Resources */,
 				0D5E730B203B3E7C006D7032 /* GoogleService-Info.plist in Resources */,
+				0DAC50052045A325006CDC19 /* StartApp.bundle in Resources */,
 				0DCB338120308CA90048B80D /* correct.wav in Resources */,
 				0D2A75861CA3E651004CEFED /* abc_ic_clear_mtrl_alpha.png in Resources */,
 				0D0BC21A202F8E7500135C7C /* background.mp3 in Resources */,
@@ -756,7 +792,6 @@
 			baseConfigurationReference = 27E3A3569AD18AEA0A438175 /* Pods-StopTap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -802,7 +837,6 @@
 			baseConfigurationReference = 72310298B51A11E51A4D9BAE /* Pods-StopTap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
