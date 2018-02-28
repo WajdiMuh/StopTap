@@ -22,6 +22,9 @@ class PlayViewController: UIViewController {
     var correctsfx: AVAudioPlayer!
     var mbgm: AVAudioPlayer!
     var wrongsfx:AVAudioPlayer!
+    var doubleonsfx: AVAudioPlayer!
+    var doubleoffsfx: AVAudioPlayer!
+    var inarowsfx: AVAudioPlayer!
     let coinmulti:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "shop14", defaultValue: 1)
     var coinv:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "cv", defaultValue: 0)
     var newhighscore:Bool = false
@@ -37,6 +40,7 @@ class PlayViewController: UIViewController {
     var doublelnumber:CGFloat = 0.0
     var checkifusertoucheddouble:Int = 0
     var onetimecorrect:Int = 2
+    var inarow:Int = 0
     @IBOutlet weak var xw2signwidth: NSLayoutConstraint!
     @IBOutlet weak var x2sign: UIButton!
     let lang:Int = KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "lang", defaultValue: 1)
@@ -157,6 +161,8 @@ class PlayViewController: UIViewController {
         let touchPoint: CGPoint? = touch?.location(in: myButton)
         //print("ouch" + String(describing: touchPoint))
         if  doublescore.layer.presentation()?.hitTest(touchPoint!) != nil {
+            self.doubleonsfx.currentTime = 0
+            self.doubleonsfx.play()
             checkifusertoucheddouble = 2
             doubleanim = false
             doubleon = true
@@ -197,24 +203,79 @@ class PlayViewController: UIViewController {
                     scoreval.text = "Score : " + String(score)
                     break;
                 }
-            self.correctsfx.currentTime = 0
-            self.correctsfx.play()
-            baseanim.layer.removeAllAnimations()
-            baseanim.isHidden = false
-            self.baseanim.transform = CGAffineTransform(scaleX: 1, y: 1)
-            UIView.animate(withDuration: 0.5, delay: 0, options:[.beginFromCurrentState], animations: {
+            inarow = inarow + 1
+            if(inarow >= 10 && wrongnum > 0){
+                self.inarowsfx.currentTime = 0
+                self.inarowsfx.play()
+                inarow = 0
+                switch(wrongnum){
+                case 1:
+                    wrongnum = 0
+                    wrong.alpha = 0.27
+                    break;
+                case 2 :
+                    wrongnum = 1
+                    wrong2.alpha = 0.27
+                    break;
+                case 3 :
+                    wrongnum = 2
+                    wrong3.alpha = 0.27
+                    break;
+                default:
+                    wrongnum = 0
+                    wrong.alpha = 0.27
+                    break;
+                }
+                baseanim.layer.removeAllAnimations()
+                baseanim.isHidden = false
+               /* UIView.animate(withDuration: 0.5, delay: 0, options:[.beginFromCurrentState], animations: {
+                    self.baseanim.transform = CGAffineTransform(scaleX: 0.68, y: 0.68)
+                }, completion:
+                    {(finished: Bool) -> Void in
+                        if (finished == true){
+                            self.baseanim.isHidden = true
+                        }
+                }
+                ) */
                 self.baseanim.transform = CGAffineTransform(scaleX: 0.68, y: 0.68)
-            }, completion:
-                {(finished: Bool) -> Void in
+                UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options:.beginFromCurrentState, animations: {
+                    self.baseanim.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }, completion:    {(finished: Bool) -> Void in
                     if (finished == true){
-                        self.baseanim.isHidden = true
+                        //self.baseanim.isHidden = true
+                        UIView.animate(withDuration: 0.25, delay: 0, options:[.beginFromCurrentState], animations: {
+                            self.baseanim.transform = CGAffineTransform(scaleX: 0.68, y: 0.68)
+                        }, completion:
+                            {(finished: Bool) -> Void in
+                                if (finished == true){
+                                    self.baseanim.isHidden = true
+                                }
+                        }
+                        )
                     }
-            }
-            )
+                })
+            }else{
+                self.correctsfx.currentTime = 0
+                self.correctsfx.play()
+                baseanim.layer.removeAllAnimations()
+                baseanim.isHidden = false
+                self.baseanim.transform = CGAffineTransform(scaleX: 1, y: 1)
+                UIView.animate(withDuration: 0.5, delay: 0, options:[.beginFromCurrentState], animations: {
+                    self.baseanim.transform = CGAffineTransform(scaleX: 0.68, y: 0.68)
+                }, completion:
+                    {(finished: Bool) -> Void in
+                        if (finished == true){
+                            self.baseanim.isHidden = true
+                        }
+                }
+                )
+                
+                }
             }else{
                 onetimecorrect = onetimecorrect - 1
             }
         }else{
+            inarow = 0
             let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
             self.dir.isHidden = true
             self.viewclickb.gestureRecognizers?.removeAll()
@@ -236,6 +297,8 @@ class PlayViewController: UIViewController {
                     self.kill1.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
                 }, completion: {(finished: Bool) -> Void in
                     self.kill1.isHidden = true
+                    self.kill1.transform = CGAffineTransform(rotationAngle: 0)
+                    self.kill1.transform = CGAffineTransform(scaleX: 1, y: 1)
                 })
                 break;
             case 1:
@@ -255,6 +318,9 @@ class PlayViewController: UIViewController {
                     self.kill2.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
                 }, completion: {(finished: Bool) -> Void in
                     self.kill2.isHidden = true
+                    self.kill2.transform = CGAffineTransform(rotationAngle: 0)
+                    self.kill2.transform = CGAffineTransform(scaleX: 1, y: 1)
+                    
                 })
                 break;
             case 2:
@@ -336,6 +402,8 @@ class PlayViewController: UIViewController {
                         self.kill3.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
                     }, completion: {(finished: Bool) -> Void in
                         self.kill3.isHidden = true
+                        self.kill3.transform = CGAffineTransform(rotationAngle: 0)
+                        self.kill3.transform = CGAffineTransform(scaleX: 1, y: 1)
                     })
                 }
                 break;
@@ -420,6 +488,8 @@ class PlayViewController: UIViewController {
                     self.kill1.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
                 }, completion: {(finished: Bool) -> Void in
                     self.kill1.isHidden = true
+                    self.kill1.transform = CGAffineTransform(rotationAngle: 0)
+                    self.kill1.transform = CGAffineTransform(scaleX: 1, y: 1)
                 })
                 break;
             }
@@ -456,6 +526,15 @@ class PlayViewController: UIViewController {
             self.correctsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "correct", ofType: "wav")!))
             self.correctsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
             self.correctsfx.prepareToPlay()
+            self.doubleonsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "doublepointson", ofType: "wav")!))
+            self.doubleonsfx.prepareToPlay()
+            self.doubleonsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
+            self.doubleoffsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "doublepointsoff", ofType: "wav")!))
+            self.doubleoffsfx.prepareToPlay()
+            self.doubleoffsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
+            self.inarowsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "inarow", ofType: "wav")!))
+            self.inarowsfx.prepareToPlay()
+            self.inarowsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
             self.wrongsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "wrong", ofType: "wav")!))
             self.wrongsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
             self.wrongsfx.prepareToPlay()
@@ -608,6 +687,7 @@ class PlayViewController: UIViewController {
         doubleon = false
         doubleanim = false
         number = 0.0
+        inarow = 0
         doublelnumber = 0.0
         checkifusertoucheddouble = 0
         onetimecorrect = 2
@@ -886,6 +966,15 @@ class PlayViewController: UIViewController {
             if(correctsfx.isPlaying){
                 correctsfx.pause()
             }
+            if(doubleonsfx.isPlaying){
+                doubleonsfx.pause()
+            }
+            if(doubleoffsfx.isPlaying){
+                doubleoffsfx.pause()
+            }
+            if(inarowsfx.isPlaying){
+                inarowsfx.pause()
+            }
             if(wrongsfx.isPlaying){
                 wrongsfx.pause()
             }
@@ -1001,12 +1090,18 @@ class PlayViewController: UIViewController {
         wrongsfx = nil
         mbgm.stop()
         mbgm = nil
-        
+        doubleoffsfx.stop()
+        doubleoffsfx = nil
+        doubleonsfx.stop()
+        doubleonsfx = nil
+        inarowsfx.stop()
+        inarowsfx = nil
         KeyStoreDefaultsProvider(cryptoProvider: nil).setInt(forKey: "cv", value: self.coinv)
         NotificationCenter.default.removeObserver(self)
         navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func retry(_ sender: AnyObject) {
+        inarow = 0
         mbgm.pause()
         mbgm.currentTime = 0
         mbgm.play()
@@ -1015,6 +1110,15 @@ class PlayViewController: UIViewController {
         }
         if(wrongsfx.isPlaying){
             wrongsfx.pause()
+        }
+        if(doubleonsfx.isPlaying){
+            doubleonsfx.pause()
+        }
+        if(doubleoffsfx.isPlaying){
+            doubleoffsfx.pause()
+        }
+        if(inarowsfx.isPlaying){
+            inarowsfx.pause()
         }
         movel.constant = 0
         move.setNeedsLayout()
@@ -1167,6 +1271,15 @@ class PlayViewController: UIViewController {
             if(wrongsfx.isPlaying){
                 wrongsfx.pause()
             }
+            if(doubleonsfx.isPlaying){
+                doubleonsfx.pause()
+            }
+            if(doubleoffsfx.isPlaying){
+                doubleoffsfx.pause()
+            }
+            if(inarowsfx.isPlaying){
+                inarowsfx.pause()
+            }
             KeyStoreDefaultsProvider(cryptoProvider: nil).setInt(forKey: "cv", value: self.coinv)
             x2sign.isHidden = true
             if(animator != nil){
@@ -1241,6 +1354,18 @@ class PlayViewController: UIViewController {
         if(mbgm != nil){
             mbgm.stop()
             mbgm = nil
+        }
+        if(doubleonsfx != nil){
+            doubleonsfx.stop()
+            doubleonsfx = nil
+        }
+        if(doubleoffsfx != nil){
+            doubleoffsfx.stop()
+            doubleoffsfx = nil
+        }
+        if(inarowsfx != nil){
+            inarowsfx.stop()
+            inarowsfx = nil
         }
     }
     override func didReceiveMemoryWarning() {
@@ -1347,7 +1472,7 @@ class PlayViewController: UIViewController {
         doublescore.isUserInteractionEnabled = false
         self.x2l.constant = self.view.bounds.width
         doublescore.setNeedsLayout()
-        doubleanimator = UIViewPropertyAnimator(duration: Double(1.0), curve: .linear) { [unowned self, move] in
+        doubleanimator = UIViewPropertyAnimator(duration: Double(2.0), curve: .linear) { [unowned self, move] in
             self.doublescore.superview?.layoutIfNeeded()
         }
         doubleanimator.addCompletion {
@@ -1395,6 +1520,8 @@ class PlayViewController: UIViewController {
         return UIColor(red: components.red, green: components.green, blue: components.blue, alpha: 1)
     }
     @objc func doubletimerlasting(){
+        self.doubleoffsfx.currentTime = 0
+        self.doubleoffsfx.play()
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: [], animations: {
             self.x2sign.alpha = 0.27
             self.x2sign.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
@@ -1428,6 +1555,7 @@ class PlayViewController: UIViewController {
         return faNumber!
     }
     @objc func gameoverslideright(){
+        inarow = 0
         mbgm.setVolume(0.0, fadeDuration: 0.5)
         gameoverc.constant = 0
         gameover.setNeedsLayout()

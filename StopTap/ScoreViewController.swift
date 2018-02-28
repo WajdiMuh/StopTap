@@ -156,7 +156,6 @@ class ScoreViewController: UIViewController,STABannerDelegateProtocol {
     func failedLoadBannerAd(_ banner: STABannerView!, withError error: Error!) {
     }
     func didDisplayBannerAd(_ banner: STABannerView!) {
-        banner.isHidden = false
         scoreon.constant = 60
         if(UIDevice.current.userInterfaceIdiom == .phone){
             menucon.constant = 32
@@ -167,6 +166,7 @@ class ScoreViewController: UIViewController,STABannerDelegateProtocol {
             self.score.superview?.layoutIfNeeded()
             self.score.superview?.layoutIfNeeded()
         }, completion: {(_ finished: Bool) -> Void in
+            banner.isHidden = false
         })
     }
     func didClickBannerAd(_ banner: STABannerView!) {

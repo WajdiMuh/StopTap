@@ -21,6 +21,9 @@ class HtpViewController: UIViewController {
     var coins:Int = 0
     var audioPlayer: AVAudioPlayer!
     var wrongsfx: AVAudioPlayer!
+    var doubleonsfx: AVAudioPlayer!
+    var doubleoffsfx: AVAudioPlayer!
+    var inarowsfx: AVAudioPlayer!
     @IBOutlet weak var xw2signwidth: NSLayoutConstraint!
     @IBOutlet weak var x2sign: UIButton!
     @IBOutlet weak var timecount: UILabel!
@@ -60,7 +63,15 @@ class HtpViewController: UIViewController {
             self.wrongsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "wrong", ofType: "wav")!))
             self.wrongsfx.prepareToPlay()
             self.wrongsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
-            
+            self.doubleonsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "doublepointson", ofType: "wav")!))
+            self.doubleonsfx.prepareToPlay()
+            self.doubleonsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
+            self.doubleoffsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "doublepointsoff", ofType: "wav")!))
+            self.doubleoffsfx.prepareToPlay()
+            self.doubleoffsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
+            self.inarowsfx =  try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "inarow", ofType: "wav")!))
+            self.inarowsfx.prepareToPlay()
+            self.inarowsfx.volume = (Float(KeyStoreDefaultsProvider(cryptoProvider: nil).getInt(forKey: "sfxval", defaultValue: 10)) / 10.0)
         } catch {
         }
         if(UIDevice.current.userInterfaceIdiom == .phone){
@@ -309,43 +320,11 @@ class HtpViewController: UIViewController {
                 UIView.commitAnimations()
                 let provider = KeyStoreDefaultsProvider(cryptoProvider: nil)
                 if(score == 0){
+                    canclick = false
                     audioPlayer.pause()
                     audioPlayer.currentTime = 0
                     audioPlayer.play()
-                    baseanim.isHidden = false
-                    self.baseanim.transform = CGAffineTransform(scaleX: 1, y: 1)
-                    UIView.animate(withDuration: 0.5, delay: 0, options:[], animations: {
-                        self.baseanim.transform = CGAffineTransform(scaleX: 0.68, y: 0.68)
-                        }, completion:
-                        {(finished: Bool) -> Void in
-                            if (finished == true){
-                                self.baseanim.isHidden = true
-                            }
-                        }
-                    )
-                        timecount.text = ""
-                        doublescore.isHidden = false
-                        doublescore.isEnabled = true
-                        doublescore.isUserInteractionEnabled = true
-                        self.x2l.constant = (self.view.bounds.width/2) - (self.x2w.constant/2)
-                        doublescore.setNeedsLayout()
-                        UIView.animate(withDuration: 1, delay: 0, options: [], animations: {
-                            self.doublescore.superview?.layoutIfNeeded()
-                        }, completion: {(finished: Bool) -> Void in
-                            if(finished == true){
-                                switch provider.getInt(forKey: "lang", defaultValue: 1) {
-                                case 0:
-                                   self.timecount.text = "إذا نقرت إشارة النتيجة المزدوجة سوف تكسب ضعف النتيجة، هذا يستمر لمدة ١٠ ثانية. انقر الآن ▼"
-                                    break
-                                case 1:
-                                    self.timecount.text = "If You Tap On The Double Score Sign You Will Gain Double The Score, This Lasts For 10 Seconds. Tap Now ▼"
-                                    break
-                                default:
-                                    self.timecount.text = "If You Tap On The Double Score Sign You Will Gain Double The Score, This Lasts For 10 Seconds. Tap Now ▼"
-                                    break
-                                }
-                            }
-                        })
+                    timecount.text = ""
                     score = score + 1
                     coins = coins + 1
                     switch provider.getInt(forKey: "lang", defaultValue: 1) {
@@ -362,11 +341,100 @@ class HtpViewController: UIViewController {
                         coinval.text = String(coins)
                         break
                     }
+                    baseanim.isHidden = false
+                    self.baseanim.transform = CGAffineTransform(scaleX: 1, y: 1)
+                    UIView.animate(withDuration: 0.5, delay: 0, options:[], animations: {
+                        self.baseanim.transform = CGAffineTransform(scaleX: 0.68, y: 0.68)
+                        }, completion:
+                        {(finished: Bool) -> Void in
+                            if (finished == true){
+                                self.baseanim.isHidden = true
+                                switch provider.getInt(forKey: "lang", defaultValue: 1) {
+                                case 0:
+                                    self.timecount.text = "إذا نقرت بشكل صحيح ١٠ مرات على التوالي سوف تحصل على حياة اضافية. انقر الآن ▼"
+                                    break
+                                case 1:
+                                    self.timecount.text = "If You Get It Corret 10 Times In A Row You Will Get An Extra Life. Tap Now ▼"
+                                    break
+                                default:
+                                    self.timecount.text = "If You Get It Corret 10 Times In A Row You Will Get An Extra Life. Tap Now ▼"
+                                    break
+                                }
+                                self.canclick = true
+                                
+                            }
+                        }
+                    )
+
+
                 }else if (score == 1){
+                    inarowsfx.play()
+                    wrong.alpha = 0.27
+                    self.baseanim.isHidden = false
+                    self.baseanim.transform = CGAffineTransform(scaleX: 0.68, y: 0.68)
+                    UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options:.beginFromCurrentState, animations: {
+                        self.baseanim.transform = CGAffineTransform(scaleX: 1, y: 1)
+                    }, completion:    {(finished: Bool) -> Void in
+                        if (finished == true){
+                            //self.baseanim.isHidden = true
+                            UIView.animate(withDuration: 0.25, delay: 0, options:[.beginFromCurrentState], animations: {
+                                self.baseanim.transform = CGAffineTransform(scaleX: 0.68, y: 0.68)
+                            }, completion:
+                                {(finished: Bool) -> Void in
+                                    if (finished == true){
+                                        self.baseanim.isHidden = true
+                                        self.doublescore.isHidden = false
+                                        self.doublescore.isEnabled = true
+                                        self.doublescore.isUserInteractionEnabled = true
+                                        self.x2l.constant = (self.view.bounds.width/2) - (self.x2w.constant/2)
+                                        self.doublescore.setNeedsLayout()
+                                        UIView.animate(withDuration: 1, delay: 0, options: [], animations: {
+                                            self.doublescore.superview?.layoutIfNeeded()
+                                        }, completion: {(finished: Bool) -> Void in
+                                            if(finished == true){
+                                                switch provider.getInt(forKey: "lang", defaultValue: 1) {
+                                                case 0:
+                                                    self.timecount.text = "إذا نقرت إشارة النتيجة المزدوجة سوف تكسب ضعف النتيجة، هذا يستمر لمدة ١٠ ثانية. انقر الآن ▼"
+                                                    break
+                                                case 1:
+                                                    self.timecount.text = "If You Tap On The Double Score Sign You Will Gain Double The Score, This Lasts For 10 Seconds. Tap Now ▼"
+                                                    break
+                                                default:
+                                                    self.timecount.text = "If You Tap On The Double Score Sign You Will Gain Double The Score, This Lasts For 10 Seconds. Tap Now ▼"
+                                                    break
+                                                }
+                                            }
+                                        })
+                                    }
+                            }
+                            )
+                        }
+                    })
+                    
+                    timecount.text = ""
+                    score = score + 1
+                    coins = coins + 1
+                    switch provider.getInt(forKey: "lang", defaultValue: 1) {
+                    case 0:
+                        scoreval.text = "النتيجة : " + convertEngNumToPersianNum(num: String(score))
+                        coinval.text = convertEngNumToPersianNum(num: String(coins))
+                        break
+                    case 1:
+                        scoreval.text = "Score : " + String(score)
+                        coinval.text = String(coins)
+                        break
+                    default:
+                        scoreval.text = "Score : " + String(score)
+                        coinval.text = String(coins)
+                        break
+                    }
+                    
+                }else if (score == 2){
                     if(doubleon == true){
                         audioPlayer.pause()
                         audioPlayer.currentTime = 0
                         audioPlayer.play()
+                        doubleoffsfx.play()
                         baseanim.isHidden = false
                         self.baseanim.transform = CGAffineTransform(scaleX: 1, y: 1)
                         UIView.animate(withDuration: 0.5, delay: 0, options:[], animations: {
@@ -408,6 +476,7 @@ class HtpViewController: UIViewController {
     }
     @IBAction func x2touchdown(_ sender: Any) {
         doubleon = true
+        doubleonsfx.play()
         x2sign.setNeedsLayout()
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: [], animations: {
             self.x2sign.alpha = 1.0
@@ -507,7 +576,7 @@ class HtpViewController: UIViewController {
         self.viewclick.gestureRecognizers?.removeAll()
     }
     @IBAction func touchin(_ sender: Any) {
-        if(coins == 2){
+        if(coins == 3){
         dir.isHidden = false
         let swiperight = UISwipeGestureRecognizer(target: self, action: #selector(HtpViewController.swiperight))
         swiperight.direction = UISwipeGestureRecognizerDirection.right

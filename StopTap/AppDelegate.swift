@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sdk: STAStartAppSDK = STAStartAppSDK.sharedInstance()
         sdk.appID = "201889638"
         sdk.accountID = "171966545"
+        sdk.disableReturnAd()
         application.isIdleTimerDisabled = true
         // Override point for customization after application launch.
         return true
