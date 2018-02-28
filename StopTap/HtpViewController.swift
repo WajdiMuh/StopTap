@@ -354,10 +354,10 @@ class HtpViewController: UIViewController {
                                     self.timecount.text = "إذا نقرت بشكل صحيح ١٠ مرات على التوالي سوف تحصل على حياة اضافية. انقر الآن ▼"
                                     break
                                 case 1:
-                                    self.timecount.text = "If You Get It Corret 10 Times In A Row You Will Get An Extra Life. Tap Now ▼"
+                                    self.timecount.text = "If You Get It Correct 10 Times In A Row You Will Get An Extra Life. Tap Now ▼"
                                     break
                                 default:
-                                    self.timecount.text = "If You Get It Corret 10 Times In A Row You Will Get An Extra Life. Tap Now ▼"
+                                    self.timecount.text = "If You Get It Correct 10 Times In A Row You Will Get An Extra Life. Tap Now ▼"
                                     break
                                 }
                                 self.canclick = true
